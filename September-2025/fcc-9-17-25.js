@@ -9,7 +9,7 @@ The returned string should not have leading or trailing %20.
 
 function generateSlug(str) {
     let changedStr = str.replace(/[^a-zA-Z0-9 ]/g, '').trim().toLowerCase().replace(/ +/g, '%20');
-  return strchangedStr;
+  return changedStr;
 }
 
 generateSlug("helloWorld")

@@ -1,0 +1,18 @@
+** start of script.js **
+
+function numberOfPhotos(photoSizeMb, hardDriveSizeGb) {
+    let convertToMb = (mb) => mb*1000;
+    let calculateNumOfPhotos = () => Math.floor(convertToMb(hardDriveSizeGb)/photoSizeMb)
+  return calculateNumOfPhotos();
+}
+
+/*
+1. numberOfPhotos(1, 1) should return 1000.
+2. numberOfPhotos(2, 1) should return 500.
+3. numberOfPhotos(4, 256) should return 64000.
+4. numberOfPhotos(3.5, 750) should return 214285.
+5. numberOfPhotos(3.5, 5.5) should return 1571.
+*/
+
+** end of script.js **
+

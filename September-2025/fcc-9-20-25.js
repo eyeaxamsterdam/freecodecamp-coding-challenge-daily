@@ -30,18 +30,9 @@ function numberOfFiles(fileSize, fileUnit, driveSizeGb) {
   return numberOfFiles;
 }
 
-/*
-numberOfFiles(500, "KB", 1)
-numberOfFiles(50000, "B", 1)
-numberOfFiles(5, "MB", 1) 
-numberOfFiles(4096, "B", 1.5)
-numberOfFiles(220.5, "KB", 100)
-numberOfFiles(4.5, "MB", 750)
- 
-Passed:1. numberOfFiles(500, "KB", 1) should return 2000.
-Passed:2. numberOfFiles(50000, "B", 1) should return 20000.
-Passed:3. numberOfFiles(5, "MB", 1) should return 200.
-Passed:4. numberOfFiles(4096, "B", 1.5) should return 366210.
-Passed:5. numberOfFiles(220.5, "KB", 100) should return 453514.
-Passed:6. numberOfFiles(4.5, "MB", 750) should return 166666. 
-*/
+numberOfFiles(500, "KB", 1) //should return 2000.
+numberOfFiles(50000, "B", 1) //should return 20000.
+numberOfFiles(5, "MB", 1) //should return 200.
+numberOfFiles(4096, "B", 1.5) //should return 366210.
+numberOfFiles(220.5, "KB", 100) //should return 453514.
+numberOfFiles(4.5, "MB", 750) //should return 166666.

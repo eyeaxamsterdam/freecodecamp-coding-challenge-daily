@@ -20,22 +20,26 @@ Unit	Equivalent
 For example, given 500, "MB", 100, and "GB as arguments, determine how many 500 MB videos can fit on a 100 GB hard drive.
 */
 function numberOfVideos(videoSize, videoUnit, driveSize, driveUnit) {
+  let response = ''
+  const UNITS = ["B", "KB", "MB", "GB", "TB"];
+  // "B" removed from array to satisfy test #2
+  if (!UNITS.slice(0,UNITS.length -1).includes(videoUnit)) {
+    response = "Invalid video unit";
+  } else if (!UNITS.slice(-2).includes(driveUnit)) {
+    response = "Invalid drive unit";
+  } else {
 
-  const UNITS = ["_", "KB", "MB", "GB", "TB"];
-  // "B" removed from array to satisfy test #2 which is in conflict to instructions (github ticket submitted)
-  if (!UNITS.includes(videoUnit))
-    return "Invalid video unit";
-  if (!UNITS.slice(-2).includes(driveUnit))
-    return "Invalid drive unit";
+    const expandedVideoSize = videoSize * 10**(UNITS.indexOf(videoUnit)*3);
+    const expandedDriveSize = driveSize * 10**(UNITS.indexOf(driveUnit)*3);
 
-  const expandedVideoSize = videoSize * 10**(UNITS.indexOf(videoUnit)*3);
-  const expandedDriveSize = driveSize * 10**(UNITS.indexOf(driveUnit)*3);
-
-  return Math.floor(expandedDriveSize / expandedVideoSize);
+    response = Math.floor(expandedDriveSize / expandedVideoSize);
+  }
+  console.log(response);
+  return response;
 }
 
-numberOfVideos(500, "MB", 100, "GB") //RETURNS 200 RETURNS
-numberOfVideos(2000, "B", 1, "TB") //  returnS "Invalid video unit"
+numberOfVideos(500, "MB", 100, "GB") //returns 200 
+numberOfVideos(2000, "TB", 1, "TB") //  returns "Invalid video unit"
 numberOfVideos(2000, "MB", 100000, "MB") // return "Invalid drive unit"
-//numberOfVideos(500000, "KB", 2, "TB") // returnS 4000
-//numberOfVideos(1.5, "GB", 2.2, "TB") // returnS 1466
+numberOfVideos(500000, "KB", 2, "TB") // returns 4000
+numberOfVideos(1.5, "GB", 2.2, "TB") // returns 1466

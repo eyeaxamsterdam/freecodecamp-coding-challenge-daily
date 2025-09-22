@@ -1,4 +1,4 @@
-/* 
+/*
 Missing Numbers
 Given an array of integers from 1 to n, inclusive, return an array of all the missing integers between 1 and n (where n is the largest number in the given array).
 
@@ -7,32 +7,24 @@ The returned array should be in ascending order.
 If no integers are missing, return an empty array.
 */
 
-
 function findMissingNumbers(arr) {
-  // arrange in ascending order
-  const arrangedArray = arr.sort((a,b) => a - b);
-  // get rid of duplicates by converting to set
-  const numSet = new Set(arrangedArray);
-  // convert back into array
-  const filteredArray = Array.from(numSet);
-  // get lowest and highest number
-  const n1 = filteredArray[0];
-  const n2 = filteredArray[filteredArray.length-1]
-  // check every integer between those two numbers
-  const getIntegersInRange = (n1, n2) => {
-    let fullArray = [];
-    for (let i = n1 + 1; i < n2; i++) {
-      !arr.includes(i) ? fullArray.push(i) : null
-    }
-    return fullArray
-  }
-  
-  //assign function to variable
-  let response = getIntegersInRange(n1,n2);
+  // Convert to set to remove duplicates and for faster lookup
+  const numSet = new Set(arr);
 
-  console.log(response)
-  //call function
-  return response;
+  // Find max value in the array to establish the range [1, n]
+  const n = Math.max(...arr);
+
+  // Prepare an array to hold the missing numbers
+  const missingNumbers = [];
+
+  // Check every integer between 1 and n to see if it's missing
+  for (let i = 1; i <= n; i++) {
+    if (!numSet.has(i)) {
+      missingNumbers.push(i);
+    }
+  }
+  console.log(missingNumbers);
+  return missingNumbers;
 }
 
 findMissingNumbers([1, 3, 5]) //should return [2, 4].

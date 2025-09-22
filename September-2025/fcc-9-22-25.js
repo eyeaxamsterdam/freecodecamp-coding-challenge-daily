@@ -23,9 +23,6 @@ function digitsOrLetters(str) {
     return response;
 }
 
-digitsOrLetters("abc123")
-
- 
 digitsOrLetters("abc123") //should return "tie".
 digitsOrLetters("a1b2c3d") //should return "letters".
 digitsOrLetters("1a2b3c4") //should return "digits".

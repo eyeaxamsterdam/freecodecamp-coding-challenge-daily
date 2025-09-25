@@ -24,13 +24,11 @@ function parseRomanNumeral(numeral) {
     for (let i = 0; i < arr.length; i++) {
         let currentNum = romanNumerals[arr[i]];
         let nextNum = romanNumerals[arr[i+1]];
-        
         // a little more than requested, but in case a bad character is given
         if (currentNum === undefined || (nextNum === undefined && i !== arr.length - 1)) {
             total = ' oh no '
             break;
         }
-    
         if (i === arr.length - 1 || currentNum >= nextNum) {
             total += currentNum
         } else {

@@ -28,8 +28,9 @@ function repeatVowels(str) {
         finalStr += strToArr[i]
       }
     }
-  console.log(finalStr)
-  return finalStr;
+    
+    console.log(finalStr)
+    return finalStr;
 }
 
 //Tests

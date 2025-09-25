@@ -27,13 +27,11 @@ function parseRomanNumeral(numeral) {
         
         // a little more than requested, but in case a bad character is given
         if (currentNum === undefined || (nextNum === undefined && i !== arr.length - 1)) {
-            console.log('crap', currentNum)
             total = ' oh no '
             break;
         }
     
         if (i === arr.length - 1 || currentNum >= nextNum) {
-            console.log(currentNum,nextNum)
             total += currentNum
         } else {
             total -= currentNum

@@ -30,7 +30,7 @@ function generateHex(color) {
     }
 
     //initialize the main color so we can make sure the others are lower than this
-    let primaryColor = generateColor(2,255);
+    let mainColor = generateColor(2,255);
     
     //magic happens here. iterates over the object keys. If color given isn't in the object, throw error, otherwise if the key matches the given color, assign the 
     // highest number to it. Otherwise generate another random number that is from zero to the highest number
@@ -39,10 +39,10 @@ function generateHex(color) {
             finalString = 'Invalid color';
         }
         else if (key === color) { 
-            colorObj[key] = primaryColor;
-            finalString += convertToHexidecimal(primaryColor).toUpperCase();
+            colorObj[key] = mainColor;
+            finalString += convertToHexidecimal(mainColor).toUpperCase();
         } else {
-            let nextColor = generateColor(0,primaryColor-1);
+            let nextColor = generateColor(0,mainColor-1);
             colorObj[key] = nextColor;
             finalString += convertToHexidecimal(nextColor).toUpperCase();
         }

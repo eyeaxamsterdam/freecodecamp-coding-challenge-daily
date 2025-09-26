@@ -13,20 +13,27 @@ Input	Output
 */
 
 function generateHex(color) {
+    //initialize the string that will hold the response
     let finalString = ''
+    //object to hold the color constraints and assign the highest number directly to the color.
     let colorObj = {red: 0, green: 0, blue: 0}
 
+    //reusable function since the range is different. highest num must be over 2, then other nums must be lower than highest num/first number generated.
     const generateColor = (lowNum, highNum) => {
         let randomNum = Math.floor(Math.random() * (highNum - lowNum + 1)) + 1;
         return randomNum
     }
 
+    //if under 16 (single digit) give add a leading zero so the length is correct.
     const convertToHexidecimal = (num) => {
         return num < 16 ? '0' + num.toString(16) : num.toString(16);
     }
 
+    //initialize the main color so we can make sure the others are lower than this
     let primaryColor = generateColor(2,255);
     
+    //magic happens here. iterates over the object keys. If color given isn't in the object, throw error, otherwise if the key matches the given color, assign the 
+    // highest number to it. Otherwise generate another random number that is from zero to the highest number
     Object.keys(colorObj).forEach(key => {
         if (!(color in colorObj)) {
             finalString = 'Invalid color';
@@ -35,14 +42,13 @@ function generateHex(color) {
             colorObj[key] = primaryColor;
             finalString += convertToHexidecimal(primaryColor).toUpperCase();
         } else {
-            let nextColor = generateColor(0,primaryColor);
+            let nextColor = generateColor(0,primaryColor-1);
             colorObj[key] = nextColor;
             finalString += convertToHexidecimal(nextColor).toUpperCase();
         }
     });
-
+    //check it
     console.log(finalString)   
-
 
   return finalString;
 }

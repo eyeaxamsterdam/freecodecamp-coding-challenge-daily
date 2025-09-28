@@ -25,7 +25,7 @@ function isSpam(number) {
     }
 
     const checkConsecutive = (str) => pattern.test(str);
-    }
+    
 
     const checkCountryCode = num => num.length > 2 ? true : Number(num[0]) !== 0 ? true : false
 

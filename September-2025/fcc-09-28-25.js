@@ -17,3 +17,12 @@ function getHeadings(csv) {
 getHeadings("name,age,city") //should return ["name", "age", "city"].
 getHeadings("first name,last name,phone") //should return ["first name", "last name", "phone"].
 getHeadings("username , email , signup date ") //should return ["username", "email", "signup date"].
+
+
+/* 
+Very easy one.
+input is a string with commas for everfy header
+split the input so you have just the headers in an array
+trim each item of the headers aray so the space around is removed
+return that array of trimmed strings
+*/

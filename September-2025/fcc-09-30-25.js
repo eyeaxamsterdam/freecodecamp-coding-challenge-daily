@@ -2,17 +2,19 @@
 Phone Number Formatter
 Given a string of ten digits, return the string as a phone number in this format: "+D (DDD) DDD-DDDD".
 */
-function formatNumber(number) {
-  const int = '+'+ number[0]
-  const area = number[1] + number[2] + number[3];
-  const three = number[4] + number[5] + number[6];
-  const four = number[7] + number[8] + number[9] + number[10];
-
-  const finalNum = `${int} (${area}) ${three}-${four}`;
-  console.log(finalNum)
-
-  console.log(int)
-  return finalNum;
+function formatPhoneNumber(digits) {
+    // Ensure the input is a string of digits and has exactly 10 characters
+    if (!/^\d{10}$/.test(digits)) {
+        return "Invalid input. Please provide exactly 10 digits.";
+    }
+    
+    // Extract parts of the phone number using substring and format it
+    const country = digits.substring(0, 1);
+    const area = digits.substring(1, 4);
+    const middle = digits.substring(4, 7);
+    const last = digits.substring(7, 10);
+    
+    return `+${country} (${area}) ${middle}-${last}`;
 }
 
 formatNumber("05552340182") //should return "+0 (555) 234-0182".

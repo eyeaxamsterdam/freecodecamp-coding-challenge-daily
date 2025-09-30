@@ -27,8 +27,8 @@ function burnCandles(candles, leftoversNeeded) {
   return total;
 }
 
-//burnCandles(7, 2) //should return 13
-//burnCandles(10, 5) //should return 12
-//burnCandles(20, 3) //should return 29
-//burnCandles(17, 4) //should return 22
-//burnCandles(2345, 3) //should return 3517
+burnCandles(7, 2) //should return 13
+burnCandles(10, 5) //should return 12
+burnCandles(20, 3) //should return 29
+burnCandles(17, 4) //should return 22
+burnCandles(2345, 3) //should return 3517

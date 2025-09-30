@@ -53,6 +53,7 @@ function generateHex(color) {
   return finalString;
 }
 
+
 //Tests
 generateHex("yellow") //should return "Invalid color".
 generateHex("red") ///should return a six-character string.

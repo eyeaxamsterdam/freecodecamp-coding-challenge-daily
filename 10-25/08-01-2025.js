@@ -12,6 +12,7 @@ For example, the binary number 101 equals 5 in decimal because:
 
 function toDecimal(binary) {
   let baseTen = parseInt(binary,2);
+  console.log(baseTen);
   return baseTen;
 }
 

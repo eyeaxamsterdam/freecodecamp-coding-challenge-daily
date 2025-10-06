@@ -21,7 +21,7 @@ function sendMessage(route) {
 
   console.log(time.toFixed(4));
   
-  return route;
+  return time.toFixed(4);
 }
 
 sendMessage([300000, 300000]) //should return 2.5.

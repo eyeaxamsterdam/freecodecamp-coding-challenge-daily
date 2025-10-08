@@ -19,35 +19,31 @@ Return [0, 1], the indices for the 0 in the first array.
 
 function findLandingSpot(matrix) {
     let location = [];
-    let total = 0;
-    let tempTotal = 0
+    let lowestTotalDanger = Infinity; // Use Infinity to represent the initially highest danger
+
     for (let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
-            let [left, right, up, down] = 0;
-            if (j !== 0) {
-                left = matrix[i][j - 1] ? matrix[i][j - 1] : 0;
-                console.log('left: ',left, ' ',matrix[i][j], matrix[i]);
-            }
-            if (i !==0) {
-                up = matrix[i - 1][j] ? matrix[i - 1][j] : 0;
-                console.log('up: ', up, matrix[i][j], matrix[i]);
-            }
-            /* let left = matrix[i][j - 1] ? matrix[i][j - 1] : 0 
-            let right = matrix[i][j + 1] ? matrix[i][j + 1] : 0
-            let up = matrix[i - 1][j] ?  matrix[i-1][j] : 0
-            let down = matrix[i + 1][j] ? matrix[i +1][j] : 0
+            if (matrix[i][j] === 0) { // Potential landing spot
+                let dangerTotal = 0;
+                // Check each possible direction
+                if (j > 0) dangerTotal += matrix[i][j - 1]; // Left
+                if (i > 0) dangerTotal += matrix[i - 1][j]; // Up
+                if (i < matrix.length - 1) dangerTotal += matrix[i + 1][j]; // Down
+                if (j < matrix[i].length - 1) dangerTotal += matrix[i][j + 1]; // Right
 
-            tempTotal = left + right + up + down;
-            console.log(tempTotal); */
+                if (dangerTotal < lowestTotalDanger) {
+                    lowestTotalDanger = dangerTotal;
+                    location = [i, j]; // Directly assign as a pair
+                }
+            }
         }
     }
-    
-   
 
+    console.log(location);
     return location;
 }
 
 findLandingSpot([[1, 0], [2, 0]]); //should return [0, 1].
-/* findLandingSpot([[9, 0, 3], [7, 0, 4], [8, 0, 5]]) //should return [1, 1].
+findLandingSpot([[9, 0, 3], [7, 0, 4], [8, 0, 5]]) //should return [1, 1].
 findLandingSpot([[1, 2, 1], [0, 0, 2], [3, 0, 0]]) //should return [2, 2].
-findLandingSpot([[9, 6, 0, 8], [7, 1, 1, 0], [3, 0, 3, 9], [8, 6, 0, 9]]) //should return [2, 1]. */
+findLandingSpot([[9, 6, 0, 8], [7, 1, 1, 0], [3, 0, 3, 9], [8, 6, 0, 9]]) //should return [2, 1].

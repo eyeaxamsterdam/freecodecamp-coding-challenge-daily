@@ -36,3 +36,6 @@ nthPrime(10) //should return 29.
 nthPrime(16) //should return 53.
 nthPrime(99) //should return 523.
 nthPrime(1000) //should return 7919.
+nthPrime(200000) //should return 7919.
+nthPrime(2000000) //should return 7919.
+

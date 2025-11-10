@@ -13,26 +13,28 @@ For example, given ["Visit About Us", "Back", "Forward"], return "About Us".
 */
 
 function navigate(commands) {
-    let currentPage = 'Home'
-    let pageHistory = ['Home']
+    let currentPage = 'Home';
+    let pageHistory = ['Home'];
     let pagePosition = 0;
 
-    commands.forEach((p) => {
-        if (p.includes('Visit')) {
-            let newp = p.replace('Visit ','');
-            pageHistory.length > pagePosition ? pageHistory.splice(pagePosition + 1) : null;
-            pageHistory.push(newp);
-            pagePosition++
-            currentPage = newp;
-        } else if (p === 'Back' && pagePosition > 0) {
+    commands.forEach((command) => {
+        if (command.startsWith('Visit')) {
+            const newPage = command.replace('Visit ', '');
+            if (pageHistory.length > pagePosition) {
+                pageHistory.splice(pagePosition + 1);
+            }
+            pageHistory.push(newPage);
+            pagePosition++;
+            currentPage = newPage;
+        } else if (command === 'Back' && pagePosition > 0) {
             pagePosition--;
             currentPage = pageHistory[pagePosition];
-        } else if (p === 'Forward' && pagePosition < pageHistory.length - 1) {
-            pagePosition++
+        } else if (command === 'Forward' && pagePosition < pageHistory.length - 1) {
+            pagePosition++;
             currentPage = pageHistory[pagePosition];
         }
-    })
-    console.log(currentPage);
+    });
+    console.log(currentPage)
     return currentPage;
 }
 

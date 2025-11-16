@@ -7,7 +7,7 @@ The pattern string can overlap in the first string. For example, "aaa" contains 
 
 function count(text, pattern) {
     let count = 0;
-    if (text.length > pattern.length) {
+    if (text.length >= pattern.length) {
         for (let i = 0; i < text.length - (pattern.length -1); i++) {
         let check = text.slice(i,i + pattern.length);
         console.log('starting at: ', text[i], ' pattern is: ', pattern, ' and check is: ', check);
@@ -17,7 +17,7 @@ function count(text, pattern) {
         console.log('bad pattern');
     }
     console.log('count ', count)
-    return text;
+    return count;
 }
 
 //Tests

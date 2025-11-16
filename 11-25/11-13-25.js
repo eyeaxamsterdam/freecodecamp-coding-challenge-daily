@@ -1,29 +1,25 @@
 /*
-Email Signature Generator
-Given strings for a person's name, title, and company, return an email signature as a single string using the following rules:
+Array Shift
+Given an array and an integer representing how many positions to shift the array, return the shifted array.
 
-The name should appear first, preceded by a prefix that depends on the first letter of the name. For names starting with (case-insensitive):
-A-I: Use >> as the prefix.
-J-R: Use -- as the prefix.
-S-Z: Use :: as the prefix.
-A comma and space (, ) should follow the name.
-The title and company should follow the comma and space, separated by " at " (with spaces around it).
-For example, given "Quinn Waverly", "Founder and CEO", and "TechCo" return "--Quinn Waverly, Founder and CEO at TechCo".
+A positive integer shifts the array to the left.
+A negative integer shifts the array to the right.
+The shift wraps around the array.
+For example, given [1, 2, 3] and 1, shift the array 1 to the left, returning [2, 3, 1].
 */
 
-function generateSignature(name, title, company) {
-  let signature = '';
-  let regex1 = /[A-I]/
-  let regex2 = /[J-R]/
-  signature += (regex1.test(name.charAt(0)) ? '>>' : regex2.test(name.charAt(0)) ? '--' : '::');
-  signature += name + ', ' + title + ' at ' + company;
-  console.log(signature)
-  return signature;
+function shiftArray(arr, n) {
+    let adjustedIndex = n%arr.length;
+    let newArr = [];
+    newArr.push(arr.slice(adjustedIndex));
+    newArr.push(arr.slice(0,adjustedIndex));
+    console.log(newArr.flat());
+    return newArr.flat();
 }
 
 //Tests
-generateSignature("Quinn Waverly", "Founder and CEO", "TechCo") //should return "--Quinn Waverly, Founder and CEO at TechCo".
-generateSignature("Alice Reed", "Engineer", "TechCo") //should return ">>Alice Reed, Engineer at TechCo".
-generateSignature("Tina Vaughn", "Developer", "example.com") //should return "::Tina Vaughn,Developer at example.com".
-generateSignature("B. B.", "Product Tester", "AcmeCorp") //should return ">>B. B., Product Tester at AcmeCorp".
-generateSignature("windstorm", "Cloud Architect", "Atmospheronics") //should return "::windstorm, Cloud Architect at Atmospheronics".
+shiftArray([1, 2, 3], 1) //should return [2, 3, 1].
+shiftArray([1, 2, 3], -1) //should return [3, 1, 2].
+shiftArray(["alpha", "bravo", "charlie"], 5) //should return ["charlie", "alpha", "bravo"].
+shiftArray(["alpha", "bravo", "charlie"], -11) //should return ["bravo", "charlie", "alpha"].
+shiftArray([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 15) //should return [5, 6, 7, 8, 9, 0, 1, 2, 3, 4].

@@ -10,7 +10,6 @@ Make sure the calculation ignores your local timezone.
 */
 
 function daysUntilWeekend(dateString) {
-    const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     let day = new Date(dateString).getDay();
     let daysUntil = 5 - day;
     let response = day === 5 || day === 6 ? "It's the weekend!" : `${daysUntil} ${daysUntil === 1 ? "day" : "days"} until the weekend.`;

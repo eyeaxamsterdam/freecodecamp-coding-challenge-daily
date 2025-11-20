@@ -27,7 +27,6 @@ countRectangles(5, 4) //should return 150.
 countRectangles(11, 19) //should return 12540.
 
 
-
 /*
 WOw I hated this one;
 */

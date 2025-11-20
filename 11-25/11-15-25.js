@@ -9,22 +9,23 @@ function gcd(x, y) {
   let xfactors = [];
   let yfactors = [];
   let highestNum = 1;
+  
   const GCD = (n, v) => {
     for (let i = 2; i <= n/2; i++) {
-      n % i === 0 ? v.push(i) : null;
+      n % i === 0 && v.push(i);
     }
     v.push(n);
   }
-   const findCommon = (arr1, arr2) => {
-    arr1.forEach(num => arr2.includes(num) ? highestNum = num : null)
-   }
 
+  const findCommon = (arr1, arr2) => {
+    arr1.forEach(num => (arr2.includes(num) && highestNum = num))
+  }
 
   GCD(x, xfactors);
   GCD(y, yfactors);
   findCommon(xfactors,yfactors)
-  console.log('highestNum ', highestNum)
 
+  console.log('highestNum ', highestNum)
   return highestNum;
 }
 

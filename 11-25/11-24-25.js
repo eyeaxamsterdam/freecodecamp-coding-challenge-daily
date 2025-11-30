@@ -8,8 +8,11 @@ Words in the message are separated by single spaces.
 */
 
 function isValidMessage(message, validator) {
-
-  return message;
+  let arrString = message.split(' ');
+  let firstLetters = ''
+  arrString.forEach(w => firstLetters += w[0]);
+  console.log(firstLetters.toLowerCase() === validator.toLowerCase());
+  return firstLetters.toLowerCase() === validator.toLowerCase();
 }
 
 //Tests

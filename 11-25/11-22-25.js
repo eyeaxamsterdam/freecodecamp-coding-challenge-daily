@@ -11,12 +11,11 @@ function scaleRecipe(ingredients, scale) {
     let finalArr = [];
     ingredients.forEach((item) => {
         let calculated = parseFloat(item.split(' ')[0]) * scale;
-        let shit = `${calculated.toString()} ${item.split(' ').splice(1)}`;
-        console.log('shit: ', shit)
-        finalArr.push(calculated.toString() + ' ' + item.split(' ').splice(1).join());
+        let rebuiltString = calculated.toString() + ' ' + item.split(' ').splice(1).join(' ');
+        finalArr.push(rebuiltString);
     });
     console.log(finalArr)
-    return ingredients;
+    return finalArr;
 }
 
 

@@ -21,7 +21,7 @@ All given and returned letters are uppercase.
 */
 
 function decode(message) {
-  const KEY = 'VLHCGMDLNH';
+  const KEY = 'VLHCGMDLNH'; // First Letters of days 25,50,75,100,125,150,175,200,225, and 250
   const keyNums = KEY.split('').map(l => l.charCodeAt(0) - 64);
   const messageArray = message.split('');
   let keyIndex = 0;

@@ -1,0 +1,24 @@
+{
+  "name": "freecodecamp-coding-challenge-daily",
+  "version": "1.0.0",
+  "description": "Dates are US format MM-DD-YY",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eyeaxamsterdam/freecodecamp-coding-challenge-daily.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/eyeaxamsterdam/freecodecamp-coding-challenge-daily/issues"
+  },
+  "homepage": "https://github.com/eyeaxamsterdam/freecodecamp-coding-challenge-daily#readme",
+  "dependencies": {
+    "to-words": "^5.5.0"
+  }
+}

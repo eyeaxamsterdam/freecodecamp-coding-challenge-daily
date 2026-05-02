@@ -7,12 +7,12 @@ function runTests(fn, rawTests) {
         if (!callMatch || !expectedMatch) return;
 
         const argsStr = callMatch[1];
-        const expectedStr = expectedMatch[1].replace(/\.\s*$/, '');
+        const expectedStr = expectedMatch[1].replace(/\s*\*\/$/, '').replace(/\.\s*$/, '').trim();
 
         let args, expected;
         try {
             args = eval(`[${argsStr}]`);
-            expected = eval(expectedStr);
+            expected = eval(`(${expectedStr})`);
         } catch (e) {
             console.log(`PARSE ERROR on: ${line}`);
             return;

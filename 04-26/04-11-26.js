@@ -26,7 +26,6 @@ Return:
 
 
 function rookBishopAttack(rook, bishop) {
-
     let splitPlace = bishop.split('');
     if (splitPlace.includes(rook[0]) || splitPlace.includes(rook[1])) return 'rook'
     let [letter,number] = splitPlace;
@@ -34,14 +33,12 @@ function rookBishopAttack(rook, bishop) {
     number = parseInt(number);
     let results = [];
     let size = 8;
-
     const directions = [
         [+1, +1],
         [+1, -1],
         [-1, +1],
         [-1, -1]
     ]
-
     for (const [dc, dr] of directions) {
         let col = letter;
         let row = number;
@@ -52,9 +49,7 @@ function rookBishopAttack(rook, bishop) {
             row += dr;
         }
     }
-
     return results.includes(rook) ? 'bishop' : 'neither';
-
 }
 
 

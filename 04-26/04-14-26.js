@@ -14,7 +14,6 @@ function getLastLetter(str) {
         } 
         return arranged[i];
     }
-    
 }
 
 const runTests = require('../helpers/runTests');

@@ -16,7 +16,7 @@ function getRotation(n) {
     
     while (rotate < count) {
         if (n % count === 0) {
-            return response = rotate;
+            return rotate;
         } 
         n = n.toString().slice(1) + n.toString()[0];
         rotate++;

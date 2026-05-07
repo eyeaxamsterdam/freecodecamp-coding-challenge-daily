@@ -10,23 +10,41 @@ For example, given [2, 4, 7, 8, 10] return [2, 4, 6, 8, 10].
 */
 
 function fixPrankNumber(arr) {
+    const n = arr.length;
 
-    let forward = [];
-    let back = [];
+    // Build an array of consecutive differences, e.g. [2,4,6] → [2,2]
+    const diffs = [];
+    for (let i = 0; i < n - 1; i++) {
+        diffs.push(arr[i + 1] - arr[i]);
+    }
 
-    for(let i = 0; i < arr.length; i++) {
-        if(i > 0) back.push(arr[i] - arr[i - 1]);
-        if (i < arr.length - 1) forward.push(arr[i] - arr[i+1]);
-        if (back.length > 0) {
-            console.log('back: ',back);
-        }
-        if (forward.length > 0) {
-            console.log('forward ',forward);
+    // The correct step is whichever difference appears most often.
+    // With only one bad element, at most 2 diffs can be wrong,
+    // so the mode is always the real step for arrays of length >= 4.
+    const freq = new Map();
+    for (const d of diffs) freq.set(d, (freq.get(d) || 0) + 1);
+    let step = diffs[0], maxFreq = 0;
+    for (const [d, count] of freq) {
+        if (count > maxFreq) { maxFreq = count; step = d; }
+    }
+
+    // Walk the diffs until we find the first one that breaks the pattern.
+    // Then figure out which of the two elements around that diff is the bad one:
+    //   - If the break is at index 0 and the NEXT diff is fine, arr[0] is bad.
+    //   - Otherwise, arr[i+1] is bad (it broke this diff and the next one).
+    const result = [...arr];
+    for (let i = 0; i < diffs.length; i++) {
+        if (diffs[i] !== step) {
+            if (i === 0 && diffs.length > 1 && diffs[1] === step) {
+                result[0] = arr[1] - step;     // first element is the odd one out
+            } else {
+                result[i + 1] = arr[i] + step; // element after the bad diff is the odd one out
+            }
+            break;
         }
     }
 
-    return arr;
-
+    return result;
 }
 
 const runTests = require('../helpers/runTests');

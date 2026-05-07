@@ -8,8 +8,6 @@ For example, 153 has 3 digits, and 1^3 + 5^3 + 3^3 = 153, so it is narcissistic.
 
 function isNarcissistic(n) { 
     let sum = 0;
-    console.log(n.toString().length);
-
     n.toString().split('').forEach((num) => sum += Math.pow(Number(num),n.toString().length));
     return sum === n;
 }

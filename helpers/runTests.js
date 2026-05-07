@@ -22,7 +22,8 @@ function runTests(fn, rawTests) {
         const label = argsStr.length > 40 ? argsStr.slice(0, 40) + '...' : argsStr;
 
         if (JSON.stringify(result) === JSON.stringify(expected)) {
-            console.log(`PASS: ${fn.name}(${label})`);
+            console.log(`Response: ${JSON.stringify(result)}`);
+            console.log(`    PASS: ${fn.name}(${label})`);
         } else {
             console.log(`FAIL: ${fn.name}(${label})`);
             console.log(`  expected: ${JSON.stringify(expected)}`);

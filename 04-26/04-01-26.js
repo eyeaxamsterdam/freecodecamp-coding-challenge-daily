@@ -32,18 +32,26 @@ function fixPrankNumber(arr) {
     // Then figure out which of the two elements around that diff is the bad one:
     //   - If the break is at index 0 and the NEXT diff is fine, arr[0] is bad.
     //   - Otherwise, arr[i+1] is bad (it broke this diff and the next one).
+    console.log('Input:', arr);
+    console.log('Diffs:', diffs);
+    console.log('Step (mode):', step);
+
     const result = [...arr];
     for (let i = 0; i < diffs.length; i++) {
         if (diffs[i] !== step) {
+            console.log(`Bad diff at index ${i}: expected ${step}, got ${diffs[i]} (between arr[${i}]=${arr[i]} and arr[${i+1}]=${arr[i+1]})`);
             if (i === 0 && diffs.length > 1 && diffs[1] === step) {
-                result[0] = arr[1] - step;     // first element is the odd one out
+                console.log(`  → fixing arr[0]: ${arr[0]} → ${arr[1] - step}`);
+                result[0] = arr[1] - step;
             } else {
-                result[i + 1] = arr[i] + step; // element after the bad diff is the odd one out
+                console.log(`  → fixing arr[${i+1}]: ${arr[i+1]} → ${arr[i] + step}`);
+                result[i + 1] = arr[i] + step;
             }
             break;
         }
     }
 
+    console.log('Result:', result);
     return result;
 }
 

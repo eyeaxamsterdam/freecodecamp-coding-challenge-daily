@@ -9,13 +9,10 @@ If the index of non-letter characters is a Fibonacci number, leave it unchanged.
 */
 
 function capitalizeFibonacci(str) {
-
     const sequence = [0, 1, 1];
-    
     while (str.length > sequence[sequence.length -1]) {
         sequence.push(sequence[sequence.length-1] + sequence[sequence.length-2]);                        
     } 
-
     let arrStr = str.split('').map((char, index) => sequence.includes(index) ? char.toUpperCase() : char.toLowerCase());
     return arrStr.join('');
 }

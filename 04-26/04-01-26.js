@@ -12,7 +12,7 @@ For example, given [2, 4, 7, 8, 10] return [2, 4, 6, 8, 10].
 function fixPrankNumber(arr) {
     const n = arr.length;
 
-    // Build an array of consecutive differences, e.g. [2,4,6] → [2,2]
+    // Build an array of consecutive differences, e.g. [2,4,6]
     const diffs = [];
     for (let i = 0; i < n - 1; i++) {
         diffs.push(arr[i + 1] - arr[i]);

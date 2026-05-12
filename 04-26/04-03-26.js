@@ -25,7 +25,6 @@ function getBrowserHistory(commands) {
             place++;
         }
     }
-
     return [history, place];
 }
 

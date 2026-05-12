@@ -30,8 +30,6 @@ function transpose(matrix) {
             newArr[index][j] = num;
         })
     }
-
-
     console.log(newArr);
     return newArr;
 }

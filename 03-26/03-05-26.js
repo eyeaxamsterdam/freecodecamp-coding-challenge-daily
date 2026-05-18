@@ -38,7 +38,7 @@ function smallestGap(str) {
 runTests(smallestGap,`
     Waiting:1. smallestGap("ABCDAC") should return "DA".
     Waiting:2. smallestGap("racecar") should return "e".
+    Waiting:3. smallestGap("A{5e^SD*F4i!o#q6e&rkf(po8|we9+kr-2!3}=4") should return "#q6e&rkf(p".
     Waiting:4. smallestGap("Hello World") should return "".
     Waiting:5. smallestGap("The quick brown fox jumps over the lazy dog.") should return "fox".
 `)   
-//  Waiting:3. smallestGap("A{5e^SD*F4i!o#q6e&rkf(po8|we9+kr-2!3}=4") should return "#q6e&rkf(p".

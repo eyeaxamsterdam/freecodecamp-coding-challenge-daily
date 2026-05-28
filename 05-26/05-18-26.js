@@ -13,8 +13,7 @@ Return an array with all numbers in the range from smallest to largest.
 
 function getBingoRange(letter) {
     const BINGO = {B: [1, 15], I: [16,30], N: [31,45], G: [46,60], O: [61,75]}
-    let myArray = Array.from({length : BINGO[letter][1]-BINGO[letter][0]+1}, (v,i) => i + BINGO[letter][0]);
-    console.log(myArray)
+    let myArray = Array.from({length : BINGO[letter][1]-BINGO[letter][0]+1}, (_,i) => i + BINGO[letter][0]);
     return myArray;
 }
 

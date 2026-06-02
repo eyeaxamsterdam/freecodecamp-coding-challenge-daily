@@ -15,24 +15,24 @@ So return the string between the two "C" characters.
 const runTests = require("../helpers/runTests");
 
 function smallestGap(str) {
-    let response;
-    let smallestGap = Infinity;
-    [...str].forEach(l => {
-        console.log('l ', l)
-        let regex = new RegExp(`(?<=${l}).*?(?=${l})`, 'g');
-        let match = str.match(regex);
-        console.log('match ',match)
-        if (match) {
-            for (const m of match) {
-                if (m.length < smallestGap) {
-                    smallestGap = m.length;
-                    response = m;
-                }
-            }
-        }  
-        console.log('response', response);
-    });
-    return response;
+    const lastSeen = {};
+    const gaps = [];
+
+    for (let i = 0; i < str.length; i++) {
+        const c = str[i];
+        if (c in lastSeen) {
+            gaps.push({ text: str.slice(lastSeen[c] + 1, i), start: lastSeen[c] + 1 });
+        }
+        lastSeen[c] = i;
+    }
+
+    return gaps.reduce((best, gap) => {
+        if (gap.text.length < best.text.length ||
+            (gap.text.length === best.text.length && gap.start < best.start)) {
+            return gap;
+        }
+        return best;
+    }).text;
 }
 
 runTests(smallestGap,`

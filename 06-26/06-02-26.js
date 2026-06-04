@@ -15,7 +15,7 @@ function isValidSchema(obj) {
     let valid = { username: 'string', posts: 0, verified: false };
     let checkKeys = Object.keys(obj).filter(item => Object.keys(valid).includes(item));
     let checkValues = checkKeys.filter(item => typeof obj[item] === typeof valid[item]);
-    return checkKeys === checkValues; 
+    return checkKeys.length === 3 && JSON.stringify(checkKeys) === JSON.stringify(checkValues); 
 }
 
 const runTests = require('../helpers/runTests');

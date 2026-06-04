@@ -1,5 +1,18 @@
-const TABLE = [
+// there are a lot of roman numerals in daiy challenges. Here's a table to use.
+export const TABLE = [
         [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"],
         [100, "C"],  [90, "XC"],  [50, "L"],  [40, "XL"],
         [10, "X"],   [9, "IX"],   [5, "V"],   [4, "IV"],  [1, "I"]
     ];
+/* 
+    // EXAMPLE
+    let result = "";
+        for (const [val, sym] of TABLE) {
+            console.log('checking against symbol ', sym, ' which is ', val);
+            while (total >= val) {
+                result += sym;
+                total -= val;
+            }
+        }
+    return result;
+*/

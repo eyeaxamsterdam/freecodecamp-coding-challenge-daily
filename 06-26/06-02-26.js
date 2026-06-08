@@ -12,10 +12,10 @@ Extra keys are allowed
 */
 
 function isValidSchema(obj) {
-    let valid = { username: 'string', posts: 0, verified: false };
-    let checkKeys = Object.keys(obj).filter(item => Object.keys(valid).includes(item));
-    let checkValues = checkKeys.filter(item => typeof obj[item] === typeof valid[item]);
-    return checkKeys.length === 3 && JSON.stringify(checkKeys) === JSON.stringify(checkValues); 
+    const SCHEMA = { username: 'string', posts: 0, verified: false };
+    let checkKeys = Object.keys(obj).filter(item => item in SCHEMA);
+    let checkValues = checkKeys.filter(item => typeof obj[item] === typeof SCHEMA[item]);
+    return checkKeys.length === 3 && checkValues.length === 3;
 }
 
 const runTests = require('../helpers/runTests');

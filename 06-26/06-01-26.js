@@ -10,8 +10,8 @@ Extra keys are allowed
 */
 
 function isValidSchema(obj) {
-    const checkUsername = Object.keys(obj).includes('username');
-    const checkString = typeof(obj.username) === 'string';
+    const checkUsername = 'username' in obj; 
+    const checkString = typeof obj.username === 'string';
     return checkUsername && checkString; 
 }
 

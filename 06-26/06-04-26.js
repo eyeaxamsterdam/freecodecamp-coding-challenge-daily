@@ -17,8 +17,6 @@ The question mark (?) after supporter means that the field is optional, but is t
 Extra keys are allowed
 */
 
-const runTests = require("../helpers/runTests");
-
 function isValidSchema(obj) {
     const ROLES = ["user","creator","moderator","staff","admin"]
     const SCHEMA = {
@@ -27,15 +25,16 @@ function isValidSchema(obj) {
         'verified': true,
         'role': ROLES,
     }
-    let checkKeys = Object.keys(obj).filter(item => Object.keys(SCHEMA).includes(item));
+    let checkKeys = Object.keys(obj).filter(item => item in SCHEMA);
     let checkValues = checkKeys.filter(item => {
         if (item === 'role') return ROLES.includes(obj[item]);
         return typeof obj[item] === typeof SCHEMA[item]
     });
-    if (Object.keys(obj).includes('supporter') && typeof obj['supporter'] !== 'boolean') return false; 
-    return checkKeys === 4 || 5 ? JSON.stringify(checkKeys) === JSON.stringify(checkValues) : false; 
+    if ('supporter' in obj && typeof obj['supporter'] !== 'boolean') return false; 
+    return checkKeys.length === 4 && checkValues.length === 4;
 }
 
+const runTests = require("../helpers/runTests");
 runTests(isValidSchema,`
     Waiting:1. isValidSchema({ username: "vivian", posts: 1, verified: false, role: "user", supporter: true }) should return true.
     Waiting:2. isValidSchema({ username: "rudolph", posts: 15, verified: true, role: "creator" }) should return true.

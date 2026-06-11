@@ -19,36 +19,34 @@ Extra keys are allowed
 */
 
 function isValidSchema(obj) {
-    const ROLES = ["user","creator","moderator","staff","admin"];
-    const SCHEMA = {
-        username: '',
-        posts: 0,
-        verified: true,
-        role: ROLES,
-        badges: []
-    }
-    let checkKeys = Object.keys(obj).filter(item => item in SCHEMA);
-    let checkValues = checkKeys.filter(item => {
-        if (item === 'role') return ROLES.includes(obj[item]); 
-        if (item === 'badges') {
-            return obj[item].filter(str => typeof str === 'string').length === obj[item].length;
-        }
-        return typeof obj[item] === typeof SCHEMA[item]
+    const ROLES = ["user", "creator", "moderator", "staff", "admin"];
+
+    if (!Array.isArray(obj.users)) return false;
+    if (obj.users.length === 0) return true;
+
+    return obj.users.every(user => {
+        if (typeof user !== 'object' || user === null) return false;
+        if (typeof user.username !== 'string') return false;
+        if (typeof user.posts !== 'number') return false;
+        if (typeof user.verified !== 'boolean') return false;
+        if (!ROLES.includes(user.role)) return false;
+        if (!Array.isArray(user.badges)) return false;
+        if (!user.badges.every(b => typeof b === 'string')) return false;
+        if ('supporter' in user && typeof user.supporter !== 'boolean') return false;
+        return true;
     });
-    if (Object.keys(obj).includes('supporter') && typeof obj['supporter'] !== 'boolean') return false; 
-    return checkKeys.length === 5 && checkValues.length === 5; 
 }
 
 const runTests = require('../helpers/runTests');
 runTests(isValidSchema, `
-    Waiting:1. isValidSchema({ username: "gill", posts: 12, verified: false, role: "creator", supporter: false, badges: [ "early-adopter", "popular" ] }) should return true.
-    Waiting:2. isValidSchema({ username: "tonya", posts: 299, verified: true, role: "moderator", supporter: true, badges: [ "streak-master", "veteran" ], followers: 1233 }) should return true.
-    Waiting:3. isValidSchema({ username: "zara", posts: 0, verified: false, role: "user", supporter: false, badges: [] }) should return true.
-    Waiting:4. isValidSchema({ username: "nicole", posts: 65, verified: true, role: "admin", supporter: false, badges: [ "first-post", 18 ] }) should return false.
-    Waiting:5. isValidSchema({ username: "tim", posts: 25, verified: true, role: "staff", supporter: false }) should return false.
-    Waiting:6. isValidSchema({ username: "charlie", posts: 0, verified: false, role: "user", supporter: "no", badges: [ "first-post", "anniversary" ] }) should return false.
-    Waiting:7. isValidSchema({ username: "wanda", posts: 15, verified: true, role: "friend", supporter: true, badges: [ "popular" ] }) should return false.
-    Waiting:8. isValidSchema({ username: "guy", posts: 5, verified: "false", role: "staff", supporter: true, badges: [ "helper" ] }) should return false.
-    Waiting:9. isValidSchema({ username: "carrie", verified: true, role: "moderator", supporter: true, badges: [ "helper", "sharer" ] }) should return false.
-    Waiting:10. isValidSchema({ username: true, posts: 75, verified: true, role: "creator", supporter: true, badges: [ "veteran" ] }) should return false.
+    Waiting:1. isValidSchema({ users: [{ username: "ron", posts: 14, verified: true, role: "creator", badges: [ "early-adopter" ]}, { username: "cher", posts: 25, verified: true, role: "moderator", supporter: true, followers: 20, badges: [ "helper" ]}]}) should return true.
+    Waiting:2. isValidSchema({ users: [] }) should return true.
+    Waiting:3. isValidSchema({ users: { username: "anne", posts: 0, verified: false, role: "user", supporter: false, badges: []}}) should return false.
+    Waiting:4. isValidSchema({ users: [{ username: "tony", posts: 10, verified: true, role: "creator", supporter: true, badges: ["liked", 6]}]}) should return false.
+    Waiting:5. isValidSchema({ users: [{ username: "ursula", posts: 3, verified: false, role: "user", supporter: "false", badges: ["comeback"]}]}) should return false.
+    Waiting:6. isValidSchema({ users: [{ username: "benny", posts: 55, verified: true, role: "superstar", supporter: true, badges: ["veteran"]}]}) should return false.
+    Waiting:7. isValidSchema({ users: [{ username: "chase", posts: 1, verified: "yes", role: "staff", supporter: false, badges: ["superstar"]}]}) should return false.
+    Waiting:8. isValidSchema({ users: [{ username: "carla", posts: "10", verified: false, role: "user", supporter: false, badges: ["newbie"]}]}) should return false.
+    Waiting:9. isValidSchema({ users: [{ posts: 4, verified: false, role: "admin", supporter: false, badges: ["superuser", "veteran"]}]}) should return false.
+    Waiting:10. isValidSchema({ users: [{ username: "harold", posts: 80, verified: true, role: "creator", supporter: true, badges: ["liked", "hero"]}, { username: "kim", posts: 11, verified: false, role: "admin", supporter: true, badges: ["first"]}, {}]}) should return false.
 `);

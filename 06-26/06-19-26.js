@@ -23,18 +23,22 @@ const FEES = {
 
 function addDays(date, n) {
   const result = new Date(date);
-  result.setDate(result.getDate() + n);
-  result.setHours(12, 0);
+  result.setUTCDate(result.getDate() + n);
+  result.setUTCHours(12, 0);
   return result;
 }
 
 function getRentalCost(rented, returned, tier) {
     let total = FEES[tier]['base'];
+    let lateFee = FEES[tier]['fee'];
     let start = new Date(rented);
     let finish = new Date(returned);
-    let dueDate = addDays(start, 1);
-    console.log('DUE: ',dueDate.toString());
-    console.log(dueDate - finish < 0 ? 'late' : 'early');
+    let dueDate = new Date(addDays(start, tier));
+    let result = dueDate - finish < 0 ? 'late' : 'early';
+    if (result === 'early') return `$${total.toFixed(2)}`
+    let lateDays = Math.ceil((finish - dueDate)/86400000);
+    total += (lateDays * lateFee)
+    return `$${total.toFixed(2)}`
 }
 
 const runTests = require('../helpers/runTests');

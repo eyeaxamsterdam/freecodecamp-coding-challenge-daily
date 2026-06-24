@@ -10,7 +10,6 @@ If the given integer is itself prime, return it in a single-element array.
 function primeFactorization(n) {
     const factors = [];
     for (let i = 2; i * i <= n; i++) {
-        console.log('checking number: ', n);
         while (n % i === 0) {
             factors.push(i);
             n /= i;

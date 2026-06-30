@@ -12,6 +12,7 @@ Compatibility rules:
 "O" can only receive from "O".
 Duplicate entries in the given arrays represent quantity.
 */
+
 const DONORS = {
      O: ['O'],
      B: ['B', 'O'],
@@ -24,7 +25,7 @@ const triageBlood = (bank, patients) => {
     const inventory = {};
     bank.forEach(b => inventory[b] = (inventory[b] || 0) + 1);
 
-    const priority = { O: 0, B: 1, A: 2, AB: 3 };
+    const priority = { O: 0, A: 1, B: 2, AB: 3 };
     const patientsArranged = [...patients].sort((a, b) => priority[a] - priority[b]);
 
     patientsArranged.forEach(patient => {

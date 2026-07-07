@@ -52,4 +52,4 @@ runTests(truncateText, `
     Waiting:3. truncateText("THE LOUD BRIGHT BIRD") should return "THE LOUD BRIG...".
     Waiting:4. truncateText("The fast striped zebra") should return "The fast striped z...".
     Waiting:5. truncateText("The big black bear") should return "The big black bear".
-    `);
+`);

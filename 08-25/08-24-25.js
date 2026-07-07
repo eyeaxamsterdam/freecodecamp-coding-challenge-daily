@@ -50,9 +50,13 @@ function battle(myArmy, opposingArmy) {
     return myArmy;
 }
 
-
+const runTests = require('../helpers/runTests');
+runTests(battle, `
+    
+    
+`);
 battle("Hello", "World") //should return "We lost".
-//attle("pizza", "salad") //should return "We won".
+//battle("pizza", "salad") //should return "We won".
 //battle("C@T5", "D0G$") //should return "We won".
 //battle("kn!ght", "orc") //should return "Opponent retreated".
 //battle("PC", "Mac") //should return "We retreated".

@@ -24,13 +24,13 @@ function toCamelCase(s) {
     index === 0 ? finalStr += str.toLowerCase() : finalStr += capitalize(str);
   });
 
-  console.log(finalStr);
-
   return finalStr;
 }
-
-toCamelCase("hello world") //should return "helloWorld".
-toCamelCase("HELLO WORLD") //should return "helloWorld".
-toCamelCase("secret agent-X") //should return "secretAgentX".
-toCamelCase("FREE cODE cAMP") //should return "freeCodeCamp".
-toCamelCase("ye old-_-sea  faring_buccaneer_-_with a - peg__leg----and a_parrot_ _named- _squawk") //should return "yeOldSeaFaringBuccaneerWithAPegLegAndAParrotNamedSquawk".
+const runTests = require('../helpers/runTests');
+runTests(toCamelCase, `
+  Waiting:1. toCamelCase("hello world") should return "helloWorld".
+  Waiting:2. toCamelCase("HELLO WORLD") should return "helloWorld".
+  Waiting:3. toCamelCase("secret agent-X") should return "secretAgentX".
+  Waiting:4. toCamelCase("FREE cODE cAMP") should return "freeCodeCamp".
+  Waiting:5. toCamelCase("ye old-_-sea  faring_buccaneer_-_with a - peg__leg----and a_parrot_ _named- _squawk") should return "yeOldSeaFaringBuccaneerWithAPegLegAndAParrotNamedSquawk".
+`);

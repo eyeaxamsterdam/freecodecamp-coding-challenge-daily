@@ -41,8 +41,8 @@ function runTests(fn, rawTests) {
         const resultStr = JSON.stringify(result);
 
         if (expectedOptions.some(e => resultStr === JSON.stringify(e))) {
-            console.log(`Response: ${JSON.stringify(result)}`);
-            console.log(`    PASS: ${fn.name}(${label})`);
+            console.log(`PASS: ${fn.name}(${label})`);
+            console.log(`    Response: ${JSON.stringify(result)}`);
         } else {
             console.log(`FAIL: ${fn.name}(${label})`);
             console.log(`  expected: ${JSON.stringify(expectedOptions)}`);

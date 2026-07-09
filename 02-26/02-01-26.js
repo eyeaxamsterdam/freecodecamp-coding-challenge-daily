@@ -11,7 +11,17 @@ You logged in no more than 2 times on any single day.
 */
 
 function digitalDetox(logs) {
-    
+    const fourHours = 14400000;
+    const dateArr = logs.map((log) => {
+        return new Date(log);
+    }).sort((a,b) => a.getTime()-b.getTime());
+    const dateDayArr = dateArr.map(date => date.toDateString());
+    for (let i = 0; i < dateDayArr.length; i++) {
+        if (dateDayArr.filter(date => date === dateDayArr[i]).length > 2) {
+            return false;
+        }
+    }
+    return dateArr.every((date,i) => i === dateArr.length-1 || dateArr[i+1] - date > fourHours);
 }
 
 const runTests = require('../helpers/runTests');

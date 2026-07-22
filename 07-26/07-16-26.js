@@ -11,25 +11,26 @@ function pigLatin(str) {
     const vowels = ['a','e','i','o','u'];
     const strArr = str.split(' ');
     const buildWord = w => {
-        let capital = w[0].toUpperCase === w[0];
-        console.log(capital);
+        let index = 0
+        let capital = w[0].toUpperCase() === w[0];
         let vowel = false;
         let wordArr = w.split('');
         while (vowel === false) {
-           if (!vowels.includes(wordArr[0])) {
-                wordArr.shift(); 
-                wordArr.push(w[0]);
+            if (!vowels.includes(wordArr[0])) {
+                wordArr.shift();
+                wordArr.push(w[index].toLowerCase());
+                index++
             }
-           else vowel = true;
+            else vowel = true;
         }
         let wordStr = wordArr.join('');
-        return capital ? wordStr.charAt(0).toUpperCase() + wordStr.slice(1) + 'hay': wordStr + 'hay'; 
+        return capital ? wordStr.charAt(0).toUpperCase() + wordStr.slice(1) + 'ay': wordStr + 'ay'; 
     }
     const response = strArr.map( w => {
         if (vowels.includes(w[0])) return w + 'way';
         else return buildWord(w);
     });
-    console.log(response);
+    return response.join(' ');
 }
 
 const runTests = require('../helpers/runTests');

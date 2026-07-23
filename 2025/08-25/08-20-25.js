@@ -4,16 +4,11 @@ Given an integer between 1 and 10,000, return a count of how many numbers from 1
 
 function squaresWithThree(n) {
     let count = 0;
-    const recursiveFunc = (num) => {
-        if (String(num*num).match(/3/)) {
-            count++;
-        }
-        return num === 1 ? count : recursiveFunc(num - 1);
+    for (let i = 1; i <= n; i++) {
+        if (String(i * i).includes('3')) count++;
     }
-    return recursiveFunc(n);
+    return count;
 }
-
-
 
 const runTests = require('../../helpers/runTests');
 runTests(squaresWithThree, `

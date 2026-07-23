@@ -7,6 +7,8 @@ The returned array should have the indices in ascending order.
 
 function findTarget(arr, target) {
     const seen = {};
+    // better at scale to use seen then do one pass and check if the number you need has been seen.
+    // store every number until the second number is found. 
     for (let i = 0; i < arr.length; i++) {
         const complement = target - arr[i];
         if (complement in seen) return [seen[complement], i];

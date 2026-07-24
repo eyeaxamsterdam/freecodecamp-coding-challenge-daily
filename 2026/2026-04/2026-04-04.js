@@ -16,15 +16,15 @@ function isValidEquation(equation) {
     return left === right;
 }
 
-runTests(isValidEquation, `
-    isValidEquation("2 + 2 = 4") should return true.
-    isValidEquation("2 + 3 - 1 = 4") should return true.
-    isValidEquation("8 / 2 = 4") should return true.
-    isValidEquation("10 * 5 = 50") should return true.
-    isValidEquation("2 - 2 = 0") should return true.
-    isValidEquation("2 + 9 / 3 = 5") should return true.
-    isValidEquation("20 - 2 * 3 = 14") should return true.
-    isValidEquation("2 + 5 = 6") should return false.
-    isValidEquation("10 - 2 * 3 = 24") should return false.
-    isValidEquation("3 + 9 / 3 = 4") should return false.
-    `)
+runTests(isValidEquation, [
+    `assert.isTrue(isValidEquation("2 + 2 = 4"));`,
+    `assert.isTrue(isValidEquation("2 + 3 - 1 = 4"));`,
+    `assert.isTrue(isValidEquation("8 / 2 = 4"));`,
+    `assert.isTrue(isValidEquation("10 * 5 = 50"));`,
+    `assert.isTrue(isValidEquation("2 - 2 = 0"));`,
+    `assert.isTrue(isValidEquation("2 + 9 / 3 = 5"));`,
+    `assert.isTrue(isValidEquation("20 - 2 * 3 = 14"));`,
+    `assert.isFalse(isValidEquation("2 + 5 = 6"));`,
+    `assert.isFalse(isValidEquation("10 - 2 * 3 = 24"));`,
+    `assert.isFalse(isValidEquation("3 + 9 / 3 = 4"));`,
+]);

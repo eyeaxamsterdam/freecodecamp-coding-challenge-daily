@@ -45,11 +45,11 @@ const triageBlood = (bank, patients) => {
 triageBlood(["O","O", "A", "A","B"], ["O","A", "A", "B", "AB"]);
 
 const runTests = require('../../helpers/runTests');
-runTests(triageBlood, `
-    triageBlood(["O", "A", "B", "AB"], ["O", "A", "B", "AB"]) should return "4 of 4 patients served".
-    triageBlood(["A", "A", "B", "B", "AB"], ["O", "A", "B", "B", "B"]) should return "3 of 5 patients served".
-    triageBlood(["O", "A", "B", "AB"], ["AB", "AB", "AB", "AB", "AB"]) should return "4 of 5 patients served".
-    triageBlood(["O", "O", "O", "O", "O"], ["O", "A", "B", "AB"]) should return "4 of 4 patients served".
-    triageBlood(["A", "O", "B", "AB", "B", "AB", "O", "A", "A"], ["O", "A", "B", "AB", "A", "B", "A", "A", "B", "A", "B"]) should return "8 of 11 patients served".
-    triageBlood(["O", "B", "AB", "AB", "O", "A", "A", "AB", "O", "B", "B", "AB", "A", "B", "AB"], ["O", "A", "B", "B", "A", "B", "AB", "A", "B", "A", "O", "AB", "AB", "O"]) should return "13 of 14 patients served".
-`);
+runTests(triageBlood, [
+    `assert.equal(triageBlood(["O", "A", "B", "AB"], ["O", "A", "B", "AB"]), "4 of 4 patients served");`,
+    `assert.equal(triageBlood(["A", "A", "B", "B", "AB"], ["O", "A", "B", "B", "B"]), "3 of 5 patients served");`,
+    `assert.equal(triageBlood(["O", "A", "B", "AB"], ["AB", "AB", "AB", "AB", "AB"]), "4 of 5 patients served");`,
+    `assert.equal(triageBlood(["O", "O", "O", "O", "O"], ["O", "A", "B", "AB"]), "4 of 4 patients served");`,
+    `assert.equal(triageBlood(["A", "O", "B", "AB", "B", "AB", "O", "A", "A"], ["O", "A", "B", "AB", "A", "B", "A", "A", "B", "A", "B"]), "8 of 11 patients served");`,
+    `assert.equal(triageBlood(["O", "B", "AB", "AB", "O", "A", "A", "AB", "O", "B", "B", "AB", "A", "B", "AB"], ["O", "A", "B", "B", "A", "B", "AB", "A", "B", "A", "O", "AB", "AB", "O"]), "13 of 14 patients served");`,
+]);

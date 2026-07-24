@@ -111,11 +111,11 @@ function extractFnName(content, language) {
 // Finds where a user's own code (above) ends and the regeneratable test
 // tail (below) begins. Normally that's the require/import line immediately
 // before the `runTests(fnName, ...)` / `run_tests(...)` call — split there
-// so it gets regenerated fresh. A few files declare that import earlier,
-// separated from the call; for those, fall back to splitting at the bare
-// call site (leaving the stray earlier import alone — reduplicating a
-// `const runTests = require(...)` would be a SyntaxError, so this path
-// must never leave two require/import statements for the same binding).
+// so it gets regenerated fresh (needsImport: true). A few files declare
+// that import earlier, separated from the call; for those, split at the
+// bare call site instead and leave the stray earlier import in the head
+// untouched (needsImport: false) — regenerating a second one would
+// redeclare `const runTests`, a SyntaxError.
 function findSplitPoint(content, language) {
   const fnName = extractFnName(content, language);
   if (!fnName) return null;
@@ -131,11 +131,11 @@ function findSplitPoint(content, language) {
 
   const withImportMatch = content.match(withImportRe);
   if (withImportMatch) {
-    return { fnName, splitIndex: withImportMatch.index };
+    return { fnName, splitIndex: withImportMatch.index, needsImport: true };
   }
 
   const callMatch = content.match(callRe);
-  return callMatch ? { fnName, splitIndex: callMatch.index } : null;
+  return callMatch ? { fnName, splitIndex: callMatch.index, needsImport: false } : null;
 }
 
 // Each assert block becomes one array element — a multi-statement block's
@@ -148,20 +148,41 @@ function indentContinuationLines(block) {
     .join("\n");
 }
 
-function buildJsTestTail(fnName, assertBlocks) {
-  const items = assertBlocks
-    .map((block) => `    \`${indentContinuationLines(block)}\`,`)
-    .join("\n");
-
-  return `const runTests = require('../../helpers/runTests');\nrunTests(${fnName}, [\n${items}\n]);\n`;
+// freeCodeCamp's source text can itself contain literal backslash escapes
+// (e.g. a test input like "---\ntitle: ..."). Embedding that raw inside our
+// own template literal would let *our* wrapper consume those escapes (e.g.
+// collapsing \n into a real newline) before the test code ever runs, which
+// can land a raw newline inside a plain string and break as a syntax error.
+// Doubling backslashes first keeps the original two-character sequence
+// intact through our own literal.
+function escapeForJsTemplateLiteral(text) {
+  return text.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
 }
 
-function buildPythonTestTail(fnName, assertBlocks) {
+function escapeForPythonTripleQuoted(text) {
+  return text.replace(/\\/g, "\\\\").replace(/"""/g, '\\"\\"\\"');
+}
+
+function buildJsTestTail(fnName, assertBlocks, { needsImport = true } = {}) {
+  const items = assertBlocks
+    .map((block) => `    \`${indentContinuationLines(escapeForJsTemplateLiteral(block))}\`,`)
+    .join("\n");
+  const importLine = needsImport ? "const runTests = require('../../helpers/runTests');\n" : "";
+
+  return `${importLine}runTests(${fnName}, [\n${items}\n]);\n`;
+}
+
+function buildPythonTestTail(fnName, assertBlocks, { needsImport = true } = {}) {
   // Unlike JS, Python's exec() is whitespace-sensitive, so continuation
   // lines must stay flush-left inside the string — no readability indent.
-  const items = assertBlocks.map((block) => `    """${block}""",`).join("\n");
+  const items = assertBlocks
+    .map((block) => `    """${escapeForPythonTripleQuoted(block)}""",`)
+    .join("\n");
+  const importLines = needsImport
+    ? 'import os\nimport sys\nsys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))\nfrom helpers.run_tests import run_tests\n\n'
+    : "";
 
-  return `import os\nimport sys\nsys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))\nfrom helpers.run_tests import run_tests\n\nrun_tests(${fnName}, [\n${items}\n])\n`;
+  return `${importLines}run_tests(${fnName}, [\n${items}\n])\n`;
 }
 
 function buildJsFileContent({ title, description, seedCode, assertBlocks }) {

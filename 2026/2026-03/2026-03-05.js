@@ -12,8 +12,6 @@ The number of characters between the two "A" characters is 3, and between the "C
 So return the string between the two "C" characters.
 */
 
-const runTests = require("../../helpers/runTests");
-
 function smallestGap(str) {
     const lastSeen = {};
     const gaps = [];

@@ -34,10 +34,10 @@ function getDeepestBrackets(str) {
     return result;
 }
 
-runTests(getDeepestBrackets, `
-    getDeepestBrackets("(hello (world))") should return "world".
-    getDeepestBrackets("[outer [inner] outer]") should return "inner".
-    getDeepestBrackets("{a{b}c{d{e}f}g}") should return "e".
-    getDeepestBrackets("[the {quick (brown [fox] jumped) over (the) lazy} dog]") should return "fox".
-    getDeepestBrackets("f[(r)e{e}C{o[(d){e(C)}a]m}]p") should return "C".
-`)
+runTests(getDeepestBrackets, [
+    `assert.equal(getDeepestBrackets("(hello (world))"), "world");`,
+    `assert.equal(getDeepestBrackets("[outer [inner] outer]"), "inner");`,
+    `assert.equal(getDeepestBrackets("{a{b}c{d{e}f}g}"), "e");`,
+    `assert.equal(getDeepestBrackets("[the {quick (brown [fox] jumped) over (the) lazy} dog]"), "fox");`,
+    `assert.equal(getDeepestBrackets("f[(r)e{e}C{o[(d){e(C)}a]m}]p"), "C");`,
+]);

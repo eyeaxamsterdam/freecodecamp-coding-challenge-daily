@@ -15,7 +15,7 @@ function getCombinations(n) {
 }
 
 
-/* const runTests = require('../../helpers/runTests');
+const runTests = require('../../helpers/runTests');
 runTests(getCombinations, [
     `assert.equal(getCombinations(2), 2);`,
     `assert.equal(getCombinations(3), 5);`,

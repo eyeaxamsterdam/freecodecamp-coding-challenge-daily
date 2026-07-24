@@ -45,7 +45,7 @@ async function syncFile(year, month, day, language, folderName, folderPath) {
     console.log(`⚠️  Couldn't locate the test call or function definition in ${fileName} — skipping.`);
     return;
   }
-  const { fnName, splitIndex } = split;
+  const { fnName, splitIndex, needsImport } = split;
   const head = content.slice(0, splitIndex);
 
   let assertBlocks;
@@ -63,8 +63,8 @@ async function syncFile(year, month, day, language, folderName, folderPath) {
 
   const newTail =
     language === "python"
-      ? buildPythonTestTail(fnName, assertBlocks)
-      : buildJsTestTail(fnName, assertBlocks);
+      ? buildPythonTestTail(fnName, assertBlocks, { needsImport })
+      : buildJsTestTail(fnName, assertBlocks, { needsImport });
   const newContent = head + newTail;
 
   if (newContent === content) {

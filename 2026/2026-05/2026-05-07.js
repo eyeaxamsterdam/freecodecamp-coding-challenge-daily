@@ -32,13 +32,10 @@ function getLongestSubstring(str) {
     return longestSubstr;
 }
 
-runTests(getLongestSubstring,`
-    getLongestSubstring("abracadabra") should return "abra".
-    getLongestSubstring("hello world hello") should return "hello".
-    getLongestSubstring("mississippi") should return "issi".
-    getLongestSubstring("ha ha ha ha ha ha ha") should return "ha ha ha ha ha ha".
-    getLongestSubstring("the quick brown fox jumped over the lazy dog that the quick brown fox jumped over") should return "the quick brown fox jumped over". 
-`)
-
-/*     
-    */
+runTests(getLongestSubstring, [
+    `assert.equal(getLongestSubstring("abracadabra"), "abra");`,
+    `assert.equal(getLongestSubstring("hello world hello"), "hello");`,
+    `assert.equal(getLongestSubstring("mississippi"), "issi");`,
+    `assert.equal(getLongestSubstring("ha ha ha ha ha ha ha"), "ha ha ha ha ha ha");`,
+    `assert.equal(getLongestSubstring("the quick brown fox jumped over the lazy dog that the quick brown fox jumped over"), "the quick brown fox jumped over");`,
+]);

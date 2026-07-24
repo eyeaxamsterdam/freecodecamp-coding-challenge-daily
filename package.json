@@ -17,8 +17,5 @@
   "bugs": {
     "url": "https://github.com/eyeaxamsterdam/freecodecamp-coding-challenge-daily/issues"
   },
-  "homepage": "https://github.com/eyeaxamsterdam/freecodecamp-coding-challenge-daily#readme",
-  "dependencies": {
-    "to-words": "^5.5.0"
-  }
+  "homepage": "https://github.com/eyeaxamsterdam/freecodecamp-coding-challenge-daily#readme"
 }

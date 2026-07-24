@@ -21,10 +21,10 @@ function exactChange(amount) {
 
 const runTests = require('../../helpers/runTests');
 runTests(exactChange, `
-    Waiting:1. exactChange(3) should return 1.
-    Waiting:2. exactChange(9) should return 2.
-    Waiting:3. exactChange(17) should return 6.
-    Waiting:4. exactChange(39) should return 24.
-    Waiting:5. exactChange(61) should return 73.
-    Waiting:6. exactChange(99) should return 213.
+    exactChange(3) should return 1.
+    exactChange(9) should return 2.
+    exactChange(17) should return 6.
+    exactChange(39) should return 24.
+    exactChange(61) should return 73.
+    exactChange(99) should return 213.
 `);

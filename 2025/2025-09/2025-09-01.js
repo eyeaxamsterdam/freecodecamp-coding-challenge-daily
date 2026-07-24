@@ -24,9 +24,13 @@ function tribonacciSequence(startSequence, length) {
 }
 
 //Tests
-tribonacciSequence([0, 0, 1], 20) //should return [0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927, 1705, 3136, 5768, 10609, 19513].
-tribonacciSequence([21, 32, 43], 1) //should return [21].
-tribonacciSequence([0, 0, 1], 0) //should return [].
-tribonacciSequence([10, 20, 30], 2) //should return [10, 20].
-tribonacciSequence([10, 20, 30], 3) //should return [10, 20, 30].
-tribonacciSequence([123, 456, 789], 8) //should return [123, 456, 789, 1368, 2613, 4770, 8751, 16134].
+
+const runTests = require('../../helpers/runTests');
+runTests(tribonacciSequence, `
+    tribonacciSequence([0, 0, 1], 20) should return [0, 0, 1, 1, 2, 4, 7, 13, 24, 44, 81, 149, 274, 504, 927, 1705, 3136, 5768, 10609, 19513].
+    tribonacciSequence([21, 32, 43], 1) should return [21].
+    tribonacciSequence([0, 0, 1], 0) should return [].
+    tribonacciSequence([10, 20, 30], 2) should return [10, 20].
+    tribonacciSequence([10, 20, 30], 3) should return [10, 20, 30].
+    tribonacciSequence([123, 456, 789], 8) should return [123, 456, 789, 1368, 2613, 4770, 8751, 16134].
+`);

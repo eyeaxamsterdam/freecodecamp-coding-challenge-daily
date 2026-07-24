@@ -97,14 +97,14 @@ function getBestHand(cards) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getBestHand, `
-    Waiting:1. getBestHand(["7s", "7h", "7d", "2c", "5h"]) should return "Three of a Kind".
-    Waiting:2. getBestHand(["Ks", "Kh", "Kd", "4s", "4h"]) should return "Full House".
-    Waiting:3. getBestHand(["2h", "5h", "7h", "9h", "Jh"]) should return "Flush".
-    Waiting:4. getBestHand(["As", "Ah", "Ad", "Ac", "Kh"]) should return "Four of a Kind".
-    Waiting:5. getBestHand(["Ts", "Th", "9d", "9c", "8h"]) should return "Two Pair".
-    Waiting:6. getBestHand(["9c", "8c", "7c", "6c", "5c"]) should return "Straight Flush".
-    Waiting:7. getBestHand(["As", "Kh", "Jd", "8c", "5h"]) should return "High Card".
-    Waiting:8. getBestHand(["As", "2h", "3d", "4c", "5h"]) should return "Straight".
-    Waiting:9. getBestHand(["Ts", "Th", "7c", "6d", "5h"]) should return "Pair".
-    Waiting:10. getBestHand(["As", "Ks", "Qs", "Js", "Ts"]) should return "Royal Flush".
+    getBestHand(["7s", "7h", "7d", "2c", "5h"]) should return "Three of a Kind".
+    getBestHand(["Ks", "Kh", "Kd", "4s", "4h"]) should return "Full House".
+    getBestHand(["2h", "5h", "7h", "9h", "Jh"]) should return "Flush".
+    getBestHand(["As", "Ah", "Ad", "Ac", "Kh"]) should return "Four of a Kind".
+    getBestHand(["Ts", "Th", "9d", "9c", "8h"]) should return "Two Pair".
+    getBestHand(["9c", "8c", "7c", "6c", "5c"]) should return "Straight Flush".
+    getBestHand(["As", "Kh", "Jd", "8c", "5h"]) should return "High Card".
+    getBestHand(["As", "2h", "3d", "4c", "5h"]) should return "Straight".
+    getBestHand(["Ts", "Th", "7c", "6d", "5h"]) should return "Pair".
+    getBestHand(["As", "Ks", "Qs", "Js", "Ts"]) should return "Royal Flush".
 `); 

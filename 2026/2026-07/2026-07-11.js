@@ -38,13 +38,13 @@ function fiveDice(dice) {
 
 const runTests = require('../../helpers/runTests');
 runTests(fiveDice, `
-    Waiting:1. fiveDice([1, 1, 1, 1, 1]) should return "five of a kind".
-    Waiting:2. fiveDice([5, 5, 5, 6, 5]) should return "four of a kind".
-    Waiting:3. fiveDice([2, 5, 6, 4, 3]) should return "large straight".
-    Waiting:4. fiveDice([4, 3, 3, 3, 1]) should return "three of a kind".
-    Waiting:5. fiveDice([4, 6, 2, 6, 5]) should return "pair".
-    Waiting:6. fiveDice([1, 4, 5, 6, 2]) should return "no pair".
-    Waiting:7. fiveDice([1, 3, 4, 6, 2]) should return "small straight".
-    Waiting:8. fiveDice([2, 2, 5, 2, 5]) should return "full house".
-    Waiting:9. fiveDice([6, 4, 5, 6, 4]) should return "two pair".
+    fiveDice([1, 1, 1, 1, 1]) should return "five of a kind".
+    fiveDice([5, 5, 5, 6, 5]) should return "four of a kind".
+    fiveDice([2, 5, 6, 4, 3]) should return "large straight".
+    fiveDice([4, 3, 3, 3, 1]) should return "three of a kind".
+    fiveDice([4, 6, 2, 6, 5]) should return "pair".
+    fiveDice([1, 4, 5, 6, 2]) should return "no pair".
+    fiveDice([1, 3, 4, 6, 2]) should return "small straight".
+    fiveDice([2, 2, 5, 2, 5]) should return "full house".
+    fiveDice([6, 4, 5, 6, 4]) should return "two pair".
 `);

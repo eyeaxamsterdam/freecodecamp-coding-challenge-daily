@@ -18,10 +18,10 @@ function convertParsecs(parsecs) {
 // TESTS
 const runTests = require('../../helpers/runTests');
 runTests(convertParsecs, `
-    Waiting:1. convertParsecs(1) should return 2.
-    Waiting:2. convertParsecs(2) should return 6.
-    Waiting:3. convertParsecs(31) should return 62.
-    Waiting:4. convertParsecs(88) should return 264.
-    Waiting:5. convertParsecs(17) should return 34.
-    Waiting:6. convertParsecs(14) should return 42.
+    convertParsecs(1) should return 2.
+    convertParsecs(2) should return 6.
+    convertParsecs(31) should return 62.
+    convertParsecs(88) should return 264.
+    convertParsecs(17) should return 34.
+    convertParsecs(14) should return 42.
 `);

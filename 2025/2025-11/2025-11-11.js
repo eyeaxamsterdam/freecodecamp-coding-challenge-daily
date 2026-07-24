@@ -22,9 +22,13 @@ function count(str) {
 }
 
 //Tests
-count("Hello World") //should return [3, 7].
-count("JavaScript") //should return [3, 7].
-count("Python") //should return [1, 5].
-count("freeCodeCamp") //should return [5, 7].
-count("Hello, World!") //should return [3, 7].
-count("The quick brown fox jumps over the lazy dog.") //should return [11, 24]
+
+const runTests = require('../../helpers/runTests');
+runTests(count, `
+    count("Hello World") should return [3, 7].
+    count("JavaScript") should return [3, 7].
+    count("Python") should return [1, 5].
+    count("freeCodeCamp") should return [5, 7].
+    count("Hello, World!") should return [3, 7].
+    count("The quick brown fox jumps over the lazy dog.") should return [11, 24].
+`);

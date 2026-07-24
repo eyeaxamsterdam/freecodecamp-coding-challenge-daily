@@ -29,9 +29,11 @@ function sort(emails) {
     return sorted;
 }
 
-
-sort(["jill@mail.com", "john@example.com", "jane@example.com"]) //should return ["jane@example.com", "john@example.com", "jill@mail.com"].
-sort(["bob@mail.com", "alice@zoo.com", "carol@mail.com"]) //should return ["bob@mail.com", "carol@mail.com", "alice@zoo.com"].
-sort(["user@z.com", "user@y.com", "user@x.com"]) //should return ["user@x.com", "user@y.com", "user@z.com"].
-sort(["sam@MAIL.com", "amy@mail.COM", "bob@Mail.com"]) //should return ["amy@mail.COM", "bob@Mail.com", "sam@MAIL.com"].
-sort(["simon@beta.com", "sammy@alpha.com", "Sarah@Alpha.com", "SAM@ALPHA.com", "Simone@Beta.com", "sara@alpha.com"]) //should return ["SAM@ALPHA.com", "sammy@alpha.com", "sara@alpha.com", "Sarah@Alpha.com", "simon@beta.com", "Simone@Beta.com"].
+const runTests = require('../../helpers/runTests');
+runTests(sort, `
+    sort(["jill@mail.com", "john@example.com", "jane@example.com"]) should return ["jane@example.com", "john@example.com", "jill@mail.com"].
+    sort(["bob@mail.com", "alice@zoo.com", "carol@mail.com"]) should return ["bob@mail.com", "carol@mail.com", "alice@zoo.com"].
+    sort(["user@z.com", "user@y.com", "user@x.com"]) should return ["user@x.com", "user@y.com", "user@z.com"].
+    sort(["sam@MAIL.com", "amy@mail.COM", "bob@Mail.com"]) should return ["amy@mail.COM", "bob@Mail.com", "sam@MAIL.com"].
+    sort(["simon@beta.com", "sammy@alpha.com", "Sarah@Alpha.com", "SAM@ALPHA.com", "Simone@Beta.com", "sara@alpha.com"]) should return ["SAM@ALPHA.com", "sammy@alpha.com", "sara@alpha.com", "Sarah@Alpha.com", "simon@beta.com", "Simone@Beta.com"].
+`);

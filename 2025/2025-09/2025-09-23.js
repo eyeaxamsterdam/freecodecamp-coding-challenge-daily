@@ -24,9 +24,12 @@ function isMirror(str1, str2) {
   return isEqual;
 }
 
-isMirror("helloworld", "helloworld") //should return false.
-isMirror("Hello World", "dlroW olleH") //should return true.
-isMirror("RaceCar", "raCecaR") //should return true.
-isMirror("RaceCar", "RaceCar") //should return false.
-isMirror("Mirror", "rorrim") //should return false.
-isMirror("Hello World", "dlroW-olleH") //should return true.
+const runTests = require('../../helpers/runTests');
+runTests(isMirror, `
+    isMirror("helloworld", "helloworld") should return false.
+    isMirror("Hello World", "dlroW olleH") should return true.
+    isMirror("RaceCar", "raCecaR") should return true.
+    isMirror("RaceCar", "RaceCar") should return false.
+    isMirror("Mirror", "rorrim") should return false.
+    isMirror("Hello World", "dlroW-olleH") should return true.
+`);

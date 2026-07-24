@@ -22,9 +22,9 @@ function getDayOfWeek(timestamp) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getDayOfWeek, `
-    Waiting:1. getDayOfWeek(1775492249000) should return "Monday".
-    Waiting:2. getDayOfWeek(1766246400000) should return "Saturday".
-    Waiting:3. getDayOfWeek(33791256000000) should return "Tuesday".
-    Waiting:4. getDayOfWeek(1773576000000) should return "Sunday".
-    Waiting:5. getDayOfWeek(0) should return "Thursday".
+    getDayOfWeek(1775492249000) should return "Monday".
+    getDayOfWeek(1766246400000) should return "Saturday".
+    getDayOfWeek(33791256000000) should return "Tuesday".
+    getDayOfWeek(1773576000000) should return "Sunday".
+    getDayOfWeek(0) should return "Thursday".
     `);

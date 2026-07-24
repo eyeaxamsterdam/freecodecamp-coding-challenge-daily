@@ -20,10 +20,13 @@ function buildAcronym(str) {
   return acronym;
 }
 
-buildAcronym("Search Engine Optimization") //should return "SEO".
-buildAcronym("Frequently Asked Questions") //should return "FAQ".
-buildAcronym("National Aeronautics and Space Administration") //should return "NASA".
-buildAcronym("Federal Bureau of Investigation") //should return "FBI".
-buildAcronym("For your information") //should return "FYI".
-buildAcronym("By the way") //should return "BTW".
-buildAcronym("An unstoppable herd of waddling penguins overtakes the icy mountains and sings happily") //should return "AUHWPOTIMSH".
+const runTests = require('../../helpers/runTests');
+runTests(buildAcronym, `
+    buildAcronym("Search Engine Optimization") should return "SEO".
+    buildAcronym("Frequently Asked Questions") should return "FAQ".
+    buildAcronym("National Aeronautics and Space Administration") should return "NASA".
+    buildAcronym("Federal Bureau of Investigation") should return "FBI".
+    buildAcronym("For your information") should return "FYI".
+    buildAcronym("By the way") should return "BTW".
+    buildAcronym("An unstoppable herd of waddling penguins overtakes the icy mountains and sings happily") should return "AUHWPOTIMSH".
+`);

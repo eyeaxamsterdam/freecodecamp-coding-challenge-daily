@@ -17,14 +17,14 @@ function isValidEquation(equation) {
 }
 
 runTests(isValidEquation, `
-    Waiting:1. isValidEquation("2 + 2 = 4") should return true.
-    Waiting:2. isValidEquation("2 + 3 - 1 = 4") should return true.
-    Waiting:3. isValidEquation("8 / 2 = 4") should return true.
-    Waiting:4. isValidEquation("10 * 5 = 50") should return true.
-    Waiting:5. isValidEquation("2 - 2 = 0") should return true.
-    Waiting:6. isValidEquation("2 + 9 / 3 = 5") should return true.
-    Waiting:7. isValidEquation("20 - 2 * 3 = 14") should return true.
-    Waiting:8. isValidEquation("2 + 5 = 6") should return false.
-    Waiting:9. isValidEquation("10 - 2 * 3 = 24") should return false.
-    Waiting:10. isValidEquation("3 + 9 / 3 = 4") should return false.
+    isValidEquation("2 + 2 = 4") should return true.
+    isValidEquation("2 + 3 - 1 = 4") should return true.
+    isValidEquation("8 / 2 = 4") should return true.
+    isValidEquation("10 * 5 = 50") should return true.
+    isValidEquation("2 - 2 = 0") should return true.
+    isValidEquation("2 + 9 / 3 = 5") should return true.
+    isValidEquation("20 - 2 * 3 = 14") should return true.
+    isValidEquation("2 + 5 = 6") should return false.
+    isValidEquation("10 - 2 * 3 = 24") should return false.
+    isValidEquation("3 + 9 / 3 = 4") should return false.
     `)

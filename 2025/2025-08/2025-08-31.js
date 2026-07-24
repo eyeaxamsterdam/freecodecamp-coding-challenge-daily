@@ -55,10 +55,14 @@ function generateHex(color) {
 
 
 //Tests
-generateHex("yellow") //should return "Invalid color".
 generateHex("red") ///should return a six-character string.
-generateHex("red") //should return a valid six-character hex color code.
-generateHex("red") //should return a valid hex color with a higher red value than other colors.
 generateHex("red") //twice should return two different hex color values where red is dominant.
 generateHex("green") //twice should return two different hex color values where green is dominant.
 generateHex("blue") //1twice should return two different hex color values where blue is dominant.
+
+const runTests = require('../../helpers/runTests');
+runTests(generateHex, `
+    generateHex("yellow") should return "Invalid color".
+    generateHex("red") should return a valid six-character hex color code.
+    generateHex("red") should return a valid hex color with a higher red value than other colors.
+`);

@@ -27,9 +27,9 @@ function getRotation(n) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getRotation, `
-    waiting:1. getRotation(123) should return 0.
-    Waiting:2. getRotation(13579) should return 3.
-    Waiting:3. getRotation(24681) should return "none".
-    Waiting:4. getRotation(84138789345) should return 6.
+    getRotation(123) should return 0.
+    getRotation(13579) should return 3.
+    getRotation(24681) should return "none".
+    getRotation(84138789345) should return 6.
 `);
 

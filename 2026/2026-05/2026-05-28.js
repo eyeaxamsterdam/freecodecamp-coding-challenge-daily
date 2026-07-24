@@ -23,9 +23,9 @@ function fizzBuzzCount(start, end) {
 
 const runTests = require("../../helpers/runTests");
 runTests(fizzBuzzCount,`
-    Waiting:1. fizzBuzzCount(1, 11) should return {fizz: 3, buzz: 2}.
-    Waiting:2. fizzBuzzCount(14, 41) should return {fizz: 9, buzz: 6}.
-    Waiting:3. fizzBuzzCount(24, 100) should return {fizz: 26, buzz: 16}.
-    Waiting:4. fizzBuzzCount(-635, -14) should return {fizz: 207, buzz: 125}.
-    Waiting:5. fizzBuzzCount(-5432, 6789) should return {fizz: 4074, buzz: 2444}.
+    fizzBuzzCount(1, 11) should return {fizz: 3, buzz: 2}.
+    fizzBuzzCount(14, 41) should return {fizz: 9, buzz: 6}.
+    fizzBuzzCount(24, 100) should return {fizz: 26, buzz: 16}.
+    fizzBuzzCount(-635, -14) should return {fizz: 207, buzz: 125}.
+    fizzBuzzCount(-5432, 6789) should return {fizz: 4074, buzz: 2444}.
 `)

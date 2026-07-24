@@ -25,8 +25,12 @@ function lcm(a, b) {
 }
 
 //Tests
-lcm(4, 6) //should return 12.
-lcm(9, 6) //should return 18.
-lcm(10, 100) //should return 100.
-lcm(13, 17) //should return 221.
-lcm(45, 70) //should return 630.
+
+const runTests = require('../../helpers/runTests');
+runTests(lcm, `
+    lcm(4, 6) should return 12.
+    lcm(9, 6) should return 18.
+    lcm(10, 100) should return 100.
+    lcm(13, 17) should return 221.
+    lcm(45, 70) should return 630.
+`);

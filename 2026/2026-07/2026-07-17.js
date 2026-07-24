@@ -29,11 +29,11 @@ function daysUntilBirthday(today, birthday) {
 
 const runTests = require('../../helpers/runTests');
 runTests(daysUntilBirthday, `
-    Waiting:1. daysUntilBirthday("2026-07-16", "9/7") should return 53.
-    Waiting:2. daysUntilBirthday("2026-07-16", "3/22") should return 249.
-    Waiting:3. daysUntilBirthday("2026-07-16", "7/16") should return 365.
-    Waiting:4. daysUntilBirthday("2024-02-28", "3/1") should return 2.
-    Waiting:5. daysUntilBirthday("2023-04-24", "12/30") should return 250.
-    Waiting:6. daysUntilBirthday("2024-03-01", "2/29") should return 1460.
-    Waiting:7. daysUntilBirthday("2096-03-01", "2/29") should return 2920.
+    daysUntilBirthday("2026-07-16", "9/7") should return 53.
+    daysUntilBirthday("2026-07-16", "3/22") should return 249.
+    daysUntilBirthday("2026-07-16", "7/16") should return 365.
+    daysUntilBirthday("2024-02-28", "3/1") should return 2.
+    daysUntilBirthday("2023-04-24", "12/30") should return 250.
+    daysUntilBirthday("2024-03-01", "2/29") should return 1460.
+    daysUntilBirthday("2096-03-01", "2/29") should return 2920.
 `);

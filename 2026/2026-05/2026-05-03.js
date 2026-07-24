@@ -28,9 +28,9 @@ function getGreeting(time) {
 //TESTS
 const runTests = require('../../helpers/runTests');
 runTests(getGreeting, `
-    Waiting:1. getGreeting("06:30") should return "Good morning".
-    Waiting:2. getGreeting("12:00") should return "Good afternoon".
-    Waiting:3. getGreeting("21:59") should return "Good evening".
-    Waiting:4. getGreeting("00:01") should return "Good night".
-    Waiting:5. getGreeting("11:30") should return "Good morning".
+    getGreeting("06:30") should return "Good morning".
+    getGreeting("12:00") should return "Good afternoon".
+    getGreeting("21:59") should return "Good evening".
+    getGreeting("00:01") should return "Good night".
+    getGreeting("11:30") should return "Good morning".
 `);

@@ -34,11 +34,11 @@ function horoscopeMatch(sign1, sign2) {
 
 const runTests = require('../../helpers/runTests');
 runTests(horoscopeMatch, `
-    Waiting:1. horoscopeMatch("Libra", "Sagittarius") should return "80%".
-    Waiting:2. horoscopeMatch("Gemini", "Scorpio") should return "20%".
-    Waiting:3. horoscopeMatch("Pisces", "Aries") should return "40%".
-    Waiting:4. horoscopeMatch("Capricorn", "Cancer") should return "50%".
-    Waiting:5. horoscopeMatch("Aquarius", "Aquarius") should return "100%".
-    Waiting:6. horoscopeMatch("Virgo", "Taurus") should return "90%".
-    Waiting:7. horoscopeMatch("Leo", "Scorpio") should return "30%".
+    horoscopeMatch("Libra", "Sagittarius") should return "80%".
+    horoscopeMatch("Gemini", "Scorpio") should return "20%".
+    horoscopeMatch("Pisces", "Aries") should return "40%".
+    horoscopeMatch("Capricorn", "Cancer") should return "50%".
+    horoscopeMatch("Aquarius", "Aquarius") should return "100%".
+    horoscopeMatch("Virgo", "Taurus") should return "90%".
+    horoscopeMatch("Leo", "Scorpio") should return "30%".
 `);

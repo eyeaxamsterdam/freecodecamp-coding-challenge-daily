@@ -12,9 +12,9 @@ function squaresWithThree(n) {
 
 const runTests = require('../../helpers/runTests');
 runTests(squaresWithThree, `
-    Waiting:1. squaresWithThree(1) should return 0.
-    Waiting:2. squaresWithThree(10) should return 1.
-    Waiting:3. squaresWithThree(100) should return 19.
-    Waiting:4. squaresWithThree(1000) should return 326.
-    Waiting:5. squaresWithThree(10000) should return 4531.
+    squaresWithThree(1) should return 0.
+    squaresWithThree(10) should return 1.
+    squaresWithThree(100) should return 19.
+    squaresWithThree(1000) should return 326.
+    squaresWithThree(10000) should return 4531.
 `);

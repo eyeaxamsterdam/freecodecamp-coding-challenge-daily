@@ -20,9 +20,9 @@ function zipStrings(a, b) {
 
 const runTests = require('../../helpers/runTests');
 runTests(zipStrings, `
-    Waiting:1. zipStrings("abc", "123") should return "a1b2c3".
-    Waiting:2. zipStrings("acegikmoqsuwy", "bdfhjlnprtvxz") should return "abcdefghijklmnopqrstuvwxyz".
-    Waiting:3. zipStrings("day", "night") should return "dnaiyght".
-    Waiting:4. zipStrings("python", "javascript") should return "pjyatvhaosncript".
-    Waiting:5. zipStrings("feCdCm", "reoeap") should return "freeCodeCamp".
+    zipStrings("abc", "123") should return "a1b2c3".
+    zipStrings("acegikmoqsuwy", "bdfhjlnprtvxz") should return "abcdefghijklmnopqrstuvwxyz".
+    zipStrings("day", "night") should return "dnaiyght".
+    zipStrings("python", "javascript") should return "pjyatvhaosncript".
+    zipStrings("feCdCm", "reoeap") should return "freeCodeCamp".
 `);

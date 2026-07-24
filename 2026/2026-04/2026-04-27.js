@@ -17,9 +17,9 @@ function getWordScore(word) {
 const runTests = require('../../helpers/runTests');
 
 runTests(getWordScore, `
-    Waiting:1. getWordScore("hi") should return 17.
-    Waiting:2. getWordScore("hello") should return 52.
-    Waiting:3. getWordScore("hippopotamus") should return 169.
-    Waiting:4. getWordScore("freeCodeCamp") should return 94.
+    getWordScore("hi") should return 17.
+    getWordScore("hello") should return 52.
+    getWordScore("hippopotamus") should return 169.
+    getWordScore("freeCodeCamp") should return 94.
 `);
 

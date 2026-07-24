@@ -28,13 +28,13 @@ function getShadow(time) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getShadow, `
-    Waiting:1. getShadow("10:00") should return "8ft west".
-    Waiting:2. getShadow("15:00") should return "27ft east".
-    Waiting:3. getShadow("12:00") should return "No shadow".
-    Waiting:4. getShadow("17:30") should return "166.375ft east".
-    Waiting:5. getShadow("05:00") should return "No shadow".
-    Waiting:6. getShadow("06:00") should return "216ft west".
-    Waiting:7. getShadow("18:00") should return "No shadow".
-    Waiting:8. getShadow("07:30") should return "91.125ft west".
-    Waiting:9. getShadow("00:00") should return "No shadow".
+    getShadow("10:00") should return "8ft west".
+    getShadow("15:00") should return "27ft east".
+    getShadow("12:00") should return "No shadow".
+    getShadow("17:30") should return "166.375ft east".
+    getShadow("05:00") should return "No shadow".
+    getShadow("06:00") should return "216ft west".
+    getShadow("18:00") should return "No shadow".
+    getShadow("07:30") should return "91.125ft west".
+    getShadow("00:00") should return "No shadow".
 `);

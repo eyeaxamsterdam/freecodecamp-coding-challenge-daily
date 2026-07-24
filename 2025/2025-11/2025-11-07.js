@@ -28,9 +28,13 @@ function combinations(cards) {
 }
 
 //Tests
-combinations(52) //should return 1.
-combinations(1) //should return 52.
-combinations(2) //should return 1326.
-combinations(5) //should return 2598960.
-combinations(10) //should return 15820024220.
-combinations(50) //should return 1326.
+
+const runTests = require('../../helpers/runTests');
+runTests(combinations, `
+    combinations(52) should return 1.
+    combinations(1) should return 52.
+    combinations(2) should return 1326.
+    combinations(5) should return 2598960.
+    combinations(10) should return 15820024220.
+    combinations(50) should return 1326.
+`);

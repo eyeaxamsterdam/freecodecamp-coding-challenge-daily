@@ -12,9 +12,9 @@ function isValidDominoChain(dominoes) {
 }
 const runTests = require('../../helpers/runTests');
 runTests(isValidDominoChain, `
-    Waiting:1. isValidDominoChain([[1, 3], [3, 6], [6, 5]]) should return true.
-    Waiting:2. isValidDominoChain([[6, 2], [3, 4], [4, 1]]) should return false.
-    Waiting:3. isValidDominoChain([[2, 5], [5, 6], [5, 1]]) should return false.
-    Waiting:4. isValidDominoChain([[4, 3], [3, 1], [1, 6], [6, 6], [6, 5], [5, 1], [1, 1], [1, 4], [4, 4], [4, 2]]) should return true.
-    Waiting:5. isValidDominoChain([[2, 3], [3, 3], [3, 6], [6, 1], [1, 4], [3, 5], [5, 5], [5, 4], [4, 2], [2, 2]]) should return false.
+    isValidDominoChain([[1, 3], [3, 6], [6, 5]]) should return true.
+    isValidDominoChain([[6, 2], [3, 4], [4, 1]]) should return false.
+    isValidDominoChain([[2, 5], [5, 6], [5, 1]]) should return false.
+    isValidDominoChain([[4, 3], [3, 1], [1, 6], [6, 6], [6, 5], [5, 1], [1, 1], [1, 4], [4, 4], [4, 2]]) should return true.
+    isValidDominoChain([[2, 3], [3, 3], [3, 6], [6, 1], [1, 4], [3, 5], [5, 5], [5, 4], [4, 2], [2, 2]]) should return false.
 `);

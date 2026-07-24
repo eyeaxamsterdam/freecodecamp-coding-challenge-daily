@@ -15,9 +15,9 @@ function sumLetters(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(sumLetters, `
-    Waiting:1. sumLetters("Hello") should return 52.
-    Waiting:2. sumLetters("freeCodeCamp") should return 94.
-    Waiting:3. sumLetters("The quick brown fox jumps over the lazy dog.") should return 473.
-    Waiting:4. sumLetters("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ex nisl, pretium eu varius blandit, facilisis quis eros. Vestibulum ante ipsum primis in faucibus orci.") should return 1681.
-    Waiting:5. sumLetters("</404>") should return 0.
+    sumLetters("Hello") should return 52.
+    sumLetters("freeCodeCamp") should return 94.
+    sumLetters("The quick brown fox jumps over the lazy dog.") should return 473.
+    sumLetters("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ex nisl, pretium eu varius blandit, facilisis quis eros. Vestibulum ante ipsum primis in faucibus orci.") should return 1681.
+    sumLetters("</404>") should return 0.
 `);

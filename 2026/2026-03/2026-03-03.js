@@ -15,9 +15,9 @@ function countPerfectCubes(a, b) {
 
 const runTests = require('../../helpers/runTests');
 runTests(countPerfectCubes, `
-    Waiting:1. countPerfectCubes(3, 30) should return 2.
-    Waiting:2. countPerfectCubes(1, 30) should return 3.
-    Waiting:3. countPerfectCubes(30, 0) should return 4.
-    Waiting:4. countPerfectCubes(-64, 64) should return 9.
-    Waiting:5. countPerfectCubes(9214, -8127) should return 41.
+    countPerfectCubes(3, 30) should return 2.
+    countPerfectCubes(1, 30) should return 3.
+    countPerfectCubes(30, 0) should return 4.
+    countPerfectCubes(-64, 64) should return 9.
+    countPerfectCubes(9214, -8127) should return 41.
 `);

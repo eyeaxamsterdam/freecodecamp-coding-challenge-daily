@@ -65,12 +65,11 @@ function navigateTrail(map) {
     }
 }
 
-const { DefaultToWordsOptions } = require('to-words');
 const runTests = require('../../helpers/runTests');
 runTests(navigateTrail, `
-    Waiting:1. navigateTrail(["-CT--", "--T--", "--TT-", "---T-", "---G-"]) should return "RDDRDD".
-    Waiting:2. navigateTrail(["-----", "--TTG", "--T--", "--T--", "CTT--"]) should return "RRUUURR".
-    Waiting:3. navigateTrail(["-C----", "TT----", "T-----", "TTTTT-", "----G-"]) should return "DLDDRRRRD".
-    Waiting:4. navigateTrail(["--------", "-CTTT---", "----T---", "---GT---", "--------"]) should return "RRRDDL".
-    Waiting:5. navigateTrail(["TTTTTTT-", "T-----T-", "T-----T-", "TTTT--TG", "---C----"]) should return "ULLLUUURRRRRRDDDR".
+    navigateTrail(["-CT--", "--T--", "--TT-", "---T-", "---G-"]) should return "RDDRDD".
+    navigateTrail(["-----", "--TTG", "--T--", "--T--", "CTT--"]) should return "RRUUURR".
+    navigateTrail(["-C----", "TT----", "T-----", "TTTTT-", "----G-"]) should return "DLDDRRRRD".
+    navigateTrail(["--------", "-CTTT---", "----T---", "---GT---", "--------"]) should return "RRRDDL".
+    navigateTrail(["TTTTTTT-", "T-----T-", "T-----T-", "TTTT--TG", "---C----"]) should return "ULLLUUURRRRRRDDDR".
 `);

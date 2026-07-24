@@ -14,8 +14,8 @@ function getOldest(people) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getOldest, `
-    Waiting:1. getOldest([{ name: "Brenda", age: 40 }]) should return ["Brenda"].
-    Waiting:2. getOldest([{ name: "Alice", age: 30 }, { name: "Bob", age: 25 }]) should return ["Alice"].
-    Waiting:3. getOldest([{ name: "Allison", age: 25 }, { name: "Bill", age: 30 }, { name: "Carol", age: 30 }]) should return ["Bill", "Carol"].
-    Waiting:4. getOldest([{ name: "George", age: 50 }, { name: "Shirley", age: 42 }, { name: "Beth", age: 48 }, { name: "Holly", age: 50 }, { name: "Kevin", age: 44 }, { name: "Frank", age: 47 }, { name: "Zach", age: 50 }, { name: "Jennifer", age: 43 }]) should return ["George", "Holly", "Zach"].
+    getOldest([{ name: "Brenda", age: 40 }]) should return ["Brenda"].
+    getOldest([{ name: "Alice", age: 30 }, { name: "Bob", age: 25 }]) should return ["Alice"].
+    getOldest([{ name: "Allison", age: 25 }, { name: "Bill", age: 30 }, { name: "Carol", age: 30 }]) should return ["Bill", "Carol"].
+    getOldest([{ name: "George", age: 50 }, { name: "Shirley", age: 42 }, { name: "Beth", age: 48 }, { name: "Holly", age: 50 }, { name: "Kevin", age: 44 }, { name: "Frank", age: 47 }, { name: "Zach", age: 50 }, { name: "Jennifer", age: 43 }]) should return ["George", "Holly", "Zach"].
 `);

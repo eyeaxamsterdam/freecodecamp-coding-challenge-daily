@@ -26,8 +26,11 @@ function capitalize(paragarph) {
     return response;
 }
 
-capitalize("this is a simple sentence.") //should return "This is a simple sentence.".
-capitalize("hello world. how are you?") //should return "Hello world. How are you?".
-capitalize("i did today's coding challenge... it was fun!!") //should return "I did today's coding challenge... It was fun!!".
-capitalize("crazy!!!strange???unconventional...sentences.") //should return "Crazy!!!Strange???Unconventional...Sentences.".
-capitalize("there's a space before this period . why is there a space before that period ?") //should return "There's a space before this period . Why is there a space before that period ?".
+const runTests = require('../../helpers/runTests');
+runTests(capitalize, `
+    capitalize("this is a simple sentence.") should return "This is a simple sentence.".
+    capitalize("hello world. how are you?") should return "Hello world. How are you?".
+    capitalize("i did today's coding challenge... it was fun!!") should return "I did today's coding challenge... It was fun!!".
+    capitalize("crazy!!!strange???unconventional...sentences.") should return "Crazy!!!Strange???Unconventional...Sentences.".
+    capitalize("there's a space before this period . why is there a space before that period ?") should return "There's a space before this period . Why is there a space before that period ?".
+`);

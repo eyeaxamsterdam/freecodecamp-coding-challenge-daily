@@ -16,8 +16,12 @@ function isValidMessage(message, validator) {
 }
 
 //Tests
-isValidMessage("hello world", "hw") //should return true.
-isValidMessage("ALL CAPITAL LETTERS", "acl") //should return true.
-isValidMessage("Coding challenge are boring.", "cca") //should return false.
-isValidMessage("The quick brown fox jumps over the lazy dog.", "TQBFJOTLD") //should return true.
-isValidMessage("The quick brown fox jumps over the lazy dog.", "TQBFJOTLDT") //should return false.
+
+const runTests = require('../../helpers/runTests');
+runTests(isValidMessage, `
+    isValidMessage("hello world", "hw") should return true.
+    isValidMessage("ALL CAPITAL LETTERS", "acl") should return true.
+    isValidMessage("Coding challenge are boring.", "cca") should return false.
+    isValidMessage("The quick brown fox jumps over the lazy dog.", "TQBFJOTLD") should return true.
+    isValidMessage("The quick brown fox jumps over the lazy dog.", "TQBFJOTLDT") should return false.
+`);

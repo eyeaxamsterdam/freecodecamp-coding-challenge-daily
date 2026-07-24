@@ -47,9 +47,9 @@ function truncateText(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(truncateText, `
-    Waiting:1. truncateText("The quick brown fox") should return "The quick brown f...".
-    Waiting:2. truncateText("The silky smooth sloth") should return "The silky smooth s...".
-    Waiting:3. truncateText("THE LOUD BRIGHT BIRD") should return "THE LOUD BRIG...".
-    Waiting:4. truncateText("The fast striped zebra") should return "The fast striped z...".
-    Waiting:5. truncateText("The big black bear") should return "The big black bear".
+    truncateText("The quick brown fox") should return "The quick brown f...".
+    truncateText("The silky smooth sloth") should return "The silky smooth s...".
+    truncateText("THE LOUD BRIGHT BIRD") should return "THE LOUD BRIG...".
+    truncateText("The fast striped zebra") should return "The fast striped z...".
+    truncateText("The big black bear") should return "The big black bear".
 `);

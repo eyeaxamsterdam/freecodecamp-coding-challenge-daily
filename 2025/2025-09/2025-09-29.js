@@ -18,10 +18,14 @@ function getLongestWord(sentence) {
     return longestWord;
 }
 
-getLongestWord("coding is fun") //should return "coding".
-getLongestWord("Coding challenges are fun and educational.") //should return "educational".
-getLongestWord("This sentence has multiple long words.") //should return "sentence".
 
 /* 
 could abviously use for loop or arr.forEach to iterate through the wordArray and find the longest word, but reduce is more efficient.
 */
+
+const runTests = require('../../helpers/runTests');
+runTests(getLongestWord, `
+    getLongestWord("coding is fun") should return "coding".
+    getLongestWord("Coding challenges are fun and educational.") should return "educational".
+    getLongestWord("This sentence has multiple long words.") should return "sentence".
+`);

@@ -17,9 +17,9 @@ function getCombinations(n) {
 
 /* const runTests = require('../../helpers/runTests');
 runTests(getCombinations, `
-    Waiting:1. getCombinations(2) should return 2.
-    Waiting:2. getCombinations(3) should return 5.
-    Waiting:3. getCombinations(5) should return 42.
-    Waiting:4. getCombinations(8) should return 1430.
-    Waiting:5. getCombinations(13) should return 742900.
+    getCombinations(2) should return 2.
+    getCombinations(3) should return 5.
+    getCombinations(5) should return 42.
+    getCombinations(8) should return 1430.
+    getCombinations(13) should return 742900.
 `); */

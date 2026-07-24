@@ -33,11 +33,11 @@ function getLongestSubstring(str) {
 }
 
 runTests(getLongestSubstring,`
-    Waiting:1. getLongestSubstring("abracadabra") should return "abra".
-    Waiting:2. getLongestSubstring("hello world hello") should return "hello".
-    Waiting:3. getLongestSubstring("mississippi") should return "issi".
-    Waiting:4. getLongestSubstring("ha ha ha ha ha ha ha") should return "ha ha ha ha ha ha".
-    Waiting:5. getLongestSubstring("the quick brown fox jumped over the lazy dog that the quick brown fox jumped over") should return "the quick brown fox jumped over". 
+    getLongestSubstring("abracadabra") should return "abra".
+    getLongestSubstring("hello world hello") should return "hello".
+    getLongestSubstring("mississippi") should return "issi".
+    getLongestSubstring("ha ha ha ha ha ha ha") should return "ha ha ha ha ha ha".
+    getLongestSubstring("the quick brown fox jumped over the lazy dog that the quick brown fox jumped over") should return "the quick brown fox jumped over". 
 `)
 
 /*     

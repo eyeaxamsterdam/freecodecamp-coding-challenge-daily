@@ -27,10 +27,10 @@ function getOdds(dice, target) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getOdds, `
-    Waiting:1. getOdds(1, 5) should return "1 in 6".
-    Waiting:2. getOdds(2, 4) should return "1 in 12".
-    Waiting:3. getOdds(3, 10) should return "1 in 8".
-    Waiting:4. getOdds(4, 7) should return "1 in 65".
-    Waiting:5. getOdds(5, 26) should return "1 in 111".
-    Waiting:6. getOdds(6, 35) should return "1 in 7776".
+    getOdds(1, 5) should return "1 in 6".
+    getOdds(2, 4) should return "1 in 12".
+    getOdds(3, 10) should return "1 in 8".
+    getOdds(4, 7) should return "1 in 65".
+    getOdds(5, 26) should return "1 in 111".
+    getOdds(6, 35) should return "1 in 7776".
 `);

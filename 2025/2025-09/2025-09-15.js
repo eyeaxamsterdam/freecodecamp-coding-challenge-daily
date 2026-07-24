@@ -16,10 +16,12 @@ function adjustThermostat(temp, target) {
     return response;
 }
 
-
-adjustThermostat(68, 72) //should return "heat".
-adjustThermostat(75, 72) //should return "cool".
-adjustThermostat(72, 72) //should return "hold".
-adjustThermostat(-20.5, -10.1) //should return "heat".
-adjustThermostat(100, 99.9) //should return "cool".
-adjustThermostat(0.0, 0.0) //should return "hold".
+const runTests = require('../../helpers/runTests');
+runTests(adjustThermostat, `
+    adjustThermostat(68, 72) should return "heat".
+    adjustThermostat(75, 72) should return "cool".
+    adjustThermostat(72, 72) should return "hold".
+    adjustThermostat(-20.5, -10.1) should return "heat".
+    adjustThermostat(100, 99.9) should return "cool".
+    adjustThermostat(0.0, 0.0) should return "hold".
+`);

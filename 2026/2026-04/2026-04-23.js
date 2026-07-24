@@ -35,9 +35,13 @@ function getDirection(time1, time2) {
 }
 
 // Tests:
-getDirection("10:00", "12:00") // should return "forward".
-getDirection("11:00", "05:00") // should return "backward".
-getDirection("00:00", "12:00") // should return "equal".
-getDirection("15:45", "01:10") // should return "forward".
-getDirection("03:30", "19:50") // should return "backward".
-getDirection("18:30", "06:30") // should return "equal". */
+
+const runTests = require('../../helpers/runTests');
+runTests(getDirection, `
+    getDirection("10:00", "12:00") should return "forward".
+    getDirection("11:00", "05:00") should return "backward".
+    getDirection("00:00", "12:00") should return "equal".
+    getDirection("15:45", "01:10") should return "forward".
+    getDirection("03:30", "19:50") should return "backward".
+    getDirection("18:30", "06:30") should return "equal".
+`);

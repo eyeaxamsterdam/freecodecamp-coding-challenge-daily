@@ -20,13 +20,17 @@ function countRectangles(width, height) {
 }
 
 //Tests
-countRectangles(1, 3) //should return 6.
-countRectangles(3, 2) //should return 18.
-countRectangles(1, 2) //should return 3.
-countRectangles(5, 4) //should return 150.
-countRectangles(11, 19) //should return 12540.
 
 
 /*
 WOw I hated this one;
 */
+
+const runTests = require('../../helpers/runTests');
+runTests(countRectangles, `
+    countRectangles(1, 3) should return 6.
+    countRectangles(3, 2) should return 18.
+    countRectangles(1, 2) should return 3.
+    countRectangles(5, 4) should return 150.
+    countRectangles(11, 19) should return 12540.
+`);

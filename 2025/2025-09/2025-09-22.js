@@ -23,9 +23,12 @@ function digitsOrLetters(str) {
     return response;
 }
 
-digitsOrLetters("abc123") //should return "tie".
-digitsOrLetters("a1b2c3d") //should return "letters".
-digitsOrLetters("1a2b3c4") //should return "digits".
-digitsOrLetters("abc123!@#DEF") //should return "letters".
-digitsOrLetters("H3110 W0R1D") //should return "digits".
-digitsOrLetters("P455W0RD") //should return "tie".
+const runTests = require('../../helpers/runTests');
+runTests(digitsOrLetters, `
+    digitsOrLetters("abc123") should return "tie".
+    digitsOrLetters("a1b2c3d") should return "letters".
+    digitsOrLetters("1a2b3c4") should return "digits".
+    digitsOrLetters("abc123!@#DEF") should return "letters".
+    digitsOrLetters("H3110 W0R1D") should return "digits".
+    digitsOrLetters("P455W0RD") should return "tie".
+`);

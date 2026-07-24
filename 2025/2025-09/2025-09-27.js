@@ -41,16 +41,14 @@ function isSpam(number) {
     return spam;
 }
 
-
-isSpam("+0 (200) 234-0182") //should return false.
-isSpam("+091 (555) 309-1922") //should return true.
-isSpam("+1 (555) 435-4792") //should return true.
-isSpam("+0 (955) 234-4364") //should return true.
-isSpam("+0 (155) 131-6943") //should return true.
-isSpam("+0 (555) 135-0192") //should return true.
-isSpam("+0 (555) 564-1987") //should return true.
-isSpam("+00 (555) 234-0182") //should return false.
-
-/* 
-
-*/
+const runTests = require('../../helpers/runTests');
+runTests(isSpam, `
+    isSpam("+0 (200) 234-0182") should return false.
+    isSpam("+091 (555) 309-1922") should return true.
+    isSpam("+1 (555) 435-4792") should return true.
+    isSpam("+0 (955) 234-4364") should return true.
+    isSpam("+0 (155) 131-6943") should return true.
+    isSpam("+0 (555) 135-0192") should return true.
+    isSpam("+0 (555) 564-1987") should return true.
+    isSpam("+00 (555) 234-0182") should return false.
+`);

@@ -19,9 +19,9 @@ function piggyBank(coins) {
 
 const runTests = require('../../helpers/runTests');
 runTests(piggyBank, `
-    Waiting:1. piggyBank({ pennies: 3, nickels: 5, dimes: 2, quarters: 6 }) should return "$1.98".
-    Waiting:2. piggyBank({ pennies: 1, nickels: 1, dimes: 1, quarters: 1 }) should return "$0.41".
-    Waiting:3. piggyBank({ nickels: 8, dimes: 6, quarters: 5 }) should return "$2.25".
-    Waiting:4. piggyBank({}) should return "$0.00".
-    Waiting:5. piggyBank({ pennies: 146, nickels: 11, dimes: 0, quarters: 19 }) should return "$6.76".
+    piggyBank({ pennies: 3, nickels: 5, dimes: 2, quarters: 6 }) should return "$1.98".
+    piggyBank({ pennies: 1, nickels: 1, dimes: 1, quarters: 1 }) should return "$0.41".
+    piggyBank({ nickels: 8, dimes: 6, quarters: 5 }) should return "$2.25".
+    piggyBank({}) should return "$0.00".
+    piggyBank({ pennies: 146, nickels: 11, dimes: 0, quarters: 19 }) should return "$6.76".
 `);

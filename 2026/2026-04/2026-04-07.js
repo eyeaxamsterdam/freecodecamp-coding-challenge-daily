@@ -19,9 +19,9 @@ function palindromeLocator(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(palindromeLocator, `
-    Waiting:1. palindromeLocator("racecar") should return "e".
-    Waiting:2. palindromeLocator("level") should return "v".
-    Waiting:3. palindromeLocator("freecodecamp") should return "none".
-    Waiting:4. palindromeLocator("noon") should return "oo".
-    Waiting:5. palindromeLocator("11100111") should return "00".
+    palindromeLocator("racecar") should return "e".
+    palindromeLocator("level") should return "v".
+    palindromeLocator("freecodecamp") should return "none".
+    palindromeLocator("noon") should return "oo".
+    palindromeLocator("11100111") should return "00".
 `);

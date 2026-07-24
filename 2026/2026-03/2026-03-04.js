@@ -25,9 +25,9 @@ function cardValues(cards) {
 
 const runTests = require('../../helpers/runTests');
 runTests(cardValues, `
-    Waiting:1. cardValues(["3H", "4D", "5S"]) should return [3, 4, 5].
-    Waiting:2. cardValues(["AS", "10S", "10H", "6D", "7D"]) should return [1, 10, 10, 6, 7].
-    Waiting:3. cardValues(["8D", "QS", "2H", "JC", "9C"]) should return [8, 10, 2, 10, 9].
-    Waiting:4. cardValues(["AS", "KS"]) should return [1, 10].
-    Waiting:5. cardValues(["10H", "JH", "QH", "KH", "AH"]) should return [10, 10, 10, 10, 1].
+    cardValues(["3H", "4D", "5S"]) should return [3, 4, 5].
+    cardValues(["AS", "10S", "10H", "6D", "7D"]) should return [1, 10, 10, 6, 7].
+    cardValues(["8D", "QS", "2H", "JC", "9C"]) should return [8, 10, 2, 10, 9].
+    cardValues(["AS", "KS"]) should return [1, 10].
+    cardValues(["10H", "JH", "QH", "KH", "AH"]) should return [10, 10, 10, 10, 1].
 `);

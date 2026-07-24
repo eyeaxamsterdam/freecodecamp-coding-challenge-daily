@@ -11,10 +11,10 @@ function areAnagrams(str1, str2) {
 
 const runTests = require('../../helpers/runTests');
 runTests(areAnagrams, `
-    Waiting:1. areAnagrams("listen", "silent") should return true.
-    Waiting:2. areAnagrams("School master", "The classroom") should return true.
-    Waiting:3. areAnagrams("A gentleman", "Elegant man") should return true.
-    Waiting:4. areAnagrams("Hello", "World") should return false.
-    Waiting:5. areAnagrams("apple", "banana") should return false.
-    Waiting:6. areAnagrams("cat", "dog") should return false. 
+    areAnagrams("listen", "silent") should return true.
+    areAnagrams("School master", "The classroom") should return true.
+    areAnagrams("A gentleman", "Elegant man") should return true.
+    areAnagrams("Hello", "World") should return false.
+    areAnagrams("apple", "banana") should return false.
+    areAnagrams("cat", "dog") should return false. 
 `);

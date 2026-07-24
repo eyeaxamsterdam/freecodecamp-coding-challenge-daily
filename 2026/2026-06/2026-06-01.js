@@ -17,9 +17,9 @@ function isValidSchema(obj) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isValidSchema, `
-    Waiting:1. isValidSchema({ username: "bob" }) should return true.
-    Waiting:2. isValidSchema({ username: "jen", posts: 30 }) should return true.
-    Waiting:3. isValidSchema({ username: "" }) should return true.
-    Waiting:4. isValidSchema({ username: 7 }) should return false.
-    Waiting:5. isValidSchema({ posts: 25 }) should return false.
+    isValidSchema({ username: "bob" }) should return true.
+    isValidSchema({ username: "jen", posts: 30 }) should return true.
+    isValidSchema({ username: "" }) should return true.
+    isValidSchema({ username: 7 }) should return false.
+    isValidSchema({ posts: 25 }) should return false.
 `);

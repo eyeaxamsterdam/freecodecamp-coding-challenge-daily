@@ -21,8 +21,8 @@ function rookAttack(rook1, rook2) {
 
 const runTests = require('../../helpers/runTests');
 runTests(rookAttack, `
-    Waiting:1. rookAttack("A1", "A8") should return true.
-    Waiting:2. rookAttack("B4", "F4") should return true.
-    Waiting:3. rookAttack("E3", "D4") should return false.
-    Waiting:4. rookAttack("H7", "F6") should return false. 
+    rookAttack("A1", "A8") should return true.
+    rookAttack("B4", "F4") should return true.
+    rookAttack("E3", "D4") should return false.
+    rookAttack("H7", "F6") should return false. 
 `);

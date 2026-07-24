@@ -21,8 +21,12 @@ function count(text, pattern) {
 }
 
 //Tests
-count('abcdefg', 'def') //should return 1.
-count('hello', 'world') //should return 0.
-count('mississippi', 'iss') //should return 2.
-count('she sells seashells by the seashore', 'sh') //should return 3.
-count('101010101010101010101', '101') //should return 10.
+
+const runTests = require('../../helpers/runTests');
+runTests(count, `
+    count('abcdefg', 'def') should return 1.
+    count('hello', 'world') should return 0.
+    count('mississippi', 'iss') should return 2.
+    count('she sells seashells by the seashore', 'sh') should return 3.
+    count('101010101010101010101', '101') should return 10.
+`);

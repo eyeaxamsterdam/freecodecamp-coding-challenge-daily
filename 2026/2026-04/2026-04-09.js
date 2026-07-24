@@ -34,8 +34,8 @@ function getNextBingoNumber(n) {
 const runTests = require('../../helpers/runTests');
 runTests(getNextBingoNumber, `
     Waiting 1. getNextBingoNumber("B10") should return "B11".
-    Waiting:2. getNextBingoNumber("N33") should return "N34".
-    Waiting:3. getNextBingoNumber("I30") should return "N31".
-    Waiting:4. getNextBingoNumber("G60") should return "O61".
-    Waiting:5. getNextBingoNumber("O75") should return "B1".
+    getNextBingoNumber("N33") should return "N34".
+    getNextBingoNumber("I30") should return "N31".
+    getNextBingoNumber("G60") should return "O61".
+    getNextBingoNumber("O75") should return "B1".
     `);

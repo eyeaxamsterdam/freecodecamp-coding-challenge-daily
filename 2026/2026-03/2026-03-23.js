@@ -11,10 +11,10 @@ function hasNoRepeats(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(hasNoRepeats, `
-    Waiting:1. hasNoRepeats("hi world") should return true.
-    Waiting:2. hasNoRepeats("hello world") should return false.
-    Waiting:3. hasNoRepeats("abcdefghijklmnopqrstuvwxyz") should return true.
-    Waiting:4. hasNoRepeats("freeCodeCamp") should return false.
-    Waiting:5. hasNoRepeats("The quick brown fox jumped over the lazy dog.") should return true.
-    Waiting:6. hasNoRepeats("Mississippi") should return false.
+    hasNoRepeats("hi world") should return true.
+    hasNoRepeats("hello world") should return false.
+    hasNoRepeats("abcdefghijklmnopqrstuvwxyz") should return true.
+    hasNoRepeats("freeCodeCamp") should return false.
+    hasNoRepeats("The quick brown fox jumped over the lazy dog.") should return true.
+    hasNoRepeats("Mississippi") should return false.
 `);

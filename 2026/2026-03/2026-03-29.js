@@ -27,9 +27,9 @@ function isValidIsbn10(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isValidIsbn10, `
-    Waiting:1. isValidIsbn10("0-306-40615-2") should return true.
-    Waiting:2. isValidIsbn10("0-306-40615-1") should return false.
-    Waiting:3. isValidIsbn10("0-8044-2957-X") should return true.
-    Waiting:4. isValidIsbn10("X-306-40615-2") should return false.
-    Waiting:5. isValidIsbn10("0-6822-2589-4") should return true.
+    isValidIsbn10("0-306-40615-2") should return true.
+    isValidIsbn10("0-306-40615-1") should return false.
+    isValidIsbn10("0-8044-2957-X") should return true.
+    isValidIsbn10("X-306-40615-2") should return false.
+    isValidIsbn10("0-6822-2589-4") should return true.
 `);

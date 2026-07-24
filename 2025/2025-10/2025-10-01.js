@@ -16,7 +16,10 @@ function toDecimal(binary) {
   return baseTen;
 }
 
-toDecimal("101") //should return 5.
-toDecimal("1010") //should return 10.
-toDecimal("10010") //should return 18.
-toDecimal("1010101") //should return 85.
+const runTests = require('../../helpers/runTests');
+runTests(toDecimal, `
+    toDecimal("101") should return 5.
+    toDecimal("1010") should return 10.
+    toDecimal("10010") should return 18.
+    toDecimal("1010101") should return 85.
+`);

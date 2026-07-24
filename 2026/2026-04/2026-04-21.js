@@ -17,7 +17,11 @@ function getOddWords(str) {
     return response;
 }
 // Tests
-getOddWords("This is a super good test"); // should return "a super".
-getOddWords("one two three four"); // should return "one two three".
-getOddWords("banana split sundae with rainbow sprinkles on top"); // should return "split rainbow sprinkles top".
 getOddWords("The quick brown fox jumped over the lazy river"); // "The quick brown fox the river".
+
+const runTests = require('../../helpers/runTests');
+runTests(getOddWords, `
+    getOddWords("This is a super good test") should return "a super".
+    getOddWords("one two three four") should return "one two three".
+    getOddWords("banana split sundae with rainbow sprinkles on top") should return "split rainbow sprinkles top".
+`);

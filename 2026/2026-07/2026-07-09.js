@@ -45,13 +45,13 @@ function triageIssue(title, labels) {
 
 const runTests = require('../../helpers/runTests');
 runTests(triageIssue, `
-    Waiting:1. triageIssue("app crashes with error", []) should return ["bug", "needs triage"].
-    Waiting:2. triageIssue("app crashes with error", ["bug", "needs triage"]) should return ["bug", "help wanted"].
-    Waiting:3. triageIssue("add dark mode", []) should return ["enhancement", "discussing"].
-    Waiting:4. triageIssue("add dark mode", ["enhancement", "discussing"]) should return ["enhancement", "help wanted"].
-    Waiting:5. triageIssue("xss security bug", []) should return ["bug", "needs triage", "critical"].
-    Waiting:6. triageIssue("security vulnerability in auth", []) should return ["critical"].
-    Waiting:7. triageIssue("easy a11y fix", ["bug", "needs triage"]) should return ["bug", "good first issue"].
-    Waiting:8. triageIssue("planned api migration", ["enhancement", "discussing"]) should return ["enhancement", "on the roadmap"].
-    Waiting:9. triageIssue("improve security", ["enhancement", "discussing"]) should return ["enhancement", "help wanted", "critical"].
+    triageIssue("app crashes with error", []) should return ["bug", "needs triage"].
+    triageIssue("app crashes with error", ["bug", "needs triage"]) should return ["bug", "help wanted"].
+    triageIssue("add dark mode", []) should return ["enhancement", "discussing"].
+    triageIssue("add dark mode", ["enhancement", "discussing"]) should return ["enhancement", "help wanted"].
+    triageIssue("xss security bug", []) should return ["bug", "needs triage", "critical"].
+    triageIssue("security vulnerability in auth", []) should return ["critical"].
+    triageIssue("easy a11y fix", ["bug", "needs triage"]) should return ["bug", "good first issue"].
+    triageIssue("planned api migration", ["enhancement", "discussing"]) should return ["enhancement", "on the roadmap"].
+    triageIssue("improve security", ["enhancement", "discussing"]) should return ["enhancement", "help wanted", "critical"].
 `);

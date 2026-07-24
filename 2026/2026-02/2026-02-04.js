@@ -9,8 +9,8 @@ function truncateText(text) {
 
 const runTests = require('../../helpers/runTests');
 runTests(truncateText, `
-    Waiting:1. truncateText("Hello, world!") should return "Hello, world!".
-    Waiting:2. truncateText("This string should get truncated.") should return "This string shoul...".
-    Waiting:3. truncateText("Exactly twenty chars") should return "Exactly twenty chars".
-    Waiting:4. truncateText(".....................") should return "....................".
+    truncateText("Hello, world!") should return "Hello, world!".
+    truncateText("This string should get truncated.") should return "This string shoul...".
+    truncateText("Exactly twenty chars") should return "Exactly twenty chars".
+    truncateText(".....................") should return "....................".
 `);

@@ -31,8 +31,12 @@ function infected(days) {
 }
 
 //Tests
-infected(1) //should return 2.
-infected(3) //should return 6.
-infected(8) //should return 152.
-infected(17) //should return 39808.
-infected(25) //should return 5217638.
+
+const runTests = require('../../helpers/runTests');
+runTests(infected, `
+    infected(1) should return 2.
+    infected(3) should return 6.
+    infected(8) should return 152.
+    infected(17) should return 39808.
+    infected(25) should return 5217638.
+`);

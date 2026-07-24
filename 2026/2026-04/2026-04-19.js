@@ -19,9 +19,13 @@ function getUniqueClimbs(steps) {
 }
 
 //Tests:
-getUniqueClimbs(4) // should return 5.
-getUniqueClimbs(5) // should return 8.
-getUniqueClimbs(10) // should return 89.
-getUniqueClimbs(18) // should return 4181.
-getUniqueClimbs(29) // should return 832040.
-getUniqueClimbs(50) // should return 20365011074.
+
+const runTests = require('../../helpers/runTests');
+runTests(getUniqueClimbs, `
+    getUniqueClimbs(4) should return 5.
+    getUniqueClimbs(5) should return 8.
+    getUniqueClimbs(10) should return 89.
+    getUniqueClimbs(18) should return 4181.
+    getUniqueClimbs(29) should return 832040.
+    getUniqueClimbs(50) should return 20365011074.
+`);

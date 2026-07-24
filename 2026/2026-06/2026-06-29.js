@@ -35,12 +35,12 @@ function getMood(genre, bpm) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getMood, `
-    Waiting:1. getMood("rock", 111) should return "happy".
-    Waiting:2. getMood("electronic", 74) should return "focus".
-    Waiting:3. getMood("classical", 180) should return "happy".
-    Waiting:4. getMood("rock", 155) should return "hype".
-    Waiting:5. getMood("electronic", 90) should return "happy".
-    Waiting:6. getMood("classical", 67) should return "focus".
-    Waiting:7. getMood("pop", 100) should return "happy".
-    Waiting:8. getMood("electronic", 135) should return "hype".
+    getMood("rock", 111) should return "happy".
+    getMood("electronic", 74) should return "focus".
+    getMood("classical", 180) should return "happy".
+    getMood("rock", 155) should return "hype".
+    getMood("electronic", 90) should return "happy".
+    getMood("classical", 67) should return "focus".
+    getMood("pop", 100) should return "happy".
+    getMood("electronic", 135) should return "hype".
 `);

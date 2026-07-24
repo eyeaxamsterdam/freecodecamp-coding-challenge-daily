@@ -46,13 +46,13 @@ function explodeFizzbuzz(targetZCount) {
 const runTests = require('../../helpers/runTests');
 
 runTests(explodeFizzbuzz, `
-    Waiting:1. explodeFizzbuzz(9) should return 1.
-    Waiting:2. explodeFizzbuzz(15) should return 2.
-    Waiting:3. explodeFizzbuzz(51) should return 3.
-    Waiting:4. explodeFizzbuzz(52) should return 4.
-    Waiting:5. explodeFizzbuzz(359) should return 5.
-    Waiting:6. explodeFizzbuzz(789) should return 6.
-    Waiting:7. explodeFizzbuzz(54482) should return 11.
-    Waiting:8. explodeFizzbuzz(1000000) should return 14
+    explodeFizzbuzz(9) should return 1.
+    explodeFizzbuzz(15) should return 2.
+    explodeFizzbuzz(51) should return 3.
+    explodeFizzbuzz(52) should return 4.
+    explodeFizzbuzz(359) should return 5.
+    explodeFizzbuzz(789) should return 6.
+    explodeFizzbuzz(54482) should return 11.
+    explodeFizzbuzz(1000000) should return 14
     `
 );

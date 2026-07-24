@@ -21,8 +21,8 @@ function parseUrlQuery(url) {
 
 const runTests = require('../../helpers/runTests');
 runTests(parseUrlQuery, `
-Waiting:1. parseUrlQuery("https://example.com/search?name=Alice&age=30") should return {"name": "Alice", "age": "30"}
-Waiting:2. parseUrlQuery("https://freecodecamp.org/learn?skill=programming&language=python") should return {"skill": "programming", "language": "python"}
-Waiting:3. parseUrlQuery("https://freecodecamp.org/items?category=books&sort=asc&page=2") should return {"category": "books", "sort": "asc", "page": "2"}
-Waiting:4. parseUrlQuery("https://example.com?redirect=freecodecamp.org/learn&when=now") should return {"redirect": "freecodecamp.org/learn", "when": "now"}     */
+parseUrlQuery("https://example.com/search?name=Alice&age=30") should return {"name": "Alice", "age": "30"}
+parseUrlQuery("https://freecodecamp.org/learn?skill=programming&language=python") should return {"skill": "programming", "language": "python"}
+parseUrlQuery("https://freecodecamp.org/items?category=books&sort=asc&page=2") should return {"category": "books", "sort": "asc", "page": "2"}
+parseUrlQuery("https://example.com?redirect=freecodecamp.org/learn&when=now") should return {"redirect": "freecodecamp.org/learn", "when": "now"}
 `);

@@ -11,11 +11,11 @@ function duplicateCharacterCount(str1, str2) {
 
 const runTests = require('../../helpers/runTests');
 runTests(duplicateCharacterCount, `
-    Waiting:1. duplicateCharacterCount("aloha", "hei") should return 1.
-    Waiting:2. duplicateCharacterCount("jambo", "bonjour") should return 4.
-    Waiting:3. duplicateCharacterCount("hello", "hola") should return 3.
-    Waiting:4. duplicateCharacterCount("ola", "hej") should return 0.
-    Waiting:5. duplicateCharacterCount("ciao", "konnichiwa") should return 5.
-    Waiting:6. duplicateCharacterCount("merhaba", "xin chao") should return 2.
-    Waiting:7. duplicateCharacterCount("hello world", "hello to everyone around the world") should return 26.
+    duplicateCharacterCount("aloha", "hei") should return 1.
+    duplicateCharacterCount("jambo", "bonjour") should return 4.
+    duplicateCharacterCount("hello", "hola") should return 3.
+    duplicateCharacterCount("ola", "hej") should return 0.
+    duplicateCharacterCount("ciao", "konnichiwa") should return 5.
+    duplicateCharacterCount("merhaba", "xin chao") should return 2.
+    duplicateCharacterCount("hello world", "hello to everyone around the world") should return 26.
 `);

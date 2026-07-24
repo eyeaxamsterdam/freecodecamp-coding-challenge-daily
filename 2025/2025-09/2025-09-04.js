@@ -34,7 +34,11 @@ function repeatVowels(str) {
 }
 
 //Tests
-repeatVowels("hello world") //should return "helloo wooorld".
-repeatVowels("freeCodeCamp") //should return "freeeCooodeeeeCaaaaamp".
-repeatVowels("AEIOU") //should return "AEeIiiOoooUuuuu".
-repeatVowels("I like eating ice cream in Iceland") //should return "I liikeee eeeeaaaaatiiiiiing iiiiiiiceeeeeeee creeeeeeeeeaaaaaaaaaam iiiiiiiiiiin Iiiiiiiiiiiiceeeeeeeeeeeeelaaaaaaaaaaaaaand".
+
+const runTests = require('../../helpers/runTests');
+runTests(repeatVowels, `
+    repeatVowels("hello world") should return "helloo wooorld".
+    repeatVowels("freeCodeCamp") should return "freeeCooodeeeeCaaaaamp".
+    repeatVowels("AEIOU") should return "AEeIiiOoooUuuuu".
+    repeatVowels("I like eating ice cream in Iceland") should return "I liikeee eeeeaaaaatiiiiiing iiiiiiiceeeeeeee creeeeeeeeeaaaaaaaaaam iiiiiiiiiiin Iiiiiiiiiiiiceeeeeeeeeeeeelaaaaaaaaaaaaaand".
+`);

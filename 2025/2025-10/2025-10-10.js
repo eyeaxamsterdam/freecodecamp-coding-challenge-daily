@@ -21,9 +21,9 @@ function launchFuel(payload) {
 
 const runTests = require('../../helpers/runTests');
 runTests(launchFuel, `
-    Waiting:1. launchFuel(50) should return 12.4.
-    Waiting:2. launchFuel(500) should return 124.8.
-    Waiting:3. launchFuel(243) should return 60.7.
-    Waiting:4. launchFuel(11000) should return 2749.8.
-    Waiting:5. launchFuel(6214) should return 1553.4.
+    launchFuel(50) should return 12.4.
+    launchFuel(500) should return 124.8.
+    launchFuel(243) should return 60.7.
+    launchFuel(11000) should return 2749.8.
+    launchFuel(6214) should return 1553.4.
 `);

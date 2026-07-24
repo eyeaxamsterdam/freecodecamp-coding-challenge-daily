@@ -33,5 +33,9 @@ function rotate(matrix) {
 //Tests
 //rotate([[1]]) //should return [[1]].
 //rotate([[1, 2], [3, 4]]) //should return [[3, 1], [4, 2]].
-rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) //should return [[7, 4, 1], [8, 5, 2], [9, 6, 3]].
 //rotate([[0, 1, 0], [1, 0, 1], [0, 0, 0]]) //should return [[0, 1, 0], [0, 0, 1], [0, 1, 0]].
+
+const runTests = require('../../helpers/runTests');
+runTests(rotate, `
+    rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) should return [[7, 4, 1], [8, 5, 2], [9, 6, 3]].
+`);

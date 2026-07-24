@@ -14,10 +14,10 @@ function triageIssue(ms, message) {
 
 const runTests = require('../../helpers/runTests');
 runTests(triageIssue, `
-    Waiting:1. triageIssue(86400000, "Lets fix it") should return "leave it".
-    Waiting:2. triageIssue(1209600000, "still waiting") should return "bump it".
-    Waiting:3. triageIssue(864000000, "bump") should return "close it".
-    Waiting:4. triageIssue(604800000, "Do we still want this?") should return "bump it".
-    Waiting:5. triageIssue(604800000, "Bumping this") should return "close it".
-    Waiting:6. triageIssue(345600000, "I'll make a PR") should return "leave it".
+    triageIssue(86400000, "Lets fix it") should return "leave it".
+    triageIssue(1209600000, "still waiting") should return "bump it".
+    triageIssue(864000000, "bump") should return "close it".
+    triageIssue(604800000, "Do we still want this?") should return "bump it".
+    triageIssue(604800000, "Bumping this") should return "close it".
+    triageIssue(345600000, "I'll make a PR") should return "leave it".
 `);

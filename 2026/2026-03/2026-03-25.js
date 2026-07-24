@@ -15,8 +15,8 @@ function canRetake(finishTime, currentTime) {
 
 const runTests = require('../../helpers/runTests');
 runTests(canRetake, `
-    Waiting:1. canRetake("2026-03-23T08:00:00", "2026-03-25T14:00:00") should return true.
-    Waiting:2. canRetake("2026-03-24T14:00:00", "2026-03-25T10:00:00") should return false.
-    Waiting:3. canRetake("2026-03-23T09:25:00", "2026-03-25T09:25:00") should return true.
-    Waiting:4. canRetake("2026-03-23T11:50:00", "2026-03-25T11:49:59") should return false.
+    canRetake("2026-03-23T08:00:00", "2026-03-25T14:00:00") should return true.
+    canRetake("2026-03-24T14:00:00", "2026-03-25T10:00:00") should return false.
+    canRetake("2026-03-23T09:25:00", "2026-03-25T09:25:00") should return true.
+    canRetake("2026-03-23T11:50:00", "2026-03-25T11:49:59") should return false.
 `);

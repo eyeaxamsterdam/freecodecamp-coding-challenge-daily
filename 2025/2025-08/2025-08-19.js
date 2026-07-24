@@ -29,9 +29,9 @@ function sumOfSquares(n) {
 
 const runTests = require('../../helpers/runTests');
 runTests(sumOfSquares, `
-    Waiting:1. sumOfSquares(5) should return 55.
-    Waiting:2. sumOfSquares(10) should return 385.
-    Waiting:3. sumOfSquares(25) should return 5525.
-    Waiting:4. sumOfSquares(500) should return 41791750.
-    Waiting:5. sumOfSquares(1000) should return 333833500. 
+    sumOfSquares(5) should return 55.
+    sumOfSquares(10) should return 385.
+    sumOfSquares(25) should return 5525.
+    sumOfSquares(500) should return 41791750.
+    sumOfSquares(1000) should return 333833500. 
 `);

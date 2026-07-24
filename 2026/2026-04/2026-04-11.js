@@ -57,10 +57,10 @@ function rookBishopAttack(rook, bishop) {
 
 const runTests = require('../../helpers/runTests');
 runTests(rookBishopAttack, `
-    Waiting:1. rookBishopAttack("A1", "A5") should return "rook".
-    Waiting:2. rookBishopAttack("C3", "F6") should return "bishop".
-    Waiting:3. rookBishopAttack("D4", "D7") should return "rook".
-    Waiting:4. rookBishopAttack("B7", "H1") should return "bishop".
-    Waiting:5. rookBishopAttack("B3", "C5") should return "neither".
-    Waiting:6. rookBishopAttack("G3", "E8") should return "neither"
+    rookBishopAttack("A1", "A5") should return "rook".
+    rookBishopAttack("C3", "F6") should return "bishop".
+    rookBishopAttack("D4", "D7") should return "rook".
+    rookBishopAttack("B7", "H1") should return "bishop".
+    rookBishopAttack("B3", "C5") should return "neither".
+    rookBishopAttack("G3", "E8") should return "neither"
 `);

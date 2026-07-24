@@ -21,10 +21,14 @@ function allUnique(str) {
 }
 
 //Tests
-allUnique("abc") //should return true.
-allUnique("aA") //should return true.
-allUnique("QwErTy123!@") //should return true.
-allUnique("~!@#$%^&*()_+") //should return true.
-allUnique("hello") //should return false.
-allUnique("freeCodeCamp") //should return false.
-allUnique("!@#*$%^&*()aA") //should return false.
+
+const runTests = require('../../helpers/runTests');
+runTests(allUnique, `
+    allUnique("abc") should return true.
+    allUnique("aA") should return true.
+    allUnique("QwErTy123!@") should return true.
+    allUnique("~!@#$%^&*()_+") should return true.
+    allUnique("hello") should return false.
+    allUnique("freeCodeCamp") should return false.
+    allUnique("!@#*$%^&*()aA") should return false.
+`);

@@ -17,11 +17,11 @@ function isBalanced(s) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isBalanced, `
-    Waiting:1. isBalanced("racecar") should return true.
-    Waiting:2. isBalanced("Lorem Ipsum") should return true.
-    Waiting:3. isBalanced("Kitty Ipsum") should return false.
-    Waiting:4. isBalanced("string") should return false.
-    Waiting:5. isBalanced(" ") should return true.
-    Waiting:6. isBalanced("abcdefghijklmnopqrstuvwxyz") should return false.
-    Waiting:7. isBalanced("123A#b!E&*456-o.U") should return true.
+    isBalanced("racecar") should return true.
+    isBalanced("Lorem Ipsum") should return true.
+    isBalanced("Kitty Ipsum") should return false.
+    isBalanced("string") should return false.
+    isBalanced(" ") should return true.
+    isBalanced("abcdefghijklmnopqrstuvwxyz") should return false.
+    isBalanced("123A#b!E&*456-o.U") should return true.
 `);

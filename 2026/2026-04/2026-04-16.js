@@ -29,8 +29,12 @@ function doMath(str) {
 
 
 //Tests:
-doMath("3ab10c8") // should return 5.
-doMath("6MINUS4") //should return 2.
-doMath("9plus3") //should return 12.
-doMath("5fkwo#10i#%.<>15P=@20!#B/25") //should return 15.
-doMath("a.67,1$lk6ldf34@#LD@]2d32d2'2l3,@l3L#@2gh35s09if=df#$t9sm49t0df3$^%[vc;:0:4mt")// should return 67.
+
+const runTests = require('../../helpers/runTests');
+runTests(doMath, `
+    doMath("3ab10c8") should return 5.
+    doMath("6MINUS4") should return 2.
+    doMath("9plus3") should return 12.
+    doMath("5fkwo#10i#%.<>15P=@20!#B/25") should return 15.
+    doMath("a.67,1$lk6ldf34@#LD@]2d32d2'2l3,@l3L#@2gh35s09if=df#$t9sm49t0df3$^%[vc;:0:4mt") should return 67.
+`);

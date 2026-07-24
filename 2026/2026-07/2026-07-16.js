@@ -35,10 +35,10 @@ function pigLatin(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(pigLatin, `
-    Waiting:1. pigLatin("universe") should return "universeway".
-    Waiting:2. pigLatin("hello") should return "ellohay".
-    Waiting:3. pigLatin("hello universe") should return "ellohay universeway".
-    Waiting:4. pigLatin("Hello universe") should return "Ellohay universeway".
-    Waiting:5. pigLatin("Pig Latin is fun") should return "Igpay Atinlay isway unfay".
-    Waiting:6. pigLatin("The quick brown fox jumped over the lazy dog") should return "Ethay uickqay ownbray oxfay umpedjay overway ethay azylay ogday".
+    pigLatin("universe") should return "universeway".
+    pigLatin("hello") should return "ellohay".
+    pigLatin("hello universe") should return "ellohay universeway".
+    pigLatin("Hello universe") should return "Ellohay universeway".
+    pigLatin("Pig Latin is fun") should return "Igpay Atinlay isway unfay".
+    pigLatin("The quick brown fox jumped over the lazy dog") should return "Ethay uickqay ownbray oxfay umpedjay overway ethay azylay ogday".
 `);

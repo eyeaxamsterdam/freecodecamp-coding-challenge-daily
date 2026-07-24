@@ -14,10 +14,10 @@ function blendWords(word1, word2) {
 
 const runTests = require('../../helpers/runTests');
 runTests(blendWords, `
-    Waiting:1. blendWords("turtle", "toucan") should return "turcan".
-    Waiting:2. blendWords("chipmunk", "flamingo") should return "chipingo".
-    Waiting:3. blendWords("falcon", "pelican") should return "falican".
-    Waiting:4. blendWords("hyena", "iguana") should return "hyana".
-    Waiting:5. blendWords("scorpion", "gorilla") should return "scorilla".
-    Waiting:6. blendWords("platypus", "wolverine") should return "platerine".
+    blendWords("turtle", "toucan") should return "turcan".
+    blendWords("chipmunk", "flamingo") should return "chipingo".
+    blendWords("falcon", "pelican") should return "falican".
+    blendWords("hyena", "iguana") should return "hyana".
+    blendWords("scorpion", "gorilla") should return "scorilla".
+    blendWords("platypus", "wolverine") should return "platerine".
 `);

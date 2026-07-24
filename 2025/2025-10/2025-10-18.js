@@ -31,8 +31,11 @@ function sockPairs(pairs, cycles) {
     return Math.floor(socks / 2) 
 }
 
-sockPairs(2, 5) //should return 1.
-sockPairs(1, 2) //should return 0.
-sockPairs(5, 11) //should return 4.
-sockPairs(6, 25) //should return 3.
-sockPairs(1, 8) //should return 0.
+const runTests = require('../../helpers/runTests');
+runTests(sockPairs, `
+    sockPairs(2, 5) should return 1.
+    sockPairs(1, 2) should return 0.
+    sockPairs(5, 11) should return 4.
+    sockPairs(6, 25) should return 3.
+    sockPairs(1, 8) should return 0.
+`);

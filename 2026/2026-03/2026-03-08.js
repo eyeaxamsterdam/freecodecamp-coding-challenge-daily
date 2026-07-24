@@ -29,13 +29,13 @@ function isValidHSL(hsl) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isValidHSL, `
-    Waiting:1. isValidHSL("hsl(240, 50%, 50%)") should return true.
-    Waiting:2. isValidHSL("hsl( 200 , 50% , 75% )") should return true.
-    Waiting:3. isValidHSL("hsl(99,60%,80%);") should return true.
-    Waiting:4. isValidHSL("hsl(0, 0%, 0%) ;") should return true.
-    Waiting:5. isValidHSL("hsl(  10  ,  20%   ,  30%   )    ;") should return true.
-    Waiting:6. isValidHSL("hsl(361, 50%, 80%)") should return false.
-    Waiting:7. isValidHSL("hsl(300, 101%, 70%)") should return false.
-    Waiting:8. isValidHSL("hsl(200, 55%, 75)") should return false.
-    Waiting:9. isValidHSL("hsl (80, 20%, 10%)") should return false.
+    isValidHSL("hsl(240, 50%, 50%)") should return true.
+    isValidHSL("hsl( 200 , 50% , 75% )") should return true.
+    isValidHSL("hsl(99,60%,80%);") should return true.
+    isValidHSL("hsl(0, 0%, 0%) ;") should return true.
+    isValidHSL("hsl(  10  ,  20%   ,  30%   )    ;") should return true.
+    isValidHSL("hsl(361, 50%, 80%)") should return false.
+    isValidHSL("hsl(300, 101%, 70%)") should return false.
+    isValidHSL("hsl(200, 55%, 75)") should return false.
+    isValidHSL("hsl (80, 20%, 10%)") should return false.
 `);

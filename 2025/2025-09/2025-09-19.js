@@ -17,8 +17,11 @@ function numberOfPhotos(photoSizeMb, hardDriveSizeGb) {
   return calculateNumOfPhotos();
 }
 
-numberOfPhotos(1, 1) //should return 1000.
-numberOfPhotos(2, 1) //should return 500.
-numberOfPhotos(4, 256) //should return 64000.
-numberOfPhotos(3.5, 750) //should return 214285.
-numberOfPhotos(3.5, 5.5) // should return 1571.
+const runTests = require('../../helpers/runTests');
+runTests(numberOfPhotos, `
+    numberOfPhotos(1, 1) should return 1000.
+    numberOfPhotos(2, 1) should return 500.
+    numberOfPhotos(4, 256) should return 64000.
+    numberOfPhotos(3.5, 750) should return 214285.
+    numberOfPhotos(3.5, 5.5) should return 1571.
+`);

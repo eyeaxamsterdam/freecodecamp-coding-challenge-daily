@@ -18,7 +18,10 @@ function toBinary(decimal) {
   return binaryNum;
 }
 
-toBinary(5) //should return "101".
-toBinary(12) //should return "1100".
-toBinary(50) //should return "110010".
-toBinary(99) //should return "1100011".
+const runTests = require('../../helpers/runTests');
+runTests(toBinary, `
+    toBinary(5) should return "101".
+    toBinary(12) should return "1100".
+    toBinary(50) should return "110010".
+    toBinary(99) should return "1100011".
+`);

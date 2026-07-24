@@ -32,8 +32,12 @@ function hexToDecimal(hex) {
 }
 
 //Tests
-hexToDecimal("A") //should return 10.
-hexToDecimal("15") //should return 21.
-hexToDecimal("2E") //should return 46.
-hexToDecimal("FF") //should return 255.
-hexToDecimal("A3F") //should return 2623
+
+const runTests = require('../../helpers/runTests');
+runTests(hexToDecimal, `
+    hexToDecimal("A") should return 10.
+    hexToDecimal("15") should return 21.
+    hexToDecimal("2E") should return 46.
+    hexToDecimal("FF") should return 255.
+    hexToDecimal("A3F") should return 2623.
+`);

@@ -33,13 +33,13 @@ function getMilestone(years) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getMilestone, `
-    Waiting:1. getMilestone(0) should return "Newlyweds".
-    Waiting:2. getMilestone(1) should return "Paper".
-    Waiting:3. getMilestone(8) should return "Wood".
-    Waiting:4. getMilestone(10) should return "Tin".
-    Waiting:5. getMilestone(26) should return "Silver".
-    Waiting:6. getMilestone(45) should return "Ruby".
-    Waiting:7. getMilestone(50) should return "Gold".
-    Waiting:8. getMilestone(64) should return "Diamond".
-    Waiting:9. getMilestone(71) should return "Platinum".
+    getMilestone(0) should return "Newlyweds".
+    getMilestone(1) should return "Paper".
+    getMilestone(8) should return "Wood".
+    getMilestone(10) should return "Tin".
+    getMilestone(26) should return "Silver".
+    getMilestone(45) should return "Ruby".
+    getMilestone(50) should return "Gold".
+    getMilestone(64) should return "Diamond".
+    getMilestone(71) should return "Platinum".
 `);

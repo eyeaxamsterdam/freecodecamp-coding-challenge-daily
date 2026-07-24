@@ -14,9 +14,9 @@ function getTallyCount(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getTallyCount, `
-    Waiting:1. getTallyCount("||||") should return 4.
-    Waiting:2. getTallyCount("||||/") should return 5.
-    Waiting:3. getTallyCount("||||/ |||") should return 8.
-    Waiting:4. getTallyCount("||||/ ||||/ ||||/ ||") should return 17.
-    Waiting:5. getTallyCount("||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |") should return 41.
+    getTallyCount("||||") should return 4.
+    getTallyCount("||||/") should return 5.
+    getTallyCount("||||/ |||") should return 8.
+    getTallyCount("||||/ ||||/ ||||/ ||") should return 17.
+    getTallyCount("||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |") should return 41.
 `);

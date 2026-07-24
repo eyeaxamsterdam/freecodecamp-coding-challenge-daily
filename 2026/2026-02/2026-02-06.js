@@ -207,95 +207,95 @@ function getFlag(code) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getFlag, `
-    Passed:1. getFlag("AL") should return "🇦🇱".
-Passed:2. getFlag("AD") should return "🇦🇩".
-Passed:3. getFlag("AR") should return "🇦🇷".
-Passed:4. getFlag("AM") should return "🇦🇲".
-Passed:5. getFlag("AU") should return "🇦🇺".
-Passed:6. getFlag("AT") should return "🇦🇹".
-Passed:7. getFlag("AZ") should return "🇦🇿".
-Passed:8. getFlag("BE") should return "🇧🇪".
-Passed:9. getFlag("BJ") should return "🇧🇯".
-Passed:10. getFlag("BO") should return "🇧🇴".
-Passed:11. getFlag("BA") should return "🇧🇦".
-Passed:12. getFlag("BR") should return "🇧🇷".
-Passed:13. getFlag("BG") should return "🇧🇬".
-Passed:14. getFlag("CA") should return "🇨🇦".
-Passed:15. getFlag("CL") should return "🇨🇱".
-Passed:16. getFlag("CN") should return "🇨🇳".
-Passed:17. getFlag("CO") should return "🇨🇴".
-Passed:18. getFlag("HR") should return "🇭🇷".
-Passed:19. getFlag("CY") should return "🇨🇾".
-Passed:20. getFlag("CZ") should return "🇨🇿".
-Passed:21. getFlag("DK") should return "🇩🇰".
-Passed:22. getFlag("EC") should return "🇪🇨".
-Passed:23. getFlag("ER") should return "🇪🇷".
-Passed:24. getFlag("EE") should return "🇪🇪".
-Passed:25. getFlag("FI") should return "🇫🇮".
-Passed:26. getFlag("FR") should return "🇫🇷".
-Passed:27. getFlag("GE") should return "🇬🇪".
-Passed:28. getFlag("DE") should return "🇩🇪".
-Passed:29. getFlag("GB") should return "🇬🇧".
-Passed:30. getFlag("GR") should return "🇬🇷".
-Passed:31. getFlag("GW") should return "🇬🇼".
-Passed:32. getFlag("HT") should return "🇭🇹".
-Passed:33. getFlag("HK") should return "🇭🇰".
-Passed:34. getFlag("HU") should return "🇭🇺".
-Passed:35. getFlag("IS") should return "🇮🇸".
-Passed:36. getFlag("IN") should return "🇮🇳".
-Passed:37. getFlag("IR") should return "🇮🇷".
-Passed:38. getFlag("IE") should return "🇮🇪".
-Passed:39. getFlag("IL") should return "🇮🇱".
-Passed:40. getFlag("IT") should return "🇮🇹".
-Passed:41. getFlag("JM") should return "🇯🇲".
-Passed:42. getFlag("JP") should return "🇯🇵".
-Passed:43. getFlag("KZ") should return "🇰🇿".
-Passed:44. getFlag("KE") should return "🇰🇪".
-Passed:45. getFlag("XK") should return "🇽🇰".
-Passed:46. getFlag("KG") should return "🇰🇬".
-Passed:47. getFlag("LV") should return "🇱🇻".
-Passed:48. getFlag("LB") should return "🇱🇧".
-Passed:49. getFlag("LI") should return "🇱🇮".
-Passed:50. getFlag("LT") should return "🇱🇹".
-Passed:51. getFlag("LU") should return "🇱🇺".
-Passed:52. getFlag("MG") should return "🇲🇬".
-Passed:53. getFlag("MY") should return "🇲🇾".
-Passed:54. getFlag("MT") should return "🇲🇹".
-Passed:55. getFlag("MX") should return "🇲🇽".
-Passed:56. getFlag("MD") should return "🇲🇩".
-Passed:57. getFlag("MC") should return "🇲🇨".
-Passed:58. getFlag("MN") should return "🇲🇳".
-Passed:59. getFlag("ME") should return "🇲🇪".
-Passed:60. getFlag("MA") should return "🇲🇦".
-Passed:61. getFlag("NL") should return "🇳🇱".
-Passed:62. getFlag("NZ") should return "🇳🇿".
-Passed:63. getFlag("NG") should return "🇳🇬".
-Passed:64. getFlag("MK") should return "🇲🇰".
-Passed:65. getFlag("NO") should return "🇳🇴".
-Passed:66. getFlag("PK") should return "🇵🇰".
-Passed:67. getFlag("PH") should return "🇵🇭".
-Passed:68. getFlag("PL") should return "🇵🇱".
-Passed:69. getFlag("PT") should return "🇵🇹".
-Passed:70. getFlag("PR") should return "🇵🇷".
-Passed:71. getFlag("RO") should return "🇷🇴".
-Passed:72. getFlag("SM") should return "🇸🇲".
-Passed:73. getFlag("SA") should return "🇸🇦".
-Passed:74. getFlag("RS") should return "🇷🇸".
-Passed:75. getFlag("SG") should return "🇸🇬".
-Passed:76. getFlag("SK") should return "🇸🇰".
-Passed:77. getFlag("SI") should return "🇸🇮".
-Passed:78. getFlag("ZA") should return "🇿🇦".
-Passed:79. getFlag("KR") should return "🇰🇷".
-Passed:80. getFlag("ES") should return "🇪🇸".
-Passed:81. getFlag("SE") should return "🇸🇪".
-Passed:82. getFlag("CH") should return "🇨🇭".
-Passed:83. getFlag("TH") should return "🇹🇭".
-Passed:84. getFlag("TT") should return "🇹🇹".
-Passed:85. getFlag("TR") should return "🇹🇷".
-Passed:86. getFlag("UA") should return "🇺🇦".
-Passed:87. getFlag("AE") should return "🇦🇪".
-Passed:88. getFlag("US") should return "🇺🇸".
-Passed:89. getFlag("UY") should return "🇺🇾".
-Passed:90. getFlag("UZ") should return "🇺🇿".
-Passed:91. getFlag("VE") should return "🇻🇪".
+    getFlag("AL") should return "🇦🇱".
+getFlag("AD") should return "🇦🇩".
+getFlag("AR") should return "🇦🇷".
+getFlag("AM") should return "🇦🇲".
+getFlag("AU") should return "🇦🇺".
+getFlag("AT") should return "🇦🇹".
+getFlag("AZ") should return "🇦🇿".
+getFlag("BE") should return "🇧🇪".
+getFlag("BJ") should return "🇧🇯".
+getFlag("BO") should return "🇧🇴".
+getFlag("BA") should return "🇧🇦".
+getFlag("BR") should return "🇧🇷".
+getFlag("BG") should return "🇧🇬".
+getFlag("CA") should return "🇨🇦".
+getFlag("CL") should return "🇨🇱".
+getFlag("CN") should return "🇨🇳".
+getFlag("CO") should return "🇨🇴".
+getFlag("HR") should return "🇭🇷".
+getFlag("CY") should return "🇨🇾".
+getFlag("CZ") should return "🇨🇿".
+getFlag("DK") should return "🇩🇰".
+getFlag("EC") should return "🇪🇨".
+getFlag("ER") should return "🇪🇷".
+getFlag("EE") should return "🇪🇪".
+getFlag("FI") should return "🇫🇮".
+getFlag("FR") should return "🇫🇷".
+getFlag("GE") should return "🇬🇪".
+getFlag("DE") should return "🇩🇪".
+getFlag("GB") should return "🇬🇧".
+getFlag("GR") should return "🇬🇷".
+getFlag("GW") should return "🇬🇼".
+getFlag("HT") should return "🇭🇹".
+getFlag("HK") should return "🇭🇰".
+getFlag("HU") should return "🇭🇺".
+getFlag("IS") should return "🇮🇸".
+getFlag("IN") should return "🇮🇳".
+getFlag("IR") should return "🇮🇷".
+getFlag("IE") should return "🇮🇪".
+getFlag("IL") should return "🇮🇱".
+getFlag("IT") should return "🇮🇹".
+getFlag("JM") should return "🇯🇲".
+getFlag("JP") should return "🇯🇵".
+getFlag("KZ") should return "🇰🇿".
+getFlag("KE") should return "🇰🇪".
+getFlag("XK") should return "🇽🇰".
+getFlag("KG") should return "🇰🇬".
+getFlag("LV") should return "🇱🇻".
+getFlag("LB") should return "🇱🇧".
+getFlag("LI") should return "🇱🇮".
+getFlag("LT") should return "🇱🇹".
+getFlag("LU") should return "🇱🇺".
+getFlag("MG") should return "🇲🇬".
+getFlag("MY") should return "🇲🇾".
+getFlag("MT") should return "🇲🇹".
+getFlag("MX") should return "🇲🇽".
+getFlag("MD") should return "🇲🇩".
+getFlag("MC") should return "🇲🇨".
+getFlag("MN") should return "🇲🇳".
+getFlag("ME") should return "🇲🇪".
+getFlag("MA") should return "🇲🇦".
+getFlag("NL") should return "🇳🇱".
+getFlag("NZ") should return "🇳🇿".
+getFlag("NG") should return "🇳🇬".
+getFlag("MK") should return "🇲🇰".
+getFlag("NO") should return "🇳🇴".
+getFlag("PK") should return "🇵🇰".
+getFlag("PH") should return "🇵🇭".
+getFlag("PL") should return "🇵🇱".
+getFlag("PT") should return "🇵🇹".
+getFlag("PR") should return "🇵🇷".
+getFlag("RO") should return "🇷🇴".
+getFlag("SM") should return "🇸🇲".
+getFlag("SA") should return "🇸🇦".
+getFlag("RS") should return "🇷🇸".
+getFlag("SG") should return "🇸🇬".
+getFlag("SK") should return "🇸🇰".
+getFlag("SI") should return "🇸🇮".
+getFlag("ZA") should return "🇿🇦".
+getFlag("KR") should return "🇰🇷".
+getFlag("ES") should return "🇪🇸".
+getFlag("SE") should return "🇸🇪".
+getFlag("CH") should return "🇨🇭".
+getFlag("TH") should return "🇹🇭".
+getFlag("TT") should return "🇹🇹".
+getFlag("TR") should return "🇹🇷".
+getFlag("UA") should return "🇺🇦".
+getFlag("AE") should return "🇦🇪".
+getFlag("US") should return "🇺🇸".
+getFlag("UY") should return "🇺🇾".
+getFlag("UZ") should return "🇺🇿".
+getFlag("VE") should return "🇻🇪".
 `);

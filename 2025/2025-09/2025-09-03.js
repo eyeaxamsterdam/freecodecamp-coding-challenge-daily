@@ -20,11 +20,15 @@ function isPangram(sentence, letters) {
 }
 
 //Tests
-isPangram("hello", "helo") //should return true
-isPangram("hello", "hel") //should return false
-isPangram("hello", "helow") //should return false
-isPangram("hello world", "helowrd") //should return true
-isPangram("Hello World!", "helowrd") //should return true
-isPangram("Hello World!", "heliowrd") //should return false
-isPangram("freeCodeCamp", "frcdmp") //should return false
-isPangram("The quick brown fox jumps over the lazy dog.", "abcdefghijklmnopqrstuvwxyz") //should return true
+
+const runTests = require('../../helpers/runTests');
+runTests(isPangram, `
+    isPangram("hello", "helo") should return true.
+    isPangram("hello", "hel") should return false.
+    isPangram("hello", "helow") should return false.
+    isPangram("hello world", "helowrd") should return true.
+    isPangram("Hello World!", "helowrd") should return true.
+    isPangram("Hello World!", "heliowrd") should return false.
+    isPangram("freeCodeCamp", "frcdmp") should return false.
+    isPangram("The quick brown fox jumps over the lazy dog.", "abcdefghijklmnopqrstuvwxyz") should return true.
+`);

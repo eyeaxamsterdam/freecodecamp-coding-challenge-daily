@@ -30,8 +30,12 @@ function gcd(x, y) {
 }
 
 //Tests
-gcd(4, 6) //should return 2.
-gcd(20, 15) //should return 5.
-gcd(13, 17) //should return 1.
-gcd(654, 456) //should return 6.
-gcd(3456, 4320) //should return 864.
+
+const runTests = require('../../helpers/runTests');
+runTests(gcd, `
+    gcd(4, 6) should return 2.
+    gcd(20, 15) should return 5.
+    gcd(13, 17) should return 1.
+    gcd(654, 456) should return 6.
+    gcd(3456, 4320) should return 864.
+`);

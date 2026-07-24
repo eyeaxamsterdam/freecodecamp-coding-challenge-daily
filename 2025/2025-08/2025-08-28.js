@@ -14,25 +14,30 @@ function getLaptopCost(laptops, budget) {
     console.log(desc);
 
     const findPrice = (arr) => {
-        let mostExpensive;
+        let secondPrice;
         for (let i = 0; i < arr.length; i++) {
             if (arr[i] < budget) {
-                mostExpensive = arr[i];
+                secondPrice = arr[i];
                 break;
             }
+            secondPrice = 0;
         }
-        return mostExpensive;
+        console.log('second price', secondPrice);
+        return secondPrice;
     }
 
-    selected = desc[0] > budget ? findPrice(desc.slice(1)) : budget < desc[desc.length] ? '0' : desc[1]
-    
+    selected = desc[0] > budget ? findPrice(desc.slice(1)) : desc[1]
+
     console.log('selected', selected);
 
     return selected;
 }
 
-getLaptopCost([1500, 2000, 1800, 1400], 1900) //should return 1800
-getLaptopCost([1500, 2000, 2000, 1800, 1400], 1900) //should return 1800
-getLaptopCost([2099, 1599, 1899, 1499], 2200) //should return 1899
-getLaptopCost([2099, 1599, 1899, 1499], 1000) //should return 0
-getLaptopCost([1200, 1500, 1600, 1800, 1400, 2000], 1450) //should return 1400
+const runTests = require('../../helpers/runTests');
+runTests(getLaptopCost, `
+    getLaptopCost([1500, 2000, 1800, 1400], 1900) should return 1800.
+    getLaptopCost([1500, 2000, 2000, 1800, 1400], 1900) should return 1800.
+    getLaptopCost([2099, 1599, 1899, 1499], 2200) should return 1899.
+    getLaptopCost([2099, 1599, 1899, 1499], 1000) should return 0.
+    getLaptopCost([1200, 1500, 1600, 1800, 1400, 2000], 1450) should return 1400.
+`);

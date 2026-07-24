@@ -19,10 +19,10 @@ function isGoldenRatio(a, b) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isGoldenRatio, `
-    Waiting:1. isGoldenRatio(21, 34) should return true.
-    Waiting:2. isGoldenRatio(15, 20) should return false.
-    Waiting:3. isGoldenRatio(8, 13) should return true.
-    Waiting:4. isGoldenRatio(10, 16) should return false.
-    Waiting:5. isGoldenRatio(1618, 1000) should return true.
-    Waiting:6. isGoldenRatio(88, 55) should return false.
+    isGoldenRatio(21, 34) should return true.
+    isGoldenRatio(15, 20) should return false.
+    isGoldenRatio(8, 13) should return true.
+    isGoldenRatio(10, 16) should return false.
+    isGoldenRatio(1618, 1000) should return true.
+    isGoldenRatio(88, 55) should return false.
 `);

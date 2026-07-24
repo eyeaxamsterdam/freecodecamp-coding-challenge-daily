@@ -38,11 +38,11 @@ function getJetLagHours(departureCity, arrivalCity, flightDuration, direction) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getJetLagHours, `
-    Waiting:1. getJetLagHours("Istanbul", "Hong Kong", 10, "east") should return 6.5.
-    Waiting:2. getJetLagHours("London", "New York", 8, "west") should return 5.8.
-    Waiting:3. getJetLagHours("Hong Kong", "Tokyo", 4, "east") should return 1.6.
-    Waiting:4. getJetLagHours("Dubai", "London", 7, "west") should return 4.7.
-    Waiting:5. getJetLagHours("Los Angeles", "Hong Kong", 15, "west") should return 17.5.
-    Waiting:6. getJetLagHours("Tokyo", "Dubai", 9, "west") should return 5.9.
-    Waiting:7. getJetLagHours("New York", "Istanbul", 10, "east") should return 9.5.
+    getJetLagHours("Istanbul", "Hong Kong", 10, "east") should return 6.5.
+    getJetLagHours("London", "New York", 8, "west") should return 5.8.
+    getJetLagHours("Hong Kong", "Tokyo", 4, "east") should return 1.6.
+    getJetLagHours("Dubai", "London", 7, "west") should return 4.7.
+    getJetLagHours("Los Angeles", "Hong Kong", 15, "west") should return 17.5.
+    getJetLagHours("Tokyo", "Dubai", 9, "west") should return 5.9.
+    getJetLagHours("New York", "Istanbul", 10, "east") should return 9.5.
 `);

@@ -14,12 +14,12 @@ function isNarcissistic(n) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isNarcissistic, `
-    Waiting:1. isNarcissistic(153) should return true.
-    Waiting:2. isNarcissistic(154) should return false.
-    Waiting:3. isNarcissistic(371) should return true.
-    Waiting:4. isNarcissistic(512) should return false.
-    Waiting:5. isNarcissistic(9) should return true.
-    Waiting:6. isNarcissistic(11) should return false.
-    Waiting:7. isNarcissistic(9474) should return true.
-    Waiting:8. isNarcissistic(6549) should return false.
+    isNarcissistic(153) should return true.
+    isNarcissistic(154) should return false.
+    isNarcissistic(371) should return true.
+    isNarcissistic(512) should return false.
+    isNarcissistic(9) should return true.
+    isNarcissistic(11) should return false.
+    isNarcissistic(9474) should return true.
+    isNarcissistic(6549) should return false.
 `);

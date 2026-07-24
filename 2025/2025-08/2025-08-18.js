@@ -14,7 +14,7 @@ function factorial(n) {
 
 const runTests = require('../../helpers/runTests');
 runTests(factorial, `
-    Waiting:1. factorial(0) should return 1.
-    Waiting:2. factorial(5) should return 120.
-    Waiting:3. factorial(20) should return 2432902008176640000. 
+    factorial(0) should return 1.
+    factorial(5) should return 120.
+    factorial(20) should return 2432902008176640000. 
 `);

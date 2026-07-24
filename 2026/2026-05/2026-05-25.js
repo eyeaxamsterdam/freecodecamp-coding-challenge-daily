@@ -15,10 +15,10 @@ function guessNumber(secret, guess) {
 }
 const runTests = require("../../helpers/runTests");
 runTests(guessNumber,`
-    Waiting:1. guessNumber(50, 30) should return "higher".
-    Waiting:2. guessNumber(85, 99) should return "lower".
-    Waiting:3. guessNumber(2026, 2026) should return "you got it!".
-    Waiting:4. guessNumber(92904, 11283) should return "higher".
-    Waiting:5. guessNumber(230495, 423920) should return "lower".
-    Waiting:6. guessNumber(120349, 120349) should return "you got it!".
+    guessNumber(50, 30) should return "higher".
+    guessNumber(85, 99) should return "lower".
+    guessNumber(2026, 2026) should return "you got it!".
+    guessNumber(92904, 11283) should return "higher".
+    guessNumber(230495, 423920) should return "lower".
+    guessNumber(120349, 120349) should return "you got it!".
 `);

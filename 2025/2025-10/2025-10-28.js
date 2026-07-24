@@ -38,10 +38,13 @@ function navigate(commands) {
     return currentPage;
 }
 
-navigate(["Visit About Us", "Back", "Forward"]) //should return "About Us".
-navigate(["Forward"]) //should return "Home".
-navigate(["Back"]) //should return "Home".
-navigate(["Visit About Us", "Visit Gallery"]) //should return "Gallery".
-navigate(["Visit About Us", "Visit Gallery", "Back", "Back"]) //should return "Home".
-navigate(["Visit About", "Visit Gallery", "Back", "Visit Contact", "Forward"]) //should return "Contact".
-navigate(["Visit About Us", "Visit Visit Us", "Forward", "Visit Contact Us", "Back"]) //should return "Visit Us".
+const runTests = require('../../helpers/runTests');
+runTests(navigate, `
+    navigate(["Visit About Us", "Back", "Forward"]) should return "About Us".
+    navigate(["Forward"]) should return "Home".
+    navigate(["Back"]) should return "Home".
+    navigate(["Visit About Us", "Visit Gallery"]) should return "Gallery".
+    navigate(["Visit About Us", "Visit Gallery", "Back", "Back"]) should return "Home".
+    navigate(["Visit About", "Visit Gallery", "Back", "Visit Contact", "Forward"]) should return "Contact".
+    navigate(["Visit About Us", "Visit Visit Us", "Forward", "Visit Contact Us", "Back"]) should return "Visit Us".
+`);

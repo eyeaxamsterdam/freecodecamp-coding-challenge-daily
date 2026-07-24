@@ -19,9 +19,9 @@ function capitalizeFibonacci(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(capitalizeFibonacci, `
-    Waiting:1. capitalizeFibonacci("hello world") should return "HELLo woRld".
-    Waiting:2. capitalizeFibonacci("HELLO WORLD") should return "HELLo woRld".
-    Waiting:3. capitalizeFibonacci("hello, world!") should return "HELLo, wOrld!".
-    Waiting:4. capitalizeFibonacci("The quick brown fox jumped over the lazy dog.") should return "THE qUicK broWn fox jUmped over thE lazy dog.".
-    Waiting:5. capitalizeFibonacci("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar ex nibh, vel ullamcorper ligula egestas quis. Integer tincidunt fringilla accumsan. Integer et metus placerat, gravida felis at, pellentesque nisl.") should return "LOREm ipSum dOlor sit amet, consecTetur adipiscing elit. proin pulvinar ex nibh, vel ullaMcorper ligula egestas quis. integer tincidunt fringillA accumsan. integer et metus placerat, gravida felis at, pellentesque nisl.".
+    capitalizeFibonacci("hello world") should return "HELLo woRld".
+    capitalizeFibonacci("HELLO WORLD") should return "HELLo woRld".
+    capitalizeFibonacci("hello, world!") should return "HELLo, wOrld!".
+    capitalizeFibonacci("The quick brown fox jumped over the lazy dog.") should return "THE qUicK broWn fox jUmped over thE lazy dog.".
+    capitalizeFibonacci("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar ex nibh, vel ullamcorper ligula egestas quis. Integer tincidunt fringilla accumsan. Integer et metus placerat, gravida felis at, pellentesque nisl.") should return "LOREm ipSum dOlor sit amet, consecTetur adipiscing elit. proin pulvinar ex nibh, vel ullaMcorper ligula egestas quis. integer tincidunt fringillA accumsan. integer et metus placerat, gravida felis at, pellentesque nisl.".
 `);

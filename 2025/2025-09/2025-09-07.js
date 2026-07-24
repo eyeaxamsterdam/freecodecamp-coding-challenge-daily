@@ -39,11 +39,13 @@ function parseRomanNumeral(numeral) {
   return total;
 }
 
-
-parseRomanNumeral("NII") //should return 3.
-parseRomanNumeral("IV") //should return 4.
-parseRomanNumeral("XXVI") //should return 26.
-parseRomanNumeral("XCIX") //should return 99.
-parseRomanNumeral("CDLX") //should return 460.
-parseRomanNumeral("DIV") //should return 504.
-parseRomanNumeral("MMXXV") //should return 2025.
+const runTests = require('../../helpers/runTests');
+runTests(parseRomanNumeral, `
+    parseRomanNumeral("NII") should return 3.
+    parseRomanNumeral("IV") should return 4.
+    parseRomanNumeral("XXVI") should return 26.
+    parseRomanNumeral("XCIX") should return 99.
+    parseRomanNumeral("CDLX") should return 460.
+    parseRomanNumeral("DIV") should return 504.
+    parseRomanNumeral("MMXXV") should return 2025.
+`);

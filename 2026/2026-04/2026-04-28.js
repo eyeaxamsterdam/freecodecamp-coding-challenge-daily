@@ -22,14 +22,14 @@ function getNumberWords(n) {
 const runTests = require('../../helpers/runTests');
 
 runTests(getNumberWords, `
-   Waiting:1. getNumberWords(0) should return "zero".
-    Waiting:2. getNumberWords(10) should return "ten".
-    Waiting:3. getNumberWords(19) should return "nineteen".
-    Waiting:4. getNumberWords(30) should return "thirty".
-    Waiting:5. getNumberWords(53) should return "fifty-three".
-    Waiting:6. getNumberWords(7) should return "seven".
-    Waiting:7. getNumberWords(12) should return "twelve".
-    Waiting:8. getNumberWords(60) should return "sixty".
-    Waiting:9. getNumberWords(67) should return "sixty-seven".
-    Waiting:10. getNumberWords(98) should return "ninety-eight". 
+   getNumberWords(0) should return "zero".
+    getNumberWords(10) should return "ten".
+    getNumberWords(19) should return "nineteen".
+    getNumberWords(30) should return "thirty".
+    getNumberWords(53) should return "fifty-three".
+    getNumberWords(7) should return "seven".
+    getNumberWords(12) should return "twelve".
+    getNumberWords(60) should return "sixty".
+    getNumberWords(67) should return "sixty-seven".
+    getNumberWords(98) should return "ninety-eight". 
 `)

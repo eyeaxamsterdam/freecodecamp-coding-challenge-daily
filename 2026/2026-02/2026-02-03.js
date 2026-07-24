@@ -9,8 +9,8 @@ function mirror(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(mirror, `
-    Waiting:1. mirror("freeCodeCamp") should return "freeCodeCamppmaCedoCeerf".
-    Waiting:2. mirror("RaceCar") should return "RaceCarraCecaR".
-    Waiting:3. mirror("helloworld") should return "helloworlddlrowolleh".
-    Waiting:4. mirror("The quick brown fox...") should return "The quick brown fox......xof nworb kciuq ehT".
+    mirror("freeCodeCamp") should return "freeCodeCamppmaCedoCeerf".
+    mirror("RaceCar") should return "RaceCarraCecaR".
+    mirror("helloworld") should return "helloworlddlrowolleh".
+    mirror("The quick brown fox...") should return "The quick brown fox......xof nworb kciuq ehT".
 `);

@@ -44,9 +44,9 @@ function cast(spells) {
 
 const runTests = require('../../helpers/runTests');
 runTests(cast, `
-    Waiting:1. cast("fihwl") should return 33.
-    Waiting:2. cast("lwswfi") should return 45.
-    Waiting:3. cast("wislhfl") should return 37.
-    Waiting:4. cast("sihwlih") should return 50.
-    Waiting:5. cast("wishlfihwslwifihl") should return 101.
+    cast("fihwl") should return 33.
+    cast("lwswfi") should return 45.
+    cast("wislhfl") should return 37.
+    cast("sihwlih") should return 50.
+    cast("wishlfihwslwifihl") should return 101.
 `);

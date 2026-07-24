@@ -28,9 +28,13 @@ function isMatch(fingerprintA, fingerprintB) {
 }
 
 //Tests
-isMatch("helloworld", "helloworld") //should return true.
-isMatch("helloworld", "helloworlds") //should return false.
-isMatch("helloworld", "jelloworld") //should return true.
-isMatch("thequickbrownfoxjumpsoverthelazydog", "thequickbrownfoxjumpsoverthelazydog") //should return true.
-isMatch("theslickbrownfoxjumpsoverthelazydog", "thequickbrownfoxjumpsoverthehazydog") //should return true.
-isMatch("thequickbrownfoxjumpsoverthelazydog", "thequickbrownfoxjumpsoverthehazycat") //should return false.
+
+const runTests = require('../../helpers/runTests');
+runTests(isMatch, `
+    isMatch("helloworld", "helloworld") should return true.
+    isMatch("helloworld", "helloworlds") should return false.
+    isMatch("helloworld", "jelloworld") should return true.
+    isMatch("thequickbrownfoxjumpsoverthelazydog", "thequickbrownfoxjumpsoverthelazydog") should return true.
+    isMatch("theslickbrownfoxjumpsoverthelazydog", "thequickbrownfoxjumpsoverthehazydog") should return true.
+    isMatch("thequickbrownfoxjumpsoverthelazydog", "thequickbrownfoxjumpsoverthehazycat") should return false.
+`);

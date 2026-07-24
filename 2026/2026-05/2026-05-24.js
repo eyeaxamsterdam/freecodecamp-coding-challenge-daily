@@ -37,10 +37,10 @@ function fixNumerals(str) {
 }
 const runTests = require("../../helpers/runTests");
 runTests(fixNumerals, `
-    Waiting:1. fixNumerals("XIIIII") should return "XV".
-    Waiting:2. fixNumerals("IIIILX") should return "LXIV".
-    Waiting:3. fixNumerals("XXVVVIIIII") should return "XL".
-    Waiting:4. fixNumerals("MDCCLXXXXVIIII") should return "MDCCXCIX".
-    Waiting:5. fixNumerals("IIIIVVVVXXXXLLLLCCDD") should return "MCDLXIV".
-    Waiting:6. fixNumerals("ILCDMIVDIIXLCVCXDL") should return "MMCMLXXXIV".
+    fixNumerals("XIIIII") should return "XV".
+    fixNumerals("IIIILX") should return "LXIV".
+    fixNumerals("XXVVVIIIII") should return "XL".
+    fixNumerals("MDCCLXXXXVIIII") should return "MDCCXCIX".
+    fixNumerals("IIIIVVVVXXXXLLLLCCDD") should return "MCDLXIV".
+    fixNumerals("ILCDMIVDIIXLCVCXDL") should return "MMCMLXXXIV".
 `)

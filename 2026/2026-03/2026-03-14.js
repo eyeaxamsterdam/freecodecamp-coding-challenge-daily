@@ -19,12 +19,12 @@ function getPiDecimal(n) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getPiDecimal, `
-    Waiting:1. getPiDecimal(5) should return 9.
-    Waiting:2. getPiDecimal(10) should return 5.
-    Waiting:3. getPiDecimal(22) should return 6.
-    Waiting:4. getPiDecimal(39) should return 7.
-    Waiting:5. getPiDecimal(76) should return 2.
-    Waiting:6. getPiDecimal(384) should return 4.
-    Waiting:7. getPiDecimal(601) should return 0.
-    Waiting:8. getPiDecimal(1000) should return 9.
+    getPiDecimal(5) should return 9.
+    getPiDecimal(10) should return 5.
+    getPiDecimal(22) should return 6.
+    getPiDecimal(39) should return 7.
+    getPiDecimal(76) should return 2.
+    getPiDecimal(384) should return 4.
+    getPiDecimal(601) should return 0.
+    getPiDecimal(1000) should return 9.
 `);

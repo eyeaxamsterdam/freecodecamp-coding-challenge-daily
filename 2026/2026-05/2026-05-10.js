@@ -25,9 +25,9 @@ function isValidIsbn13(str) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isValidIsbn13, `
-    Waiting:1. isValidIsbn13("9780306406157") should return true.
-    Waiting:2. isValidIsbn13("97803064061570") should return false.
-    Waiting:3. isValidIsbn13("978-0-13-595705-9") should return true.
-    Waiting:4. isValidIsbn13("978-030-64061A-4") should return false.
-    Waiting:5. isValidIsbn13("9-7-8-0-1-3-4-7-5-7-5-9-9") should return true.
+    isValidIsbn13("9780306406157") should return true.
+    isValidIsbn13("97803064061570") should return false.
+    isValidIsbn13("978-0-13-595705-9") should return true.
+    isValidIsbn13("978-030-64061A-4") should return false.
+    isValidIsbn13("9-7-8-0-1-3-4-7-5-7-5-9-9") should return true.
 `);

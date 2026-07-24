@@ -13,9 +13,9 @@ function detectMutations(strand1, strand2) {
 
 const runTests = require('../../helpers/runTests');
 runTests(detectMutations, `
-    Waiting:1. detectMutations("ATCG", "ATGG") should return [2].
-    Waiting:2. detectMutations("ATGCGTACGTTAGC", "ATGCATACGATTGC") should return [4, 9, 11].
-    Waiting:3. detectMutations("GATCTAGCTAGGCTAGCTAG", "GATCTAGCTAGGCTAGCTAG") should return [].
-    Waiting:4. detectMutations("TCAGATCATGGCTAGCTACGATCAGCTAGCATGCATATCGACTG", "TCAGATCATGGCTAGAGCTGATCAGCTAGCATGCATATCGACTG") should return [15, 16, 17, 18].
-    Waiting:5. detectMutations("ACGTCAGTACGCACATGACCATTGACATA", "AACGTCAGTACGCACATGACCATTGACAT") should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 23, 24, 25, 26, 27, 28].
+    detectMutations("ATCG", "ATGG") should return [2].
+    detectMutations("ATGCGTACGTTAGC", "ATGCATACGATTGC") should return [4, 9, 11].
+    detectMutations("GATCTAGCTAGGCTAGCTAG", "GATCTAGCTAGGCTAGCTAG") should return [].
+    detectMutations("TCAGATCATGGCTAGCTACGATCAGCTAGCATGCATATCGACTG", "TCAGATCATGGCTAGAGCTGATCAGCTAGCATGCATATCGACTG") should return [15, 16, 17, 18].
+    detectMutations("ACGTCAGTACGCACATGACCATTGACATA", "AACGTCAGTACGCACATGACCATTGACAT") should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 23, 24, 25, 26, 27, 28].
 `);

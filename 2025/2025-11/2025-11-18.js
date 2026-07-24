@@ -15,7 +15,11 @@ function oneHundred(chars) {
 }
 
 //Tests
-oneHundred("One hundred ") //should return "One hundred One hundred One hundred One hundred One hundred One hundred One hundred One hundred One ".
-oneHundred("freeCodeCamp ") //should return "freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeC".
-oneHundred("daily challenges ") //should return "daily challenges daily challenges daily challenges daily challenges daily challenges daily challenge".
-oneHundred("!") //should return "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!".
+
+const runTests = require('../../helpers/runTests');
+runTests(oneHundred, `
+    oneHundred("One hundred ") should return "One hundred One hundred One hundred One hundred One hundred One hundred One hundred One hundred One ".
+    oneHundred("freeCodeCamp ") should return "freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeC".
+    oneHundred("daily challenges ") should return "daily challenges daily challenges daily challenges daily challenges daily challenges daily challenge".
+    oneHundred("!") should return "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!".
+`);

@@ -19,8 +19,11 @@ function format(time) {
     return fullTime;
 }
 
-format(500); //should return "8:20".
-format(4000) //should return "1:06:40".
-format(1) //should return "0:01".
-format(5555) //should return "1:32:35".
-format(99999) //should return "27:46:39".
+const runTests = require('../../helpers/runTests');
+runTests(format, `
+    format(500) should return "8:20".
+    format(4000) should return "1:06:40".
+    format(1) should return "0:01".
+    format(5555) should return "1:32:35".
+    format(99999) should return "27:46:39".
+`);

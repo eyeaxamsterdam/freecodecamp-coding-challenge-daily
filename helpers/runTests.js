@@ -1,5 +1,9 @@
 const assert = require("./chaiAssert");
 
+const GREEN = "\x1b[32m";
+const RED = "\x1b[31m";
+const RESET = "\x1b[0m";
+
 function extractTopLevelArrays(str) {
     const results = [];
     let depth = 0, start = -1;
@@ -24,6 +28,25 @@ function runAssertBlock(fn, block) {
     runner(fn, assert);
 }
 
+// Order-independent for object keys (unlike JSON.stringify comparison),
+// order-dependent for arrays.
+function deepEqual(a, b) {
+    if (a === b) return true;
+    if (typeof a !== 'object' || typeof b !== 'object' || a === null || b === null) return false;
+    if (Array.isArray(a) !== Array.isArray(b)) return false;
+
+    if (Array.isArray(a)) {
+        return a.length === b.length && a.every((v, i) => deepEqual(v, b[i]));
+    }
+
+    const aKeys = Object.keys(a);
+    const bKeys = Object.keys(b);
+    return (
+        aKeys.length === bKeys.length &&
+        aKeys.every((k) => Object.prototype.hasOwnProperty.call(b, k) && deepEqual(a[k], b[k]))
+    );
+}
+
 function runLegacyLine(fn, line) {
     const callMatch = line.match(/\w+\((.+)\)\s+should return/);
     const expectedMatch = line.match(/should return (.+)/);
@@ -36,22 +59,26 @@ function runLegacyLine(fn, line) {
 
     const args = eval(`[${argsStr}]`);
     const arrays = extractTopLevelArrays(expectedStr);
+    // Wrapped in parens: a bare object literal like `{"a": 1}` would
+    // otherwise be parsed by eval as a block statement, not an expression.
     const expectedOptions = arrays.length > 0
-        ? arrays.map(s => eval(s))
-        : expectedStr.split(' or ').map(s => eval(s.trim()));
+        ? arrays.map(s => eval(`(${s})`))
+        : expectedStr.split(' or ').map(s => eval(`(${s.trim()})`));
 
     const result = fn(...args);
-    const resultStr = JSON.stringify(result);
 
-    if (!expectedOptions.some(e => resultStr === JSON.stringify(e))) {
-        throw new Error(`expected ${JSON.stringify(expectedOptions)}, got ${resultStr}`);
+    if (!expectedOptions.some((e) => deepEqual(result, e))) {
+        throw new Error(`expected ${JSON.stringify(expectedOptions)}, got ${JSON.stringify(result)}`);
     }
+
+    return { argsStr, result };
 }
 
 const TEST_SEPARATOR = '// ---';
 
 function report(passCount, failCount) {
-    console.log(`\n${passCount} passed, ${failCount} failed`);
+    console.log(`${passCount} passed, ${failCount} failed`);
+    console.log();
     if (failCount > 0) {
         process.exitCode = 1;
     }
@@ -69,17 +96,19 @@ function runAssertBlocks(fn, rawTests) {
     let passCount = 0;
     let failCount = 0;
 
+    console.log();
     blocks.forEach(block => {
         const label = block.split('\n')[0] + (block.includes('\n') ? ' ...' : '');
         try {
             runAssertBlock(fn, block);
-            console.log(`PASS: ${label}`);
+            console.log(`${GREEN}PASS:${RESET} ${label}`);
             passCount++;
         } catch (e) {
-            console.log(`FAIL: ${label}`);
+            console.log(`${RED}FAIL:${RESET} ${label}`);
             console.log(`  ${e.message}`);
             failCount++;
         }
+        console.log();
     });
 
     report(passCount, failCount);
@@ -96,16 +125,20 @@ function runLegacyLines(fn, rawTests) {
     let passCount = 0;
     let failCount = 0;
 
+    console.log();
     lines.forEach(line => {
         try {
-            runLegacyLine(fn, line);
-            console.log(`PASS: ${line}`);
+            const { argsStr, result } = runLegacyLine(fn, line);
+            const label = argsStr.length > 40 ? argsStr.slice(0, 40) + '...' : argsStr;
+            console.log(`${GREEN}PASS:${RESET} ${fn.name}(${label})`);
+            console.log(`  ${JSON.stringify(result)}`);
             passCount++;
         } catch (e) {
-            console.log(`FAIL: ${line}`);
+            console.log(`${RED}FAIL:${RESET} ${line}`);
             console.log(`  ${e.message}`);
             failCount++;
         }
+        console.log();
     });
 
     report(passCount, failCount);

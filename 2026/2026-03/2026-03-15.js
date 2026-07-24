@@ -34,11 +34,11 @@ function getCapturedValue(pieces) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getCapturedValue, `
-    Waiting:1. getCapturedValue(["P", "P", "P", "P", "P", "P", "R", "R", "N", "B", "Q", "K"]) should return 8.
-    Waiting:2. getCapturedValue(["P", "P", "P", "P", "P", "R", "B", "K"]) should return 26.
-    Waiting:3. getCapturedValue(["K", "P", "P", "N", "P", "P", "R", "P", "B", "P", "N", "B"]) should return 16.
-    Waiting:4. getCapturedValue(["P", "Q", "N", "P", "P", "B", "K", "P", "R", "R", "P", "P", "B", "P"]) should return 4.
-    Waiting:5. getCapturedValue(["P", "K"]) should return 38.
-    Waiting:6. getCapturedValue(["N", "P", "P", "B", "K", "P", "Q", "N", "P", "P", "R", "R", "P", "P", "P", "B"]) should return 0.
-    Waiting:7. getCapturedValue(["N", "P", "P", "B", "P", "R", "Q", "P", "P", "P", "B"]) should return "Checkmate".
+    getCapturedValue(["P", "P", "P", "P", "P", "P", "R", "R", "N", "B", "Q", "K"]) should return 8.
+    getCapturedValue(["P", "P", "P", "P", "P", "R", "B", "K"]) should return 26.
+    getCapturedValue(["K", "P", "P", "N", "P", "P", "R", "P", "B", "P", "N", "B"]) should return 16.
+    getCapturedValue(["P", "Q", "N", "P", "P", "B", "K", "P", "R", "R", "P", "P", "B", "P"]) should return 4.
+    getCapturedValue(["P", "K"]) should return 38.
+    getCapturedValue(["N", "P", "P", "B", "K", "P", "Q", "N", "P", "P", "R", "R", "P", "P", "P", "B"]) should return 0.
+    getCapturedValue(["N", "P", "P", "B", "P", "R", "Q", "P", "P", "P", "B"]) should return "Checkmate".
 `);

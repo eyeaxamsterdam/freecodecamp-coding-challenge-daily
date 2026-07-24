@@ -26,9 +26,9 @@ function kaprekar(n) {
 
 const runTests = require('../../helpers/runTests');
 runTests(kaprekar, `
-    Waiting:1. kaprekar(1234) should return 3.
-    Waiting:2. kaprekar(2025) should return 6.
-    Waiting:3. kaprekar(7173) should return 4.
-    Waiting:4. kaprekar(3164) should return 7.
-    Waiting:5. kaprekar(8082) should return 2.
+    kaprekar(1234) should return 3.
+    kaprekar(2025) should return 6.
+    kaprekar(7173) should return 4.
+    kaprekar(3164) should return 7.
+    kaprekar(8082) should return 2.
 `);

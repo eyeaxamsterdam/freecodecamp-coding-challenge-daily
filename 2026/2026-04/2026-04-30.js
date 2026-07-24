@@ -51,12 +51,12 @@ function isInCrossword(char) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isInCrossword, `
-    Waiting:1. isInCrossword("I") should return true.
-    Waiting:2. isInCrossword("D") should return true.
-    Waiting:3. isInCrossword("0") should return true.
-    Waiting:4. isInCrossword("u") should return true.
-    Waiting:5. isInCrossword("Y") should return false.
-    Waiting:6. isInCrossword("p") should return false.
-    Waiting:7. isInCrossword("1") should return false.
-    IDxting:8. isInCrossword("Q") should return false.
+    isInCrossword("I") should return true.
+    isInCrossword("D") should return true.
+    isInCrossword("0") should return true.
+    isInCrossword("u") should return true.
+    isInCrossword("Y") should return false.
+    isInCrossword("p") should return false.
+    isInCrossword("1") should return false.
+    isInCrossword("Q") should return false.
 `);   

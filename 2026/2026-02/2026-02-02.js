@@ -15,9 +15,9 @@ function groundhogDayPrediction(appearance) {
 
 const runTests = require('../../helpers/runTests');
 runTests(groundhogDayPrediction, `
-    Waiting:1. groundhogDayPrediction(true) should return "Looks like we'll have six more weeks of winter.".
-    Waiting:2. groundhogDayPrediction(false) should return "It's going to be an early spring.".
-    Waiting:3. groundhogDayPrediction(null) should return "No prediction this year.".
-    Waiting:4. groundhogDayPrediction(" ") should return "No prediction this year.".
-    Waiting:5. groundhogDayPrediction("true") should return "No prediction this year.".
+    groundhogDayPrediction(true) should return "Looks like we'll have six more weeks of winter.".
+    groundhogDayPrediction(false) should return "It's going to be an early spring.".
+    groundhogDayPrediction(null) should return "No prediction this year.".
+    groundhogDayPrediction(" ") should return "No prediction this year.".
+    groundhogDayPrediction("true") should return "No prediction this year.".
 `);

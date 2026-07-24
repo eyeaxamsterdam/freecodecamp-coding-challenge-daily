@@ -17,7 +17,10 @@ function reverseSentence(sentence) {
   return str;
 }
 
-reverseSentence("world hello") //should return "hello world".
-reverseSentence("push commit git") //should return "git commit push".
-reverseSentence("npm  install  sudo") //should return "sudo install npm".
-reverseSentence("import    default   function  export") //should return "export function default import".
+const runTests = require('../../helpers/runTests');
+runTests(reverseSentence, `
+    reverseSentence("world hello") should return "hello world".
+    reverseSentence("push commit git") should return "git commit push".
+    reverseSentence("npm  install  sudo") should return "sudo install npm".
+    reverseSentence("import    default   function  export") should return "export function default import".
+`);

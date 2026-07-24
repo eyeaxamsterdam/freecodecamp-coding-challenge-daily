@@ -49,12 +49,12 @@ function getPeriodicSpelling(word) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getPeriodicSpelling, `
-    Waiting:1. getPeriodicSpelling("neon") should return ["Ne", "O", "N"].
-    Waiting:2. getPeriodicSpelling("rational") should return ["Ra", "Ti", "O", "N", "Al"].
-    Waiting:3. getPeriodicSpelling("yarn") should return ["Y", "Ar", "N"].
-    Waiting:4. getPeriodicSpelling("carbon") should return ["C", "Ar", "B", "O", "N"] or ["Ca", "Rb", "O", "N"].
-    Waiting:5. getPeriodicSpelling("noisy") should return ["N", "O", "I", "S", "Y"] or ["No", "I", "S", "Y"].
-    Waiting:6. getPeriodicSpelling("bicycles") should return ["B", "I", "C", "Y", "Cl", "Es"] or ["Bi", "C", "Y", "Cl", "Es"].
-    Waiting:7. getPeriodicSpelling("optics") should return ["O", "P", "Ti", "C", "S"], ["O", "P", "Ti", "Cs"], ["O", "Pt", "I", "C", "S"], or ["O", "Pt", "I", "Cs"].
-    Waiting:8. getPeriodicSpelling("value") should return [].
+    getPeriodicSpelling("neon") should return ["Ne", "O", "N"].
+    getPeriodicSpelling("rational") should return ["Ra", "Ti", "O", "N", "Al"].
+    getPeriodicSpelling("yarn") should return ["Y", "Ar", "N"].
+    getPeriodicSpelling("carbon") should return ["C", "Ar", "B", "O", "N"] or ["Ca", "Rb", "O", "N"].
+    getPeriodicSpelling("noisy") should return ["N", "O", "I", "S", "Y"] or ["No", "I", "S", "Y"].
+    getPeriodicSpelling("bicycles") should return ["B", "I", "C", "Y", "Cl", "Es"] or ["Bi", "C", "Y", "Cl", "Es"].
+    getPeriodicSpelling("optics") should return ["O", "P", "Ti", "C", "S"], ["O", "P", "Ti", "Cs"], ["O", "Pt", "I", "C", "S"], or ["O", "Pt", "I", "Cs"].
+    getPeriodicSpelling("value") should return [].
 `);

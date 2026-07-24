@@ -146,9 +146,10 @@ async function main() {
 
   const { year, month, day, languages } = parseArgs(argv);
 
+  const repoRoot = path.join(__dirname, "..");
   const monthPadded = pad(month);
   const folderName = `${year}-${monthPadded}`;
-  const folderPath = path.join(process.cwd(), String(year), folderName);
+  const folderPath = path.join(repoRoot, String(year), folderName);
 
   for (const language of languages) {
     await createFile(year, month, day, language, folderName, folderPath);

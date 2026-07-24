@@ -31,20 +31,20 @@ function isValidNumber(n, base) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isValidNumber, `
-    Waiting:1. isValidNumber("10101", 2) should return true.
-    Waiting:2. isValidNumber("10201", 2) should return false.
-    Waiting:3. isValidNumber("76543210", 8) should return true.
-    Waiting:4. isValidNumber("9876543210", 8) should return false.
-    Waiting:5. isValidNumber("9876543210", 10) should return true.
-    Waiting:6. isValidNumber("ABC", 10) should return false.
-    Waiting:7. isValidNumber("ABC", 16) should return true.
-    Waiting:8. isValidNumber("Z", 36) should return true.
-    Waiting:9. isValidNumber("ABC", 20) should return true.
-    Waiting:10. isValidNumber("4B4BA9", 16) should return true.
-    Waiting:11. isValidNumber("5G3F8F", 16) should return false.
-    Waiting:12. isValidNumber("5G3F8F", 17) should return true.
-    Waiting:13. isValidNumber("abc", 10) should return false.
-    Waiting:14. isValidNumber("abc", 16) should return true.
-    Waiting:15. isValidNumber("AbC", 16) should return true.
-    Waiting:16. isValidNumber("z", 36) should return true.
+    isValidNumber("10101", 2) should return true.
+    isValidNumber("10201", 2) should return false.
+    isValidNumber("76543210", 8) should return true.
+    isValidNumber("9876543210", 8) should return false.
+    isValidNumber("9876543210", 10) should return true.
+    isValidNumber("ABC", 10) should return false.
+    isValidNumber("ABC", 16) should return true.
+    isValidNumber("Z", 36) should return true.
+    isValidNumber("ABC", 20) should return true.
+    isValidNumber("4B4BA9", 16) should return true.
+    isValidNumber("5G3F8F", 16) should return false.
+    isValidNumber("5G3F8F", 17) should return true.
+    isValidNumber("abc", 10) should return false.
+    isValidNumber("abc", 16) should return true.
+    isValidNumber("AbC", 16) should return true.
+    isValidNumber("z", 36) should return true.
 `);

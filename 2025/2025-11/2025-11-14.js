@@ -18,9 +18,13 @@ function daysUntilWeekend(dateString) {
 }
 
 //Tests
-daysUntilWeekend("2025-11-14") //should return "1 day until the weekend.".
-daysUntilWeekend("2025-01-01") //should return "3 days until the weekend.".
-daysUntilWeekend("2025-12-06") //should return "It's the weekend!".
-daysUntilWeekend("2026-01-27") //should return "4 days until the weekend.".
-daysUntilWeekend("2026-09-07") //should return "5 days until the weekend.".
-daysUntilWeekend("2026-11-29") //should return "It's the weekend!".
+
+const runTests = require('../../helpers/runTests');
+runTests(daysUntilWeekend, `
+    daysUntilWeekend("2025-11-14") should return "1 day until the weekend.".
+    daysUntilWeekend("2025-01-01") should return "3 days until the weekend.".
+    daysUntilWeekend("2025-12-06") should return "It's the weekend!".
+    daysUntilWeekend("2026-01-27") should return "4 days until the weekend.".
+    daysUntilWeekend("2026-09-07") should return "5 days until the weekend.".
+    daysUntilWeekend("2026-11-29") should return "It's the weekend!".
+`);

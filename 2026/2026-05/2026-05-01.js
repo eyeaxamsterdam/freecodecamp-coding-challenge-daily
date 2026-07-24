@@ -22,8 +22,8 @@ function groupAnagrams(words) {
 
 const runTests = require('../../helpers/runTests');
 runTests(groupAnagrams, `
-   Waiting:1. groupAnagrams(["listen", "silent", "hello", "enlist", "world"]) should return [["listen", "silent", "enlist"], ["hello"], ["world"]].
-    Waiting:2. groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]) should return [["eat","tea","ate"],["tan","nat"],["bat"]].
-    Waiting:3. groupAnagrams(["care", "race", "acre", "pots", "stop", "tops", "opts", "post", "spot", "evil", "vile", "live", "veil"]) should return [["care","race","acre"],["pots","stop","tops","opts","post","spot"],["evil","vile","live","veil"]].
-    Waiting:4. groupAnagrams(["algorithms", "logarithms", "education", "cautioned", "auctioned", "triangle", "integral", "alerting", "relating"]) should return [["algorithms","logarithms"],["education","cautioned","auctioned"],["triangle","integral","alerting","relating"]]. 
+   groupAnagrams(["listen", "silent", "hello", "enlist", "world"]) should return [["listen", "silent", "enlist"], ["hello"], ["world"]].
+    groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]) should return [["eat","tea","ate"],["tan","nat"],["bat"]].
+    groupAnagrams(["care", "race", "acre", "pots", "stop", "tops", "opts", "post", "spot", "evil", "vile", "live", "veil"]) should return [["care","race","acre"],["pots","stop","tops","opts","post","spot"],["evil","vile","live","veil"]].
+    groupAnagrams(["algorithms", "logarithms", "education", "cautioned", "auctioned", "triangle", "integral", "alerting", "relating"]) should return [["algorithms","logarithms"],["education","cautioned","auctioned"],["triangle","integral","alerting","relating"]]. 
 `);

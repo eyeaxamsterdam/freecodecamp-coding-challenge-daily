@@ -29,8 +29,11 @@ function moonPhase(dateString) {
     return phase(leftOvers);
 }
 
-moonPhase("2000-01-12") //should return "New".
-moonPhase("2000-01-13") //should return "Waxing".
-moonPhase("2014-10-15") //should return "Full".
-moonPhase("2012-10-21") //should return "Waning".
-moonPhase("2022-12-14") //should return "New".
+const runTests = require('../../helpers/runTests');
+runTests(moonPhase, `
+    moonPhase("2000-01-12") should return "New".
+    moonPhase("2000-01-13") should return "Waxing".
+    moonPhase("2014-10-15") should return "Full".
+    moonPhase("2012-10-21") should return "Waning".
+    moonPhase("2022-12-14") should return "New".
+`);

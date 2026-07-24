@@ -14,9 +14,6 @@ function getHeadings(csv) {
   return finalArray;
 }
 
-getHeadings("name,age,city") //should return ["name", "age", "city"].
-getHeadings("first name,last name,phone") //should return ["first name", "last name", "phone"].
-getHeadings("username , email , signup date ") //should return ["username", "email", "signup date"].
 
 
 /* 
@@ -26,3 +23,10 @@ split the input so you have just the headers in an array
 trim each item of the headers aray so the space around is removed
 return that array of trimmed strings
 */
+
+const runTests = require('../../helpers/runTests');
+runTests(getHeadings, `
+    getHeadings("name,age,city") should return ["name", "age", "city"].
+    getHeadings("first name,last name,phone") should return ["first name", "last name", "phone"].
+    getHeadings("username , email , signup date ") should return ["username", "email", "signup date"].
+`);

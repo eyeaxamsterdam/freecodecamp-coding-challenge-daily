@@ -22,8 +22,12 @@ function generateSignature(name, title, company) {
 }
 
 //Tests
-generateSignature("Quinn Waverly", "Founder and CEO", "TechCo") //should return "--Quinn Waverly, Founder and CEO at TechCo".
-generateSignature("Alice Reed", "Engineer", "TechCo") //should return ">>Alice Reed, Engineer at TechCo".
-generateSignature("Tina Vaughn", "Developer", "example.com") //should return "::Tina Vaughn,Developer at example.com".
-generateSignature("B. B.", "Product Tester", "AcmeCorp") //should return ">>B. B., Product Tester at AcmeCorp".
-generateSignature("windstorm", "Cloud Architect", "Atmospheronics") //should return "::windstorm, Cloud Architect at Atmospheronics".
+
+const runTests = require('../../helpers/runTests');
+runTests(generateSignature, `
+    generateSignature("Quinn Waverly", "Founder and CEO", "TechCo") should return "--Quinn Waverly, Founder and CEO at TechCo".
+    generateSignature("Alice Reed", "Engineer", "TechCo") should return ">>Alice Reed, Engineer at TechCo".
+    generateSignature("Tina Vaughn", "Developer", "example.com") should return "::Tina Vaughn,Developer at example.com".
+    generateSignature("B. B.", "Product Tester", "AcmeCorp") should return ">>B. B., Product Tester at AcmeCorp".
+    generateSignature("windstorm", "Cloud Architect", "Atmospheronics") should return "::windstorm, Cloud Architect at Atmospheronics".
+`);

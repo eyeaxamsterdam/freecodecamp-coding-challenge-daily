@@ -15,9 +15,9 @@ function getInitials(name) {
 const runTests = require('../../helpers/runTests');
 
 runTests(getInitials, `
-Waiting:1. getInitials("Tommy Millwood") should return "T.M.".
-Waiting:2. getInitials("Savanna Puddlesplash") should return "S.P.".
-Waiting:3. getInitials("Frances Cowell Conrad") should return "F.C.C.".
-Waiting:4. getInitials("Dragon") should return "D.".
-Waiting:5. getInitials("Dorothy Vera Clump Haverstock Norris") should return "D.V.C.H.N.".
+getInitials("Tommy Millwood") should return "T.M.".
+getInitials("Savanna Puddlesplash") should return "S.P.".
+getInitials("Frances Cowell Conrad") should return "F.C.C.".
+getInitials("Dragon") should return "D.".
+getInitials("Dorothy Vera Clump Haverstock Norris") should return "D.V.C.H.N.".
 `)

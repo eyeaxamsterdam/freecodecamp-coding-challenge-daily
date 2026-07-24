@@ -37,11 +37,11 @@ function getMovieNightCost(day, showtime, numberOfTickets) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getMovieNightCost, `
-    Waiting:1. getMovieNightCost("Saturday", "10:00pm", 1) should return "$12.00".
-    Waiting:2. getMovieNightCost("Sunday", "10:00am", 1) should return "$10.00".
-    Waiting:3. getMovieNightCost("Tuesday", "7:20pm", 2) should return "$10.00".
-    Waiting:4. getMovieNightCost("Wednesday", "5:40pm", 3) should return "$30.00".
-    Waiting:5. getMovieNightCost("Monday", "11:50am", 4) should return "$32.00".
-    Waiting:6. getMovieNightCost("Friday", "4:30pm", 5) should return "$50.00".
-    Waiting:7. getMovieNightCost("Tuesday", "11:30am", 1) should return "$5.00".
+    getMovieNightCost("Saturday", "10:00pm", 1) should return "$12.00".
+    getMovieNightCost("Sunday", "10:00am", 1) should return "$10.00".
+    getMovieNightCost("Tuesday", "7:20pm", 2) should return "$10.00".
+    getMovieNightCost("Wednesday", "5:40pm", 3) should return "$30.00".
+    getMovieNightCost("Monday", "11:50am", 4) should return "$32.00".
+    getMovieNightCost("Friday", "4:30pm", 5) should return "$50.00".
+    getMovieNightCost("Tuesday", "11:30am", 1) should return "$5.00".
 `);

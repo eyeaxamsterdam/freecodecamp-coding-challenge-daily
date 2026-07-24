@@ -27,9 +27,9 @@ function getDueDate(dateStr) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getDueDate, `
-    Waiting:1. getDueDate("2025-03-30") should return "2025-12-30".
-    Waiting:2. getDueDate("2025-04-27") should return "2026-01-27".
-    Waiting:3. getDueDate("2025-05-29") should return "2026-02-28".
-    Waiting:4. getDueDate("2026-06-30") should return "2027-03-30".
-    Waiting:5. getDueDate("2026-10-11") should return "2027-07-11".
+    getDueDate("2025-03-30") should return "2025-12-30".
+    getDueDate("2025-04-27") should return "2026-01-27".
+    getDueDate("2025-05-29") should return "2026-02-28".
+    getDueDate("2026-06-30") should return "2027-03-30".
+    getDueDate("2026-10-11") should return "2027-07-11".
 `);

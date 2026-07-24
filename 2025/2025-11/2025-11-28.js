@@ -23,9 +23,13 @@ function compare(word, guess) {
 }
 
 //Tests
-compare("APPLE", "POPPA") //should return "10201".
-compare("REACT", "TRACE") //should return "11221".
-compare("DEBUGS", "PYTHON") //should return "000000".
-compare("JAVASCRIPT", "TYPESCRIPT") //should return "0000222222".
-compare("ORANGE", "ROUNDS") //should return "110200".
-compare("WIRELESS", "ETHERNET") //should return "10021000".
+
+const runTests = require('../../helpers/runTests');
+runTests(compare, `
+    compare("APPLE", "POPPA") should return "10201".
+    compare("REACT", "TRACE") should return "11221".
+    compare("DEBUGS", "PYTHON") should return "000000".
+    compare("JAVASCRIPT", "TYPESCRIPT") should return "0000222222".
+    compare("ORANGE", "ROUNDS") should return "110200".
+    compare("WIRELESS", "ETHERNET") should return "10021000".
+`);

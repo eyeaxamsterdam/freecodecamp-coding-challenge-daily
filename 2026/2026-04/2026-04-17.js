@@ -35,13 +35,16 @@ function decode(message) {
     }
   });
   
-  console.log(mapped.join(''));
   return mapped.join('');
 }
 
 // Tests:
-decode("YAVJYNXE") //should return "CONGRATS".
-decode("YALLUT PQUMJP") //should return "CODING LEGEND".
-decode("UAC DYR EISAKYM") //should return "YOU ARE AWESOME".
-decode("GQMS NBMZU") //should return "KEEP GOING".
-decode("W IQQURV UG I ZDMDTRV IVW JQDHY TMHSA QB") //should return "A WINNER IS A DREAMER WHO NEVER GIVES UP".
+
+const runTests = require('../../helpers/runTests');
+runTests(decode, `
+    decode("YAVJYNXE") should return "CONGRATS".
+    decode("YALLUT PQUMJP") should return "CODING LEGEND".
+    decode("UAC DYR EISAKYM") should return "YOU ARE AWESOME".
+    decode("GQMS NBMZU") should return "KEEP GOING".
+    decode("W IQQURV UG I ZDMDTRV IVW JQDHY TMHSA QB") should return "A WINNER IS A DREAMER WHO NEVER GIVES UP".
+`);

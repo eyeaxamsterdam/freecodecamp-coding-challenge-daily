@@ -33,9 +33,13 @@ function verify(message, key, signature) {
 }
 
 //Tests
-verify("foo", "bar", 57) //should return true.
-verify("foo", "bar", 54) //should return false.
-verify("freeCodeCamp", "Rocks", 238) //should return true.
-verify("Is this valid?", "No", 210) //should return false.
-verify("Is this valid?", "Yes", 233) //should return true.
-verify("Check out the freeCodeCamp podcast,", "in the mobile app", 514) //should return true.
+
+const runTests = require('../../helpers/runTests');
+runTests(verify, `
+    verify("foo", "bar", 57) should return true.
+    verify("foo", "bar", 54) should return false.
+    verify("freeCodeCamp", "Rocks", 238) should return true.
+    verify("Is this valid?", "No", 210) should return false.
+    verify("Is this valid?", "Yes", 233) should return true.
+    verify("Check out the freeCodeCamp podcast,", "in the mobile app", 514) should return true.
+`);

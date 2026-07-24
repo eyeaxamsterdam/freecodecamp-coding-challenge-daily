@@ -29,11 +29,11 @@ function isValidCard(number) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isValidCard, `
-    Waiting:1. isValidCard("4532015112830366") should return true.
-    Waiting:2. isValidCard("5425233430109903") should return true.
-    Waiting:3. isValidCard("371449635398431") should return true.
-    Waiting:4. isValidCard("6011111111111117") should return true.
-    Waiting:5. isValidCard("4532015112830367") should return false.
-    Waiting:6. isValidCard("1234567890123456") should return false.
-    Waiting:7. isValidCard("4532015112830368") should return false.
+    isValidCard("4532015112830366") should return true.
+    isValidCard("5425233430109903") should return true.
+    isValidCard("371449635398431") should return true.
+    isValidCard("6011111111111117") should return true.
+    isValidCard("4532015112830367") should return false.
+    isValidCard("1234567890123456") should return false.
+    isValidCard("4532015112830368") should return false.
 `);

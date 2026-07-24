@@ -14,7 +14,11 @@ function stripTags(html) {
 }
 
 //Tests
-stripTags('<a href="#">Click here</a>') //should return "Click here".
-stripTags('<p class="center">Hello <b>World</b>!</p>') //should return "Hello World!".
-stripTags('<img src="cat.jpg" alt="Cat">') //should return an empty string ("").
-stripTags('<main id="main"><section class="section">section</section><section class="section">section</section></main>') //should return sectionsection.
+
+const runTests = require('../../helpers/runTests');
+runTests(stripTags, `
+    stripTags('<a href="#">Click here</a>') should return "Click here".
+    stripTags('<p class="center">Hello <b>World</b>!</p>') should return "Hello World!".
+    stripTags('<img src="cat.jpg" alt="Cat">') should return an empty string ("").
+    stripTags('<main id="main"><section class="section">section</section><section class="section">section</section></main>') should return sectionsection.
+`);

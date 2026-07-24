@@ -48,12 +48,12 @@ function isMirrorImage(str1, str2) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isMirrorImage, `
-    Waiting:1. isMirrorImage("[HOW]", "[WOH]") should return true.
-    Waiting:2. isMirrorImage("MOM", "MOM") should return true.
-    Waiting:3. isMirrorImage("vow", "wov") should return true.
-    Waiting:4. isMirrorImage("TIM", "TIM") should return false.
-    Waiting:5. isMirrorImage("{WOW}", "}WOW{") should return false.
-    Waiting:6. isMirrorImage("XXVII", "IIV%X") should return false.
-    Waiting:7. isMirrorImage("><(((*>", "<*)))><") should return true.
-    Waiting:8. isMirrorImage("WTYUIOHAXVMwoxv08=+:|-_*^!.[]{}<>bdpq()", "()pqbd<>{}[].!^*_-|:+=80vxowMVXAHOIUYTW") should return true.
+    isMirrorImage("[HOW]", "[WOH]") should return true.
+    isMirrorImage("MOM", "MOM") should return true.
+    isMirrorImage("vow", "wov") should return true.
+    isMirrorImage("TIM", "TIM") should return false.
+    isMirrorImage("{WOW}", "}WOW{") should return false.
+    isMirrorImage("XXVII", "IIV%X") should return false.
+    isMirrorImage("><(((*>", "<*)))><") should return true.
+    isMirrorImage("WTYUIOHAXVMwoxv08=+:|-_*^!.[]{}<>bdpq()", "()pqbd<>{}[].!^*_-|:+=80vxowMVXAHOIUYTW") should return true.
 `);

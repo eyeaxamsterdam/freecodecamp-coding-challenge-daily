@@ -17,9 +17,9 @@ function playGame(p1, p2) {
 
 const runTests = require('../../helpers/runTests');
 runTests(playGame, `
-    Waiting:1. playGame("CCCC", "CCCC") should return [12, 12].
-    Waiting:2. playGame("DDDD", "DDDD") should return [4, 4].
-    Waiting:3. playGame("CCDD", "CDDD") should return [5, 10].
-    Waiting:4. playGame("CCCDCDCCCDDC", "CCDDCDCDDCCD") should return [24, 34].
-    Waiting:5. playGame("DDCCDDDDCDDCDDDCDD", "CCDCCCDCCCDCCCCDCC") should return [66, 21].
+    playGame("CCCC", "CCCC") should return [12, 12].
+    playGame("DDDD", "DDDD") should return [4, 4].
+    playGame("CCDD", "CDDD") should return [5, 10].
+    playGame("CCCDCDCCCDDC", "CCDDCDCDDCCD") should return [24, 34].
+    playGame("DDCCDDDDCDDCDDDCDD", "CCDCCCDCCCDCCCCDCC") should return [66, 21].
 `);

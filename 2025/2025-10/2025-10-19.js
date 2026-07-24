@@ -26,8 +26,12 @@ function extractAttributes(element) {
 }
 
 //Tests
-extractAttributes('<span class="red"></span>') //should return ["class, red"].
-extractAttributes('<meta charset="UTF-8" />') //should return ["charset, UTF-8"].
 //extractAttributes("<p>Lorem ipsum dolor sit amet</p>") //should return [].
-extractAttributes('<input name="email" type="email" required="true" />') //should return ["name, email", "type, email", "required, true"].
-extractAttributes('<button id="submit" class="btn btn-primary">Submit</button>') //should return ["id, submit", "class, btn btn-primary"].
+
+const runTests = require('../../helpers/runTests');
+runTests(extractAttributes, `
+    extractAttributes('<span class="red"></span>') should return ["class, red"].
+    extractAttributes('<meta charset="UTF-8" />') should return ["charset, UTF-8"].
+    extractAttributes('<input name="email" type="email" required="true" />') should return ["name, email", "type, email", "required, true"].
+    extractAttributes('<button id="submit" class="btn btn-primary">Submit</button>') should return ["id, submit", "class, btn btn-primary"].
+`);

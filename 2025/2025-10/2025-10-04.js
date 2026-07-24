@@ -33,11 +33,14 @@ function classification(temp) {
     }
 }
 
-classification(5778) //should return "G".
-classification(2400) //should return "M".
-classification(9999) //should return "A".
-classification(3700) //should return "K".
-classification(3699) //should return "M".
-classification(210000) //should return "O".
-classification(6000) //should return "F".
-classification(11432) //should return "B".
+const runTests = require('../../helpers/runTests');
+runTests(classification, `
+    classification(5778) should return "G".
+    classification(2400) should return "M".
+    classification(9999) should return "A".
+    classification(3700) should return "K".
+    classification(3699) should return "M".
+    classification(210000) should return "O".
+    classification(6000) should return "F".
+    classification(11432) should return "B".
+`);

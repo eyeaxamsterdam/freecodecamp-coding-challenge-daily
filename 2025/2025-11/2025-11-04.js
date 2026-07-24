@@ -18,7 +18,11 @@ function imageSearch(images, term) {
 }
 
 //Tests
-imageSearch(["dog.png", "cat.jpg", "parrot.jpeg"], "dog") //should return ["dog.png"].
-imageSearch(["Sunset.jpg", "Beach.png", "sunflower.jpeg"], "sun") //should return ["Sunset.jpg", "sunflower.jpeg"].
-imageSearch(["Moon.png", "sun.jpeg", "stars.png"], "PNG") //should return ["Moon.png", "stars.png"].
-imageSearch(["cat.jpg", "dogToy.jpeg", "kitty-cat.png", "catNip.jpeg", "franken_cat.gif"], "Cat") //should return ["cat.jpg", "kitty-cat.png", "catNip.jpeg", "franken_cat.gif"].
+
+const runTests = require('../../helpers/runTests');
+runTests(imageSearch, `
+    imageSearch(["dog.png", "cat.jpg", "parrot.jpeg"], "dog") should return ["dog.png"].
+    imageSearch(["Sunset.jpg", "Beach.png", "sunflower.jpeg"], "sun") should return ["Sunset.jpg", "sunflower.jpeg"].
+    imageSearch(["Moon.png", "sun.jpeg", "stars.png"], "PNG") should return ["Moon.png", "stars.png"].
+    imageSearch(["cat.jpg", "dogToy.jpeg", "kitty-cat.png", "catNip.jpeg", "franken_cat.gif"], "Cat") should return ["cat.jpg", "kitty-cat.png", "catNip.jpeg", "franken_cat.gif"].
+`);

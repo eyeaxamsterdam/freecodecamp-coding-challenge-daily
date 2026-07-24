@@ -50,9 +50,9 @@ function getItineraryCount(stops) {
 
 const runTests = require('../../helpers/runTests');
 runTests(getItineraryCount, `
-    Waiting:1. getItineraryCount(["library", "park"]) should return 2.
-    Waiting:2. getItineraryCount(["library", "park", "arcade"]) should return 18.
-    Waiting:3. getItineraryCount(["library", "park", "arcade", "store"]) should return 120.
-    Waiting:4. getItineraryCount(["library", "park", "arcade", "store", "cafe"]) should return 840.
-    Waiting:5. getItineraryCount(["library", "park", "arcade", "store", "cafe", "market", "museum"]) should return 55440.
+    getItineraryCount(["library", "park"]) should return 2.
+    getItineraryCount(["library", "park", "arcade"]) should return 18.
+    getItineraryCount(["library", "park", "arcade", "store"]) should return 120.
+    getItineraryCount(["library", "park", "arcade", "store", "cafe"]) should return 840.
+    getItineraryCount(["library", "park", "arcade", "store", "cafe", "market", "museum"]) should return 55440.
 `);

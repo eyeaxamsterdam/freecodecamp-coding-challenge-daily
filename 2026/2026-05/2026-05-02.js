@@ -35,9 +35,9 @@ function getDeepestBrackets(str) {
 }
 
 runTests(getDeepestBrackets, `
-    Waiting:1. getDeepestBrackets("(hello (world))") should return "world".
-    Waiting:2. getDeepestBrackets("[outer [inner] outer]") should return "inner".
-    Waiting:3. getDeepestBrackets("{a{b}c{d{e}f}g}") should return "e".
-    Waiting:4. getDeepestBrackets("[the {quick (brown [fox] jumped) over (the) lazy} dog]") should return "fox".
-    Waiting:5. getDeepestBrackets("f[(r)e{e}C{o[(d){e(C)}a]m}]p") should return "C".
+    getDeepestBrackets("(hello (world))") should return "world".
+    getDeepestBrackets("[outer [inner] outer]") should return "inner".
+    getDeepestBrackets("{a{b}c{d{e}f}g}") should return "e".
+    getDeepestBrackets("[the {quick (brown [fox] jumped) over (the) lazy} dog]") should return "fox".
+    getDeepestBrackets("f[(r)e{e}C{o[(d){e(C)}a]m}]p") should return "C".
 `)

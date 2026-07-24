@@ -50,10 +50,10 @@ function calculateParkingFee(parkTime, pickupTime) {
 
 const runTests = require('../../helpers/runTests');
 runTests(calculateParkingFee, `
-    Waiting:1. calculateParkingFee("09:00", "11:00") should return "$6".
-    Waiting:2. calculateParkingFee("10:00", "10:30") should return "$5".
-    Waiting:3. calculateParkingFee("08:10", "10:45") should return "$9".
-    Waiting:4. calculateParkingFee("14:40", "23:10") should return "$27".
-    Waiting:5. calculateParkingFee("18:15", "01:30") should return "$34".
-    Waiting:6. calculateParkingFee("11:11", "11:10") should return "$82".
+    calculateParkingFee("09:00", "11:00") should return "$6".
+    calculateParkingFee("10:00", "10:30") should return "$5".
+    calculateParkingFee("08:10", "10:45") should return "$9".
+    calculateParkingFee("14:40", "23:10") should return "$27".
+    calculateParkingFee("18:15", "01:30") should return "$34".
+    calculateParkingFee("11:11", "11:10") should return "$82".
 `);

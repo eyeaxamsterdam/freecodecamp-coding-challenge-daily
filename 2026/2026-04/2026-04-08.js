@@ -30,11 +30,11 @@ function isFizzBuzz(arr) {
 
 const runTests = require('../../helpers/runTests');
 runTests(isFizzBuzz, `
-    Waiting:1. isFizzBuzz([1, 2, "Fizz", 4, "Buzz"]) should return true.
-    Waiting:2. isFizzBuzz([13, 14, "FizzBuzz", 16, 17]) should return true. 
-    Waiting:3. isFizzBuzz([1, 2, "Fizz", 4, 5]) should return false.
-    Waiting:4. isFizzBuzz(["FizzBuzz", 16, 17, "Fizz", 19, "Buzz"]) should return true.
-    Waiting:5. isFizzBuzz([1, 2, "Fizz", "Buzz", 5]) should return false.
-    Waiting:6. isFizzBuzz([97, 98, "Buzz", "Fizz", 101, "Fizz", 103]) should return false.
-    Waiting:7. isFizzBuzz(["Fizz", "Buzz", 101, "Fizz", 103, 104, "FizzBuzz"]) should return true.
+    isFizzBuzz([1, 2, "Fizz", 4, "Buzz"]) should return true.
+    isFizzBuzz([13, 14, "FizzBuzz", 16, 17]) should return true. 
+    isFizzBuzz([1, 2, "Fizz", 4, 5]) should return false.
+    isFizzBuzz(["FizzBuzz", 16, 17, "Fizz", 19, "Buzz"]) should return true.
+    isFizzBuzz([1, 2, "Fizz", "Buzz", 5]) should return false.
+    isFizzBuzz([97, 98, "Buzz", "Fizz", 101, "Fizz", 103]) should return false.
+    isFizzBuzz(["Fizz", "Buzz", 101, "Fizz", 103, 104, "FizzBuzz"]) should return true.
     `);

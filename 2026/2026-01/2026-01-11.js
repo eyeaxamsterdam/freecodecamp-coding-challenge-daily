@@ -35,9 +35,13 @@ function golfScore(par, strokes) {
 }
 
 //Tests
-golfScore(3, 3) //should return "Par".
-golfScore(4, 3) //should return "Birdie".
-golfScore(3, 1) //should return "Hole in one!".
-golfScore(5, 7) //should return "Double bogey".
-golfScore(4, 5) //should return "Bogey".
-golfScore(5, 3) //should return "Eagle".
+
+const runTests = require('../../helpers/runTests');
+runTests(golfScore, `
+    golfScore(3, 3) should return "Par".
+    golfScore(4, 3) should return "Birdie".
+    golfScore(3, 1) should return "Hole in one!".
+    golfScore(5, 7) should return "Double bogey".
+    golfScore(4, 5) should return "Bogey".
+    golfScore(5, 3) should return "Eagle".
+`);

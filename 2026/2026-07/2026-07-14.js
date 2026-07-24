@@ -28,11 +28,11 @@ function petYears(pet, age) {
 
 const runTests = require('../../helpers/runTests');
 runTests(petYears, `
-    Passed:1. petYears("dog", 5) should return 35.
-    Passed:2. petYears("cat", 9) should return 54.
-    Passed:3. petYears("rabbit", 3) should return 24.
-    Passed:4. petYears("hamster", 4) should return 120.
-    Passed:5. petYears("guinea pig", 5) should return 60.
-    Passed:6. petYears("goldfish", 2) should return 12.
-    Passed:7. petYears("bird", 1) should return 5.
+    petYears("dog", 5) should return 35.
+    petYears("cat", 9) should return 54.
+    petYears("rabbit", 3) should return 24.
+    petYears("hamster", 4) should return 120.
+    petYears("guinea pig", 5) should return 60.
+    petYears("goldfish", 2) should return 12.
+    petYears("bird", 1) should return 5.
 `);

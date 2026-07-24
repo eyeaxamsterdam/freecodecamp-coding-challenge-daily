@@ -19,12 +19,12 @@ function getLandingStance(startStance, rotation) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getLandingStance, `
-    getLandingStance("Regular", 90) should return "Regular".
-    getLandingStance("Regular", 180) should return "Goofy".
-    getLandingStance("Goofy", -270) should return "Regular".
-    getLandingStance("Regular", 2340) should return "Goofy".
-    getLandingStance("Goofy", 2160) should return "Goofy".
-    getLandingStance("Goofy", -540) should return "Regular".
-    getLandingStance("Goofy", 90) should return "Goofy".
-`);
+runTests(getLandingStance, [
+    `assert.equal(getLandingStance("Regular", 90), "Regular");`,
+    `assert.equal(getLandingStance("Regular", 180), "Goofy");`,
+    `assert.equal(getLandingStance("Goofy", -270), "Regular");`,
+    `assert.equal(getLandingStance("Regular", 2340), "Goofy");`,
+    `assert.equal(getLandingStance("Goofy", 2160), "Goofy");`,
+    `assert.equal(getLandingStance("Goofy", -540), "Regular");`,
+    `assert.equal(getLandingStance("Goofy", 90), "Goofy");`,
+]);

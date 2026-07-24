@@ -46,10 +46,10 @@ function truncateText(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(truncateText, `
-    truncateText("The quick brown fox") should return "The quick brown f...".
-    truncateText("The silky smooth sloth") should return "The silky smooth s...".
-    truncateText("THE LOUD BRIGHT BIRD") should return "THE LOUD BRIG...".
-    truncateText("The fast striped zebra") should return "The fast striped z...".
-    truncateText("The big black bear") should return "The big black bear".
-`);
+runTests(truncateText, [
+    `assert.equal(truncateText("The quick brown fox"), "The quick brown f...");`,
+    `assert.equal(truncateText("The silky smooth sloth"), "The silky smooth s...");`,
+    `assert.equal(truncateText("THE LOUD BRIGHT BIRD"), "THE LOUD BRIG...");`,
+    `assert.equal(truncateText("The fast striped zebra"), "The fast striped z...");`,
+    `assert.equal(truncateText("The big black bear"), "The big black bear");`,
+]);

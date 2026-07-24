@@ -37,11 +37,11 @@ function ticTacToe(board) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(ticTacToe, `
-    ticTacToe([["X", "X", "X"], ["O", "O", "X"], ["O", "X", "O"]]) should return "X wins".
-    ticTacToe([["X", "O", "X"], ["X", "O", "X"], ["O", "O", "X"]]) should return "O wins".
-    ticTacToe([["X", "O", "X"], ["O", "X", "O"], ["O", "X", "O"]]) should return "Draw".
-    ticTacToe([["X", "X", "O"], ["X", "O", "X"], ["O", "X", "X"]]) should return "O wins".
-    ticTacToe([["X", "O", "O"], ["O", "X", "O"], ["O", "X", "X"]]) should return "X wins".
-    ticTacToe([["O", "X", "X"], ["X", "O", "O"], ["X", "O", "X"]]) should return "Draw".
-`);
+runTests(ticTacToe, [
+    `assert.equal(ticTacToe([["X", "X", "X"], ["O", "O", "X"], ["O", "X", "O"]]), "X wins");`,
+    `assert.equal(ticTacToe([["O", "O", "X"], ["X", "O", "X"], ["O", "X", "X"]]), "X wins");`,
+    `assert.equal(ticTacToe([["X", "O", "X"], ["O", "X", "O"], ["O", "X", "O"]]), "Draw");`,
+    `assert.equal(ticTacToe([["X", "X", "O"], ["X", "O", "O"], ["O", "O", "X"]]), "O wins");`,
+    `assert.equal(ticTacToe([["X", "O", "O"], ["O", "X", "O"], ["O", "X", "X"]]), "X wins");`,
+    `assert.equal(ticTacToe([["O", "X", "X"], ["X", "O", "O"], ["X", "O", "X"]]), "Draw");`,
+]);

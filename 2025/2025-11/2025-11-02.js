@@ -33,10 +33,10 @@ function infected(days) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(infected, `
-    infected(1) should return 2.
-    infected(3) should return 6.
-    infected(8) should return 152.
-    infected(17) should return 39808.
-    infected(25) should return 5217638.
-`);
+runTests(infected, [
+    `assert.equal(infected(1), 2);`,
+    `assert.equal(infected(3), 6);`,
+    `assert.equal(infected(8), 152);`,
+    `assert.equal(infected(17), 39808);`,
+    `assert.equal(infected(25), 5217638);`,
+]);

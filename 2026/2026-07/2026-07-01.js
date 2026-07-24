@@ -35,11 +35,11 @@ function getLuckyNumber(name) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getLuckyNumber, `
-    getLuckyNumber("John Doe") should return 21.
-    getLuckyNumber("Olivia Lewis") should return 52.
-    getLuckyNumber("James Wilson") should return 18.
-    getLuckyNumber("Elizabeth Hernandez") should return 81.
-    getLuckyNumber("Mike Walker") should return 32.
-    getLuckyNumber("Chloe Perez") should return 13.
-`);
+runTests(getLuckyNumber, [
+    `assert.equal(getLuckyNumber("John Doe"), 21);`,
+    `assert.equal(getLuckyNumber("Olivia Lewis"), 52);`,
+    `assert.equal(getLuckyNumber("James Wilson"), 18);`,
+    `assert.equal(getLuckyNumber("Elizabeth Hernandez"), 81);`,
+    `assert.equal(getLuckyNumber("Mike Walker"), 32);`,
+    `assert.equal(getLuckyNumber("Chloe Perez"), 13);`,
+]);

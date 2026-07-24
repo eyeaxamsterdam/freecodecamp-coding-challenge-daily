@@ -22,11 +22,11 @@ function getWiderAspectRatio(a, b) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getWiderAspectRatio, `
-    getWiderAspectRatio("1920x1080", "800x600") should return "16:9".
-    getWiderAspectRatio("1080x1350", "2048x1536") should return "4:3".
-    getWiderAspectRatio("640x480", "2440x1220") should return "2:1".
-    getWiderAspectRatio("360x640", "1080x1920") should return "9:16".
-    getWiderAspectRatio("3440x1440", "2048x858") should return "43:18".
-    getWiderAspectRatio("12345x61234", "12534x51234") should return "2089:8539".
-`); 
+runTests(getWiderAspectRatio, [
+    `assert.equal(getWiderAspectRatio("1920x1080", "800x600"), "16:9");`,
+    `assert.equal(getWiderAspectRatio("1080x1350", "2048x1536"), "4:3");`,
+    `assert.equal(getWiderAspectRatio("640x480", "2440x1220"), "2:1");`,
+    `assert.equal(getWiderAspectRatio("360x640", "1080x1920"), "9:16");`,
+    `assert.equal(getWiderAspectRatio("3440x1440", "2048x858"), "43:18");`,
+    `assert.equal(getWiderAspectRatio("12345x61234", "12534x51234"), "2089:8539");`,
+]);

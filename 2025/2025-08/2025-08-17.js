@@ -19,9 +19,9 @@ function findTarget(arr, target) {
 
 
 const runTests = require('../../helpers/runTests');
-runTests(findTarget, `
-    findTarget([2, 7, 11, 15], 9) should return [0, 1].
-    findTarget([3, 2, 4, 5], 6) should return [1, 2].
-    findTarget([1, 3, 5, 6, 7, 8], 15) should return [4, 5].
-    findTarget([1, 3, 5, 7], 14) should return "Target not found". 
-`);
+runTests(findTarget, [
+    `assert.deepEqual(findTarget([2, 7, 11, 15], 9), [0, 1]);`,
+    `assert.deepEqual(findTarget([3, 2, 4, 5], 6), [1, 2]);`,
+    `assert.deepEqual(findTarget([1, 3, 5, 6, 7, 8], 15), [4, 5]);`,
+    `assert.equal(findTarget([1, 3, 5, 7], 14), "Target not found");`,
+]);

@@ -28,9 +28,9 @@ function rgbToHex(rgb) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(rgbToHex, `
-    rgbToHex("rgb(255, 255, 255)") should return "#ffffff".
-    rgbToHex("rgb(1, 11, 111)") should return "#010b6f".
-    rgbToHex("rgb(173, 216, 230)") should return "#add8e6".
-    rgbToHex("rgb(79, 123, 201)") should return "#4f7bc9".
-`);
+runTests(rgbToHex, [
+    `assert.equal(rgbToHex("rgb(255, 255, 255)"), "#ffffff");`,
+    `assert.equal(rgbToHex("rgb(1, 11, 111)"), "#010b6f");`,
+    `assert.equal(rgbToHex("rgb(173, 216, 230)"), "#add8e6");`,
+    `assert.equal(rgbToHex("rgb(79, 123, 201)"), "#4f7bc9");`,
+]);

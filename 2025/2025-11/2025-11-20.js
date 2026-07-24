@@ -29,11 +29,11 @@ function longestWord(sentence) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(longestWord, `
-    longestWord("The quick red fox") should return "quick".
-    longestWord("Hello coding challenge.") should return "challenge".
-    longestWord("Do Try This At Home.") should return "This".
-    longestWord("This sentence... has commas, ellipses, and an exlamation point!") should return "exlamation".
-    longestWord("A tie? No way!") should return "tie".
-    longestWord("Wouldn't you like to know.") should return "Wouldnt".
-`);
+runTests(longestWord, [
+    `assert.equal(longestWord("The quick red fox"), "quick");`,
+    `assert.equal(longestWord("Hello coding challenge."), "challenge");`,
+    `assert.equal(longestWord("Do Try This At Home."), "This");`,
+    `assert.equal(longestWord("This sentence... has commas, ellipses, and an exclamation point!"), "exclamation");`,
+    `assert.equal(longestWord("A tie? No way!"), "tie");`,
+    `assert.equal(longestWord("Wouldn't you like to know."), "Wouldnt");`,
+]);

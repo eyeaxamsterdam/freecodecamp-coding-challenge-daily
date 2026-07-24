@@ -17,11 +17,11 @@ function adjustThermostat(temp, target) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(adjustThermostat, `
-    adjustThermostat(68, 72) should return "heat".
-    adjustThermostat(75, 72) should return "cool".
-    adjustThermostat(72, 72) should return "hold".
-    adjustThermostat(-20.5, -10.1) should return "heat".
-    adjustThermostat(100, 99.9) should return "cool".
-    adjustThermostat(0.0, 0.0) should return "hold".
-`);
+runTests(adjustThermostat, [
+    `assert.equal(adjustThermostat(68, 72), "heat");`,
+    `assert.equal(adjustThermostat(75, 72), "cool");`,
+    `assert.equal(adjustThermostat(72, 72), "hold");`,
+    `assert.equal(adjustThermostat(-20.5, -10.1), "heat");`,
+    `assert.equal(adjustThermostat(100, 99.9), "cool");`,
+    `assert.equal(adjustThermostat(0.0, 0.0), "hold");`,
+]);

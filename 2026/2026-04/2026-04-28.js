@@ -20,16 +20,15 @@ function getNumberWords(n) {
 }
 
 const runTests = require('../../helpers/runTests');
-
-runTests(getNumberWords, `
-   getNumberWords(0) should return "zero".
-    getNumberWords(10) should return "ten".
-    getNumberWords(19) should return "nineteen".
-    getNumberWords(30) should return "thirty".
-    getNumberWords(53) should return "fifty-three".
-    getNumberWords(7) should return "seven".
-    getNumberWords(12) should return "twelve".
-    getNumberWords(60) should return "sixty".
-    getNumberWords(67) should return "sixty-seven".
-    getNumberWords(98) should return "ninety-eight". 
-`)
+runTests(getNumberWords, [
+    `assert.equal(getNumberWords(0), "zero");`,
+    `assert.equal(getNumberWords(10), "ten");`,
+    `assert.equal(getNumberWords(19), "nineteen");`,
+    `assert.equal(getNumberWords(30), "thirty");`,
+    `assert.equal(getNumberWords(53), "fifty-three");`,
+    `assert.equal(getNumberWords(7), "seven");`,
+    `assert.equal(getNumberWords(12), "twelve");`,
+    `assert.equal(getNumberWords(60), "sixty");`,
+    `assert.equal(getNumberWords(67), "sixty-seven");`,
+    `assert.equal(getNumberWords(98), "ninety-eight");`,
+]);

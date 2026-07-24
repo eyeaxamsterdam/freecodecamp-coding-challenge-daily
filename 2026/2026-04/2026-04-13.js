@@ -13,11 +13,10 @@ function getInitials(name) {
 }
 
 const runTests = require('../../helpers/runTests');
-
-runTests(getInitials, `
-getInitials("Tommy Millwood") should return "T.M.".
-getInitials("Savanna Puddlesplash") should return "S.P.".
-getInitials("Frances Cowell Conrad") should return "F.C.C.".
-getInitials("Dragon") should return "D.".
-getInitials("Dorothy Vera Clump Haverstock Norris") should return "D.V.C.H.N.".
-`)
+runTests(getInitials, [
+    `assert.equal(getInitials("Tommy Millwood"), "T.M.");`,
+    `assert.equal(getInitials("Savanna Puddlesplash"), "S.P.");`,
+    `assert.equal(getInitials("Frances Cowell Conrad"), "F.C.C.");`,
+    `assert.equal(getInitials("Dragon"), "D.");`,
+    `assert.equal(getInitials("Dorothy Vera Clump Haverstock Norris"), "D.V.C.H.N.");`,
+]);

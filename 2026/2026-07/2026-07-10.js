@@ -20,11 +20,11 @@ function exactChange(amount) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(exactChange, `
-    exactChange(3) should return 1.
-    exactChange(9) should return 2.
-    exactChange(17) should return 6.
-    exactChange(39) should return 24.
-    exactChange(61) should return 73.
-    exactChange(99) should return 213.
-`);
+runTests(exactChange, [
+    `assert.equal(exactChange(3), 1);`,
+    `assert.equal(exactChange(9), 2);`,
+    `assert.equal(exactChange(17), 6);`,
+    `assert.equal(exactChange(39), 24);`,
+    `assert.equal(exactChange(61), 73);`,
+    `assert.equal(exactChange(99), 213);`,
+]);

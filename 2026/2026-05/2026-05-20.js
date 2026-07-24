@@ -19,10 +19,10 @@ function zipStrings(a, b) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(zipStrings, `
-    zipStrings("abc", "123") should return "a1b2c3".
-    zipStrings("acegikmoqsuwy", "bdfhjlnprtvxz") should return "abcdefghijklmnopqrstuvwxyz".
-    zipStrings("day", "night") should return "dnaiyght".
-    zipStrings("python", "javascript") should return "pjyatvhaosncript".
-    zipStrings("feCdCm", "reoeap") should return "freeCodeCamp".
-`);
+runTests(zipStrings, [
+    `assert.equal(zipStrings("abc", "123"), "a1b2c3");`,
+    `assert.equal(zipStrings("acegikmoqsuwy", "bdfhjlnprtvxz"), "abcdefghijklmnopqrstuvwxyz");`,
+    `assert.equal(zipStrings("day", "night"), "dnaiyght");`,
+    `assert.equal(zipStrings("python", "javascript"), "pjyatvhaosncript");`,
+    `assert.equal(zipStrings("feCdCm", "reoeap"), "freeCodeCamp");`,
+]);

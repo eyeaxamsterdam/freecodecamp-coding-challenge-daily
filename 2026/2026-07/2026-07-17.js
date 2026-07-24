@@ -28,12 +28,12 @@ function daysUntilBirthday(today, birthday) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(daysUntilBirthday, `
-    daysUntilBirthday("2026-07-16", "9/7") should return 53.
-    daysUntilBirthday("2026-07-16", "3/22") should return 249.
-    daysUntilBirthday("2026-07-16", "7/16") should return 365.
-    daysUntilBirthday("2024-02-28", "3/1") should return 2.
-    daysUntilBirthday("2023-04-24", "12/30") should return 250.
-    daysUntilBirthday("2024-03-01", "2/29") should return 1460.
-    daysUntilBirthday("2096-03-01", "2/29") should return 2920.
-`);
+runTests(daysUntilBirthday, [
+    `assert.equal(daysUntilBirthday("2026-07-16", "9/7"), 53);`,
+    `assert.equal(daysUntilBirthday("2026-07-16", "3/22"), 249);`,
+    `assert.equal(daysUntilBirthday("2026-07-16", "7/16"), 365);`,
+    `assert.equal(daysUntilBirthday("2024-02-28", "3/1"), 2);`,
+    `assert.equal(daysUntilBirthday("2023-04-24", "12/30"), 250);`,
+    `assert.equal(daysUntilBirthday("2024-03-01", "2/29"), 1460);`,
+    `assert.equal(daysUntilBirthday("2096-03-01", "2/29"), 2920);`,
+]);

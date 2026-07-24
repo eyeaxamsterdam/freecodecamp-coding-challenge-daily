@@ -44,15 +44,13 @@ function explodeFizzbuzz(targetZCount) {
 }
 
 const runTests = require('../../helpers/runTests');
-
-runTests(explodeFizzbuzz, `
-    explodeFizzbuzz(9) should return 1.
-    explodeFizzbuzz(15) should return 2.
-    explodeFizzbuzz(51) should return 3.
-    explodeFizzbuzz(52) should return 4.
-    explodeFizzbuzz(359) should return 5.
-    explodeFizzbuzz(789) should return 6.
-    explodeFizzbuzz(54482) should return 11.
-    explodeFizzbuzz(1000000) should return 14
-    `
-);
+runTests(explodeFizzbuzz, [
+    `assert.equal(explodeFizzbuzz(9), 1);`,
+    `assert.equal(explodeFizzbuzz(15), 2);`,
+    `assert.equal(explodeFizzbuzz(51), 3);`,
+    `assert.equal(explodeFizzbuzz(52), 4);`,
+    `assert.equal(explodeFizzbuzz(359), 5);`,
+    `assert.equal(explodeFizzbuzz(789), 6);`,
+    `assert.equal(explodeFizzbuzz(54482), 11);`,
+    `assert.equal(explodeFizzbuzz(1000000), 14);`,
+]);

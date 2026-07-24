@@ -12,9 +12,9 @@ function convertWords(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(convertWords, `
-    convertWords("hello world") should return "5 5".
-    convertWords("Thanks and happy coding") should return "6 3 5 6".
-    convertWords("The quick brown fox jumps over the lazy dog") should return "3 5 5 3 5 4 3 4 3".
-    convertWords("Lorem ipsum dolor sit amet consectetur adipiscing elit donec ut ligula vehicula iaculis orci vel semper nisl") should return "5 5 5 3 4 11 10 4 5 2 6 8 7 4 3 6 4".
-`);
+runTests(convertWords, [
+    `assert.equal(convertWords("hello world"), "5 5");`,
+    `assert.equal(convertWords("Thanks and happy coding"), "6 3 5 6");`,
+    `assert.equal(convertWords("The quick brown fox jumps over the lazy dog"), "3 5 5 3 5 4 3 4 3");`,
+    `assert.equal(convertWords("Lorem ipsum dolor sit amet consectetur adipiscing elit donec ut ligula vehicula iaculis orci vel semper nisl"), "5 5 5 3 4 11 10 4 5 2 6 8 7 4 3 6 4");`,
+]);

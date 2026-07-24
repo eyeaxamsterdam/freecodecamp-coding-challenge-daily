@@ -29,14 +29,11 @@ function getBrowserHistory(commands) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getBrowserHistory, `
-    Waiting: 1. getBrowserHistory(["freecodecamp.org", "freecodecamp.org/learn", "Back"]) should return [["freecodecamp.org", "freecodecamp.org/learn"], 0].
-   Waiting: 2. getBrowserHistory(["example.com", "example.com/about", "example.com/contact", "example.com/blog"]) should return [["example.com", "example.com/about", "example.com/contact", "example.com/blog"], 3].
-    Waiting: 3. getBrowserHistory(["example.com", "example.com/about", "Back", "example.com/contact",  "example.com/blog", "Back", "Back", "Forward"]) should return [["example.com", "example.com/contact", "example.com/blog"], 1].
-    Waiting: 4. getBrowserHistory(["example.com", "example.com/about", "example.com/contact", "example.com/blog", "Back", "Back", "Forward", "freecodecamp.org"]) should return [["example.com", "example.com/about", "example.com/contact", "freecodecamp.org"], 3].
-    Waiting: 5. getBrowserHistory(["example.com", "example.com/about", "Back", "Back"]) should return [["example.com", "example.com/about"], 0].
-    Waiting: 6. getBrowserHistory(["example.com", "example.com/about", "Forward"]) should return [["example.com", "example.com/about"], 1]. 
-`);
-
-/*  
-    */
+runTests(getBrowserHistory, [
+    `assert.deepEqual(getBrowserHistory(["freecodecamp.org", "freecodecamp.org/learn", "Back"]), [["freecodecamp.org", "freecodecamp.org/learn"], 0]);`,
+    `assert.deepEqual(getBrowserHistory(["example.com", "example.com/about", "example.com/contact", "example.com/blog"]), [["example.com", "example.com/about", "example.com/contact", "example.com/blog"], 3]);`,
+    `assert.deepEqual(getBrowserHistory(["example.com", "example.com/about", "Back", "example.com/contact", "example.com/blog", "Back", "Back", "Forward"]), [["example.com", "example.com/contact", "example.com/blog"], 1]);`,
+    `assert.deepEqual(getBrowserHistory(["example.com", "example.com/about", "example.com/contact", "example.com/blog", "Back", "Back", "Forward", "freecodecamp.org"]), [["example.com", "example.com/about", "example.com/contact", "freecodecamp.org"], 3]);`,
+    `assert.deepEqual(getBrowserHistory(["example.com", "example.com/about", "Back", "Back"]), [["example.com", "example.com/about"], 0]);`,
+    `assert.deepEqual(getBrowserHistory(["example.com", "example.com/about", "Forward"]), [["example.com", "example.com/about"], 1]);`,
+]);

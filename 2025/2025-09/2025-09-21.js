@@ -39,10 +39,10 @@ function numberOfVideos(videoSize, videoUnit, driveSize, driveUnit) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(numberOfVideos, `
-    numberOfVideos(500, "MB", 100, "GB") should return 200.
-    numberOfVideos(2000, "TB", 1, "TB") should return "Invalid video unit".
-    numberOfVideos(2000, "MB", 100000, "MB") should return "Invalid drive unit".
-    numberOfVideos(500000, "KB", 2, "TB") should return 4000.
-    numberOfVideos(1.5, "GB", 2.2, "TB") should return 1466.
-`);
+runTests(numberOfVideos, [
+    `assert.equal(numberOfVideos(500, "MB", 100, "GB"), 200);`,
+    `assert.equal(numberOfVideos(1, "TB", 10, "TB"), "Invalid video unit");`,
+    `assert.equal(numberOfVideos(2000, "MB", 100000, "MB"), "Invalid drive unit");`,
+    `assert.equal(numberOfVideos(500000, "KB", 2, "TB"), 4000);`,
+    `assert.equal(numberOfVideos(1.5, "GB", 2.2, "TB"), 1466);`,
+]);

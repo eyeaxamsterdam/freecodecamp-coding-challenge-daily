@@ -29,9 +29,10 @@ function extractAttributes(element) {
 //extractAttributes("<p>Lorem ipsum dolor sit amet</p>") //should return [].
 
 const runTests = require('../../helpers/runTests');
-runTests(extractAttributes, `
-    extractAttributes('<span class="red"></span>') should return ["class, red"].
-    extractAttributes('<meta charset="UTF-8" />') should return ["charset, UTF-8"].
-    extractAttributes('<input name="email" type="email" required="true" />') should return ["name, email", "type, email", "required, true"].
-    extractAttributes('<button id="submit" class="btn btn-primary">Submit</button>') should return ["id, submit", "class, btn btn-primary"].
-`);
+runTests(extractAttributes, [
+    `assert.deepEqual(extractAttributes('<span class="red"></span>'), ["class, red"]);`,
+    `assert.deepEqual(extractAttributes('<meta charset="UTF-8" />'), ["charset, UTF-8"]);`,
+    `assert.deepEqual(extractAttributes("<p>Lorem ipsum dolor sit amet</p>"), []);`,
+    `assert.deepEqual(extractAttributes('<input name="email" type="email" required="true" />'), ["name, email", "type, email", "required, true"]);`,
+    `assert.deepEqual(extractAttributes('<button id="submit" class="btn btn-primary">Submit</button>'), ["id, submit", "class, btn btn-primary"]);`,
+]);

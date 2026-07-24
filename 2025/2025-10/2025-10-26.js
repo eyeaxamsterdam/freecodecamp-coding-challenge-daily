@@ -20,10 +20,10 @@ function format(time) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(format, `
-    format(500) should return "8:20".
-    format(4000) should return "1:06:40".
-    format(1) should return "0:01".
-    format(5555) should return "1:32:35".
-    format(99999) should return "27:46:39".
-`);
+runTests(format, [
+    `assert.equal(format(500), "8:20");`,
+    `assert.equal(format(4000), "1:06:40");`,
+    `assert.equal(format(1), "0:01");`,
+    `assert.equal(format(5555), "1:32:35");`,
+    `assert.equal(format(99999), "27:46:39");`,
+]);

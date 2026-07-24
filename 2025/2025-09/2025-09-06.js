@@ -36,6 +36,9 @@ function rotate(matrix) {
 //rotate([[0, 1, 0], [1, 0, 1], [0, 0, 0]]) //should return [[0, 1, 0], [0, 0, 1], [0, 1, 0]].
 
 const runTests = require('../../helpers/runTests');
-runTests(rotate, `
-    rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) should return [[7, 4, 1], [8, 5, 2], [9, 6, 3]].
-`);
+runTests(rotate, [
+    `assert.deepEqual(rotate([[1]]), [[1]]);`,
+    `assert.deepEqual(rotate([[1, 2], [3, 4]]), [[3, 1], [4, 2]]);`,
+    `assert.deepEqual(rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]), [[7, 4, 1], [8, 5, 2], [9, 6, 3]]);`,
+    `assert.deepEqual(rotate([[0, 1, 0], [1, 0, 1], [0, 0, 0]]), [[0, 1, 0], [0, 0, 1], [0, 1, 0]]);`,
+]);

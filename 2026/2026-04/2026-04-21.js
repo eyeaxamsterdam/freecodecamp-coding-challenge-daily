@@ -20,8 +20,9 @@ function getOddWords(str) {
 getOddWords("The quick brown fox jumped over the lazy river"); // "The quick brown fox the river".
 
 const runTests = require('../../helpers/runTests');
-runTests(getOddWords, `
-    getOddWords("This is a super good test") should return "a super".
-    getOddWords("one two three four") should return "one two three".
-    getOddWords("banana split sundae with rainbow sprinkles on top") should return "split rainbow sprinkles top".
-`);
+runTests(getOddWords, [
+    `assert.equal(getOddWords("This is a super good test"), "a super");`,
+    `assert.equal(getOddWords("one two three four"), "one two three");`,
+    `assert.equal(getOddWords("banana split sundae with rainbow sprinkles on top"), "split rainbow sprinkles top");`,
+    `assert.equal(getOddWords("The quick brown fox jumped over the lazy river"), "The quick brown fox the river");`,
+]);

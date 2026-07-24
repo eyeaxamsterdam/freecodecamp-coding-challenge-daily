@@ -34,13 +34,13 @@ function getMood(genre, bpm) {
 
 
 const runTests = require('../../helpers/runTests');
-runTests(getMood, `
-    getMood("rock", 111) should return "happy".
-    getMood("electronic", 74) should return "focus".
-    getMood("classical", 180) should return "happy".
-    getMood("rock", 155) should return "hype".
-    getMood("electronic", 90) should return "happy".
-    getMood("classical", 67) should return "focus".
-    getMood("pop", 100) should return "happy".
-    getMood("electronic", 135) should return "hype".
-`);
+runTests(getMood, [
+    `assert.equal(getMood("rock", 111), "happy");`,
+    `assert.equal(getMood("electronic", 74), "focus");`,
+    `assert.equal(getMood("classical", 180), "happy");`,
+    `assert.equal(getMood("rock", 155), "hype");`,
+    `assert.equal(getMood("electronic", 90), "happy");`,
+    `assert.equal(getMood("classical", 67), "focus");`,
+    `assert.equal(getMood("pop", 100), "happy");`,
+    `assert.equal(getMood("electronic", 135), "hype");`,
+]);

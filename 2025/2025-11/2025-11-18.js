@@ -17,9 +17,9 @@ function oneHundred(chars) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(oneHundred, `
-    oneHundred("One hundred ") should return "One hundred One hundred One hundred One hundred One hundred One hundred One hundred One hundred One ".
-    oneHundred("freeCodeCamp ") should return "freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeC".
-    oneHundred("daily challenges ") should return "daily challenges daily challenges daily challenges daily challenges daily challenges daily challenge".
-    oneHundred("!") should return "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!".
-`);
+runTests(oneHundred, [
+    `assert.equal(oneHundred("One hundred "), "One hundred One hundred One hundred One hundred One hundred One hundred One hundred One hundred One ");`,
+    `assert.equal(oneHundred("freeCodeCamp "), "freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeCamp freeCodeC");`,
+    `assert.equal(oneHundred("daily challenges "), "daily challenges daily challenges daily challenges daily challenges daily challenges daily challenge");`,
+    `assert.equal(oneHundred("!"), "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");`,
+]);

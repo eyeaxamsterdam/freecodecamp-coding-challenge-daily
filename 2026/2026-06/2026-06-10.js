@@ -49,10 +49,10 @@ function getItineraryCount(stops) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getItineraryCount, `
-    getItineraryCount(["library", "park"]) should return 2.
-    getItineraryCount(["library", "park", "arcade"]) should return 18.
-    getItineraryCount(["library", "park", "arcade", "store"]) should return 120.
-    getItineraryCount(["library", "park", "arcade", "store", "cafe"]) should return 840.
-    getItineraryCount(["library", "park", "arcade", "store", "cafe", "market", "museum"]) should return 55440.
-`);
+runTests(countArrangements, [
+    `assert.equal(getItineraryCount(["library", "park"]), 2);`,
+    `assert.equal(getItineraryCount(["library", "park", "arcade"]), 18);`,
+    `assert.equal(getItineraryCount(["library", "park", "arcade", "store"]), 120);`,
+    `assert.equal(getItineraryCount(["library", "park", "arcade", "store", "cafe"]), 840);`,
+    `assert.equal(getItineraryCount(["library", "park", "arcade", "store", "cafe", "market", "museum"]), 55440);`,
+]);

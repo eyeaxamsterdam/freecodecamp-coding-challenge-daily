@@ -27,11 +27,11 @@ function findOrg(acronym) {
 // Tests:
 
 const runTests = require('../../helpers/runTests');
-runTests(findOrg, `
-    findOrg("NASA") should return "National Avocado Storage Authority".
-    findOrg("CIA") should return "Cats Infiltration Agency".
-    findOrg("FBI") should return "Fluffy Beanbag Inspectors".
-    findOrg("DOJ") should return "Department Of Jelly".
-    findOrg("WHO") should return "Wild Honey Organization".
-    findOrg("EPA") should return "Eating Pancakes Administration".
-`);
+runTests(findOrg, [
+    `assert.equal(findOrg("NASA"), "National Avocado Storage Authority");`,
+    `assert.equal(findOrg("CIA"), "Cats Infiltration Agency");`,
+    `assert.equal(findOrg("FBI"), "Fluffy Beanbag Inspectors");`,
+    `assert.equal(findOrg("DOJ"), "Department Of Jelly");`,
+    `assert.equal(findOrg("WHO"), "Wild Honey Organization");`,
+    `assert.equal(findOrg("EPA"), "Eating Pancakes Administration");`,
+]);

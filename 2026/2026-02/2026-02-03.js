@@ -8,9 +8,9 @@ function mirror(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(mirror, `
-    mirror("freeCodeCamp") should return "freeCodeCamppmaCedoCeerf".
-    mirror("RaceCar") should return "RaceCarraCecaR".
-    mirror("helloworld") should return "helloworlddlrowolleh".
-    mirror("The quick brown fox...") should return "The quick brown fox......xof nworb kciuq ehT".
-`);
+runTests(mirror, [
+    `assert.equal(mirror("freeCodeCamp"), "freeCodeCamppmaCedoCeerf");`,
+    `assert.equal(mirror("RaceCar"), "RaceCarraCecaR");`,
+    `assert.equal(mirror("helloworld"), "helloworlddlrowolleh");`,
+    `assert.equal(mirror("The quick brown fox..."), "The quick brown fox......xof nworb kciuq ehT");`,
+]);

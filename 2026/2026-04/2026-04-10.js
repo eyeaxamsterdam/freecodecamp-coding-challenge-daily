@@ -20,9 +20,9 @@ function rookAttack(rook1, rook2) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(rookAttack, `
-    rookAttack("A1", "A8") should return true.
-    rookAttack("B4", "F4") should return true.
-    rookAttack("E3", "D4") should return false.
-    rookAttack("H7", "F6") should return false. 
-`);
+runTests(rookAttack, [
+    `assert.isTrue(rookAttack("A1", "A8"));`,
+    `assert.isTrue(rookAttack("B4", "F4"));`,
+    `assert.isFalse(rookAttack("E3", "D4"));`,
+    `assert.isFalse(rookAttack("H7", "F6"));`,
+]);

@@ -18,11 +18,11 @@ function getExtension(filename) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(getExtension, `
-    getExtension("document.txt") should return "txt".
-    getExtension("README") should return "none".
-    getExtension("image.PNG") should return "PNG".
-    getExtension(".gitignore") should return "gitignore".
-    getExtension("archive.tar.gz") should return "gz".
-    getExtension("final.draft.") should return "none".
-`);
+runTests(getExtension, [
+    `assert.equal(getExtension("document.txt"), "txt");`,
+    `assert.equal(getExtension("README"), "none");`,
+    `assert.equal(getExtension("image.PNG"), "PNG");`,
+    `assert.equal(getExtension(".gitignore"), "gitignore");`,
+    `assert.equal(getExtension("archive.tar.gz"), "gz");`,
+    `assert.equal(getExtension("final.draft."), "none");`,
+]);

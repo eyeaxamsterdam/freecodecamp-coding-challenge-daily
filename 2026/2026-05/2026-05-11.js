@@ -13,9 +13,9 @@ function getOldest(people) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getOldest, `
-    getOldest([{ name: "Brenda", age: 40 }]) should return ["Brenda"].
-    getOldest([{ name: "Alice", age: 30 }, { name: "Bob", age: 25 }]) should return ["Alice"].
-    getOldest([{ name: "Allison", age: 25 }, { name: "Bill", age: 30 }, { name: "Carol", age: 30 }]) should return ["Bill", "Carol"].
-    getOldest([{ name: "George", age: 50 }, { name: "Shirley", age: 42 }, { name: "Beth", age: 48 }, { name: "Holly", age: 50 }, { name: "Kevin", age: 44 }, { name: "Frank", age: 47 }, { name: "Zach", age: 50 }, { name: "Jennifer", age: 43 }]) should return ["George", "Holly", "Zach"].
-`);
+runTests(getOldest, [
+    `assert.deepEqual(getOldest([{ name: "Brenda", age: 40 }]), ["Brenda"]);`,
+    `assert.deepEqual(getOldest([{ name: "Alice", age: 30 }, { name: "Bob", age: 25 }]), ["Alice"]);`,
+    `assert.deepEqual(getOldest([{ name: "Allison", age: 25 }, { name: "Bill", age: 30 }, { name: "Carol", age: 30 }]), ["Bill", "Carol"]);`,
+    `assert.deepEqual(getOldest([{ name: "George", age: 50 }, { name: "Shirley", age: 42 }, { name: "Beth", age: 48 }, { name: "Holly", age: 50 }, { name: "Kevin", age: 44 }, { name: "Frank", age: 47 }, { name: "Zach", age: 50 }, { name: "Jennifer", age: 43 }]), ["George", "Holly", "Zach"]);`,
+]);

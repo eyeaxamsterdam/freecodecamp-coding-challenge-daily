@@ -8,10 +8,10 @@ function extractContent(html) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(extractContent, `
-    extractContent('<p>hello world</p>') should return "hello world".
-    extractContent('<p>hello <span>world</span></p>') should return "hello world".
-    extractContent('<a href="example.com">Click me</a>') should return "Click me".
-    extractContent('<p><button onClick="learnToCode()">Learn</button> to <code>code<code> <br/>for <strong>free</strong> <br/>on <a href="https://freecodecamp.org/" target="_blank"><span class="highlight">freecodecamp</span>.org</a>') should return "Learn to code for free on freecodecamp.org".
-    extractContent('<div class="container"><h1 id="title">Welcome to <strong>My</strong> Website.</h1><p>This is a <a href="https://example.com" target="_blank">link</a> to something <em>really</em> <span class="highlight">important</span>.</p><ul><li>Item <strong>one</strong></li><li>Item <em>two</em></li><li>Item three</li></ul><img src="pic.jpg" alt="A picture"/><p class="footer">Contact us at <a href="mailto:hello@example.com">hello@example.com</a> for <span>more <strong>info</strong></span>.</p></div>') should return "Welcome to My Website.This is a link to something really important.Item oneItem twoItem threeContact us at hello@example.com for more info.".
-`);
+runTests(extractContent, [
+    `assert.equal(extractContent('<p>hello world</p>'), "hello world");`,
+    `assert.equal(extractContent('<p>hello <span>world</span></p>'), "hello world");`,
+    `assert.equal(extractContent('<a href="example.com">Click me</a>'), "Click me");`,
+    `assert.equal(extractContent('<p><button onClick="learnToCode()">Learn</button> to <code>code<code> <br/>for <strong>free</strong> <br/>on <a href="https://freecodecamp.org/" target="_blank"><span class="highlight">freecodecamp</span>.org</a>'), "Learn to code for free on freecodecamp.org");`,
+    `assert.equal(extractContent('<div class="container"><h1 id="title">Welcome to <strong>My</strong> Website.</h1><p>This is a <a href="https://example.com" target="_blank">link</a> to something <em>really</em> <span class="highlight">important</span>.</p><ul><li>Item <strong>one</strong></li><li>Item <em>two</em></li><li>Item three</li></ul><img src="pic.jpg" alt="A picture"/><p class="footer">Contact us at <a href="mailto:hello@example.com">hello@example.com</a> for <span>more <strong>info</strong></span>.</p></div>'), "Welcome to My Website.This is a link to something really important.Item oneItem twoItem threeContact us at hello@example.com for more info.");`,
+]);

@@ -8,11 +8,11 @@ function isEvenlyDivisible(a, b) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isEvenlyDivisible, `
-    isEvenlyDivisible(4, 2) should return true.
-    isEvenlyDivisible(7, 3) should return false.
-    isEvenlyDivisible(5, 10) should return false.
-    isEvenlyDivisible(48, 6) should return true.
-    isEvenlyDivisible(3186, 9) should return true.
-    isEvenlyDivisible(4192, 11) should return false.
-`);
+runTests(isEvenlyDivisible, [
+    `assert.isTrue(isEvenlyDivisible(4, 2));`,
+    `assert.isFalse(isEvenlyDivisible(7, 3));`,
+    `assert.isFalse(isEvenlyDivisible(5, 10));`,
+    `assert.isTrue(isEvenlyDivisible(48, 6));`,
+    `assert.isTrue(isEvenlyDivisible(3186, 9));`,
+    `assert.isFalse(isEvenlyDivisible(4192, 11));`,
+]);

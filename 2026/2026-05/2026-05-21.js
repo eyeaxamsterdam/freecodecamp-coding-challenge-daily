@@ -18,11 +18,11 @@ function iBeforeE(sentence) {
 }
 console.log(iBeforeE("either"));
 
-const runTests = require("../../helpers/runTests");
-runTests(iBeforeE, `
-    iBeforeE("beleive") should return "believe".
-    iBeforeE("recieve") should return "receive".
-    iBeforeE("we recieved a breif") should return "we received a brief".
-    iBeforeE("she beleived the friendly niece could percieve the greif") should return "she believed the friendly niece could perceive the grief".
-    iBeforeE("we recieved relief after the theif gave us a breif piece of feirce deceit") should return "we received relief after the thief gave us a brief piece of fierce deceit".
-`);
+const runTests = require('../../helpers/runTests');
+runTests(iBeforeE, [
+    `assert.equal(iBeforeE("beleive"), "believe");`,
+    `assert.equal(iBeforeE("recieve"), "receive");`,
+    `assert.equal(iBeforeE("we recieved a breif"), "we received a brief");`,
+    `assert.equal(iBeforeE("she beleived the friendly niece could percieve the greif"), "she believed the friendly niece could perceive the grief");`,
+    `assert.equal(iBeforeE("we recieved relief after the theif gave us a breif piece of feirce deceit"), "we received relief after the thief gave us a brief piece of fierce deceit");`,
+]);

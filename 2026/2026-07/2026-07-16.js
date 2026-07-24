@@ -34,11 +34,11 @@ function pigLatin(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(pigLatin, `
-    pigLatin("universe") should return "universeway".
-    pigLatin("hello") should return "ellohay".
-    pigLatin("hello universe") should return "ellohay universeway".
-    pigLatin("Hello universe") should return "Ellohay universeway".
-    pigLatin("Pig Latin is fun") should return "Igpay Atinlay isway unfay".
-    pigLatin("The quick brown fox jumped over the lazy dog") should return "Ethay uickqay ownbray oxfay umpedjay overway ethay azylay ogday".
-`);
+runTests(pigLatin, [
+    `assert.equal(pigLatin("universe"), "universeway");`,
+    `assert.equal(pigLatin("hello"), "ellohay");`,
+    `assert.equal(pigLatin("hello universe"), "ellohay universeway");`,
+    `assert.equal(pigLatin("Hello universe"), "Ellohay universeway");`,
+    `assert.equal(pigLatin("Pig Latin is fun"), "Igpay Atinlay isway unfay");`,
+    `assert.equal(pigLatin("The quick brown fox jumped over the lazy dog"), "Ethay uickqay ownbray oxfay umpedjay overway ethay azylay ogday");`,
+]);

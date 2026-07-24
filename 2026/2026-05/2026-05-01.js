@@ -21,9 +21,17 @@ function groupAnagrams(words) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(groupAnagrams, `
-   groupAnagrams(["listen", "silent", "hello", "enlist", "world"]) should return [["listen", "silent", "enlist"], ["hello"], ["world"]].
-    groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]) should return [["eat","tea","ate"],["tan","nat"],["bat"]].
-    groupAnagrams(["care", "race", "acre", "pots", "stop", "tops", "opts", "post", "spot", "evil", "vile", "live", "veil"]) should return [["care","race","acre"],["pots","stop","tops","opts","post","spot"],["evil","vile","live","veil"]].
-    groupAnagrams(["algorithms", "logarithms", "education", "cautioned", "auctioned", "triangle", "integral", "alerting", "relating"]) should return [["algorithms","logarithms"],["education","cautioned","auctioned"],["triangle","integral","alerting","relating"]]. 
-`);
+runTests(groupAnagrams, [
+    `const groups = groupAnagrams(["listen", "silent", "hello", "enlist", "world"]);
+    const sorted = groups.map(g => g.sort()).sort((a, b) => a[0].localeCompare(b[0]));
+    assert.deepEqual(sorted, [["enlist", "listen", "silent"], ["hello"], ["world"]]);`,
+    `const groups = groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]);
+    const sorted = groups.map(g => g.sort()).sort((a, b) => a[0].localeCompare(b[0]));
+    assert.deepEqual(sorted, [["ate", "eat", "tea"], ["bat"], ["nat", "tan"]]);`,
+    `const groups = groupAnagrams(["care", "race", "acre", "pots", "stop", "tops", "opts", "post", "spot", "evil", "vile", "live", "veil"]);
+    const sorted = groups.map(g => g.sort()).sort((a, b) => a[0].localeCompare(b[0]));
+    assert.deepEqual(sorted, [["acre", "care", "race"], ["evil", "live", "veil", "vile"], ["opts", "post", "pots", "spot", "stop", "tops"]]);`,
+    `const groups = groupAnagrams(["algorithms", "logarithms", "education", "cautioned", "auctioned", "triangle", "integral", "alerting", "relating"]);
+    const sorted = groups.map(g => g.sort()).sort((a, b) => a[0].localeCompare(b[0]));
+    assert.deepEqual(sorted, [["alerting", "integral", "relating", "triangle"], ["algorithms", "logarithms"], ["auctioned", "cautioned", "education"]]);`,
+]);

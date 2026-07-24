@@ -26,10 +26,9 @@ function getRotation(n) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getRotation, `
-    getRotation(123) should return 0.
-    getRotation(13579) should return 3.
-    getRotation(24681) should return "none".
-    getRotation(84138789345) should return 6.
-`);
-
+runTests(getRotation, [
+    `assert.equal(getRotation(123), 0);`,
+    `assert.equal(getRotation(13579), 3);`,
+    `assert.equal(getRotation(24681), "none");`,
+    `assert.equal(getRotation(84138789345), 6);`,
+]);

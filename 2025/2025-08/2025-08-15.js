@@ -19,9 +19,9 @@ function jbelmu(text) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(jbelmu, `
-    jbelmu("hello world") should return "hello wlord".
-    jbelmu("i love jumbled text") should return "i love jbelmud text".
-    jbelmu("freecodecamp is my favorite place to learn to code") should return "faccdeeemorp is my faiortve pacle to laern to cdoe".
-    jbelmu("the quick brown fox jumps over the lazy dog") should return "the qciuk borwn fox jmpus oevr the lazy dog". 
-`);
+runTests(jbelmu, [
+    `assert.equal(jbelmu("hello world"), "hello wlord");`,
+    `assert.equal(jbelmu("i love jumbled text"), "i love jbelmud text");`,
+    `assert.equal(jbelmu("freecodecamp is my favorite place to learn to code"), "faccdeeemorp is my faiortve pacle to laern to cdoe");`,
+    `assert.equal(jbelmu("the quick brown fox jumps over the lazy dog"), "the qciuk borwn fox jmpus oevr the lazy dog");`,
+]);

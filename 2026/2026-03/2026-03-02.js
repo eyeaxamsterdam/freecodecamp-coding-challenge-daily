@@ -14,10 +14,10 @@ function sumLetters(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(sumLetters, `
-    sumLetters("Hello") should return 52.
-    sumLetters("freeCodeCamp") should return 94.
-    sumLetters("The quick brown fox jumps over the lazy dog.") should return 473.
-    sumLetters("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ex nisl, pretium eu varius blandit, facilisis quis eros. Vestibulum ante ipsum primis in faucibus orci.") should return 1681.
-    sumLetters("</404>") should return 0.
-`);
+runTests(sumLetters, [
+    `assert.equal(sumLetters("Hello"), 52);`,
+    `assert.equal(sumLetters("freeCodeCamp"), 94);`,
+    `assert.equal(sumLetters("The quick brown fox jumps over the lazy dog."), 473);`,
+    `assert.equal(sumLetters("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ex nisl, pretium eu varius blandit, facilisis quis eros. Vestibulum ante ipsum primis in faucibus orci."), 1681);`,
+    `assert.equal(sumLetters("</404>"), 0);`,
+]);

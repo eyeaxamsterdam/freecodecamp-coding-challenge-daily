@@ -12,6 +12,18 @@ const blockUrl = (language) =>
 const challengeUrl = (language, id) =>
   `https://raw.githubusercontent.com/freeCodeCamp/freeCodeCamp/main/curriculum/challenges/english/blocks/${BLOCK_NAMES[language]}/${id}.md`;
 
+// The 365-challenge index rarely changes within a single run (e.g. a bulk
+// sync across many dates), so fetch it once per language and reuse it.
+const blockCache = {};
+async function fetchBlock(language) {
+  if (blockCache[language]) return blockCache[language];
+  const res = await fetch(blockUrl(language));
+  if (!res.ok) return null;
+  const data = await res.json();
+  blockCache[language] = data;
+  return data;
+}
+
 function stripInlineCode(text) {
   return text.replace(/`([^`]*)`/g, "$1");
 }
@@ -84,11 +96,47 @@ function emptyPythonFunctionBody(seedCode) {
   return match ? `${match[1]}\n    pass` : seedCode;
 }
 
-// The generated file's tail (everything from here down) is fully derived
-// from freeCodeCamp's data — syncTests.js locates this marker to know where
-// a user's own code (above) ends and the regeneratable part (below) begins.
-const JS_TAIL_MARKER = "const runTests = require(";
-const PY_TAIL_MARKER = "import os\nimport sys";
+function extractFnName(content, language) {
+  if (language === "python") {
+    const match = content.match(/def\s+(\w+)\s*\(/);
+    return match ? match[1] : null;
+  }
+  const fnDecl = content.match(/function\s+(\w+)\s*\(/);
+  if (fnDecl) return fnDecl[1];
+  // Arrow function assigned to a const/let, e.g. `const foo = (x) => {`.
+  const arrowDecl = content.match(/(?:const|let)\s+(\w+)\s*=\s*(?:\([^)]*\)|\w+)\s*=>/);
+  return arrowDecl ? arrowDecl[1] : null;
+}
+
+// Finds where a user's own code (above) ends and the regeneratable test
+// tail (below) begins. Normally that's the require/import line immediately
+// before the `runTests(fnName, ...)` / `run_tests(...)` call — split there
+// so it gets regenerated fresh. A few files declare that import earlier,
+// separated from the call; for those, fall back to splitting at the bare
+// call site (leaving the stray earlier import alone — reduplicating a
+// `const runTests = require(...)` would be a SyntaxError, so this path
+// must never leave two require/import statements for the same binding).
+function findSplitPoint(content, language) {
+  const fnName = extractFnName(content, language);
+  if (!fnName) return null;
+
+  const callRe =
+    language === "python"
+      ? new RegExp(`run_tests\\(\\s*${fnName}\\s*,`)
+      : new RegExp(`runTests\\(\\s*${fnName}\\s*,`);
+  const withImportRe =
+    language === "python"
+      ? new RegExp(`import os\\nimport sys\\n[\\s\\S]*?from helpers\\.run_tests import run_tests\\n\\n${callRe.source}`)
+      : new RegExp(`const runTests = require\\([^)]*\\);\\n${callRe.source}`);
+
+  const withImportMatch = content.match(withImportRe);
+  if (withImportMatch) {
+    return { fnName, splitIndex: withImportMatch.index };
+  }
+
+  const callMatch = content.match(callRe);
+  return callMatch ? { fnName, splitIndex: callMatch.index } : null;
+}
 
 // Each assert block becomes one array element — a multi-statement block's
 // own internal lines stay indented for readability, but the array's commas
@@ -142,9 +190,8 @@ async function fetchChallengeMarkdown(year, month, day, language) {
     return null;
   }
 
-  const blockRes = await fetch(blockUrl(language));
-  if (!blockRes.ok) return null;
-  const block = await blockRes.json();
+  const block = await fetchBlock(language);
+  if (!block) return null;
   const entry = block.challengeOrder[challengeNumber - 1];
   if (!entry) return null;
 
@@ -200,6 +247,5 @@ module.exports = {
   fetchAssertBlocks,
   buildJsTestTail,
   buildPythonTestTail,
-  JS_TAIL_MARKER,
-  PY_TAIL_MARKER,
+  findSplitPoint,
 };

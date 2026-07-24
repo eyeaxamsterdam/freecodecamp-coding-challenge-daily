@@ -24,11 +24,11 @@ function digitsOrLetters(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(digitsOrLetters, `
-    digitsOrLetters("abc123") should return "tie".
-    digitsOrLetters("a1b2c3d") should return "letters".
-    digitsOrLetters("1a2b3c4") should return "digits".
-    digitsOrLetters("abc123!@#DEF") should return "letters".
-    digitsOrLetters("H3110 W0R1D") should return "digits".
-    digitsOrLetters("P455W0RD") should return "tie".
-`);
+runTests(digitsOrLetters, [
+    `assert.equal(digitsOrLetters("abc123"), "tie");`,
+    `assert.equal(digitsOrLetters("a1b2c3d"), "letters");`,
+    `assert.equal(digitsOrLetters("1a2b3c4"), "digits");`,
+    `assert.equal(digitsOrLetters("abc123!@#DEF"), "letters");`,
+    `assert.equal(digitsOrLetters("H3110 W0R1D"), "digits");`,
+    `assert.equal(digitsOrLetters("P455W0RD"), "tie");`,
+]);

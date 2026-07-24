@@ -66,10 +66,10 @@ function navigateTrail(map) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(navigateTrail, `
-    navigateTrail(["-CT--", "--T--", "--TT-", "---T-", "---G-"]) should return "RDDRDD".
-    navigateTrail(["-----", "--TTG", "--T--", "--T--", "CTT--"]) should return "RRUUURR".
-    navigateTrail(["-C----", "TT----", "T-----", "TTTTT-", "----G-"]) should return "DLDDRRRRD".
-    navigateTrail(["--------", "-CTTT---", "----T---", "---GT---", "--------"]) should return "RRRDDL".
-    navigateTrail(["TTTTTTT-", "T-----T-", "T-----T-", "TTTT--TG", "---C----"]) should return "ULLLUUURRRRRRDDDR".
-`);
+runTests(navigateTrail, [
+    `assert.equal(navigateTrail(["-CT--", "--T--", "--TT-", "---T-", "---G-"]), "RDDRDD");`,
+    `assert.equal(navigateTrail(["-----", "--TTG", "--T--", "--T--", "CTT--"]), "RRUUURR");`,
+    `assert.equal(navigateTrail(["-C----", "TT----", "T-----", "TTTTT-", "----G-"]), "DLDDRRRRD");`,
+    `assert.equal(navigateTrail(["--------", "-CTTT---", "----T---", "---GT---", "--------"]), "RRRDDL");`,
+    `assert.equal(navigateTrail(["TTTTTTT-", "T-----T-", "T-----T-", "TTTT--TG", "---C----"]), "ULLLUUURRRRRRDDDR");`,
+]);

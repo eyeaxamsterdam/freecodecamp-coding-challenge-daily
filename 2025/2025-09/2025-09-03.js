@@ -22,13 +22,13 @@ function isPangram(sentence, letters) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(isPangram, `
-    isPangram("hello", "helo") should return true.
-    isPangram("hello", "hel") should return false.
-    isPangram("hello", "helow") should return false.
-    isPangram("hello world", "helowrd") should return true.
-    isPangram("Hello World!", "helowrd") should return true.
-    isPangram("Hello World!", "heliowrd") should return false.
-    isPangram("freeCodeCamp", "frcdmp") should return false.
-    isPangram("The quick brown fox jumps over the lazy dog.", "abcdefghijklmnopqrstuvwxyz") should return true.
-`);
+runTests(isPangram, [
+    `assert.isTrue(isPangram("hello", "helo"));`,
+    `assert.isFalse(isPangram("hello", "hel"));`,
+    `assert.isFalse(isPangram("hello", "helow"));`,
+    `assert.isTrue(isPangram("hello world", "helowrd"));`,
+    `assert.isTrue(isPangram("Hello World!", "helowrd"));`,
+    `assert.isFalse(isPangram("Hello World!", "heliowrd"));`,
+    `assert.isFalse(isPangram("freeCodeCamp", "frcdmp"));`,
+    `assert.isTrue(isPangram("The quick brown fox jumps over the lazy dog.", "abcdefghijklmnopqrstuvwxyz"));`,
+]);

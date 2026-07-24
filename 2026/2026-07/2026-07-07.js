@@ -10,10 +10,10 @@ function roundToNearestMultiple(num, multiple) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(roundToNearestMultiple, `
-    roundToNearestMultiple(5, 3) should return 6.
-    roundToNearestMultiple(17, 4) should return 16.
-    roundToNearestMultiple(43, 5) should return 45.
-    roundToNearestMultiple(38, 11) should return 33.
-    roundToNearestMultiple(93, 12) should return 96.
-`);
+runTests(roundToNearestMultiple, [
+    `assert.equal(roundToNearestMultiple(5, 3), 6);`,
+    `assert.equal(roundToNearestMultiple(17, 4), 16);`,
+    `assert.equal(roundToNearestMultiple(43, 5), 45);`,
+    `assert.equal(roundToNearestMultiple(38, 11), 33);`,
+    `assert.equal(roundToNearestMultiple(93, 12), 96);`,
+]);

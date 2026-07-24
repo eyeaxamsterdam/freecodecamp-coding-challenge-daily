@@ -25,10 +25,10 @@ function goldilocksZone(mass) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(goldilocksZone, `
-    goldilocksZone(1) should return [0.95, 1.37].
-    goldilocksZone(0.5) should return [0.28, 0.41].
-    goldilocksZone(6) should return [21.85, 31.51].
-    goldilocksZone(3.7) should return [9.38, 13.52].
-    goldilocksZone(20) should return [179.69, 259.13].
-`);
+runTests(goldilocksZone, [
+    `assert.deepEqual(goldilocksZone(1), [0.95, 1.37]);`,
+    `assert.deepEqual(goldilocksZone(0.5), [0.28, 0.41]);`,
+    `assert.deepEqual(goldilocksZone(6), [21.85, 31.51]);`,
+    `assert.deepEqual(goldilocksZone(3.7), [9.38, 13.52]);`,
+    `assert.deepEqual(goldilocksZone(20), [179.69, 259.13]);`,
+]);

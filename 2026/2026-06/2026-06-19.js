@@ -42,11 +42,11 @@ function getRentalCost(rented, returned, tier) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getRentalCost, `
-    getRentalCost("2026-06-18T18:30:00Z", "2026-06-19T10:30:00Z", 1) should return "$4.99".
-    getRentalCost("2026-06-18T14:30:00Z", "2026-06-20T12:30:00Z", 1) should return "$12.97".
-    getRentalCost("2026-06-18T10:15:00Z", "2026-06-18T19:45:00Z", 3) should return "$3.99".
-    getRentalCost("2026-06-18T15:20:00Z", "2026-06-23T08:10:00Z", 3) should return "$9.97".
-    getRentalCost("2026-06-18T12:00:00Z", "2026-06-25T12:00:00Z", 7) should return "$2.99".
-    getRentalCost("2026-06-18T08:00:00Z", "2027-06-18T14:00:00Z", 7) should return "$358.40".
-`);
+runTests(addDays, [
+    `assert.equal(getRentalCost("2026-06-18T18:30:00Z", "2026-06-19T10:30:00Z", 1), "$4.99");`,
+    `assert.equal(getRentalCost("2026-06-18T14:30:00Z", "2026-06-20T12:30:00Z", 1), "$12.97");`,
+    `assert.equal(getRentalCost("2026-06-18T10:15:00Z", "2026-06-18T19:45:00Z", 3), "$3.99");`,
+    `assert.equal(getRentalCost("2026-06-18T15:20:00Z", "2026-06-23T08:10:00Z", 3), "$9.97");`,
+    `assert.equal(getRentalCost("2026-06-18T12:00:00Z", "2026-06-25T12:00:00Z", 7), "$2.99");`,
+    `assert.equal(getRentalCost("2026-06-18T08:00:00Z", "2027-06-18T14:00:00Z", 7), "$358.40");`,
+]);

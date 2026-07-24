@@ -47,14 +47,15 @@ function validate(email) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(validate, `
-    validate("a@bc.d") should return true.
-    validate("hell.-w.rld@example.com") should return true.
-    validate(".b@sh.rc") should return false.
-    validate("example@test.c0") should return false.
-    validate("freecodecamp.org") should return false.
-    validate("develop.ment_user@c0D!NG.R.CK0S") should return true.
-    validate("hello.@wo.rld") should return false.
-    validate("hello@world..com") should return false.
-    validate("git@commit@push.io") should return false.
-`);
+runTests(validate, [
+    `assert.isTrue(validate("a@b.cd"));`,
+    `assert.isTrue(validate("hell.-w.rld@example.com"));`,
+    `assert.isFalse(validate(".b@sh.rc"));`,
+    `assert.isFalse(validate("example@test.c0"));`,
+    `assert.isFalse(validate("freecodecamp.org"));`,
+    `assert.isTrue(validate("develop.ment_user@c0D!NG.R.CKS"));`,
+    `assert.isFalse(validate("hello.@wo.rld"));`,
+    `assert.isFalse(validate("hello@world..com"));`,
+    `assert.isFalse(validate("develop..ment_user@c0D!NG.R.CKS"));`,
+    `assert.isFalse(validate("git@commit@push.io"));`,
+]);

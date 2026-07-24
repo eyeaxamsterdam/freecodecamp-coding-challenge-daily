@@ -21,11 +21,11 @@ function fizzBuzzCount(start, end) {
     return {fizz: varFizz, buzz: varBuzz };
 }
 
-const runTests = require("../../helpers/runTests");
-runTests(fizzBuzzCount,`
-    fizzBuzzCount(1, 11) should return {fizz: 3, buzz: 2}.
-    fizzBuzzCount(14, 41) should return {fizz: 9, buzz: 6}.
-    fizzBuzzCount(24, 100) should return {fizz: 26, buzz: 16}.
-    fizzBuzzCount(-635, -14) should return {fizz: 207, buzz: 125}.
-    fizzBuzzCount(-5432, 6789) should return {fizz: 4074, buzz: 2444}.
-`)
+const runTests = require('../../helpers/runTests');
+runTests(fizzBuzzCount, [
+    `assert.deepEqual(fizzBuzzCount(1, 11), {fizz: 3, buzz: 2});`,
+    `assert.deepEqual(fizzBuzzCount(14, 41), {fizz: 9, buzz: 6});`,
+    `assert.deepEqual(fizzBuzzCount(24, 100), {fizz: 26, buzz: 16});`,
+    `assert.deepEqual(fizzBuzzCount(-635, -14), {fizz: 207, buzz: 125});`,
+    `assert.deepEqual(fizzBuzzCount(-5432, 6789), {fizz: 4074, buzz: 2444});`,
+]);

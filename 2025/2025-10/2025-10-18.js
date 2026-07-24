@@ -32,10 +32,10 @@ function sockPairs(pairs, cycles) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(sockPairs, `
-    sockPairs(2, 5) should return 1.
-    sockPairs(1, 2) should return 0.
-    sockPairs(5, 11) should return 4.
-    sockPairs(6, 25) should return 3.
-    sockPairs(1, 8) should return 0.
-`);
+runTests(sockPairs, [
+    `assert.equal(sockPairs(2, 5), 1);`,
+    `assert.equal(sockPairs(1, 2), 0);`,
+    `assert.equal(sockPairs(5, 11), 4);`,
+    `assert.equal(sockPairs(6, 25), 3);`,
+    `assert.equal(sockPairs(1, 8), 0);`,
+]);

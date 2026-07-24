@@ -8,9 +8,9 @@ function truncateText(text) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(truncateText, `
-    truncateText("Hello, world!") should return "Hello, world!".
-    truncateText("This string should get truncated.") should return "This string shoul...".
-    truncateText("Exactly twenty chars") should return "Exactly twenty chars".
-    truncateText(".....................") should return "....................".
-`);
+runTests(truncateText, [
+    `assert.equal(truncateText("Hello, world!"), "Hello, world!");`,
+    `assert.equal(truncateText("This string should get truncated."), "This string shoul...");`,
+    `assert.equal(truncateText("Exactly twenty chars"), "Exactly twenty chars");`,
+    `assert.equal(truncateText("....................."), "....................");`,
+]);

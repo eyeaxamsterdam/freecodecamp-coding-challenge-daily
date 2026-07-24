@@ -16,10 +16,10 @@ function isValidSchema(obj) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isValidSchema, `
-    isValidSchema({ username: "bob" }) should return true.
-    isValidSchema({ username: "jen", posts: 30 }) should return true.
-    isValidSchema({ username: "" }) should return true.
-    isValidSchema({ username: 7 }) should return false.
-    isValidSchema({ posts: 25 }) should return false.
-`);
+runTests(isValidSchema, [
+    `assert.isTrue(isValidSchema({ username: "bob" }));`,
+    `assert.isTrue(isValidSchema({ username: "jen", posts: 30 }));`,
+    `assert.isTrue(isValidSchema({ username: "" }));`,
+    `assert.isFalse(isValidSchema({ username: 7 }));`,
+    `assert.isFalse(isValidSchema({ posts: 25 }));`,
+]);

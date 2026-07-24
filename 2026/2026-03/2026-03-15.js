@@ -33,12 +33,12 @@ function getCapturedValue(pieces) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getCapturedValue, `
-    getCapturedValue(["P", "P", "P", "P", "P", "P", "R", "R", "N", "B", "Q", "K"]) should return 8.
-    getCapturedValue(["P", "P", "P", "P", "P", "R", "B", "K"]) should return 26.
-    getCapturedValue(["K", "P", "P", "N", "P", "P", "R", "P", "B", "P", "N", "B"]) should return 16.
-    getCapturedValue(["P", "Q", "N", "P", "P", "B", "K", "P", "R", "R", "P", "P", "B", "P"]) should return 4.
-    getCapturedValue(["P", "K"]) should return 38.
-    getCapturedValue(["N", "P", "P", "B", "K", "P", "Q", "N", "P", "P", "R", "R", "P", "P", "P", "B"]) should return 0.
-    getCapturedValue(["N", "P", "P", "B", "P", "R", "Q", "P", "P", "P", "B"]) should return "Checkmate".
-`);
+runTests(getCapturedValue, [
+    `assert.equal(getCapturedValue(["P", "P", "P", "P", "P", "P", "R", "R", "N", "B", "Q", "K"]), 8);`,
+    `assert.equal(getCapturedValue(["P", "P", "P", "P", "P", "R", "B", "K"]), 26);`,
+    `assert.equal(getCapturedValue(["K", "P", "P", "N", "P", "P", "R", "P", "B", "P", "N", "B"]), 16);`,
+    `assert.equal(getCapturedValue(["P", "Q", "N", "P", "P", "B", "K", "P", "R", "R", "P", "P", "B", "P"]), 4);`,
+    `assert.equal(getCapturedValue(["P", "K"]), 38);`,
+    `assert.equal(getCapturedValue(["N", "P", "P", "B", "K", "P", "Q", "N", "P", "P", "R", "R", "P", "P", "P", "B"]), 0);`,
+    `assert.equal(getCapturedValue(["N", "P", "P", "B", "P", "R", "Q", "P", "P", "P", "B"]), "Checkmate");`,
+]);

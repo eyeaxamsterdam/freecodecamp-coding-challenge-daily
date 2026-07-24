@@ -28,12 +28,12 @@ function isValidCard(number) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isValidCard, `
-    isValidCard("4532015112830366") should return true.
-    isValidCard("5425233430109903") should return true.
-    isValidCard("371449635398431") should return true.
-    isValidCard("6011111111111117") should return true.
-    isValidCard("4532015112830367") should return false.
-    isValidCard("1234567890123456") should return false.
-    isValidCard("4532015112830368") should return false.
-`);
+runTests(isValidCard, [
+    `assert.isTrue(isValidCard("4532015112830366"));`,
+    `assert.isTrue(isValidCard("5425233430109903"));`,
+    `assert.isTrue(isValidCard("371449635398431"));`,
+    `assert.isTrue(isValidCard("6011111111111117"));`,
+    `assert.isFalse(isValidCard("4532015112830367"));`,
+    `assert.isFalse(isValidCard("1234567890123456"));`,
+    `assert.isFalse(isValidCard("4532015112830368"));`,
+]);

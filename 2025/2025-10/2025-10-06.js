@@ -25,11 +25,11 @@ function sendMessage(route) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(sendMessage, `
-    sendMessage([300000, 300000]) should return 2.5.
-    sendMessage([384400, 384400]) should return 3.0627.
-    sendMessage([54600000, 54600000]) should return 364.5.
-    sendMessage([1000000, 500000000, 1000000]) should return 1674.3333.
-    sendMessage([10000, 21339, 50000, 31243, 10000]) should return 2.4086.
-    sendMessage([802101, 725994, 112808, 3625770, 481239]) should return 21.1597.
-`);
+runTests(sendMessage, [
+    `assert.equal(sendMessage([300000, 300000]), 2.5);`,
+    `assert.equal(sendMessage([384400, 384400]), 3.0627);`,
+    `assert.equal(sendMessage([54600000, 54600000]), 364.5);`,
+    `assert.equal(sendMessage([1000000, 500000000, 1000000]), 1674.3333);`,
+    `assert.equal(sendMessage([10000, 21339, 50000, 31243, 10000]), 2.4086);`,
+    `assert.equal(sendMessage([802101, 725994, 112808, 3625770, 481239]), 21.1597);`,
+]);

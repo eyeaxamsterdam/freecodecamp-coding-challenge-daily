@@ -41,10 +41,10 @@ function decode(message) {
 // Tests:
 
 const runTests = require('../../helpers/runTests');
-runTests(decode, `
-    decode("YAVJYNXE") should return "CONGRATS".
-    decode("YALLUT PQUMJP") should return "CODING LEGEND".
-    decode("UAC DYR EISAKYM") should return "YOU ARE AWESOME".
-    decode("GQMS NBMZU") should return "KEEP GOING".
-    decode("W IQQURV UG I ZDMDTRV IVW JQDHY TMHSA QB") should return "A WINNER IS A DREAMER WHO NEVER GIVES UP".
-`);
+runTests(decode, [
+    `assert.equal(decode("YAVJYNXE"), "CONGRATS");`,
+    `assert.equal(decode("YALLUT PQUMJP"), "CODING LEGEND");`,
+    `assert.equal(decode("UAC DYR EISAKYM"), "YOU ARE AWESOME");`,
+    `assert.equal(decode("GQMS NBMZU"), "KEEP GOING");`,
+    `assert.equal(decode("W IQQURV UG I ZDMDTRV IVW JQDHY TMHSA QB"), "A WINNER IS A DREAMER WHO NEVER GIVES UP");`,
+]);

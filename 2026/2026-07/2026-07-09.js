@@ -44,14 +44,14 @@ function triageIssue(title, labels) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(triageIssue, `
-    triageIssue("app crashes with error", []) should return ["bug", "needs triage"].
-    triageIssue("app crashes with error", ["bug", "needs triage"]) should return ["bug", "help wanted"].
-    triageIssue("add dark mode", []) should return ["enhancement", "discussing"].
-    triageIssue("add dark mode", ["enhancement", "discussing"]) should return ["enhancement", "help wanted"].
-    triageIssue("xss security bug", []) should return ["bug", "needs triage", "critical"].
-    triageIssue("security vulnerability in auth", []) should return ["critical"].
-    triageIssue("easy a11y fix", ["bug", "needs triage"]) should return ["bug", "good first issue"].
-    triageIssue("planned api migration", ["enhancement", "discussing"]) should return ["enhancement", "on the roadmap"].
-    triageIssue("improve security", ["enhancement", "discussing"]) should return ["enhancement", "help wanted", "critical"].
-`);
+runTests(triageIssue, [
+    `assert.deepEqual(triageIssue("app crashes with error", []).sort(), ["bug", "needs triage"].sort());`,
+    `assert.deepEqual(triageIssue("app crashes with error", ["bug", "needs triage"]).sort(), ["bug", "help wanted"].sort());`,
+    `assert.deepEqual(triageIssue("add dark mode", []).sort(), ["enhancement", "discussing"].sort());`,
+    `assert.deepEqual(triageIssue("add dark mode", ["enhancement", "discussing"]).sort(), ["enhancement", "help wanted"].sort());`,
+    `assert.deepEqual(triageIssue("xss security bug", []).sort(), ["bug", "needs triage", "critical"].sort());`,
+    `assert.deepEqual(triageIssue("security vulnerability in auth", []).sort(), ["critical"].sort());`,
+    `assert.deepEqual(triageIssue("easy a11y fix", ["bug", "needs triage"]).sort(), ["bug", "good first issue"].sort());`,
+    `assert.deepEqual(triageIssue("planned api migration", ["enhancement", "discussing"]).sort(), ["enhancement", "on the roadmap"].sort());`,
+    `assert.deepEqual(triageIssue("improve security", ["enhancement", "discussing"]).sort(), ["enhancement", "help wanted", "critical"].sort());`,
+]);

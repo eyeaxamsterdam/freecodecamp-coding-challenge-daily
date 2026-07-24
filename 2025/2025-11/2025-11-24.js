@@ -18,10 +18,10 @@ function isValidMessage(message, validator) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(isValidMessage, `
-    isValidMessage("hello world", "hw") should return true.
-    isValidMessage("ALL CAPITAL LETTERS", "acl") should return true.
-    isValidMessage("Coding challenge are boring.", "cca") should return false.
-    isValidMessage("The quick brown fox jumps over the lazy dog.", "TQBFJOTLD") should return true.
-    isValidMessage("The quick brown fox jumps over the lazy dog.", "TQBFJOTLDT") should return false.
-`);
+runTests(isValidMessage, [
+    `assert.isTrue(isValidMessage("hello world", "hw"));`,
+    `assert.isTrue(isValidMessage("ALL CAPITAL LETTERS", "acl"));`,
+    `assert.isFalse(isValidMessage("Coding challenge are boring.", "cca"));`,
+    `assert.isTrue(isValidMessage("The quick brown fox jumps over the lazy dog.", "TQBFJOTLD"));`,
+    `assert.isFalse(isValidMessage("The quick brown fox jumps over the lazy dog.", "TQBFJOTLDT"));`,
+]);

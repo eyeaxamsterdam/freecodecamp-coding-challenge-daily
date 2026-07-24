@@ -37,12 +37,12 @@ function getJetLagHours(departureCity, arrivalCity, flightDuration, direction) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getJetLagHours, `
-    getJetLagHours("Istanbul", "Hong Kong", 10, "east") should return 6.5.
-    getJetLagHours("London", "New York", 8, "west") should return 5.8.
-    getJetLagHours("Hong Kong", "Tokyo", 4, "east") should return 1.6.
-    getJetLagHours("Dubai", "London", 7, "west") should return 4.7.
-    getJetLagHours("Los Angeles", "Hong Kong", 15, "west") should return 17.5.
-    getJetLagHours("Tokyo", "Dubai", 9, "west") should return 5.9.
-    getJetLagHours("New York", "Istanbul", 10, "east") should return 9.5.
-`);
+runTests(getJetLagHours, [
+    `assert.equal(getJetLagHours("Istanbul", "Hong Kong", 10, "east"), 6.5);`,
+    `assert.equal(getJetLagHours("London", "New York", 8, "west"), 5.8);`,
+    `assert.equal(getJetLagHours("Hong Kong", "Tokyo", 4, "east"), 1.6);`,
+    `assert.equal(getJetLagHours("Dubai", "London", 7, "west"), 4.7);`,
+    `assert.equal(getJetLagHours("Los Angeles", "Hong Kong", 15, "west"), 17.5);`,
+    `assert.equal(getJetLagHours("Tokyo", "Dubai", 9, "west"), 5.9);`,
+    `assert.equal(getJetLagHours("New York", "Istanbul", 10, "east"), 9.5);`,
+]);

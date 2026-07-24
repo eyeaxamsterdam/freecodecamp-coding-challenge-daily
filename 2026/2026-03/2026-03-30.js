@@ -26,10 +26,10 @@ function getDueDate(dateStr) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getDueDate, `
-    getDueDate("2025-03-30") should return "2025-12-30".
-    getDueDate("2025-04-27") should return "2026-01-27".
-    getDueDate("2025-05-29") should return "2026-02-28".
-    getDueDate("2026-06-30") should return "2027-03-30".
-    getDueDate("2026-10-11") should return "2027-07-11".
-`);
+runTests(getDueDate, [
+    `assert.equal(getDueDate("2025-03-30"), "2025-12-30");`,
+    `assert.equal(getDueDate("2025-04-27"), "2026-01-27");`,
+    `assert.equal(getDueDate("2025-05-29"), "2026-02-28");`,
+    `assert.equal(getDueDate("2026-06-30"), "2027-03-30");`,
+    `assert.equal(getDueDate("2026-10-11"), "2027-07-11");`,
+]);

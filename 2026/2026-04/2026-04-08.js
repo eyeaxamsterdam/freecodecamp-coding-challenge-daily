@@ -29,12 +29,12 @@ function isFizzBuzz(arr) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isFizzBuzz, `
-    isFizzBuzz([1, 2, "Fizz", 4, "Buzz"]) should return true.
-    isFizzBuzz([13, 14, "FizzBuzz", 16, 17]) should return true. 
-    isFizzBuzz([1, 2, "Fizz", 4, 5]) should return false.
-    isFizzBuzz(["FizzBuzz", 16, 17, "Fizz", 19, "Buzz"]) should return true.
-    isFizzBuzz([1, 2, "Fizz", "Buzz", 5]) should return false.
-    isFizzBuzz([97, 98, "Buzz", "Fizz", 101, "Fizz", 103]) should return false.
-    isFizzBuzz(["Fizz", "Buzz", 101, "Fizz", 103, 104, "FizzBuzz"]) should return true.
-    `);
+runTests(isFizzBuzz, [
+    `assert.isTrue(isFizzBuzz([1, 2, "Fizz", 4, "Buzz"]));`,
+    `assert.isTrue(isFizzBuzz([13, 14, "FizzBuzz", 16, 17]));`,
+    `assert.isFalse(isFizzBuzz([1, 2, "Fizz", 4, 5]));`,
+    `assert.isTrue(isFizzBuzz(["FizzBuzz", 16, 17, "Fizz", 19, "Buzz"]));`,
+    `assert.isFalse(isFizzBuzz([1, 2, "Fizz", "Buzz", 5]));`,
+    `assert.isFalse(isFizzBuzz([97, 98, "Buzz", "Fizz", 101, "Fizz", 103]));`,
+    `assert.isTrue(isFizzBuzz(["Fizz", "Buzz", 101, "Fizz", 103, 104, "FizzBuzz"]));`,
+]);

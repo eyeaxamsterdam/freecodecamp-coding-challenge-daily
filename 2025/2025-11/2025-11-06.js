@@ -21,9 +21,10 @@ function buildMatrix(rows, cols) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(buildMatrix, `
-    buildMatrix(2, 3) should return [[0, 0, 0], [0, 0, 0]].
-    buildMatrix(3, 2) should return [[0, 0], [0, 0], [0, 0]].
-    buildMatrix(4, 3) should return [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]].
-    buildMatrix(9, 1) should return [[0], [0], [0], [0], [0], [0], [0], [0], [0]].
-`);
+runTests(buildMatrix, [
+    `assert.equal(getWeekday("2025-11-06"), "Thursday");`,
+    `assert.equal(getWeekday("1999-12-31"), "Friday");`,
+    `assert.equal(getWeekday("1111-11-11"), "Saturday");`,
+    `assert.equal(getWeekday("2112-12-21"), "Wednesday");`,
+    `assert.equal(getWeekday("2345-10-01"), "Monday");`,
+]);

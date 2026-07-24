@@ -35,12 +35,12 @@ function fixNumerals(str) {
     }
     return result;
 }
-const runTests = require("../../helpers/runTests");
-runTests(fixNumerals, `
-    fixNumerals("XIIIII") should return "XV".
-    fixNumerals("IIIILX") should return "LXIV".
-    fixNumerals("XXVVVIIIII") should return "XL".
-    fixNumerals("MDCCLXXXXVIIII") should return "MDCCXCIX".
-    fixNumerals("IIIIVVVVXXXXLLLLCCDD") should return "MCDLXIV".
-    fixNumerals("ILCDMIVDIIXLCVCXDL") should return "MMCMLXXXIV".
-`)
+const runTests = require('../../helpers/runTests');
+runTests(fixNumerals, [
+    `assert.equal(fixNumerals("XIIIII"), "XV");`,
+    `assert.equal(fixNumerals("IIIILX"), "LXIV");`,
+    `assert.equal(fixNumerals("XXVVVIIIII"), "XL");`,
+    `assert.equal(fixNumerals("MDCCLXXXXVIIII"), "MDCCXCIX");`,
+    `assert.equal(fixNumerals("IIIIVVVVXXXXLLLLCCDD"), "MCDLXIV");`,
+    `assert.equal(fixNumerals("ILCDMIVDIIXLCVCXDL"), "MMCMLXXXIV");`,
+]);

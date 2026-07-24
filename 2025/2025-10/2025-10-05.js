@@ -39,11 +39,11 @@ function hasExoplanet(readings) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(hasExoplanet, `
-    hasExoplanet("665544554") should return false.
-    hasExoplanet("FGFFCFFGG") should return true.
-    hasExoplanet("MONOPLONOMONPLNOMPNOMP") should return false.
-    hasExoplanet("FREECODECAMP") should return true.
-    hasExoplanet("9AB98AB9BC98A") should return false.
-    hasExoplanet("ZXXWYZXYWYXZEGZXWYZXYGEE") should return true.
-`);
+runTests(hasExoplanet, [
+    `assert.isFalse(hasExoplanet("665544554"));`,
+    `assert.isTrue(hasExoplanet("FGFFCFFGG"));`,
+    `assert.isFalse(hasExoplanet("MONOPLONOMONPLNOMPNOMP"));`,
+    `assert.isTrue(hasExoplanet("FREECODECAMP"));`,
+    `assert.isFalse(hasExoplanet("9AB98AB9BC98A"));`,
+    `assert.isTrue(hasExoplanet("ZXXWYZXYWYXZEGZXWYZXYGEE"));`,
+]);

@@ -28,14 +28,14 @@ function isValidHSL(hsl) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isValidHSL, `
-    isValidHSL("hsl(240, 50%, 50%)") should return true.
-    isValidHSL("hsl( 200 , 50% , 75% )") should return true.
-    isValidHSL("hsl(99,60%,80%);") should return true.
-    isValidHSL("hsl(0, 0%, 0%) ;") should return true.
-    isValidHSL("hsl(  10  ,  20%   ,  30%   )    ;") should return true.
-    isValidHSL("hsl(361, 50%, 80%)") should return false.
-    isValidHSL("hsl(300, 101%, 70%)") should return false.
-    isValidHSL("hsl(200, 55%, 75)") should return false.
-    isValidHSL("hsl (80, 20%, 10%)") should return false.
-`);
+runTests(isValidHSL, [
+    `assert.isTrue(isValidHSL("hsl(240, 50%, 50%)"));`,
+    `assert.isTrue(isValidHSL("hsl( 200 , 50% , 75% )"));`,
+    `assert.isTrue(isValidHSL("hsl(99,60%,80%);"));`,
+    `assert.isTrue(isValidHSL("hsl(0, 0%, 0%) ;"));`,
+    `assert.isTrue(isValidHSL("hsl(  10  ,  20%   ,  30%   )    ;"));`,
+    `assert.isFalse(isValidHSL("hsl(361, 50%, 80%)"));`,
+    `assert.isFalse(isValidHSL("hsl(300, 101%, 70%)"));`,
+    `assert.isFalse(isValidHSL("hsl(200, 55%, 75)"));`,
+    `assert.isFalse(isValidHSL("hsl (80, 20%, 10%)"));`,
+]);

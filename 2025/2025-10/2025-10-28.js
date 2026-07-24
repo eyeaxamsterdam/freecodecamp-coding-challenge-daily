@@ -39,12 +39,12 @@ function navigate(commands) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(navigate, `
-    navigate(["Visit About Us", "Back", "Forward"]) should return "About Us".
-    navigate(["Forward"]) should return "Home".
-    navigate(["Back"]) should return "Home".
-    navigate(["Visit About Us", "Visit Gallery"]) should return "Gallery".
-    navigate(["Visit About Us", "Visit Gallery", "Back", "Back"]) should return "Home".
-    navigate(["Visit About", "Visit Gallery", "Back", "Visit Contact", "Forward"]) should return "Contact".
-    navigate(["Visit About Us", "Visit Visit Us", "Forward", "Visit Contact Us", "Back"]) should return "Visit Us".
-`);
+runTests(navigate, [
+    `assert.equal(navigate(["Visit About Us", "Back", "Forward"]), "About Us");`,
+    `assert.equal(navigate(["Forward"]), "Home");`,
+    `assert.equal(navigate(["Back"]), "Home");`,
+    `assert.equal(navigate(["Visit About Us", "Visit Gallery"]), "Gallery");`,
+    `assert.equal(navigate(["Visit About Us", "Visit Gallery", "Back", "Back"]), "Home");`,
+    `assert.equal(navigate(["Visit About", "Visit Gallery", "Back", "Visit Contact", "Forward"]), "Contact");`,
+    `assert.equal(navigate(["Visit About Us", "Visit Visit Us", "Forward", "Visit Contact Us", "Back"]), "Visit Us");`,
+]);

@@ -16,9 +16,9 @@ function stripTags(html) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(stripTags, `
-    stripTags('<a href="#">Click here</a>') should return "Click here".
-    stripTags('<p class="center">Hello <b>World</b>!</p>') should return "Hello World!".
-    stripTags('<img src="cat.jpg" alt="Cat">') should return an empty string ("").
-    stripTags('<main id="main"><section class="section">section</section><section class="section">section</section></main>') should return sectionsection.
-`);
+runTests(stripTags, [
+    `assert.equal(stripTags('<a href="#">Click here</a>'), "Click here");`,
+    `assert.equal(stripTags('<p class="center">Hello <b>World</b>!</p>'), "Hello World!");`,
+    `assert.equal(stripTags('<img src="cat.jpg" alt="Cat">'), "");`,
+    `assert.equal(stripTags('<main id="main"><section class="section">section</section><section class="section">section</section></main>'), "sectionsection");`,
+]);

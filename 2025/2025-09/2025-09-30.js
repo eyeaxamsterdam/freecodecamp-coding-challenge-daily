@@ -17,7 +17,7 @@ function formatNumber(digits) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(formatNumber, `
-    formatNumber("05552340182") should return "+0 (555) 234-0182".
-    formatNumber("15554354792") should return "+1 (555) 435-4792".
-`);
+runTests(formatNumber, [
+    `assert.equal(formatNumber("05552340182"), "+0 (555) 234-0182");`,
+    `assert.equal(formatNumber("15554354792"), "+1 (555) 435-4792");`,
+]);

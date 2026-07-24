@@ -30,10 +30,10 @@ function moonPhase(dateString) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(moonPhase, `
-    moonPhase("2000-01-12") should return "New".
-    moonPhase("2000-01-13") should return "Waxing".
-    moonPhase("2014-10-15") should return "Full".
-    moonPhase("2012-10-21") should return "Waning".
-    moonPhase("2022-12-14") should return "New".
-`);
+runTests(moonPhase, [
+    `assert.equal(moonPhase("2000-01-12"), "New");`,
+    `assert.equal(moonPhase("2000-01-13"), "Waxing");`,
+    `assert.equal(moonPhase("2014-10-15"), "Full");`,
+    `assert.equal(moonPhase("2012-10-21"), "Waning");`,
+    `assert.equal(moonPhase("2022-12-14"), "New");`,
+]);

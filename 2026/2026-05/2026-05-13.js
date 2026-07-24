@@ -19,10 +19,10 @@ function findOffender(arr) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(findOffender, `
-    findOffender([1, 6, 2, 3, 8, 20]) should return 1.
-    findOffender([1, 2, 3, 5, 4, 5]) should return 3.
-    findOffender([2, 1]) should return 0.
-    findOffender([2, 4, 1, 6, 8]) should return 2.
-    findOffender([5, 18, 24, 33, 40, 55, 15, 68, 84, 91]) should return 6.
-`);
+runTests(findOffender, [
+    `assert.equal(findOffender([1, 6, 2, 3, 4, 5]), 1);`,
+    `assert.equal(findOffender([1, 2, 3, 5, 4, 5]), 3);`,
+    `assert.equal(findOffender([2, 1]), 0);`,
+    `assert.equal(findOffender([2, 4, 1, 6, 8]), 2);`,
+    `assert.equal(findOffender([5, 18, 24, 33, 40, 55, 15, 68, 84, 91]), 6);`,
+]);

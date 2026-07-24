@@ -33,10 +33,10 @@ function pascalRow(n) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(pascalRow, `
-    pascalRow(5) should return [1, 4, 6, 4, 1].
-    pascalRow(3) should return [1, 2, 1].
-    pascalRow(1) should return [1].
-    pascalRow(10) should return [1, 9, 36, 84, 126, 126, 84, 36, 9, 1].
-    pascalRow(15) should return [1, 14, 91, 364, 1001, 2002, 3003, 3432, 3003, 2002, 1001, 364, 91, 14, 1].
-`);
+runTests(pascalRow, [
+    `assert.deepEqual(pascalRow(5), [1, 4, 6, 4, 1]);`,
+    `assert.deepEqual(pascalRow(3), [1, 2, 1]);`,
+    `assert.deepEqual(pascalRow(1), [1]);`,
+    `assert.deepEqual(pascalRow(10), [1, 9, 36, 84, 126, 126, 84, 36, 9, 1]);`,
+    `assert.deepEqual(pascalRow(15), [1, 14, 91, 364, 1001, 2002, 3003, 3432, 3003, 2002, 1001, 364, 91, 14, 1]);`,
+]);

@@ -20,9 +20,9 @@ function imageSearch(images, term) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(imageSearch, `
-    imageSearch(["dog.png", "cat.jpg", "parrot.jpeg"], "dog") should return ["dog.png"].
-    imageSearch(["Sunset.jpg", "Beach.png", "sunflower.jpeg"], "sun") should return ["Sunset.jpg", "sunflower.jpeg"].
-    imageSearch(["Moon.png", "sun.jpeg", "stars.png"], "PNG") should return ["Moon.png", "stars.png"].
-    imageSearch(["cat.jpg", "dogToy.jpeg", "kitty-cat.png", "catNip.jpeg", "franken_cat.gif"], "Cat") should return ["cat.jpg", "kitty-cat.png", "catNip.jpeg", "franken_cat.gif"].
-`);
+runTests(imageSearch, [
+    `assert.deepEqual(imageSearch(["dog.png", "cat.jpg", "parrot.jpeg"], "dog"), ["dog.png"]);`,
+    `assert.deepEqual(imageSearch(["Sunset.jpg", "Beach.png", "sunflower.jpeg"], "sun"), ["Sunset.jpg", "sunflower.jpeg"]);`,
+    `assert.deepEqual(imageSearch(["Moon.png", "sun.jpeg", "stars.png"], "PNG"), ["Moon.png", "stars.png"]);`,
+    `assert.deepEqual(imageSearch(["cat.jpg", "dogToy.jpeg", "kitty-cat.png", "catNip.jpeg", "franken_cat.gif"], "Cat"), ["cat.jpg", "kitty-cat.png", "catNip.jpeg", "franken_cat.gif"]);`,
+]);

@@ -18,13 +18,13 @@ function getPiDecimal(n) {
 
 
 const runTests = require('../../helpers/runTests');
-runTests(getPiDecimal, `
-    getPiDecimal(5) should return 9.
-    getPiDecimal(10) should return 5.
-    getPiDecimal(22) should return 6.
-    getPiDecimal(39) should return 7.
-    getPiDecimal(76) should return 2.
-    getPiDecimal(384) should return 4.
-    getPiDecimal(601) should return 0.
-    getPiDecimal(1000) should return 9.
-`);
+runTests(getPiDecimal, [
+    `assert.strictEqual(getPiDecimal(5), 9);`,
+    `assert.strictEqual(getPiDecimal(10), 5);`,
+    `assert.strictEqual(getPiDecimal(22), 6);`,
+    `assert.strictEqual(getPiDecimal(39), 7);`,
+    `assert.strictEqual(getPiDecimal(76), 2);`,
+    `assert.strictEqual(getPiDecimal(384), 4);`,
+    `assert.strictEqual(getPiDecimal(601), 0);`,
+    `assert.strictEqual(getPiDecimal(1000), 9);`,
+]);

@@ -31,8 +31,8 @@ function getWords(paragraph) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getWords, `
-    getWords("Coding in Python is fun because coding Python allows for coding in Python easily while coding") should return ["coding", "python", "in"].
-    getWords("I like coding. I like testing. I love debugging!") should return ["i", "like", "coding"].
-    getWords("Debug, test, deploy. Debug, debug, test, deploy. Debug, test, test, deploy!") should return ["debug", "test", "deploy"].
-`);
+runTests(getWords, [
+    `assert.deepEqual(getWords("Coding in Python is fun because coding Python allows for coding in Python easily while coding"), ["coding", "python", "in"]);`,
+    `assert.deepEqual(getWords("I like coding. I like testing. I love debugging!"), ["i", "like", "coding"]);`,
+    `assert.deepEqual(getWords("Debug, test, deploy. Debug, debug, test, deploy. Debug, test, test, deploy!"), ["debug", "test", "deploy"]);`,
+]);

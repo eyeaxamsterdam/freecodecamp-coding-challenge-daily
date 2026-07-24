@@ -18,10 +18,10 @@ function numberOfPhotos(photoSizeMb, hardDriveSizeGb) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(numberOfPhotos, `
-    numberOfPhotos(1, 1) should return 1000.
-    numberOfPhotos(2, 1) should return 500.
-    numberOfPhotos(4, 256) should return 64000.
-    numberOfPhotos(3.5, 750) should return 214285.
-    numberOfPhotos(3.5, 5.5) should return 1571.
-`);
+runTests(numberOfPhotos, [
+    `assert.equal(numberOfPhotos(1, 1), 1000);`,
+    `assert.equal(numberOfPhotos(2, 1), 500);`,
+    `assert.equal(numberOfPhotos(4, 256), 64000);`,
+    `assert.equal(numberOfPhotos(3.5, 750), 214285);`,
+    `assert.equal(numberOfPhotos(3.5, 5.5), 1571);`,
+]);

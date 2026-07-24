@@ -27,17 +27,17 @@ function isValidSchema(obj) {
     return checkKeys.length === 4 && JSON.stringify(checkKeys) === JSON.stringify(checkValues); 
 }
 
-const runTests = require("../../helpers/runTests");
-runTests(isValidSchema, `
-    1. isValidSchema({ username: "henry", posts: 0, verified: true, role: "staff" }) should return true.
-    isValidSchema({ username: "sara", posts: 45, verified: false, role: "creator", followers: 70 }) should return true.
-    isValidSchema({ username: "penelope", posts: 20, verified: true, role: "admin" }) should return true.
-    isValidSchema({ username: "kevin", posts: 0, verified: false, role: "user" }) should return true.
-    isValidSchema({ username: "george", posts: 15, verified: true, role: "moderator" }) should return true.
-    isValidSchema({ username: "david", posts: 0, verified: false, role: "guest" }) should return false.
-    isValidSchema({ username: "wendy", posts: 10, verified: true }) should return false.
-    isValidSchema({ username: "fabian", posts: 1, verified: true, role: true }) should return false.
-    isValidSchema({ username: 8, posts: 1, verified: true, role: "user" }) should return false.
-    isValidSchema({ username: "penny", posts: "10", verified: true, role: "staff" }) should return false.
-    isValidSchema({ username: "john", posts: "1", verified: "true", role: "admin" }) should return false.
-`)
+const runTests = require('../../helpers/runTests');
+runTests(isValidSchema, [
+    `assert.isTrue(isValidSchema({ username: "henry", posts: 0, verified: true, role: "staff" }));`,
+    `assert.isTrue(isValidSchema({ username: "sara", posts: 45, verified: false, role: "creator", followers: 70 }));`,
+    `assert.isTrue(isValidSchema({ username: "penelope", posts: 20, verified: true, role: "admin" }));`,
+    `assert.isTrue(isValidSchema({ username: "kevin", posts: 0, verified: false, role: "user" }));`,
+    `assert.isTrue(isValidSchema({ username: "george", posts: 15, verified: true, role: "moderator" }));`,
+    `assert.isFalse(isValidSchema({ username: "david", posts: 0, verified: false, role: "guest" }));`,
+    `assert.isFalse(isValidSchema({ username: "wendy", posts: 10, verified: true }));`,
+    `assert.isFalse(isValidSchema({ username: "fabian", posts: 1, verified: true, role: true }));`,
+    `assert.isFalse(isValidSchema({ username: 8, posts: 1, verified: true, role: "user" }));`,
+    `assert.isFalse(isValidSchema({ username: "penny", posts: "10", verified: true, role: "staff" }));`,
+    `assert.isFalse(isValidSchema({ username: "john", posts: "1", verified: "true", role: "admin" }));`,
+]);

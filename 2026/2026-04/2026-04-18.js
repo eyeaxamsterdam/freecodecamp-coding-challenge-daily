@@ -39,12 +39,12 @@ function findSum(arr, target) {
 //Tests:
 
 const runTests = require('../../helpers/runTests');
-runTests(findSum, `
-    findSum([5, 6, 7, 8, 9], 17) should return [8, 9].
-    findSum([1, 2, 3, 4, 5], 5) should return [1, 4].
-    findSum([1, 2, 3, 4, 5], 6) should return [1, 2, 3].
-    findSum([-1, -2, 3, 4], 1) should return [-1, -2, 4].
-    findSum([3, 1, 4, 1, 5, 9, 2, 6], 10) should return [3, 1, 4, 2].
-    findSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 20) should return [1, 2, 3, 5, 9].
-    findSum([7, 9, 4, 2, 5], 10) should return "Sum not found".
-`);
+runTests(findSum, [
+    `assert.deepEqual(findSum([1, 3, 5, 7], 6), [1, 5]);`,
+    `assert.deepEqual(findSum([1, 2, 3, 4, 5], 5), [1, 4]);`,
+    `assert.deepEqual(findSum([1, 2, 3, 4, 5], 6), [1, 2, 3]);`,
+    `assert.deepEqual(findSum([-1, -2, 3, 4], 1), [-1, -2, 4]);`,
+    `assert.deepEqual(findSum([3, 1, 4, 1, 5, 9, 2, 6], 10), [3, 1, 4, 2]);`,
+    `assert.deepEqual(findSum([1, 2, 3, 4, 5, 6, 7, 8, 9], 20), [1, 2, 3, 5, 9]);`,
+    `assert.equal(findSum([7, 9, 4, 2, 5], 10), "Sum not found");`,
+]);

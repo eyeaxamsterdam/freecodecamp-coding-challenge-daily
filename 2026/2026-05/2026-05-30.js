@@ -96,15 +96,15 @@ function getBestHand(cards) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getBestHand, `
-    getBestHand(["7s", "7h", "7d", "2c", "5h"]) should return "Three of a Kind".
-    getBestHand(["Ks", "Kh", "Kd", "4s", "4h"]) should return "Full House".
-    getBestHand(["2h", "5h", "7h", "9h", "Jh"]) should return "Flush".
-    getBestHand(["As", "Ah", "Ad", "Ac", "Kh"]) should return "Four of a Kind".
-    getBestHand(["Ts", "Th", "9d", "9c", "8h"]) should return "Two Pair".
-    getBestHand(["9c", "8c", "7c", "6c", "5c"]) should return "Straight Flush".
-    getBestHand(["As", "Kh", "Jd", "8c", "5h"]) should return "High Card".
-    getBestHand(["As", "2h", "3d", "4c", "5h"]) should return "Straight".
-    getBestHand(["Ts", "Th", "7c", "6d", "5h"]) should return "Pair".
-    getBestHand(["As", "Ks", "Qs", "Js", "Ts"]) should return "Royal Flush".
-`); 
+runTests(getBestHand, [
+    `assert.equal(getBestHand(["7s", "7h", "7d", "2c", "5h"]), "Three of a Kind");`,
+    `assert.equal(getBestHand(["Ks", "Kh", "Kd", "4s", "4h"]), "Full House");`,
+    `assert.equal(getBestHand(["2h", "5h", "7h", "9h", "Jh"]), "Flush");`,
+    `assert.equal(getBestHand(["As", "Ah", "Ad", "Ac", "Kh"]), "Four of a Kind");`,
+    `assert.equal(getBestHand(["Ts", "Th", "9d", "9c", "8h"]), "Two Pair");`,
+    `assert.equal(getBestHand(["9c", "8c", "7c", "6c", "5c"]), "Straight Flush");`,
+    `assert.equal(getBestHand(["As", "Kh", "Jd", "8c", "5h"]), "High Card");`,
+    `assert.equal(getBestHand(["As", "2h", "3d", "4c", "5h"]), "Straight");`,
+    `assert.equal(getBestHand(["Ts", "Th", "7c", "6d", "5h"]), "Pair");`,
+    `assert.equal(getBestHand(["As", "Ks", "Qs", "Js", "Ts"]), "Royal Flush");`,
+]);

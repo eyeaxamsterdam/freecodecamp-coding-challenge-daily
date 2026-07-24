@@ -23,10 +23,10 @@ function arrayDiff(arr1, arr2) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(arrayDiff, `
-    arrayDiff(["apple", "banana"], ["apple", "banana", "cherry"]) should return ["cherry"].
-    arrayDiff(["apple", "banana", "cherry"], ["apple", "banana"]) should return ["cherry"].
-    arrayDiff(["one", "two", "three", "four", "six"], ["one", "three", "eight"]) should return ["eight", "four", "six", "two"].
-    arrayDiff(["two", "four", "five", "eight"], ["one", "two", "three", "four", "seven", "eight"]) should return ["five", "one", "seven", "three"].
-    arrayDiff(["I", "like", "freeCodeCamp"], ["I", "like", "rocks"]) should return ["freeCodeCamp", "rocks"].
-`);
+runTests(arrayDiff, [
+    `assert.deepEqual(arrayDiff(["apple", "banana"], ["apple", "banana", "cherry"]), ["cherry"]);`,
+    `assert.deepEqual(arrayDiff(["apple", "banana", "cherry"], ["apple", "banana"]), ["cherry"]);`,
+    `assert.deepEqual(arrayDiff(["one", "two", "three", "four", "six"], ["one", "three", "eight"]), ["eight", "four", "six", "two"]);`,
+    `assert.deepEqual(arrayDiff(["two", "four", "five", "eight"], ["one", "two", "three", "four", "seven", "eight"]), ["five", "one", "seven", "three"]);`,
+    `assert.deepEqual(arrayDiff(["I", "like", "freeCodeCamp"], ["I", "like", "rocks"]), ["freeCodeCamp", "rocks"]);`,
+]);

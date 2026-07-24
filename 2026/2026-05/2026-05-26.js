@@ -14,9 +14,9 @@ function sumOfDifferences(arr) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(sumOfDifferences, `
-    sumOfDifferences([1, 3, 4]) should return 3.
-    sumOfDifferences([5, -3, 3, 9, 10]) should return 5.
-    sumOfDifferences([9, 6, 15, -20, 33, 14, 25, 16, -7]) should return -16.
-    sumOfDifferences([50, 102, -46, 82, -49, 29, 71, 902, -237, 111, -61, 75]) should return 25.
-`);
+runTests(sumOfDifferences, [
+    `assert.equal(sumOfDifferences([1, 3, 4]), 3);`,
+    `assert.equal(sumOfDifferences([5, -3, 3, 9, 10]), 5);`,
+    `assert.equal(sumOfDifferences([9, 6, 15, -20, 33, 14, 25, 16, -7]), -16);`,
+    `assert.equal(sumOfDifferences([50, 102, -46, 82, -49, 29, 71, 902, -237, 111, -61, 75]), 25);`,
+]);

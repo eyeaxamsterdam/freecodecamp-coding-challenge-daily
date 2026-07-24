@@ -53,10 +53,25 @@ function getLongestChain(dominoes) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getLongestChain, `
-    getLongestChain([[1, 2], [4, 5], [2, 3]]) should return [[1, 2], [2, 3]].
-    getLongestChain([[2, 1], [4, 3], [5, 3]]) should return [[4, 3], [3, 5]].
-    getLongestChain([[1, 2], [3, 4], [2, 3], [4, 0]]) should return [[1, 2], [2, 3], [3, 4], [4, 0]].
-    getLongestChain([[6, 6], [6, 1], [1, 1], [0, 3], [2, 3], [4, 1], [5, 6]]) should return [[4, 1], [1, 1], [1, 6], [6, 6], [6, 5]].
-    getLongestChain([[0, 4], [3, 3], [0, 3], [5, 6], [4, 5], [4, 2], [5, 5], [1, 2], [4, 4]]) should return [[3, 3], [3, 0], [0, 4], [4, 4], [4, 5], [5, 5], [5, 6]].
-`); 
+runTests(getLongestChain, [
+    `const chain = JSON.stringify(getLongestChain([[1, 2], [4, 5], [2, 3]]));
+    const result1 = JSON.stringify([[1, 2], [2, 3]]);
+    const result2 = JSON.stringify([[3, 2], [2, 1]]);
+    assert.isTrue(chain === result1 || chain === result2);`,
+    `const chain = JSON.stringify(getLongestChain([[2, 1], [4, 3], [5, 3]]));
+    const result1 = JSON.stringify([[4, 3], [3, 5]]);
+    const result2 = JSON.stringify([[5, 3], [3, 4]]);
+    assert.isTrue(chain === result1 || chain === result2);`,
+    `const chain = JSON.stringify(getLongestChain([[1, 2], [3, 4], [2, 3], [4, 0]]));
+    const result1 = JSON.stringify([[1, 2], [2, 3], [3, 4], [4, 0]]);
+    const result2 = JSON.stringify([[0, 4], [4, 3], [3, 2], [2, 1]]);
+    assert.isTrue(chain === result1 || chain === result2);`,
+    `const chain = JSON.stringify(getLongestChain([[6, 6], [6, 1], [1, 1], [0, 3], [2, 3], [4, 1], [5, 6]]));
+    const result1 = JSON.stringify([[4, 1], [1, 1], [1, 6], [6, 6], [6, 5]]);
+    const result2 = JSON.stringify([[5, 6], [6, 6], [6, 1], [1, 1], [1, 4]]);
+    assert.isTrue(chain === result1 || chain === result2);`,
+    `const chain = JSON.stringify(getLongestChain([[0, 4], [3, 3], [0, 3], [5, 6], [4, 5], [4, 2], [5, 5], [1, 2], [4, 4]]));
+    const result1 = JSON.stringify([[3, 3], [3, 0], [0, 4], [4, 4], [4, 5], [5, 5], [5, 6]]);
+    const result2 = JSON.stringify([[6, 5], [5, 5], [5, 4], [4, 4], [4, 0], [0, 3], [3, 3]]);
+    assert.isTrue(chain === result1 || chain === result2);`,
+]);

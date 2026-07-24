@@ -44,12 +44,12 @@ function isValidIPv4(ipv4) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(isValidIPv4, `
-    isValidIPv4("192.168.1.1") should return true.
-    isValidIPv4("0.0.0.0") should return true.
-    isValidIPv4("255.01.50.111") should return false.
-    isValidIPv4("255.00.50.111") should return false.
-    isValidIPv4("256.101.50.115") should return false.
-    isValidIPv4("192.168.101.") should return false.
-    isValidIPv4("192168145213") should return false.
-`);
+runTests(isValidIPv4, [
+    `assert.isTrue(isValidIPv4("192.168.1.1"));`,
+    `assert.isTrue(isValidIPv4("0.0.0.0"));`,
+    `assert.isFalse(isValidIPv4("255.01.50.111"));`,
+    `assert.isFalse(isValidIPv4("255.00.50.111"));`,
+    `assert.isFalse(isValidIPv4("256.101.50.115"));`,
+    `assert.isFalse(isValidIPv4("192.168.101."));`,
+    `assert.isFalse(isValidIPv4("192168145213"));`,
+]);

@@ -36,12 +36,11 @@ function getStreamingBill(cart, subscription) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getStreamingBill, `
-    Waiting 1. getStreamingBill([{ format: "HD", type: "rent" }], "none") should return "$3.99".
-    getStreamingBill([{ format: "HD", type: "rent" }, { format: "HD", type: "buy" }], "premium") should return "$12.73".
-    getStreamingBill([{ format: "HD", type: "rent" }, { format: "HD", type: "rent" }, { format: "HD", type: "buy" }], "basic") should return "$18.87".
-    getStreamingBill([{ format: "4K", type: "buy" }, { format: "4K", type: "buy" }], "premium") should return "$29.98".
-    getStreamingBill([{ format: "HD", type: "rent" }, { format: "4K", type: "rent" }, { format: "HD", type: "buy" }, { format: "4K", type: "buy" }], "none") should return "$42.96".
-    getStreamingBill([{ format: "HD", type: "rent" }, { format: "4K", type: "rent" }, { format: "HD", type: "buy" }, { format: "4K", type: "buy" }, { format: "HD", type: "buy" }], "basic") should return "$50.36". 
-
-`);
+runTests(getStreamingBill, [
+    `assert.equal(getStreamingBill([{ format: "HD", type: "rent" }], "none"), "$3.99");`,
+    `assert.equal(getStreamingBill([{ format: "HD", type: "buy" }], "premium"), "$9.74");`,
+    `assert.equal(getStreamingBill([{ format: "HD", type: "rent" }, { format: "HD", type: "rent" }, { format: "HD", type: "buy" }], "basic"), "$18.87");`,
+    `assert.equal(getStreamingBill([{ format: "4K", type: "buy" }, { format: "4K", type: "buy" }, { format: "4K", type: "buy" }], "premium"), "$44.98");`,
+    `assert.equal(getStreamingBill([{ format: "HD", type: "rent" }, { format: "4K", type: "rent" }, { format: "HD", type: "buy" }, { format: "4K", type: "buy" }], "none"), "$42.96");`,
+    `assert.equal(getStreamingBill([{ format: "HD", type: "rent" }, { format: "4K", type: "rent" }, { format: "HD", type: "buy" }, { format: "4K", type: "buy" }], "basic"), "$38.66");`,
+]);

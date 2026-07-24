@@ -50,13 +50,13 @@ function isInCrossword(char) {
 
 
 const runTests = require('../../helpers/runTests');
-runTests(isInCrossword, `
-    isInCrossword("I") should return true.
-    isInCrossword("D") should return true.
-    isInCrossword("0") should return true.
-    isInCrossword("u") should return true.
-    isInCrossword("Y") should return false.
-    isInCrossword("p") should return false.
-    isInCrossword("1") should return false.
-    isInCrossword("Q") should return false.
-`);   
+runTests(isInCrossword, [
+    `assert.isTrue(isInCrossword("I"));`,
+    `assert.isTrue(isInCrossword("D"));`,
+    `assert.isTrue(isInCrossword("0"));`,
+    `assert.isTrue(isInCrossword("u"));`,
+    `assert.isFalse(isInCrossword("Y"));`,
+    `assert.isFalse(isInCrossword("p"));`,
+    `assert.isFalse(isInCrossword("1"));`,
+    `assert.isFalse(isInCrossword("Q"));`,
+]);

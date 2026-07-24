@@ -20,9 +20,9 @@ function parseUrlQuery(url) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(parseUrlQuery, `
-parseUrlQuery("https://example.com/search?name=Alice&age=30") should return {"name": "Alice", "age": "30"}
-parseUrlQuery("https://freecodecamp.org/learn?skill=programming&language=python") should return {"skill": "programming", "language": "python"}
-parseUrlQuery("https://freecodecamp.org/items?category=books&sort=asc&page=2") should return {"category": "books", "sort": "asc", "page": "2"}
-parseUrlQuery("https://example.com?redirect=freecodecamp.org/learn&when=now") should return {"redirect": "freecodecamp.org/learn", "when": "now"}
-`);
+runTests(parseUrlQuery, [
+    `assert.deepEqual(parseUrlQuery("https://example.com/search?name=Alice&age=30"), {"name": "Alice", "age": "30"});`,
+    `assert.deepEqual(parseUrlQuery("https://freecodecamp.org/learn?skill=programming&language=python"), {"skill": "programming", "language": "python"});`,
+    `assert.deepEqual(parseUrlQuery("https://freecodecamp.org/items?category=books&sort=asc&page=2"), {"category": "books", "sort": "asc", "page": "2"});`,
+    `assert.deepEqual(parseUrlQuery("https://example.com?redirect=freecodecamp.org/learn&when=now"), {"redirect": "freecodecamp.org/learn", "when": "now"});`,
+]);

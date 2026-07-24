@@ -13,13 +13,13 @@ function isNarcissistic(n) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isNarcissistic, `
-    isNarcissistic(153) should return true.
-    isNarcissistic(154) should return false.
-    isNarcissistic(371) should return true.
-    isNarcissistic(512) should return false.
-    isNarcissistic(9) should return true.
-    isNarcissistic(11) should return false.
-    isNarcissistic(9474) should return true.
-    isNarcissistic(6549) should return false.
-`);
+runTests(isNarcissistic, [
+    `assert.isTrue(isNarcissistic(153));`,
+    `assert.isFalse(isNarcissistic(154));`,
+    `assert.isTrue(isNarcissistic(371));`,
+    `assert.isFalse(isNarcissistic(512));`,
+    `assert.isTrue(isNarcissistic(9));`,
+    `assert.isFalse(isNarcissistic(11));`,
+    `assert.isTrue(isNarcissistic(9474));`,
+    `assert.isFalse(isNarcissistic(6549));`,
+]);

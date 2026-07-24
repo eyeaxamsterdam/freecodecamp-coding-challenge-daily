@@ -25,11 +25,12 @@ function isMirror(str1, str2) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isMirror, `
-    isMirror("helloworld", "helloworld") should return false.
-    isMirror("Hello World", "dlroW olleH") should return true.
-    isMirror("RaceCar", "raCecaR") should return true.
-    isMirror("RaceCar", "RaceCar") should return false.
-    isMirror("Mirror", "rorrim") should return false.
-    isMirror("Hello World", "dlroW-olleH") should return true.
-`);
+runTests(isMirror, [
+    `assert.isFalse(isMirror("helloworld", "helloworld"));`,
+    `assert.isTrue(isMirror("Hello World", "dlroW olleH"));`,
+    `assert.isTrue(isMirror("RaceCar", "raCecaR"));`,
+    `assert.isFalse(isMirror("RaceCar", "RaceCar"));`,
+    `assert.isFalse(isMirror("Mirror", "rorrim"));`,
+    `assert.isTrue(isMirror("Hello World", "dlroW-olleH"));`,
+    `assert.isTrue(isMirror("Hello World", "!dlroW !olleH"));`,
+]);

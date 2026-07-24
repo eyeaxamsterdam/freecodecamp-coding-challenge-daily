@@ -37,14 +37,14 @@ function fiveDice(dice) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(fiveDice, `
-    fiveDice([1, 1, 1, 1, 1]) should return "five of a kind".
-    fiveDice([5, 5, 5, 6, 5]) should return "four of a kind".
-    fiveDice([2, 5, 6, 4, 3]) should return "large straight".
-    fiveDice([4, 3, 3, 3, 1]) should return "three of a kind".
-    fiveDice([4, 6, 2, 6, 5]) should return "pair".
-    fiveDice([1, 4, 5, 6, 2]) should return "no pair".
-    fiveDice([1, 3, 4, 6, 2]) should return "small straight".
-    fiveDice([2, 2, 5, 2, 5]) should return "full house".
-    fiveDice([6, 4, 5, 6, 4]) should return "two pair".
-`);
+runTests(fiveDice, [
+    `assert.equal(fiveDice([1, 1, 1, 1, 1]), "five of a kind");`,
+    `assert.equal(fiveDice([5, 5, 5, 6, 5]), "four of a kind");`,
+    `assert.equal(fiveDice([2, 5, 6, 4, 3]), "large straight");`,
+    `assert.equal(fiveDice([4, 3, 3, 3, 1]), "three of a kind");`,
+    `assert.equal(fiveDice([4, 6, 2, 6, 5]), "pair");`,
+    `assert.equal(fiveDice([1, 4, 5, 6, 2]), "no pair");`,
+    `assert.equal(fiveDice([1, 3, 4, 6, 2]), "small straight");`,
+    `assert.equal(fiveDice([2, 2, 5, 2, 5]), "full house");`,
+    `assert.equal(fiveDice([6, 4, 5, 6, 4]), "two pair");`,
+]);

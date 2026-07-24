@@ -27,10 +27,10 @@ function toCamelCase(s) {
   return finalStr;
 }
 const runTests = require('../../helpers/runTests');
-runTests(toCamelCase, `
-  toCamelCase("hello world") should return "helloWorld".
-  toCamelCase("HELLO WORLD") should return "helloWorld".
-  toCamelCase("secret agent-X") should return "secretAgentX".
-  toCamelCase("FREE cODE cAMP") should return "freeCodeCamp".
-  toCamelCase("ye old-_-sea  faring_buccaneer_-_with a - peg__leg----and a_parrot_ _named- _squawk") should return "yeOldSeaFaringBuccaneerWithAPegLegAndAParrotNamedSquawk".
-`);
+runTests(toCamelCase, [
+    `assert.equal(toCamelCase("hello world"), "helloWorld");`,
+    `assert.equal(toCamelCase("HELLO WORLD"), "helloWorld");`,
+    `assert.equal(toCamelCase("secret agent-X"), "secretAgentX");`,
+    `assert.equal(toCamelCase("FREE cODE cAMP"), "freeCodeCamp");`,
+    `assert.equal(toCamelCase("ye old-_-sea  faring_buccaneer_-_with a - peg__leg----and a_parrot_ _named- _squawk"), "yeOldSeaFaringBuccaneerWithAPegLegAndAParrotNamedSquawk");`,
+]);

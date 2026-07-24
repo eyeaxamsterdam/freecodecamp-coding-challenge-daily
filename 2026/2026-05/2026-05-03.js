@@ -27,10 +27,10 @@ function getGreeting(time) {
 
 //TESTS
 const runTests = require('../../helpers/runTests');
-runTests(getGreeting, `
-    getGreeting("06:30") should return "Good morning".
-    getGreeting("12:00") should return "Good afternoon".
-    getGreeting("21:59") should return "Good evening".
-    getGreeting("00:01") should return "Good night".
-    getGreeting("11:30") should return "Good morning".
-`);
+runTests(getGreeting, [
+    `assert.equal(getGreeting("06:30"), "Good morning");`,
+    `assert.equal(getGreeting("12:00"), "Good afternoon");`,
+    `assert.equal(getGreeting("21:59"), "Good evening");`,
+    `assert.equal(getGreeting("00:01"), "Good night");`,
+    `assert.equal(getGreeting("11:30"), "Good morning");`,
+]);

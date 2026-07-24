@@ -32,10 +32,10 @@ function getNextBingoNumber(n) {
 } 
 
 const runTests = require('../../helpers/runTests');
-runTests(getNextBingoNumber, `
-    Waiting 1. getNextBingoNumber("B10") should return "B11".
-    getNextBingoNumber("N33") should return "N34".
-    getNextBingoNumber("I30") should return "N31".
-    getNextBingoNumber("G60") should return "O61".
-    getNextBingoNumber("O75") should return "B1".
-    `);
+runTests(getNextBingoNumber, [
+    `assert.equal(getNextBingoNumber("B10"), "B11");`,
+    `assert.equal(getNextBingoNumber("N33"), "N34");`,
+    `assert.equal(getNextBingoNumber("I30"), "N31");`,
+    `assert.equal(getNextBingoNumber("G60"), "O61");`,
+    `assert.equal(getNextBingoNumber("O75"), "B1");`,
+]);

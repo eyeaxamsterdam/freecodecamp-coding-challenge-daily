@@ -27,10 +27,10 @@ function lcm(a, b) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(lcm, `
-    lcm(4, 6) should return 12.
-    lcm(9, 6) should return 18.
-    lcm(10, 100) should return 100.
-    lcm(13, 17) should return 221.
-    lcm(45, 70) should return 630.
-`);
+runTests(lcm, [
+    `assert.equal(lcm(4, 6), 12);`,
+    `assert.equal(lcm(9, 6), 18);`,
+    `assert.equal(lcm(10, 100), 100);`,
+    `assert.equal(lcm(13, 17), 221);`,
+    `assert.equal(lcm(45, 70), 630);`,
+]);

@@ -13,12 +13,12 @@ Return:
 function guessNumber(secret, guess) {
     return guess === secret && 'you got it!' || guess > secret && 'lower' || guess < secret && 'higher';
 }
-const runTests = require("../../helpers/runTests");
-runTests(guessNumber,`
-    guessNumber(50, 30) should return "higher".
-    guessNumber(85, 99) should return "lower".
-    guessNumber(2026, 2026) should return "you got it!".
-    guessNumber(92904, 11283) should return "higher".
-    guessNumber(230495, 423920) should return "lower".
-    guessNumber(120349, 120349) should return "you got it!".
-`);
+const runTests = require('../../helpers/runTests');
+runTests(guessNumber, [
+    `assert.equal(guessNumber(50, 30), "higher");`,
+    `assert.equal(guessNumber(85, 99), "lower");`,
+    `assert.equal(guessNumber(2026, 2026), "you got it!");`,
+    `assert.equal(guessNumber(92904, 11283), "higher");`,
+    `assert.equal(guessNumber(230495, 423920), "lower");`,
+    `assert.equal(guessNumber(120349, 120349), "you got it!");`,
+]);

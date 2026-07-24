@@ -15,13 +15,13 @@ function isPerfectSquare(n) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(isPerfectSquare, `
-    isPerfectSquare(9) should return true.
-    isPerfectSquare(49) should return true.
-    isPerfectSquare(1) should return true.
-    isPerfectSquare(2) should return false.
-    isPerfectSquare(99) should return false.
-    isPerfectSquare(-9) should return false.
-    isPerfectSquare(0) should return true.
-    isPerfectSquare(25281) should return true.
-`);
+runTests(isPerfectSquare, [
+    `assert.isTrue(isPerfectSquare(9));`,
+    `assert.isTrue(isPerfectSquare(49));`,
+    `assert.isTrue(isPerfectSquare(1));`,
+    `assert.isFalse(isPerfectSquare(2));`,
+    `assert.isFalse(isPerfectSquare(99));`,
+    `assert.isFalse(isPerfectSquare(-9));`,
+    `assert.isTrue(isPerfectSquare(0));`,
+    `assert.isTrue(isPerfectSquare(25281));`,
+]);

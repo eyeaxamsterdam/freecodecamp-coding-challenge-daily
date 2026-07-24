@@ -43,10 +43,10 @@ function cast(spells) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(cast, `
-    cast("fihwl") should return 33.
-    cast("lwswfi") should return 45.
-    cast("wislhfl") should return 37.
-    cast("sihwlih") should return 50.
-    cast("wishlfihwslwifihl") should return 101.
-`);
+runTests(cast, [
+    `assert.equal(cast("fihwl"), 33);`,
+    `assert.equal(cast("lwswfi"), 45);`,
+    `assert.equal(cast("wislhfl"), 37);`,
+    `assert.equal(cast("sihwlih"), 50);`,
+    `assert.equal(cast("wishlfihwslwifihl"), 101);`,
+]);

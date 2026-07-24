@@ -21,10 +21,10 @@ function getDayOfWeek(timestamp) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getDayOfWeek, `
-    getDayOfWeek(1775492249000) should return "Monday".
-    getDayOfWeek(1766246400000) should return "Saturday".
-    getDayOfWeek(33791256000000) should return "Tuesday".
-    getDayOfWeek(1773576000000) should return "Sunday".
-    getDayOfWeek(0) should return "Thursday".
-    `);
+runTests(getDayOfWeek, [
+    `assert.equal(getDayOfWeek(1775492249000), "Monday");`,
+    `assert.equal(getDayOfWeek(1766246400000), "Saturday");`,
+    `assert.equal(getDayOfWeek(33791256000000), "Tuesday");`,
+    `assert.equal(getDayOfWeek(1773576000000), "Sunday");`,
+    `assert.equal(getDayOfWeek(0), "Thursday");`,
+]);

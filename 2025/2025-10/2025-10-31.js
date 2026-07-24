@@ -26,10 +26,10 @@ function spookify(boo) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(spookify, `
-    spookify("hello_world") should return "HeLlO~wOrLd".
-    spookify("Spooky_Case") should return "SpOoKy~CaSe".
-    spookify("TRICK-or-TREAT") should return "TrIcK~oR~tReAt".
-    spookify("c_a-n_d-y_-b-o_w_l") should return "C~a~N~d~Y~~b~O~w~L".
-    spookify("thE_hAUntEd-hOUsE-Is-fUll_Of_ghOsts") should return "ThE~hAuNtEd~HoUsE~iS~fUlL~oF~gHoStS".
-`);
+runTests(spookify, [
+    `assert.equal(spookify("hello_world"), "HeLlO~wOrLd");`,
+    `assert.equal(spookify("Spooky_Case"), "SpOoKy~CaSe");`,
+    `assert.equal(spookify("TRICK-or-TREAT"), "TrIcK~oR~tReAt");`,
+    `assert.equal(spookify("c_a-n_d-y_-b-o_w_l"), "C~a~N~d~Y~~b~O~w~L");`,
+    `assert.equal(spookify("thE_hAUntEd-hOUsE-Is-fUll_Of_ghOsts"), "ThE~hAuNtEd~HoUsE~iS~fUlL~oF~gHoStS");`,
+]);

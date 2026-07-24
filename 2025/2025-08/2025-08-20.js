@@ -11,10 +11,10 @@ function squaresWithThree(n) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(squaresWithThree, `
-    squaresWithThree(1) should return 0.
-    squaresWithThree(10) should return 1.
-    squaresWithThree(100) should return 19.
-    squaresWithThree(1000) should return 326.
-    squaresWithThree(10000) should return 4531.
-`);
+runTests(squaresWithThree, [
+    `assert.equal(squaresWithThree(1), 0);`,
+    `assert.equal(squaresWithThree(10), 1);`,
+    `assert.equal(squaresWithThree(100), 19);`,
+    `assert.equal(squaresWithThree(1000), 326);`,
+    `assert.equal(squaresWithThree(10000), 4531);`,
+]);

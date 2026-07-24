@@ -27,12 +27,12 @@ function petYears(pet, age) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(petYears, `
-    petYears("dog", 5) should return 35.
-    petYears("cat", 9) should return 54.
-    petYears("rabbit", 3) should return 24.
-    petYears("hamster", 4) should return 120.
-    petYears("guinea pig", 5) should return 60.
-    petYears("goldfish", 2) should return 12.
-    petYears("bird", 1) should return 5.
-`);
+runTests(petYears, [
+    `assert.equal(petYears("dog", 5), 35);`,
+    `assert.equal(petYears("cat", 9), 54);`,
+    `assert.equal(petYears("rabbit", 3), 24);`,
+    `assert.equal(petYears("hamster", 4), 120);`,
+    `assert.equal(petYears("guinea pig", 5), 60);`,
+    `assert.equal(petYears("goldfish", 2), 12);`,
+    `assert.equal(petYears("bird", 1), 5);`,
+]);

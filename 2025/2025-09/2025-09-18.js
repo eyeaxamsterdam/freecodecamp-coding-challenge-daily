@@ -27,10 +27,10 @@ function costToFill(tankSize, fuelLevel, pricePerGallon) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(costToFill, `
-    costToFill(20, 0, 4.00) should return "$80.00".
-    costToFill(15, 10, 3.50) should return "$17.50".
-    costToFill(18, 9, 3.25) should return "$29.25".
-    costToFill(12, 12, 4.99) should return "$0.00".
-    costToFill(15, 9.5, 3.98) should return "$21.89".
-`);
+runTests(costToFill, [
+    `assert.equal(costToFill(20, 0, 4.00), "$80.00");`,
+    `assert.equal(costToFill(15, 10, 3.50), "$17.50");`,
+    `assert.equal(costToFill(18, 9, 3.25), "$29.25");`,
+    `assert.equal(costToFill(12, 12, 4.99), "$0.00");`,
+    `assert.equal(costToFill(15, 9.5, 3.98), "$21.89");`,
+]);

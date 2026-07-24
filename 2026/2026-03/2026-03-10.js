@@ -9,9 +9,9 @@ function insertIntoArray(arr, value, index) {
     return part1.concat(value,part2);
 }
 const runTests = require('../../helpers/runTests');
-runTests(insertIntoArray, `
-    insertIntoArray([2, 4, 8, 10], 6, 2) should return [2, 4, 6, 8, 10].
-    insertIntoArray(["the", "quick", "fox"], "brown", 2) should return ["the", "quick", "brown", "fox"].
-    insertIntoArray([], 0, 0) should return [0].
-    insertIntoArray([0, 1, 1, 2, 3, 8, 13], 5, 5) should return [0, 1, 1, 2, 3, 5, 8, 13].
-`);
+runTests(insertIntoArray, [
+    `assert.deepEqual(insertIntoArray([2, 4, 8, 10], 6, 2), [2, 4, 6, 8, 10]);`,
+    `assert.deepEqual(insertIntoArray(["the", "quick", "fox"], "brown", 2), ["the", "quick", "brown", "fox"]);`,
+    `assert.deepEqual(insertIntoArray([], 0, 0), [0]);`,
+    `assert.deepEqual(insertIntoArray([0, 1, 1, 2, 3, 8, 13], 5, 5), [0, 1, 1, 2, 3, 5, 8, 13]);`,
+]);

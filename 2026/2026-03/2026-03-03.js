@@ -14,10 +14,10 @@ function countPerfectCubes(a, b) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(countPerfectCubes, `
-    countPerfectCubes(3, 30) should return 2.
-    countPerfectCubes(1, 30) should return 3.
-    countPerfectCubes(30, 0) should return 4.
-    countPerfectCubes(-64, 64) should return 9.
-    countPerfectCubes(9214, -8127) should return 41.
-`);
+runTests(countPerfectCubes, [
+    `assert.equal(countPerfectCubes(3, 30), 2);`,
+    `assert.equal(countPerfectCubes(1, 30), 3);`,
+    `assert.equal(countPerfectCubes(30, 0), 4);`,
+    `assert.equal(countPerfectCubes(-64, 64), 9);`,
+    `assert.equal(countPerfectCubes(9214, -8127), 41);`,
+]);

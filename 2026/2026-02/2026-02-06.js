@@ -206,96 +206,96 @@ function getFlag(code) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getFlag, `
-    getFlag("AL") should return "🇦🇱".
-getFlag("AD") should return "🇦🇩".
-getFlag("AR") should return "🇦🇷".
-getFlag("AM") should return "🇦🇲".
-getFlag("AU") should return "🇦🇺".
-getFlag("AT") should return "🇦🇹".
-getFlag("AZ") should return "🇦🇿".
-getFlag("BE") should return "🇧🇪".
-getFlag("BJ") should return "🇧🇯".
-getFlag("BO") should return "🇧🇴".
-getFlag("BA") should return "🇧🇦".
-getFlag("BR") should return "🇧🇷".
-getFlag("BG") should return "🇧🇬".
-getFlag("CA") should return "🇨🇦".
-getFlag("CL") should return "🇨🇱".
-getFlag("CN") should return "🇨🇳".
-getFlag("CO") should return "🇨🇴".
-getFlag("HR") should return "🇭🇷".
-getFlag("CY") should return "🇨🇾".
-getFlag("CZ") should return "🇨🇿".
-getFlag("DK") should return "🇩🇰".
-getFlag("EC") should return "🇪🇨".
-getFlag("ER") should return "🇪🇷".
-getFlag("EE") should return "🇪🇪".
-getFlag("FI") should return "🇫🇮".
-getFlag("FR") should return "🇫🇷".
-getFlag("GE") should return "🇬🇪".
-getFlag("DE") should return "🇩🇪".
-getFlag("GB") should return "🇬🇧".
-getFlag("GR") should return "🇬🇷".
-getFlag("GW") should return "🇬🇼".
-getFlag("HT") should return "🇭🇹".
-getFlag("HK") should return "🇭🇰".
-getFlag("HU") should return "🇭🇺".
-getFlag("IS") should return "🇮🇸".
-getFlag("IN") should return "🇮🇳".
-getFlag("IR") should return "🇮🇷".
-getFlag("IE") should return "🇮🇪".
-getFlag("IL") should return "🇮🇱".
-getFlag("IT") should return "🇮🇹".
-getFlag("JM") should return "🇯🇲".
-getFlag("JP") should return "🇯🇵".
-getFlag("KZ") should return "🇰🇿".
-getFlag("KE") should return "🇰🇪".
-getFlag("XK") should return "🇽🇰".
-getFlag("KG") should return "🇰🇬".
-getFlag("LV") should return "🇱🇻".
-getFlag("LB") should return "🇱🇧".
-getFlag("LI") should return "🇱🇮".
-getFlag("LT") should return "🇱🇹".
-getFlag("LU") should return "🇱🇺".
-getFlag("MG") should return "🇲🇬".
-getFlag("MY") should return "🇲🇾".
-getFlag("MT") should return "🇲🇹".
-getFlag("MX") should return "🇲🇽".
-getFlag("MD") should return "🇲🇩".
-getFlag("MC") should return "🇲🇨".
-getFlag("MN") should return "🇲🇳".
-getFlag("ME") should return "🇲🇪".
-getFlag("MA") should return "🇲🇦".
-getFlag("NL") should return "🇳🇱".
-getFlag("NZ") should return "🇳🇿".
-getFlag("NG") should return "🇳🇬".
-getFlag("MK") should return "🇲🇰".
-getFlag("NO") should return "🇳🇴".
-getFlag("PK") should return "🇵🇰".
-getFlag("PH") should return "🇵🇭".
-getFlag("PL") should return "🇵🇱".
-getFlag("PT") should return "🇵🇹".
-getFlag("PR") should return "🇵🇷".
-getFlag("RO") should return "🇷🇴".
-getFlag("SM") should return "🇸🇲".
-getFlag("SA") should return "🇸🇦".
-getFlag("RS") should return "🇷🇸".
-getFlag("SG") should return "🇸🇬".
-getFlag("SK") should return "🇸🇰".
-getFlag("SI") should return "🇸🇮".
-getFlag("ZA") should return "🇿🇦".
-getFlag("KR") should return "🇰🇷".
-getFlag("ES") should return "🇪🇸".
-getFlag("SE") should return "🇸🇪".
-getFlag("CH") should return "🇨🇭".
-getFlag("TH") should return "🇹🇭".
-getFlag("TT") should return "🇹🇹".
-getFlag("TR") should return "🇹🇷".
-getFlag("UA") should return "🇺🇦".
-getFlag("AE") should return "🇦🇪".
-getFlag("US") should return "🇺🇸".
-getFlag("UY") should return "🇺🇾".
-getFlag("UZ") should return "🇺🇿".
-getFlag("VE") should return "🇻🇪".
-`);
+runTests(getFlag, [
+    `assert.equal(getFlag("AL"), "🇦🇱");`,
+    `assert.equal(getFlag("AD"), "🇦🇩");`,
+    `assert.equal(getFlag("AR"), "🇦🇷")`,
+    `assert.equal(getFlag("AM"), "🇦🇲")`,
+    `assert.equal(getFlag("AU"), "🇦🇺")`,
+    `assert.equal(getFlag("AT"), "🇦🇹")`,
+    `assert.equal(getFlag("AZ"), "🇦🇿")`,
+    `assert.equal(getFlag("BE"), "🇧🇪")`,
+    `assert.equal(getFlag("BJ"), "🇧🇯")`,
+    `assert.equal(getFlag("BO"), "🇧🇴")`,
+    `assert.equal(getFlag("BA"), "🇧🇦")`,
+    `assert.equal(getFlag("BR"), "🇧🇷")`,
+    `assert.equal(getFlag("BG"), "🇧🇬")`,
+    `assert.equal(getFlag("CA"), "🇨🇦")`,
+    `assert.equal(getFlag("CL"), "🇨🇱")`,
+    `assert.equal(getFlag("CN"), "🇨🇳")`,
+    `assert.equal(getFlag("CO"), "🇨🇴")`,
+    `assert.equal(getFlag("HR"), "🇭🇷")`,
+    `assert.equal(getFlag("CY"), "🇨🇾")`,
+    `assert.equal(getFlag("CZ"), "🇨🇿")`,
+    `assert.equal(getFlag("DK"), "🇩🇰")`,
+    `assert.equal(getFlag("EC"), "🇪🇨")`,
+    `assert.equal(getFlag("ER"), "🇪🇷")`,
+    `assert.equal(getFlag("EE"), "🇪🇪")`,
+    `assert.equal(getFlag("FI"), "🇫🇮")`,
+    `assert.equal(getFlag("FR"), "🇫🇷")`,
+    `assert.equal(getFlag("GE"), "🇬🇪")`,
+    `assert.equal(getFlag("DE"), "🇩🇪")`,
+    `assert.equal(getFlag("GB"), "🇬🇧")`,
+    `assert.equal(getFlag("GR"), "🇬🇷")`,
+    `assert.equal(getFlag("GW"), "🇬🇼")`,
+    `assert.equal(getFlag("HT"), "🇭🇹")`,
+    `assert.equal(getFlag("HK"), "🇭🇰")`,
+    `assert.equal(getFlag("HU"), "🇭🇺")`,
+    `assert.equal(getFlag("IS"), "🇮🇸")`,
+    `assert.equal(getFlag("IN"), "🇮🇳")`,
+    `assert.equal(getFlag("IR"), "🇮🇷")`,
+    `assert.equal(getFlag("IE"), "🇮🇪")`,
+    `assert.equal(getFlag("IL"), "🇮🇱")`,
+    `assert.equal(getFlag("IT"), "🇮🇹")`,
+    `assert.equal(getFlag("JM"), "🇯🇲")`,
+    `assert.equal(getFlag("JP"), "🇯🇵")`,
+    `assert.equal(getFlag("KZ"), "🇰🇿")`,
+    `assert.equal(getFlag("KE"), "🇰🇪")`,
+    `assert.equal(getFlag("XK"), "🇽🇰")`,
+    `assert.equal(getFlag("KG"), "🇰🇬")`,
+    `assert.equal(getFlag("LV"), "🇱🇻")`,
+    `assert.equal(getFlag("LB"), "🇱🇧")`,
+    `assert.equal(getFlag("LI"), "🇱🇮")`,
+    `assert.equal(getFlag("LT"), "🇱🇹")`,
+    `assert.equal(getFlag("LU"), "🇱🇺")`,
+    `assert.equal(getFlag("MG"), "🇲🇬")`,
+    `assert.equal(getFlag("MY"), "🇲🇾")`,
+    `assert.equal(getFlag("MT"), "🇲🇹")`,
+    `assert.equal(getFlag("MX"), "🇲🇽")`,
+    `assert.equal(getFlag("MD"), "🇲🇩")`,
+    `assert.equal(getFlag("MC"), "🇲🇨")`,
+    `assert.equal(getFlag("MN"), "🇲🇳")`,
+    `assert.equal(getFlag("ME"), "🇲🇪")`,
+    `assert.equal(getFlag("MA"), "🇲🇦")`,
+    `assert.equal(getFlag("NL"), "🇳🇱")`,
+    `assert.equal(getFlag("NZ"), "🇳🇿")`,
+    `assert.equal(getFlag("NG"), "🇳🇬")`,
+    `assert.equal(getFlag("MK"), "🇲🇰")`,
+    `assert.equal(getFlag("NO"), "🇳🇴")`,
+    `assert.equal(getFlag("PK"), "🇵🇰")`,
+    `assert.equal(getFlag("PH"), "🇵🇭")`,
+    `assert.equal(getFlag("PL"), "🇵🇱")`,
+    `assert.equal(getFlag("PT"), "🇵🇹")`,
+    `assert.equal(getFlag("PR"), "🇵🇷")`,
+    `assert.equal(getFlag("RO"), "🇷🇴")`,
+    `assert.equal(getFlag("SM"), "🇸🇲")`,
+    `assert.equal(getFlag("SA"), "🇸🇦")`,
+    `assert.equal(getFlag("RS"), "🇷🇸")`,
+    `assert.equal(getFlag("SG"), "🇸🇬")`,
+    `assert.equal(getFlag("SK"), "🇸🇰")`,
+    `assert.equal(getFlag("SI"), "🇸🇮")`,
+    `assert.equal(getFlag("ZA"), "🇿🇦")`,
+    `assert.equal(getFlag("KR"), "🇰🇷")`,
+    `assert.equal(getFlag("ES"), "🇪🇸")`,
+    `assert.equal(getFlag("SE"), "🇸🇪")`,
+    `assert.equal(getFlag("CH"), "🇨🇭")`,
+    `assert.equal(getFlag("TH"), "🇹🇭")`,
+    `assert.equal(getFlag("TT"), "🇹🇹")`,
+    `assert.equal(getFlag("TR"), "🇹🇷")`,
+    `assert.equal(getFlag("UA"), "🇺🇦")`,
+    `assert.equal(getFlag("AE"), "🇦🇪")`,
+    `assert.equal(getFlag("US"), "🇺🇸")`,
+    `assert.equal(getFlag("UY"), "🇺🇾")`,
+    `assert.equal(getFlag("UZ"), "🇺🇿")`,
+    `assert.equal(getFlag("VE"), "🇻🇪")`,
+]);

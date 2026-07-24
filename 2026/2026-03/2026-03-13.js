@@ -49,11 +49,11 @@ function calculateParkingFee(parkTime, pickupTime) {
 
 
 const runTests = require('../../helpers/runTests');
-runTests(calculateParkingFee, `
-    calculateParkingFee("09:00", "11:00") should return "$6".
-    calculateParkingFee("10:00", "10:30") should return "$5".
-    calculateParkingFee("08:10", "10:45") should return "$9".
-    calculateParkingFee("14:40", "23:10") should return "$27".
-    calculateParkingFee("18:15", "01:30") should return "$34".
-    calculateParkingFee("11:11", "11:10") should return "$82".
-`);
+runTests(calculateParkingFee, [
+    `assert.equal(calculateParkingFee("09:00", "11:00"), "$6");`,
+    `assert.equal(calculateParkingFee("10:00", "10:30"), "$5");`,
+    `assert.equal(calculateParkingFee("08:10", "10:45"), "$9");`,
+    `assert.equal(calculateParkingFee("14:40", "23:10"), "$27");`,
+    `assert.equal(calculateParkingFee("18:15", "01:30"), "$34");`,
+    `assert.equal(calculateParkingFee("11:11", "11:10"), "$82");`,
+]);

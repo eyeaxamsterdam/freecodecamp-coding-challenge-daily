@@ -18,11 +18,11 @@ function isGoldenRatio(a, b) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isGoldenRatio, `
-    isGoldenRatio(21, 34) should return true.
-    isGoldenRatio(15, 20) should return false.
-    isGoldenRatio(8, 13) should return true.
-    isGoldenRatio(10, 16) should return false.
-    isGoldenRatio(1618, 1000) should return true.
-    isGoldenRatio(88, 55) should return false.
-`);
+runTests(isGoldenRatio, [
+    `assert.isTrue(isGoldenRatio(21, 34));`,
+    `assert.isFalse(isGoldenRatio(15, 20));`,
+    `assert.isTrue(isGoldenRatio(8, 13));`,
+    `assert.isFalse(isGoldenRatio(10, 16));`,
+    `assert.isTrue(isGoldenRatio(1618, 1000));`,
+    `assert.isFalse(isGoldenRatio(88, 55));`,
+]);

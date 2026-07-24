@@ -43,10 +43,10 @@ function getZoneViolations(grid) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getZoneViolations, `
-    getZoneViolations([["R", "C"], ["", "C"]]) should return [[0, 0], [0, 1]].
-    getZoneViolations([["", "i"], ["", "R"], ["R", "I"]]) should return [[0, 1], [1, 1]].
-    getZoneViolations([["A", "i", "C"], ["A", "", "C"], ["R", "R", "I"]]) should return [].
-    getZoneViolations([["R", "R", "C", "R", "R"], ["R", "I", "C", "", "A"], ["R", "R", "", "i", "A"]]) should return [[0, 1], [0, 2], [0, 3]].
-    getZoneViolations([["R", "A", "A", "", "i", "i"], ["R", "I", "", "C", "i", "i"], ["R", "", "C", "C", "A", "A"], ["R", "R", "C", "I", "R", "R"]]) should return [[2, 3], [2, 4], [3, 1], [3, 2]].
-`);
+runTests(getZoneViolations, [
+    `assert.deepEqual(getZoneViolations([["R", "C"], ["", "C"]]).sort(), [[0, 0], [0, 1]]);`,
+    `assert.deepEqual(getZoneViolations([["", "i"], ["", "R"], ["R", "I"]]).sort(), [[0, 1], [1, 1]]);`,
+    `assert.deepEqual(getZoneViolations([["A", "i", "C"], ["A", "", "C"], ["R", "R", "I"]]).sort(), []);`,
+    `assert.deepEqual(getZoneViolations([["R", "R", "C", "R", "R"], ["R", "I", "C", "", "A"], ["R", "R", "", "i", "A"]]).sort(), [[0, 1], [0, 2], [0, 3]]);`,
+    `assert.deepEqual(getZoneViolations([["R", "A", "A", "", "i", "i"], ["R", "I", "", "C", "i", "i"], ["R", "", "C", "C", "A", "A"], ["R", "R", "C", "I", "R", "R"]]).sort(), [[2, 3], [2, 4], [3, 1], [3, 2]]);`,
+]);

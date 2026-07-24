@@ -29,12 +29,12 @@ function detectRoast(beans) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(detectRoast, `
-    detectRoast("''-''''''-'-''--''''") should return "Light".
-    detectRoast(".'-''-''..'''.-.-''-") should return "Medium".
-    detectRoast("--.''--'-''.--..-.--") should return "Medium".
-    detectRoast("-...'-......-..-...-") should return "Dark".
-    detectRoast(".--.-..-......----.'") should return "Medium".
-    detectRoast("..-..-..-..-....-.-.") should return "Dark".
-    detectRoast("-'-''''''..-'.''-'.'") should return "Light".
-`);
+runTests(detectRoast, [
+    `assert.equal(detectRoast("''-''''''-'-''--''''"), "Light");`,
+    `assert.equal(detectRoast(".'-''-''..'''.-.-''-"), "Medium");`,
+    `assert.equal(detectRoast("--.''--'-''.--..-.--"), "Medium");`,
+    `assert.equal(detectRoast("-...'-......-..-...-"), "Dark");`,
+    `assert.equal(detectRoast(".--.-..-......----.'"), "Medium");`,
+    `assert.equal(detectRoast("..-..-..-..-....-.-."), "Dark");`,
+    `assert.equal(detectRoast("-'-''''''..-'.''-'.'"), "Light");`,
+]);

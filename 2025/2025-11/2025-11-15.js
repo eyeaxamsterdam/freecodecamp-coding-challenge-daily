@@ -32,10 +32,10 @@ function gcd(x, y) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(gcd, `
-    gcd(4, 6) should return 2.
-    gcd(20, 15) should return 5.
-    gcd(13, 17) should return 1.
-    gcd(654, 456) should return 6.
-    gcd(3456, 4320) should return 864.
-`);
+runTests(gcd, [
+    `assert.equal(gcd(4, 6), 2);`,
+    `assert.equal(gcd(20, 15), 5);`,
+    `assert.equal(gcd(13, 17), 1);`,
+    `assert.equal(gcd(654, 456), 6);`,
+    `assert.equal(gcd(3456, 4320), 864);`,
+]);

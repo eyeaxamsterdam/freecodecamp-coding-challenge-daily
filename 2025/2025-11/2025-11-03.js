@@ -13,10 +13,10 @@ function countWords(sentence) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(countWords, `
-    countWords("Hello world") should return 2.
-    countWords("The quick brown fox jumps over the lazy dog.") should return 9.
-    countWords("I like coding challenges!") should return 4.
-    countWords("Complete the challenge in JavaScript and Python.") should return 7.
-    countWords("The missing semi-colon crashed the entire internet.") should return 7.
-`);
+runTests(countWords, [
+    `assert.equal(countWords("Hello world"), 2);`,
+    `assert.equal(countWords("The quick brown fox jumps over the lazy dog."), 9);`,
+    `assert.equal(countWords("I like coding challenges!"), 4);`,
+    `assert.equal(countWords("Complete the challenge in JavaScript and Python."), 7);`,
+    `assert.equal(countWords("The missing semi-colon crashed the entire internet."), 7);`,
+]);

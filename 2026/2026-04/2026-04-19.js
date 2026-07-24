@@ -21,11 +21,11 @@ function getUniqueClimbs(steps) {
 //Tests:
 
 const runTests = require('../../helpers/runTests');
-runTests(getUniqueClimbs, `
-    getUniqueClimbs(4) should return 5.
-    getUniqueClimbs(5) should return 8.
-    getUniqueClimbs(10) should return 89.
-    getUniqueClimbs(18) should return 4181.
-    getUniqueClimbs(29) should return 832040.
-    getUniqueClimbs(50) should return 20365011074.
-`);
+runTests(getUniqueClimbs, [
+    `assert.equal(getUniqueClimbs(4), 5);`,
+    `assert.equal(getUniqueClimbs(5), 8);`,
+    `assert.equal(getUniqueClimbs(10), 89);`,
+    `assert.equal(getUniqueClimbs(18), 4181);`,
+    `assert.equal(getUniqueClimbs(29), 832040);`,
+    `assert.equal(getUniqueClimbs(50), 20365011074);`,
+]);

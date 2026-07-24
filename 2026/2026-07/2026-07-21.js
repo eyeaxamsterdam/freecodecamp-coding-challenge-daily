@@ -13,11 +13,11 @@ function blendWords(word1, word2) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(blendWords, `
-    blendWords("turtle", "toucan") should return "turcan".
-    blendWords("chipmunk", "flamingo") should return "chipingo".
-    blendWords("falcon", "pelican") should return "falican".
-    blendWords("hyena", "iguana") should return "hyana".
-    blendWords("scorpion", "gorilla") should return "scorilla".
-    blendWords("platypus", "wolverine") should return "platerine".
-`);
+runTests(blendWords, [
+    `assert.equal(blendWords("turtle", "toucan"), "turcan");`,
+    `assert.equal(blendWords("chipmunk", "flamingo"), "chipingo");`,
+    `assert.equal(blendWords("falcon", "pelican"), "falican");`,
+    `assert.equal(blendWords("hyena", "iguana"), "hyana");`,
+    `assert.equal(blendWords("scorpion", "gorilla"), "scorilla");`,
+    `assert.equal(blendWords("platypus", "wolverine"), "platerine");`,
+]);

@@ -20,10 +20,10 @@ function launchFuel(payload) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(launchFuel, `
-    launchFuel(50) should return 12.4.
-    launchFuel(500) should return 124.8.
-    launchFuel(243) should return 60.7.
-    launchFuel(11000) should return 2749.8.
-    launchFuel(6214) should return 1553.4.
-`);
+runTests(launchFuel, [
+    `assert.equal(launchFuel(50), 12.4);`,
+    `assert.equal(launchFuel(500), 124.8);`,
+    `assert.equal(launchFuel(243), 60.7);`,
+    `assert.equal(launchFuel(11000), 2749.8);`,
+    `assert.equal(launchFuel(6214), 1553.4);`,
+]);

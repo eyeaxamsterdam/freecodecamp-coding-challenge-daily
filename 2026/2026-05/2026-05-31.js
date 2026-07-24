@@ -16,10 +16,10 @@ function getCombinations(n) {
 
 
 /* const runTests = require('../../helpers/runTests');
-runTests(getCombinations, `
-    getCombinations(2) should return 2.
-    getCombinations(3) should return 5.
-    getCombinations(5) should return 42.
-    getCombinations(8) should return 1430.
-    getCombinations(13) should return 742900.
-`); */
+runTests(getCombinations, [
+    `assert.equal(getCombinations(2), 2);`,
+    `assert.equal(getCombinations(3), 5);`,
+    `assert.equal(getCombinations(5), 42);`,
+    `assert.equal(getCombinations(8), 1430);`,
+    `assert.equal(getCombinations(13), 742900);`,
+]);

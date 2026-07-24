@@ -11,10 +11,10 @@ function calculateBmi(weight, height) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(calculateBmi, `
-    calculateBmi(180, 70) should return 25.8.
-    calculateBmi(140, 64) should return 24.0.
-    calculateBmi(160, 76) should return 19.5.
-    calculateBmi(200, 60) should return 39.1.
-    calculateBmi(150, 68) should return 22.8.
-`);
+runTests(calculateBmi, [
+    `assert.equal(calculateBmi(180, 70), 25.8);`,
+    `assert.equal(calculateBmi(140, 64), 24.0);`,
+    `assert.equal(calculateBmi(160, 76), 19.5);`,
+    `assert.equal(calculateBmi(200, 60), 39.1);`,
+    `assert.equal(calculateBmi(150, 68), 22.8);`,
+]);

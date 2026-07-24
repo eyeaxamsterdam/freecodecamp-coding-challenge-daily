@@ -25,11 +25,11 @@ function compare(word, guess) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(compare, `
-    compare("APPLE", "POPPA") should return "10201".
-    compare("REACT", "TRACE") should return "11221".
-    compare("DEBUGS", "PYTHON") should return "000000".
-    compare("JAVASCRIPT", "TYPESCRIPT") should return "0000222222".
-    compare("ORANGE", "ROUNDS") should return "110200".
-    compare("WIRELESS", "ETHERNET") should return "10021000".
-`);
+runTests(compare, [
+    `assert.equal(compare("APPLE", "POPPA"), "10201");`,
+    `assert.equal(compare("REACT", "TRACE"), "11221");`,
+    `assert.equal(compare("DEBUGS", "PYTHON"), "000000");`,
+    `assert.equal(compare("JAVASCRIPT", "TYPESCRIPT"), "0000222222");`,
+    `assert.equal(compare("ORANGE", "ROUNDS"), "110200");`,
+    `assert.equal(compare("WIRELESS", "ETHERNET"), "10021000");`,
+]);

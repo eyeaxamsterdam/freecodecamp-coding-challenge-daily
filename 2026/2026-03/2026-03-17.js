@@ -32,14 +32,14 @@ function getMilestone(years) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getMilestone, `
-    getMilestone(0) should return "Newlyweds".
-    getMilestone(1) should return "Paper".
-    getMilestone(8) should return "Wood".
-    getMilestone(10) should return "Tin".
-    getMilestone(26) should return "Silver".
-    getMilestone(45) should return "Ruby".
-    getMilestone(50) should return "Gold".
-    getMilestone(64) should return "Diamond".
-    getMilestone(71) should return "Platinum".
-`);
+runTests(getMilestone, [
+    `assert.equal(getMilestone(0), "Newlyweds");`,
+    `assert.equal(getMilestone(1), "Paper");`,
+    `assert.equal(getMilestone(8), "Wood");`,
+    `assert.equal(getMilestone(10), "Tin");`,
+    `assert.equal(getMilestone(26), "Silver");`,
+    `assert.equal(getMilestone(45), "Ruby");`,
+    `assert.equal(getMilestone(50), "Gold");`,
+    `assert.equal(getMilestone(64), "Diamond");`,
+    `assert.equal(getMilestone(71), "Platinum");`,
+]);

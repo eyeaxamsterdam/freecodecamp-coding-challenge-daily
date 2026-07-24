@@ -13,10 +13,10 @@ function sleepDebt(hoursSlept, targetHours) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(sleepDebt, `
-    sleepDebt([6, 6, 6, 6, 6, 6], 8) should return 20.
-    sleepDebt([6, 7, 8, 4, 8, 6], 7) should return 10.
-    sleepDebt([10, 10, 9, 10, 9, 11], 9) should return 4.
-    sleepDebt([8, 7, 6, 7, 6, 8], 6) should return 0.
-    sleepDebt([8, 9, 10, 9, 10, 7], 7) should return 0.
-`);
+runTests(sleepDebt, [
+    `assert.equal(sleepDebt([6, 6, 6, 6, 6, 6], 8), 20);`,
+    `assert.equal(sleepDebt([6, 7, 8, 4, 8, 6], 7), 10);`,
+    `assert.equal(sleepDebt([10, 10, 9, 10, 9, 11], 9), 4);`,
+    `assert.equal(sleepDebt([8, 7, 6, 7, 6, 8], 6), 0);`,
+    `assert.equal(sleepDebt([8, 9, 10, 9, 10, 7], 7), 0);`,
+]);

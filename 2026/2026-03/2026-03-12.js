@@ -11,10 +11,10 @@ function isValidDominoChain(dominoes) {
     return dominoes.every((d,i) => i === dominoes.length -1 || d[1] === dominoes[i+1][0]);
 }
 const runTests = require('../../helpers/runTests');
-runTests(isValidDominoChain, `
-    isValidDominoChain([[1, 3], [3, 6], [6, 5]]) should return true.
-    isValidDominoChain([[6, 2], [3, 4], [4, 1]]) should return false.
-    isValidDominoChain([[2, 5], [5, 6], [5, 1]]) should return false.
-    isValidDominoChain([[4, 3], [3, 1], [1, 6], [6, 6], [6, 5], [5, 1], [1, 1], [1, 4], [4, 4], [4, 2]]) should return true.
-    isValidDominoChain([[2, 3], [3, 3], [3, 6], [6, 1], [1, 4], [3, 5], [5, 5], [5, 4], [4, 2], [2, 2]]) should return false.
-`);
+runTests(isValidDominoChain, [
+    `assert.isTrue(isValidDominoChain([[1, 3], [3, 6], [6, 5]]));`,
+    `assert.isFalse(isValidDominoChain([[6, 2], [3, 4], [4, 1]]));`,
+    `assert.isFalse(isValidDominoChain([[2, 5], [5, 6], [5, 1]]));`,
+    `assert.isTrue(isValidDominoChain([[4, 3], [3, 1], [1, 6], [6, 6], [6, 5], [5, 1], [1, 1], [1, 4], [4, 4], [4, 2]]));`,
+    `assert.isFalse(isValidDominoChain([[2, 3], [3, 3], [3, 6], [6, 1], [1, 4], [3, 5], [5, 5], [5, 4], [4, 2], [2, 2]]));`,
+]);

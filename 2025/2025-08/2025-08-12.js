@@ -30,21 +30,21 @@ function isValidNumber(n, base) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isValidNumber, `
-    isValidNumber("10101", 2) should return true.
-    isValidNumber("10201", 2) should return false.
-    isValidNumber("76543210", 8) should return true.
-    isValidNumber("9876543210", 8) should return false.
-    isValidNumber("9876543210", 10) should return true.
-    isValidNumber("ABC", 10) should return false.
-    isValidNumber("ABC", 16) should return true.
-    isValidNumber("Z", 36) should return true.
-    isValidNumber("ABC", 20) should return true.
-    isValidNumber("4B4BA9", 16) should return true.
-    isValidNumber("5G3F8F", 16) should return false.
-    isValidNumber("5G3F8F", 17) should return true.
-    isValidNumber("abc", 10) should return false.
-    isValidNumber("abc", 16) should return true.
-    isValidNumber("AbC", 16) should return true.
-    isValidNumber("z", 36) should return true.
-`);
+runTests(isValidNumber, [
+    `assert.isTrue(isValidNumber("10101", 2))`,
+    `assert.isFalse(isValidNumber("10201", 2))`,
+    `assert.isTrue(isValidNumber("76543210", 8))`,
+    `assert.isFalse(isValidNumber("9876543210", 8))`,
+    `assert.isTrue(isValidNumber("9876543210", 10))`,
+    `assert.isFalse(isValidNumber("ABC", 10))`,
+    `assert.isTrue(isValidNumber("ABC", 16))`,
+    `assert.isTrue(isValidNumber("Z", 36))`,
+    `assert.isTrue(isValidNumber("ABC", 20))`,
+    `assert.isTrue(isValidNumber("4B4BA9", 16))`,
+    `assert.isFalse(isValidNumber("5G3F8F", 16))`,
+    `assert.isTrue(isValidNumber("5G3F8F", 17))`,
+    `assert.isFalse(isValidNumber("abc", 10))`,
+    `assert.isTrue(isValidNumber("abc", 16))`,
+    `assert.isTrue(isValidNumber("AbC", 16))`,
+    `assert.isTrue(isValidNumber("z", 36))`,
+]);

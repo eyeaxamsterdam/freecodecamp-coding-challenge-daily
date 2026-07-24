@@ -15,11 +15,11 @@ function getPizzasToOrder(hoursWorked) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getPizzasToOrder, `
-    getPizzasToOrder([8, 8, 8]) should return 2.
-    getPizzasToOrder([10, 9, 8, 2, 2, 6, 10]) should return 3.
-    getPizzasToOrder([1, 2, 3, 4, 5]) should return 2.
-    getPizzasToOrder([8, 8, 8, 8, 8, 8, 8, 8]) should return 3.
-    getPizzasToOrder([9, 9, 6]) should return 1.
-    getPizzasToOrder([10, 12, 16, 9, 8, 11, 15, 8, 0]) should return 5.
-`);
+runTests(getPizzasToOrder, [
+    `assert.equal(getPizzasToOrder([8, 8, 8]), 2);`,
+    `assert.equal(getPizzasToOrder([10, 9, 8, 2, 2, 6, 10]), 3);`,
+    `assert.equal(getPizzasToOrder([1, 2, 3, 4, 5]), 2);`,
+    `assert.equal(getPizzasToOrder([8, 8, 8, 8, 8, 8, 8, 8]), 3);`,
+    `assert.equal(getPizzasToOrder([9, 9, 6]), 1);`,
+    `assert.equal(getPizzasToOrder([10, 12, 16, 9, 8, 11, 15, 8, 0]), 5);`,
+]);

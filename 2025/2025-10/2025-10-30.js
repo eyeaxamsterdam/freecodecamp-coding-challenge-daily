@@ -33,12 +33,10 @@ function nthPrime(n) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(nthPrime, `
-    nthPrime(5) should return 11.
-    nthPrime(10) should return 29.
-    nthPrime(16) should return 53.
-    nthPrime(99) should return 523.
-    nthPrime(1000) should return 7919.
-    nthPrime(200000) should return 7919.
-    nthPrime(2000000) should return 7919.
-`);
+runTests(nthPrime, [
+    `assert.equal(nthPrime(5), 11);`,
+    `assert.equal(nthPrime(10), 29);`,
+    `assert.equal(nthPrime(16), 53);`,
+    `assert.equal(nthPrime(99), 523);`,
+    `assert.equal(nthPrime(1000), 7919);`,
+]);

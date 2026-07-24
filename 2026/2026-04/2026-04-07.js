@@ -18,10 +18,10 @@ function palindromeLocator(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(palindromeLocator, `
-    palindromeLocator("racecar") should return "e".
-    palindromeLocator("level") should return "v".
-    palindromeLocator("freecodecamp") should return "none".
-    palindromeLocator("noon") should return "oo".
-    palindromeLocator("11100111") should return "00".
-`);
+runTests(palindromeLocator, [
+    `assert.equal(palindromeLocator("racecar"), "e");`,
+    `assert.equal(palindromeLocator("level"), "v");`,
+    `assert.equal(palindromeLocator("freecodecamp"), "none");`,
+    `assert.equal(palindromeLocator("noon"), "oo");`,
+    `assert.equal(palindromeLocator("11100111"), "00");`,
+]);

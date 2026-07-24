@@ -24,8 +24,8 @@ could abviously use for loop or arr.forEach to iterate through the wordArray and
 */
 
 const runTests = require('../../helpers/runTests');
-runTests(getLongestWord, `
-    getLongestWord("coding is fun") should return "coding".
-    getLongestWord("Coding challenges are fun and educational.") should return "educational".
-    getLongestWord("This sentence has multiple long words.") should return "sentence".
-`);
+runTests(getLongestWord, [
+    `assert.equal(getLongestWord("coding is fun"), "coding");`,
+    `assert.equal(getLongestWord("Coding challenges are fun and educational."), "educational");`,
+    `assert.equal(getLongestWord("This sentence has multiple long words."), "sentence");`,
+]);

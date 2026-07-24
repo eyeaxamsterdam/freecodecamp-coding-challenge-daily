@@ -19,12 +19,12 @@ function isValidSchema(obj) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(isValidSchema, `
-    isValidSchema({ username: "alice", posts: 10, verified: false }) should return true.
-    isValidSchema({ username: "carol", posts: 15, verified: true, followers: 25 }) should return true.
-    isValidSchema({ username: "frank", posts: "21", verified: true }) should return false.
-    isValidSchema({ username: "sam", posts: 17, verified: "false" }) should return false.
-    isValidSchema({ username: "bill", verified: true }) should return false.
-    isValidSchema({ username: "fred", verified: true }) should return false.
-    isValidSchema({ username: 5, posts: 10, verified: true }) should return false.
-`);
+runTests(isValidSchema, [
+    `assert.isTrue(isValidSchema({ username: "alice", posts: 10, verified: false }));`,
+    `assert.isTrue(isValidSchema({ username: "carol", posts: 15, verified: true, followers: 25 }));`,
+    `assert.isFalse(isValidSchema({ username: "frank", posts: "21", verified: true }));`,
+    `assert.isFalse(isValidSchema({ username: "sam", posts: 17, verified: "false" }));`,
+    `assert.isFalse(isValidSchema({ username: "bill", verified: true }));`,
+    `assert.isFalse(isValidSchema({ username: "fred", verified: true }));`,
+    `assert.isFalse(isValidSchema({ username: 5, posts: 10, verified: true }));`,
+]);

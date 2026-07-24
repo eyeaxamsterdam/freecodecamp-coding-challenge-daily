@@ -34,13 +34,13 @@ function classification(temp) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(classification, `
-    classification(5778) should return "G".
-    classification(2400) should return "M".
-    classification(9999) should return "A".
-    classification(3700) should return "K".
-    classification(3699) should return "M".
-    classification(210000) should return "O".
-    classification(6000) should return "F".
-    classification(11432) should return "B".
-`);
+runTests(classification, [
+    `assert.equal(classification(5778), "G");`,
+    `assert.equal(classification(2400), "M");`,
+    `assert.equal(classification(9999), "A");`,
+    `assert.equal(classification(3700), "K");`,
+    `assert.equal(classification(3699), "M");`,
+    `assert.equal(classification(210000), "O");`,
+    `assert.equal(classification(6000), "F");`,
+    `assert.equal(classification(11432), "B");`,
+]);

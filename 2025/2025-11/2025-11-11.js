@@ -24,11 +24,11 @@ function count(str) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(count, `
-    count("Hello World") should return [3, 7].
-    count("JavaScript") should return [3, 7].
-    count("Python") should return [1, 5].
-    count("freeCodeCamp") should return [5, 7].
-    count("Hello, World!") should return [3, 7].
-    count("The quick brown fox jumps over the lazy dog.") should return [11, 24].
-`);
+runTests(count, [
+    `assert.deepEqual(count("Hello World"), [3, 7]);`,
+    `assert.deepEqual(count("JavaScript"), [3, 7]);`,
+    `assert.deepEqual(count("Python"), [1, 5]);`,
+    `assert.deepEqual(count("freeCodeCamp"), [5, 7]);`,
+    `assert.deepEqual(count("Hello, World!"), [3, 7]);`,
+    `assert.deepEqual(count("The quick brown fox jumps over the lazy dog."), [11, 24]);`,
+]);

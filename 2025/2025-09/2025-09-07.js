@@ -40,12 +40,12 @@ function parseRomanNumeral(numeral) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(parseRomanNumeral, `
-    parseRomanNumeral("NII") should return 3.
-    parseRomanNumeral("IV") should return 4.
-    parseRomanNumeral("XXVI") should return 26.
-    parseRomanNumeral("XCIX") should return 99.
-    parseRomanNumeral("CDLX") should return 460.
-    parseRomanNumeral("DIV") should return 504.
-    parseRomanNumeral("MMXXV") should return 2025.
-`);
+runTests(parseRomanNumeral, [
+    `assert.equal(parseRomanNumeral("III"), 3);`,
+    `assert.equal(parseRomanNumeral("IV"), 4);`,
+    `assert.equal(parseRomanNumeral("XXVI"), 26);`,
+    `assert.equal(parseRomanNumeral("XCIX"), 99);`,
+    `assert.equal(parseRomanNumeral("CDLX"), 460);`,
+    `assert.equal(parseRomanNumeral("DIV"), 504);`,
+    `assert.equal(parseRomanNumeral("MMXXV"), 2025);`,
+]);

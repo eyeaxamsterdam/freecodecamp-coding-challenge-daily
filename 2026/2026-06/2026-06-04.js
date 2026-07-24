@@ -34,14 +34,14 @@ function isValidSchema(obj) {
     return checkKeys.length === 4 && checkValues.length === 4;
 }
 
-const runTests = require("../../helpers/runTests");
-runTests(isValidSchema,`
-    isValidSchema({ username: "vivian", posts: 1, verified: false, role: "user", supporter: true }) should return true.
-    isValidSchema({ username: "rudolph", posts: 15, verified: true, role: "creator" }) should return true.
-    isValidSchema({ username: "hernandez", posts: 35, verified: true, role: "moderator", supporter: false, followers: 55 }) should return true.
-    isValidSchema({ username: "julia", posts: 50, verified: true, role: "admin", supporter: "true" }) should return false.
-    isValidSchema({ username: "bernard", posts: 0, verified: true, role: "friend", supporter: true }) should return false.
-    isValidSchema({ username: "felix", posts: 40, verified: "yes", role: "staff", supporter: false }) should return false.
-    isValidSchema({ username: "jimmy", posts: true, verified: false, role: "creator", supporter: true }) should return false.
-    isValidSchema({ username: true, posts: 30, verified: true, role: "moderator", supporter: false }) should return false.
-`)
+const runTests = require('../../helpers/runTests');
+runTests(isValidSchema, [
+    `assert.isTrue(isValidSchema({ username: "vivian", posts: 1, verified: false, role: "user", supporter: true }));`,
+    `assert.isTrue(isValidSchema({ username: "rudolph", posts: 15, verified: true, role: "creator" }));`,
+    `assert.isTrue(isValidSchema({ username: "hernandez", posts: 35, verified: true, role: "moderator", supporter: false, followers: 55 }));`,
+    `assert.isFalse(isValidSchema({ username: "julia", posts: 50, verified: true, role: "admin", supporter: "true" }));`,
+    `assert.isFalse(isValidSchema({ username: "bernard", posts: 0, verified: true, role: "friend", supporter: true }));`,
+    `assert.isFalse(isValidSchema({ username: "felix", posts: 40, verified: "yes", role: "staff", supporter: false }));`,
+    `assert.isFalse(isValidSchema({ username: "jimmy", posts: true, verified: false, role: "creator", supporter: true }));`,
+    `assert.isFalse(isValidSchema({ username: true, posts: 30, verified: true, role: "moderator", supporter: false }));`,
+]);

@@ -17,11 +17,10 @@ function getLastLetter(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-
-runTests(getLastLetter, `
-getLastLetter("world") should return "w".
-getLastLetter("Hello World") should return "W".
-getLastLetter("The quick brown fox jumped over the lazy dog.") should return "z".
-getLastLetter("HeLl0") should return "L".
-getLastLetter("!#$ er@R asd fT.,> 2t0e9") should return "T".
-`);
+runTests(getLastLetter, [
+    `assert.equal(getLastLetter("world"), "w");`,
+    `assert.equal(getLastLetter("Hello World"), "W");`,
+    `assert.equal(getLastLetter("The quick brown fox jumped over the lazy dog."), "z");`,
+    `assert.equal(getLastLetter("HeLl0"), "L");`,
+    `assert.equal(getLastLetter("!#$ er@R asd fT.,> 2t0e9"), "T");`,
+]);

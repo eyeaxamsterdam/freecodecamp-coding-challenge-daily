@@ -30,11 +30,11 @@ function combinations(cards) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(combinations, `
-    combinations(52) should return 1.
-    combinations(1) should return 52.
-    combinations(2) should return 1326.
-    combinations(5) should return 2598960.
-    combinations(10) should return 15820024220.
-    combinations(50) should return 1326.
-`);
+runTests(combinations, [
+    `assert.equal(combinations(52), 1);`,
+    `assert.equal(combinations(1), 52);`,
+    `assert.equal(combinations(2), 1326);`,
+    `assert.equal(combinations(5), 2598960);`,
+    `assert.equal(combinations(10), 15820024220);`,
+    `assert.equal(combinations(50), 1326);`,
+]);

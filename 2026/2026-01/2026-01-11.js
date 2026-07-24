@@ -37,11 +37,11 @@ function golfScore(par, strokes) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(golfScore, `
-    golfScore(3, 3) should return "Par".
-    golfScore(4, 3) should return "Birdie".
-    golfScore(3, 1) should return "Hole in one!".
-    golfScore(5, 7) should return "Double bogey".
-    golfScore(4, 5) should return "Bogey".
-    golfScore(5, 3) should return "Eagle".
-`);
+runTests(golfScore, [
+    `assert.equal(golfScore(3, 3), "Par");`,
+    `assert.equal(golfScore(4, 3), "Birdie");`,
+    `assert.equal(golfScore(3, 1), "Hole in one!");`,
+    `assert.equal(golfScore(5, 7), "Double bogey");`,
+    `assert.equal(golfScore(4, 5), "Bogey");`,
+    `assert.equal(golfScore(5, 3), "Eagle");`,
+]);

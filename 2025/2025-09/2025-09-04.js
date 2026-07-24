@@ -36,9 +36,9 @@ function repeatVowels(str) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(repeatVowels, `
-    repeatVowels("hello world") should return "helloo wooorld".
-    repeatVowels("freeCodeCamp") should return "freeeCooodeeeeCaaaaamp".
-    repeatVowels("AEIOU") should return "AEeIiiOoooUuuuu".
-    repeatVowels("I like eating ice cream in Iceland") should return "I liikeee eeeeaaaaatiiiiiing iiiiiiiceeeeeeee creeeeeeeeeaaaaaaaaaam iiiiiiiiiiin Iiiiiiiiiiiiceeeeeeeeeeeeelaaaaaaaaaaaaaand".
-`);
+runTests(repeatVowels, [
+    `assert.equal(repeatVowels("hello world"), "helloo wooorld");`,
+    `assert.equal(repeatVowels("freeCodeCamp"), "freeeCooodeeeeCaaaaamp");`,
+    `assert.equal(repeatVowels("AEIOU"), "AEeIiiOoooUuuuu");`,
+    `assert.equal(repeatVowels("I like eating ice cream in Iceland"), "I liikeee eeeeaaaaatiiiiiing iiiiiiiceeeeeeee creeeeeeeeeaaaaaaaaaam iiiiiiiiiiin Iiiiiiiiiiiiceeeeeeeeeeeeelaaaaaaaaaaaaaand");`,
+]);

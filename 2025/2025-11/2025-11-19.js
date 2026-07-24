@@ -40,12 +40,12 @@ function convert(heading) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(convert, `
-    convert("# My level 1 heading") should return "<h1>My level 1 heading</h1>".
-    convert("My heading") should return "Invalid format".
-    convert("##### My level 5 heading") should return "<h5>My level 5 heading</h5>".
-    convert("#My heading") should return "Invalid format".
-    convert("  ###  My level 3 heading") should return "<h3>My level 3 heading</h3>".
-    convert("####### My level 7 heading") should return "Invalid format".
-    convert("## My #2 heading") should return "<h2>My #2 heading</h2>".
-`);
+runTests(convert, [
+    `assert.equal(convert("# My level 1 heading"), "<h1>My level 1 heading</h1>");`,
+    `assert.equal(convert("My heading"), "Invalid format");`,
+    `assert.equal(convert("##### My level 5 heading"), "<h5>My level 5 heading</h5>");`,
+    `assert.equal(convert("#My heading"), "Invalid format");`,
+    `assert.equal(convert("  ###  My level 3 heading"), "<h3>My level 3 heading</h3>");`,
+    `assert.equal(convert("####### My level 7 heading"), "Invalid format");`,
+    `assert.equal(convert("## My #2 heading"), "<h2>My #2 heading</h2>");`,
+]);

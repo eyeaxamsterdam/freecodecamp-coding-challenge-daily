@@ -28,10 +28,10 @@ function burnCandles(candles, leftoversNeeded) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(burnCandles, `
-    burnCandles(7, 2) should return 13.
-    burnCandles(10, 5) should return 12.
-    burnCandles(20, 3) should return 29.
-    burnCandles(17, 4) should return 22.
-    burnCandles(2345, 3) should return 3517.
-`);
+runTests(burnCandles, [
+    `assert.equal(burnCandles(7, 2), 13);`,
+    `assert.equal(burnCandles(10, 5), 12);`,
+    `assert.equal(burnCandles(20, 3), 29);`,
+    `assert.equal(burnCandles(17, 4), 22);`,
+    `assert.equal(burnCandles(2345, 3), 3517);`,
+]);

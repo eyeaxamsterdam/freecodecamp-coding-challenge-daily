@@ -14,10 +14,10 @@ function groundhogDayPrediction(appearance) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(groundhogDayPrediction, `
-    groundhogDayPrediction(true) should return "Looks like we'll have six more weeks of winter.".
-    groundhogDayPrediction(false) should return "It's going to be an early spring.".
-    groundhogDayPrediction(null) should return "No prediction this year.".
-    groundhogDayPrediction(" ") should return "No prediction this year.".
-    groundhogDayPrediction("true") should return "No prediction this year.".
-`);
+runTests(groundhogDayPrediction, [
+    `assert.equal(groundhogDayPrediction(true), "Looks like we'll have six more weeks of winter.");`,
+    `assert.equal(groundhogDayPrediction(false), "It's going to be an early spring.");`,
+    `assert.equal(groundhogDayPrediction(null), "No prediction this year.");`,
+    `assert.equal(groundhogDayPrediction(" "), "No prediction this year.");`,
+    `assert.equal(groundhogDayPrediction("true"), "No prediction this year.");`,
+]);

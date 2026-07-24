@@ -35,10 +35,11 @@ function smallestGap(str) {
     }).text;
 }
 
-runTests(smallestGap,`
-    smallestGap("ABCDAC") should return "DA".
-    smallestGap("racecar") should return "e".
-    smallestGap("A{5e^SD*F4i!o#q6e&rkf(po8|we9+kr-2!3}=4") should return "#q6e&rkf(p".
-    smallestGap("Hello World") should return "".
-    smallestGap("The quick brown fox jumps over the lazy dog.") should return "fox".
-`)   
+const runTests = require('../../helpers/runTests');
+runTests(smallestGap, [
+    `assert.equal(smallestGap("ABCDAC"), "DA");`,
+    `assert.equal(smallestGap("racecar"), "e");`,
+    `assert.equal(smallestGap("A{5e^SD*F4i!o#q6e&rkf(po8|we9+kr-2!3}=4"), "#q6e&rkf(p");`,
+    `assert.equal(smallestGap("Hello World"), "");`,
+    `assert.equal(smallestGap("The quick brown fox jumps over the lazy dog."), "fox");`,
+]);

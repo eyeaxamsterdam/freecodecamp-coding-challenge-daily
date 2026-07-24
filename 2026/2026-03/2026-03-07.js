@@ -18,11 +18,11 @@ function getElementSize(windowSize, elementVw, elementVh) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getElementSize, `
-    getElementSize("1200 x 800", "50vw", "50vh") should return "600 x 400".
-    getElementSize("320 x 480", "25vw", "50vh") should return "80 x 240".
-    getElementSize("1000 x 500", "7vw", "3vh") should return "70 x 15".
-    getElementSize("1920 x 1080", "95vw", "100vh") should return "1824 x 1080".
-    getElementSize("1200 x 800", "0vw", "0vh") should return "0 x 0".
-    getElementSize("1440 x 900", "100vw", "114vh") should return "1440 x 1026".
-`);
+runTests(getElementSize, [
+    `assert.equal(getElementSize("1200 x 800", "50vw", "50vh"), "600 x 400");`,
+    `assert.equal(getElementSize("320 x 480", "25vw", "50vh"), "80 x 240");`,
+    `assert.equal(getElementSize("1000 x 500", "7vw", "3vh"), "70 x 15");`,
+    `assert.equal(getElementSize("1920 x 1080", "95vw", "100vh"), "1824 x 1080");`,
+    `assert.equal(getElementSize("1200 x 800", "0vw", "0vh"), "0 x 0");`,
+    `assert.equal(getElementSize("1440 x 900", "100vw", "114vh"), "1440 x 1026");`,
+]);

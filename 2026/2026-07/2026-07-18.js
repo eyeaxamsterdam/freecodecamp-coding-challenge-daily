@@ -26,11 +26,11 @@ function getOdds(dice, target) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getOdds, `
-    getOdds(1, 5) should return "1 in 6".
-    getOdds(2, 4) should return "1 in 12".
-    getOdds(3, 10) should return "1 in 8".
-    getOdds(4, 7) should return "1 in 65".
-    getOdds(5, 26) should return "1 in 111".
-    getOdds(6, 35) should return "1 in 7776".
-`);
+runTests(getOdds, [
+    `assert.equal(getOdds(1, 5), "1 in 6");`,
+    `assert.equal(getOdds(2, 4), "1 in 12");`,
+    `assert.equal(getOdds(3, 10), "1 in 8");`,
+    `assert.equal(getOdds(4, 7), "1 in 65");`,
+    `assert.equal(getOdds(5, 26), "1 in 111");`,
+    `assert.equal(getOdds(6, 35), "1 in 7776");`,
+]);

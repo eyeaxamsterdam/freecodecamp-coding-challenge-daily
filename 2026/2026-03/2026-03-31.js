@@ -21,12 +21,12 @@ function alarmCheck(alarmTime, wakeTime) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(alarmCheck, `
-    alarmCheck("07:00", "06:45") should return "early".
-    alarmCheck("06:30", "06:30") should return "on time".
-    alarmCheck("08:10", "08:15") should return "on time".
-    alarmCheck("09:30", "09:45") should return "late".
-    alarmCheck("08:15", "08:25") should return "on time".
-    alarmCheck("05:45", "05:56") should return "late".
-    alarmCheck("04:30", "04:00") should return "early".
-`);
+runTests(alarmCheck, [
+    `assert.equal(alarmCheck("07:00", "06:45"), "early");`,
+    `assert.equal(alarmCheck("06:30", "06:30"), "on time");`,
+    `assert.equal(alarmCheck("08:10", "08:15"), "on time");`,
+    `assert.equal(alarmCheck("09:30", "09:45"), "late");`,
+    `assert.equal(alarmCheck("08:15", "08:25"), "on time");`,
+    `assert.equal(alarmCheck("05:45", "05:56"), "late");`,
+    `assert.equal(alarmCheck("04:30", "04:00"), "early");`,
+]);

@@ -15,11 +15,9 @@ function getWordScore(word) {
 }
 
 const runTests = require('../../helpers/runTests');
-
-runTests(getWordScore, `
-    getWordScore("hi") should return 17.
-    getWordScore("hello") should return 52.
-    getWordScore("hippopotamus") should return 169.
-    getWordScore("freeCodeCamp") should return 94.
-`);
-
+runTests(getWordScore, [
+    `assert.equal(getWordScore("hi"), 17);`,
+    `assert.equal(getWordScore("hello"), 52);`,
+    `assert.equal(getWordScore("hippopotamus"), 169);`,
+    `assert.equal(getWordScore("freeCodeCamp"), 94);`,
+]);

@@ -48,13 +48,27 @@ function getPeriodicSpelling(word) {
 
 
 const runTests = require('../../helpers/runTests');
-runTests(getPeriodicSpelling, `
-    getPeriodicSpelling("neon") should return ["Ne", "O", "N"].
-    getPeriodicSpelling("rational") should return ["Ra", "Ti", "O", "N", "Al"].
-    getPeriodicSpelling("yarn") should return ["Y", "Ar", "N"].
-    getPeriodicSpelling("carbon") should return ["C", "Ar", "B", "O", "N"] or ["Ca", "Rb", "O", "N"].
-    getPeriodicSpelling("noisy") should return ["N", "O", "I", "S", "Y"] or ["No", "I", "S", "Y"].
-    getPeriodicSpelling("bicycles") should return ["B", "I", "C", "Y", "Cl", "Es"] or ["Bi", "C", "Y", "Cl", "Es"].
-    getPeriodicSpelling("optics") should return ["O", "P", "Ti", "C", "S"], ["O", "P", "Ti", "Cs"], ["O", "Pt", "I", "C", "S"], or ["O", "Pt", "I", "Cs"].
-    getPeriodicSpelling("value") should return [].
-`);
+runTests(getPeriodicSpelling, [
+    `assert.deepEqual(getPeriodicSpelling("neon"), ["Ne", "O", "N"]);`,
+    `assert.deepEqual(getPeriodicSpelling("rational"), ["Ra", "Ti", "O", "N", "Al"]);`,
+    `assert.deepEqual(getPeriodicSpelling("yarn"), ["Y", "Ar", "N"]);`,
+    `const result = JSON.stringify(getPeriodicSpelling("carbon"));
+    const path1 = JSON.stringify(["C", "Ar", "B", "O", "N"]);
+    const path2 = JSON.stringify(["Ca", "Rb", "O", "N"]);
+    assert.isTrue(result === path1 || result === path2);`,
+    `const result = JSON.stringify(getPeriodicSpelling("noisy"));
+    const path1 = JSON.stringify(["N", "O", "I", "S", "Y"]);
+    const path2 = JSON.stringify(["No", "I", "S", "Y"]);
+    assert.isTrue(result === path1 || result === path2);`,
+    `const result = JSON.stringify(getPeriodicSpelling("bicycles"));
+    const path1 = JSON.stringify(["B", "I", "C", "Y", "Cl", "Es"]);
+    const path2 = JSON.stringify(["Bi", "C", "Y", "Cl", "Es"]);
+    assert.isTrue(result === path1 || result === path2);`,
+    `const result = JSON.stringify(getPeriodicSpelling("optics"));
+    const path1 = JSON.stringify(["O", "P", "Ti", "C", "S"]);
+    const path2 = JSON.stringify(["O", "P", "Ti", "Cs"]);
+    const path3 = JSON.stringify(["O", "Pt", "I", "C", "S"]);
+    const path4 = JSON.stringify(["O", "Pt", "I", "Cs"]);
+    assert.isTrue(result === path1 || result === path2 || result === path3 || result === path4);`,
+    `assert.deepEqual(getPeriodicSpelling("value"), []);`,
+]);

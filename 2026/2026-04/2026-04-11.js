@@ -56,11 +56,11 @@ function rookBishopAttack(rook, bishop) {
 
 
 const runTests = require('../../helpers/runTests');
-runTests(rookBishopAttack, `
-    rookBishopAttack("A1", "A5") should return "rook".
-    rookBishopAttack("C3", "F6") should return "bishop".
-    rookBishopAttack("D4", "D7") should return "rook".
-    rookBishopAttack("B7", "H1") should return "bishop".
-    rookBishopAttack("B3", "C5") should return "neither".
-    rookBishopAttack("G3", "E8") should return "neither"
-`);
+runTests(rookBishopAttack, [
+    `assert.equal(rookBishopAttack("A1", "A5"), "rook");`,
+    `assert.equal(rookBishopAttack("C3", "F6"), "bishop");`,
+    `assert.equal(rookBishopAttack("D4", "D7"), "rook");`,
+    `assert.equal(rookBishopAttack("B7", "H1"), "bishop");`,
+    `assert.equal(rookBishopAttack("B3", "C5"), "neither");`,
+    `assert.equal(rookBishopAttack("G3", "E8"), "neither");`,
+]);

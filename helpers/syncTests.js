@@ -6,8 +6,7 @@ const {
   fetchAssertBlocks,
   buildJsTestTail,
   buildPythonTestTail,
-  JS_TAIL_MARKER,
-  PY_TAIL_MARKER,
+  findSplitPoint,
 } = require("./dailyChallenge");
 const { parseArgs, pad, EXTENSIONS } = require("./cliArgs");
 
@@ -40,23 +39,14 @@ async function syncFile(year, month, day, language, folderName, folderPath) {
   }
 
   const content = fs.readFileSync(filePath, "utf8");
-  const marker = language === "python" ? PY_TAIL_MARKER : JS_TAIL_MARKER;
-  const markerIndex = content.indexOf(marker);
+  const split = findSplitPoint(content, language);
 
-  if (markerIndex === -1) {
-    console.log(`⚠️  ${fileName} doesn't look like a generated file (no test harness found) — skipping.`);
+  if (!split) {
+    console.log(`⚠️  Couldn't locate the test call or function definition in ${fileName} — skipping.`);
     return;
   }
-
-  const head = content.slice(0, markerIndex);
-  const fnMatch =
-    language === "python" ? head.match(/def\s+(\w+)\s*\(/) : head.match(/function\s+(\w+)\s*\(/);
-
-  if (!fnMatch) {
-    console.log(`⚠️  Couldn't find a function definition in ${fileName} — skipping.`);
-    return;
-  }
-  const fnName = fnMatch[1];
+  const { fnName, splitIndex } = split;
+  const head = content.slice(0, splitIndex);
 
   let assertBlocks;
   try {

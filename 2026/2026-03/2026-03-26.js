@@ -36,12 +36,12 @@ function getMovieNightCost(day, showtime, numberOfTickets) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getMovieNightCost, `
-    getMovieNightCost("Saturday", "10:00pm", 1) should return "$12.00".
-    getMovieNightCost("Sunday", "10:00am", 1) should return "$10.00".
-    getMovieNightCost("Tuesday", "7:20pm", 2) should return "$10.00".
-    getMovieNightCost("Wednesday", "5:40pm", 3) should return "$30.00".
-    getMovieNightCost("Monday", "11:50am", 4) should return "$32.00".
-    getMovieNightCost("Friday", "4:30pm", 5) should return "$50.00".
-    getMovieNightCost("Tuesday", "11:30am", 1) should return "$5.00".
-`);
+runTests(getMovieNightCost, [
+    `assert.equal(getMovieNightCost("Saturday", "10:00pm", 1), "$12.00");`,
+    `assert.equal(getMovieNightCost("Sunday", "10:00am", 1), "$10.00");`,
+    `assert.equal(getMovieNightCost("Tuesday", "7:20pm", 2), "$10.00");`,
+    `assert.equal(getMovieNightCost("Wednesday", "5:40pm", 3), "$30.00");`,
+    `assert.equal(getMovieNightCost("Monday", "11:50am", 4), "$32.00");`,
+    `assert.equal(getMovieNightCost("Friday", "4:30pm", 5), "$50.00");`,
+    `assert.equal(getMovieNightCost("Tuesday", "11:30am", 1), "$5.00");`,
+]);

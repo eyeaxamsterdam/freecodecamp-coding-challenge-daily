@@ -16,10 +16,10 @@ function playGame(p1, p2) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(playGame, `
-    playGame("CCCC", "CCCC") should return [12, 12].
-    playGame("DDDD", "DDDD") should return [4, 4].
-    playGame("CCDD", "CDDD") should return [5, 10].
-    playGame("CCCDCDCCCDDC", "CCDDCDCDDCCD") should return [24, 34].
-    playGame("DDCCDDDDCDDCDDDCDD", "CCDCCCDCCCDCCCCDCC") should return [66, 21].
-`);
+runTests(playGame, [
+    `assert.deepEqual(playGame("CCCC", "CCCC"), [12, 12]);`,
+    `assert.deepEqual(playGame("DDDD", "DDDD"), [4, 4]);`,
+    `assert.deepEqual(playGame("CCDD", "CDDD"), [5, 10]);`,
+    `assert.deepEqual(playGame("CCCDCDCCCDDC", "CCDDCDCDDCCD"), [24, 34]);`,
+    `assert.deepEqual(playGame("DDCCDDDDCDDCDDDCDD", "CCDCCCDCCCDCCCCDCC"), [66, 21]);`,
+]);

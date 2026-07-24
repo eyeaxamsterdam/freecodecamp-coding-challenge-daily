@@ -14,10 +14,10 @@ function generateSlug(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(generateSlug, `
-    generateSlug("helloWorld") should return "helloworld".
-    generateSlug("hello world!") should return "hello%20world".
-    generateSlug(" hello-world ") should return "helloworld".
-    generateSlug("hello  world") should return "hello%20world".
-    generateSlug("  ?H^3-1*1]0! W[0%R#1]D  ") should return "h3110%20w0r1d".
-`);
+runTests(generateSlug, [
+    `assert.equal(generateSlug("helloWorld"), "helloworld");`,
+    `assert.equal(generateSlug("hello world!"), "hello%20world");`,
+    `assert.equal(generateSlug(" hello-world "), "helloworld");`,
+    `assert.equal(generateSlug("hello  world"), "hello%20world");`,
+    `assert.equal(generateSlug("  ?H^3-1*1]0! W[0%R#1]D  "), "h3110%20w0r1d");`,
+]);

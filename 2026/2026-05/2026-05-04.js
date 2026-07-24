@@ -17,11 +17,11 @@ function convertParsecs(parsecs) {
 
 // TESTS
 const runTests = require('../../helpers/runTests');
-runTests(convertParsecs, `
-    convertParsecs(1) should return 2.
-    convertParsecs(2) should return 6.
-    convertParsecs(31) should return 62.
-    convertParsecs(88) should return 264.
-    convertParsecs(17) should return 34.
-    convertParsecs(14) should return 42.
-`);
+runTests(convertParsecs, [
+    `assert.equal(convertParsecs(1), 2);`,
+    `assert.equal(convertParsecs(2), 6);`,
+    `assert.equal(convertParsecs(31), 62);`,
+    `assert.equal(convertParsecs(88), 264);`,
+    `assert.equal(convertParsecs(17), 34);`,
+    `assert.equal(convertParsecs(14), 42);`,
+]);

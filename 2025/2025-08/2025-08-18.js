@@ -13,8 +13,8 @@ function factorial(n) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(factorial, `
-    factorial(0) should return 1.
-    factorial(5) should return 120.
-    factorial(20) should return 2432902008176640000. 
-`);
+runTests(factorial, [
+    `assert.equal(factorial(0), 1);`,
+    `assert.equal(factorial(5), 120);`,
+    `assert.equal(factorial(20), 2432902008176640000);`,
+]);

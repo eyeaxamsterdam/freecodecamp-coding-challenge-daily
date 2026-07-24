@@ -13,10 +13,10 @@ function getTallyCount(str) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getTallyCount, `
-    getTallyCount("||||") should return 4.
-    getTallyCount("||||/") should return 5.
-    getTallyCount("||||/ |||") should return 8.
-    getTallyCount("||||/ ||||/ ||||/ ||") should return 17.
-    getTallyCount("||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |") should return 41.
-`);
+runTests(getTallyCount, [
+    `assert.equal(getTallyCount("||||"), 4);`,
+    `assert.equal(getTallyCount("||||/"), 5);`,
+    `assert.equal(getTallyCount("||||/ |||"), 8);`,
+    `assert.equal(getTallyCount("||||/ ||||/ ||||/ ||"), 17);`,
+    `assert.equal(getTallyCount("||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |"), 41);`,
+]);

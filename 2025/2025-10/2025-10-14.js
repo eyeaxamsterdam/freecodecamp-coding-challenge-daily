@@ -23,10 +23,10 @@ function count(text, pattern) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(count, `
-    count('abcdefg', 'def') should return 1.
-    count('hello', 'world') should return 0.
-    count('mississippi', 'iss') should return 2.
-    count('she sells seashells by the seashore', 'sh') should return 3.
-    count('101010101010101010101', '101') should return 10.
-`);
+runTests(count, [
+    `assert.equal(count('abcdefg', 'def'), 1);`,
+    `assert.equal(count('hello', 'world'), 0);`,
+    `assert.equal(count('mississippi', 'iss'), 2);`,
+    `assert.equal(count('she sells seashells by the seashore', 'sh'), 3);`,
+    `assert.equal(count('101010101010101010101', '101'), 10);`,
+]);

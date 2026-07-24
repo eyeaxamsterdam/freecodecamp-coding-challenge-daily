@@ -27,14 +27,14 @@ function getShadow(time) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getShadow, `
-    getShadow("10:00") should return "8ft west".
-    getShadow("15:00") should return "27ft east".
-    getShadow("12:00") should return "No shadow".
-    getShadow("17:30") should return "166.375ft east".
-    getShadow("05:00") should return "No shadow".
-    getShadow("06:00") should return "216ft west".
-    getShadow("18:00") should return "No shadow".
-    getShadow("07:30") should return "91.125ft west".
-    getShadow("00:00") should return "No shadow".
-`);
+runTests(getShadow, [
+    `assert.equal(getShadow("10:00"), "8ft west");`,
+    `assert.equal(getShadow("15:00"), "27ft east");`,
+    `assert.equal(getShadow("12:00"), "No shadow");`,
+    `assert.equal(getShadow("17:30"), "166.375ft east");`,
+    `assert.equal(getShadow("05:00"), "No shadow");`,
+    `assert.equal(getShadow("06:00"), "216ft west");`,
+    `assert.equal(getShadow("18:00"), "No shadow");`,
+    `assert.equal(getShadow("07:30"), "91.125ft west");`,
+    `assert.equal(getShadow("00:00"), "No shadow");`,
+]);

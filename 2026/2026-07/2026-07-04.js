@@ -25,10 +25,10 @@ function kaprekar(n) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(kaprekar, `
-    kaprekar(1234) should return 3.
-    kaprekar(2025) should return 6.
-    kaprekar(7173) should return 4.
-    kaprekar(3164) should return 7.
-    kaprekar(8082) should return 2.
-`);
+runTests(kaprekar, [
+    `assert.equal(kaprekar(1234), 3);`,
+    `assert.equal(kaprekar(2025), 6);`,
+    `assert.equal(kaprekar(7173), 4);`,
+    `assert.equal(kaprekar(3164), 7);`,
+    `assert.equal(kaprekar(8082), 2);`,
+]);

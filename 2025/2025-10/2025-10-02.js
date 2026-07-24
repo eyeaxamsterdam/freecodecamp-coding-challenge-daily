@@ -19,9 +19,9 @@ function toBinary(decimal) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(toBinary, `
-    toBinary(5) should return "101".
-    toBinary(12) should return "1100".
-    toBinary(50) should return "110010".
-    toBinary(99) should return "1100011".
-`);
+runTests(toBinary, [
+    `assert.equal(toBinary(5), "101");`,
+    `assert.equal(toBinary(12), "1100");`,
+    `assert.equal(toBinary(50), "110010");`,
+    `assert.equal(toBinary(99), "1100011");`,
+]);

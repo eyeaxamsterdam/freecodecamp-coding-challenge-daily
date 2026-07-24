@@ -13,11 +13,11 @@ function triageIssue(ms, message) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(triageIssue, `
-    triageIssue(86400000, "Lets fix it") should return "leave it".
-    triageIssue(1209600000, "still waiting") should return "bump it".
-    triageIssue(864000000, "bump") should return "close it".
-    triageIssue(604800000, "Do we still want this?") should return "bump it".
-    triageIssue(604800000, "Bumping this") should return "close it".
-    triageIssue(345600000, "I'll make a PR") should return "leave it".
-`);
+runTests(triageIssue, [
+    `assert.equal(triageIssue(86400000, "Lets fix it"), "leave it");`,
+    `assert.equal(triageIssue(1209600000, "still waiting"), "bump it");`,
+    `assert.equal(triageIssue(864000000,  "bump"), "close it");`,
+    `assert.equal(triageIssue(604800000, "Do we still want this?"), "bump it");`,
+    `assert.equal(triageIssue(604800000, "Bumping this"), "close it");`,
+    `assert.equal(triageIssue(345600000, "I'll make a PR"), "leave it");`,
+]);

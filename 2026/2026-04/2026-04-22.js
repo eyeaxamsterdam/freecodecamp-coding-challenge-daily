@@ -77,9 +77,10 @@ function getCleanupScore(items) {
 getCleanupScore(["shoe", "can", "can", "can", "bottle", "bottle", "straw", "straw", "straw"]) // shoul/ return 79. 
 
 const runTests = require('../../helpers/runTests');
-runTests(getCleanupScore, `
-    getCleanupScore(["bottle", "straw", "shoe", "battery"]) should return 44.
-    getCleanupScore(["electronics", "straw", "newspaper", "bottle", "bag"]) should return 58.
-    getCleanupScore(["mattress", ["rare", 80], "tire", "tire", "tire", ["rare", 95]]) should return 358.
-    getCleanupScore(["bottle", "can", "can", "shoe", "shoe", ["rare", 56], "bottle", "bottle", "can", "can", "electronics", "bottle", ["rare", 48], "bottle", "can", "can", "can", "can", "can", "can", "can"]) should return 383.
-`);
+runTests(getCleanupScore, [
+    `assert.equal(getCleanupScore(["bottle", "straw", "shoe", "battery"]), 44);`,
+    `assert.equal(getCleanupScore(["electronics", "straw", "newspaper", "bottle", "bag"]), 58);`,
+    `assert.equal(getCleanupScore(["shoe", "can", "can", "can", "bottle", "bottle", "straw", "straw", "straw"]), 79);`,
+    `assert.equal(getCleanupScore(["mattress", ["rare", 80], "tire", "tire", "tire", ["rare", 95]]), 358);`,
+    `assert.equal(getCleanupScore(["bottle", "can", "can", "shoe", "shoe", ["rare", 56], "bottle", "bottle", "can", "can", "electronics", "bottle", ["rare", 48], "bottle", "can", "can", "can", "can", "can", "can", "can"]), 383);`,
+]);

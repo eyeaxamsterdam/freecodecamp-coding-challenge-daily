@@ -17,9 +17,9 @@ function toDecimal(binary) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(toDecimal, `
-    toDecimal("101") should return 5.
-    toDecimal("1010") should return 10.
-    toDecimal("10010") should return 18.
-    toDecimal("1010101") should return 85.
-`);
+runTests(toDecimal, [
+    `assert.equal(toDecimal("101"), 5);`,
+    `assert.equal(toDecimal("1010"), 10);`,
+    `assert.equal(toDecimal("10010"), 18);`,
+    `assert.equal(toDecimal("1010101"), 85);`,
+]);

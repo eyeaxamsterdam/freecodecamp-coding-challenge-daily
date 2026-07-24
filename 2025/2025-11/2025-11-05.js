@@ -26,9 +26,9 @@ function buildMatrix(rows, cols) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(buildMatrix, `
-    buildMatrix(2, 3) should return [[0, 0, 0], [0, 0, 0]].
-    buildMatrix(3, 2) should return [[0, 0], [0, 0], [0, 0]].
-    buildMatrix(4, 3) should return [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]].
-    buildMatrix(9, 1) should return [[0], [0], [0], [0], [0], [0], [0], [0], [0]].
-`);
+runTests(buildMatrix, [
+    `assert.deepEqual(buildMatrix(2, 3), [[0, 0, 0], [0, 0, 0]]);`,
+    `assert.deepEqual(buildMatrix(3, 2), [[0, 0], [0, 0], [0, 0]]);`,
+    `assert.deepEqual(buildMatrix(4, 3), [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]);`,
+    `assert.deepEqual(buildMatrix(9, 1), [[0], [0], [0], [0], [0], [0], [0], [0], [0]]);`,
+]);

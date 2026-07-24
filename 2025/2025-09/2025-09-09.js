@@ -23,12 +23,12 @@ function allUnique(str) {
 //Tests
 
 const runTests = require('../../helpers/runTests');
-runTests(allUnique, `
-    allUnique("abc") should return true.
-    allUnique("aA") should return true.
-    allUnique("QwErTy123!@") should return true.
-    allUnique("~!@#$%^&*()_+") should return true.
-    allUnique("hello") should return false.
-    allUnique("freeCodeCamp") should return false.
-    allUnique("!@#*$%^&*()aA") should return false.
-`);
+runTests(allUnique, [
+    `assert.isTrue(allUnique("abc"));`,
+    `assert.isTrue(allUnique("aA"));`,
+    `assert.isTrue(allUnique("QwErTy123!@"));`,
+    `assert.isTrue(allUnique("~!@#$%^&*()_+"));`,
+    `assert.isFalse(allUnique("hello"));`,
+    `assert.isFalse(allUnique("freeCodeCamp"));`,
+    `assert.isFalse(allUnique("!@#*$%^&*()aA"));`,
+]);

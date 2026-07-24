@@ -28,10 +28,10 @@ function sumOfSquares(n) {
 */
 
 const runTests = require('../../helpers/runTests');
-runTests(sumOfSquares, `
-    sumOfSquares(5) should return 55.
-    sumOfSquares(10) should return 385.
-    sumOfSquares(25) should return 5525.
-    sumOfSquares(500) should return 41791750.
-    sumOfSquares(1000) should return 333833500. 
-`);
+runTests(sumOfSquares, [
+    `assert.equal(sumOfSquares(5), 55);`,
+    `assert.equal(sumOfSquares(10), 385);`,
+    `assert.equal(sumOfSquares(25), 5525);`,
+    `assert.equal(sumOfSquares(500), 41791750);`,
+    `assert.equal(sumOfSquares(1000), 333833500);`,
+]);

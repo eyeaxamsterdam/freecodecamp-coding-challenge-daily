@@ -61,8 +61,86 @@ generateHex("green") //twice should return two different hex color values where 
 generateHex("blue") //1twice should return two different hex color values where blue is dominant.
 
 const runTests = require('../../helpers/runTests');
-runTests(generateHex, `
-    generateHex("yellow") should return "Invalid color".
-    generateHex("red") should return a valid six-character hex color code.
-    generateHex("red") should return a valid hex color with a higher red value than other colors.
-`);
+runTests(generateHex, [
+    `assert.equal(generateHex("yellow"), "Invalid color");`,
+    `assert.lengthOf(generateHex("red"), 6);`,
+    `const hex = generateHex("red").toUpperCase();
+    const isValidHex = /^[0-9A-F]{6}$/.test(hex);
+    assert.isTrue(isValidHex);`,
+    `const hex = generateHex("red").toUpperCase();
+    const isValidHex = /^[0-9A-F]{6}$/.test(hex);
+    assert.isTrue(isValidHex);
+    
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+    
+    assert.isAbove(r, g);
+    assert.isAbove(r, b);`,
+    `const hex1 = generateHex("red").toUpperCase();
+    const isValidHex1 = /^[0-9A-F]{6}$/.test(hex1)
+    assert.isTrue(isValidHex1);
+    
+    const r1 = parseInt(hex1.slice(0, 2), 16);
+    const g1 = parseInt(hex1.slice(2, 4), 16);
+    const b1 = parseInt(hex1.slice(4, 6), 16);
+    
+    assert.isAbove(r1, g1);
+    assert.isAbove(r1, b1);
+    
+    const hex2 = generateHex("red").toUpperCase();
+    const isValidHex2 = /^[0-9A-F]{6}$/.test(hex2);
+    assert.isTrue(isValidHex2);
+    
+    const r2 = parseInt(hex2.slice(0, 2), 16);
+    const g2 = parseInt(hex2.slice(2, 4), 16);
+    const b2 = parseInt(hex2.slice(4, 6), 16);
+    
+    assert.isAbove(r2, g2);
+    assert.isAbove(r2, b2);
+    assert.notEqual(hex1, hex2);`,
+    `const hex1 = generateHex("green").toUpperCase();
+    const isValidHex1 = /^[0-9A-F]{6}$/.test(hex1)
+    assert.isTrue(isValidHex1);
+    
+    const r1 = parseInt(hex1.slice(0, 2), 16);
+    const g1 = parseInt(hex1.slice(2, 4), 16);
+    const b1 = parseInt(hex1.slice(4, 6), 16);
+    
+    assert.isAbove(g1, r1);
+    assert.isAbove(g1, b1);
+    
+    const hex2 = generateHex("green").toUpperCase();
+    const isValidHex2 = /^[0-9A-F]{6}$/.test(hex2);
+    assert.isTrue(isValidHex2);
+    
+    const r2 = parseInt(hex2.slice(0, 2), 16);
+    const g2 = parseInt(hex2.slice(2, 4), 16);
+    const b2 = parseInt(hex2.slice(4, 6), 16);
+    
+    assert.isAbove(g2, r2);
+    assert.isAbove(g2, b2);
+    assert.notEqual(hex1, hex2);`,
+    `const hex1 = generateHex("blue").toUpperCase();
+    const isValidHex1 = /^[0-9A-F]{6}$/.test(hex1)
+    assert.isTrue(isValidHex1);
+    
+    const r1 = parseInt(hex1.slice(0, 2), 16);
+    const g1 = parseInt(hex1.slice(2, 4), 16);
+    const b1 = parseInt(hex1.slice(4, 6), 16);
+    
+    assert.isAbove(b1, r1);
+    assert.isAbove(b1, g1);
+    
+    const hex2 = generateHex("blue").toUpperCase();
+    const isValidHex2 = /^[0-9A-F]{6}$/.test(hex2);
+    assert.isTrue(isValidHex2);
+    
+    const r2 = parseInt(hex2.slice(0, 2), 16);
+    const g2 = parseInt(hex2.slice(2, 4), 16);
+    const b2 = parseInt(hex2.slice(4, 6), 16);
+    
+    assert.isAbove(b2, r2);
+    assert.isAbove(b2, g2);
+    assert.notEqual(hex1, hex2);`,
+]);

@@ -84,34 +84,57 @@ function emptyPythonFunctionBody(seedCode) {
   return match ? `${match[1]}\n    pass` : seedCode;
 }
 
-// Separates test entries so multi-statement hints (shared local vars across
-// several assert calls) stay grouped instead of being split line-by-line.
-const JS_TEST_SEPARATOR = "// ---";
-const PY_TEST_SEPARATOR = "# ---";
+// The generated file's tail (everything from here down) is fully derived
+// from freeCodeCamp's data — syncTests.js locates this marker to know where
+// a user's own code (above) ends and the regeneratable part (below) begins.
+const JS_TAIL_MARKER = "const runTests = require(";
+const PY_TAIL_MARKER = "import os\nimport sys";
+
+// Each assert block becomes one array element — a multi-statement block's
+// own internal lines stay indented for readability, but the array's commas
+// are the only "separator" needed, so no marker text shows up in the file.
+function indentContinuationLines(block) {
+  return block
+    .split("\n")
+    .map((l, i) => (i === 0 ? l : `    ${l}`))
+    .join("\n");
+}
+
+function buildJsTestTail(fnName, assertBlocks) {
+  const items = assertBlocks
+    .map((block) => `    \`${indentContinuationLines(block)}\`,`)
+    .join("\n");
+
+  return `const runTests = require('../../helpers/runTests');\nrunTests(${fnName}, [\n${items}\n]);\n`;
+}
+
+function buildPythonTestTail(fnName, assertBlocks) {
+  // Unlike JS, Python's exec() is whitespace-sensitive, so continuation
+  // lines must stay flush-left inside the string — no readability indent.
+  const items = assertBlocks.map((block) => `    """${block}""",`).join("\n");
+
+  return `import os\nimport sys\nsys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))\nfrom helpers.run_tests import run_tests\n\nrun_tests(${fnName}, [\n${items}\n])\n`;
+}
 
 function buildJsFileContent({ title, description, seedCode, assertBlocks }) {
   const fnMatch = seedCode.match(/function\s+(\w+)\s*\(/);
   const fnName = fnMatch ? fnMatch[1] : "solution";
   const emptySeedCode = emptyJsFunctionBody(seedCode);
-  const testBlock = assertBlocks
-    .map((block) => block.split("\n").map((l) => `    ${l}`).join("\n"))
-    .join(`\n    ${JS_TEST_SEPARATOR}\n`);
 
-  return `/*\n${title}\n${description}\n*/\n\n${emptySeedCode}\n\nconst runTests = require('../../helpers/runTests');\nrunTests(${fnName}, \`\n${testBlock}\n\`);\n`;
+  return `/*\n${title}\n${description}\n*/\n\n${emptySeedCode}\n\n${buildJsTestTail(fnName, assertBlocks)}`;
 }
 
 function buildPythonFileContent({ title, description, seedCode, assertBlocks }) {
   const fnMatch = seedCode.match(/def\s+(\w+)\s*\(/);
   const fnName = fnMatch ? fnMatch[1] : "solution";
   const emptySeedCode = emptyPythonFunctionBody(seedCode);
-  const testBlock = assertBlocks.join(`\n${PY_TEST_SEPARATOR}\n`);
 
-  return `"""\n${title}\n${description}\n"""\n\n${emptySeedCode}\n\nimport os\nimport sys\nsys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))\nfrom helpers.run_tests import run_tests\n\nrun_tests(${fnName}, """\n${testBlock}\n""")\n`;
+  return `"""\n${title}\n${description}\n"""\n\n${emptySeedCode}\n\n${buildPythonTestTail(fnName, assertBlocks)}`;
 }
 
-// year/month/day are the same fields createDayFiles.js already parses from
-// the CLI arg or today's date. language is "javascript" or "python".
-async function fetchDailyChallenge(year, month, day, language = "javascript") {
+// Resolves year/month/day to a challenge number and fetches its markdown.
+// Returns null if the date is outside the 365-day series or the fetch fails.
+async function fetchChallengeMarkdown(year, month, day, language) {
   const target = Date.UTC(year, month - 1, day);
   const challengeNumber = Math.round((target - START_DATE) / MS_PER_DAY) + 1;
 
@@ -128,6 +151,16 @@ async function fetchDailyChallenge(year, month, day, language = "javascript") {
   const mdRes = await fetch(challengeUrl(language, entry.id));
   if (!mdRes.ok) return null;
   const md = await mdRes.text();
+
+  return { md, entry };
+}
+
+// year/month/day are the same fields createDayFiles.js already parses from
+// the CLI arg or today's date. language is "javascript" or "python".
+async function fetchDailyChallenge(year, month, day, language = "javascript") {
+  const result = await fetchChallengeMarkdown(year, month, day, language);
+  if (!result) return null;
+  const { md, entry } = result;
 
   const fallbackTitle = entry.title.replace(/^Challenge \d+:\s*/, "");
   const title = extractTitle(md, fallbackTitle);
@@ -148,4 +181,25 @@ async function fetchDailyChallenge(year, month, day, language = "javascript") {
   return buildJsFileContent({ title, description, seedCode, assertBlocks });
 }
 
-module.exports = fetchDailyChallenge;
+// Fetches just the current assert blocks for a date/language, for
+// syncTests.js to refresh an existing file's tests without recreating it.
+async function fetchAssertBlocks(year, month, day, language = "javascript") {
+  const result = await fetchChallengeMarkdown(year, month, day, language);
+  if (!result) return null;
+  const { md } = result;
+
+  const hintsRaw = extractSection(md, "# --hints--");
+  const assertBlocks =
+    language === "python" ? extractPythonAssertBlocks(hintsRaw) : extractJsAssertBlocks(hintsRaw);
+
+  return assertBlocks.length > 0 ? assertBlocks : null;
+}
+
+module.exports = {
+  fetchDailyChallenge,
+  fetchAssertBlocks,
+  buildJsTestTail,
+  buildPythonTestTail,
+  JS_TAIL_MARKER,
+  PY_TAIL_MARKER,
+};

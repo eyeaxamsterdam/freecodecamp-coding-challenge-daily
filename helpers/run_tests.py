@@ -4,7 +4,13 @@ TEST_SEPARATOR = "# ---"
 
 
 def run_tests(fn, raw_tests):
-    blocks = [b.strip() for b in raw_tests.split(TEST_SEPARATOR) if b.strip()]
+    # Current format: a list of test entries, one per element. Older
+    # generated files pass one big string with a "# ---" marker between
+    # entries instead; kept working here for backward compatibility.
+    if isinstance(raw_tests, (list, tuple)):
+        blocks = [b.strip() for b in raw_tests if b.strip()]
+    else:
+        blocks = [b.strip() for b in raw_tests.split(TEST_SEPARATOR) if b.strip()]
 
     pass_count = 0
     fail_count = 0

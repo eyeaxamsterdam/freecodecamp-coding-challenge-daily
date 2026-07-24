@@ -33,12 +33,12 @@ function horoscopeMatch(sign1, sign2) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(horoscopeMatch, `
-    horoscopeMatch("Libra", "Sagittarius") should return "80%".
-    horoscopeMatch("Gemini", "Scorpio") should return "20%".
-    horoscopeMatch("Pisces", "Aries") should return "40%".
-    horoscopeMatch("Capricorn", "Cancer") should return "50%".
-    horoscopeMatch("Aquarius", "Aquarius") should return "100%".
-    horoscopeMatch("Virgo", "Taurus") should return "90%".
-    horoscopeMatch("Leo", "Scorpio") should return "30%".
-`);
+runTests(horoscopeMatch, [
+    `assert.equal(horoscopeMatch("Libra", "Sagittarius"), "80%");`,
+    `assert.equal(horoscopeMatch("Gemini", "Scorpio"), "20%");`,
+    `assert.equal(horoscopeMatch("Pisces", "Aries"), "40%");`,
+    `assert.equal(horoscopeMatch("Capricorn", "Cancer"), "50%");`,
+    `assert.equal(horoscopeMatch("Aquarius", "Aquarius"), "100%");`,
+    `assert.equal(horoscopeMatch("Virgo", "Taurus"), "90%");`,
+    `assert.equal(horoscopeMatch("Leo", "Scorpio"), "30%");`,
+]);

@@ -9,8 +9,8 @@ As of 2026-07-24. Verified deterministic (identical results across 2 independent
 
 ## Test failures (logic bugs)
 
-- [ ] 2025/2025-08/2025-08-28.js
-- [ ] 2025/2025-08/2025-08-31.js
+- [ ] 2025/2025-08/2025-08-28.js ** fixed
+- [ ] 2025/2025-08/2025-08-31.js — flaky, verified: implementation uses Math.random(), failed 1 of 8 runs
 - [ ] 2025/2025-09/2025-09-05.js
 - [ ] 2025/2025-09/2025-09-07.js
 - [ ] 2025/2025-10/2025-10-06.js

@@ -34,10 +34,10 @@ function getLaptopCost(laptops, budget) {
 }
 
 const runTests = require('../../helpers/runTests');
-runTests(getLaptopCost, `
-    getLaptopCost([1500, 2000, 1800, 1400], 1900) should return 1800.
-    getLaptopCost([1500, 2000, 2000, 1800, 1400], 1900) should return 1800.
-    getLaptopCost([2099, 1599, 1899, 1499], 2200) should return 1899.
-    getLaptopCost([2099, 1599, 1899, 1499], 1000) should return 0.
-    getLaptopCost([1200, 1500, 1600, 1800, 1400, 2000], 1450) should return 1400.
-`);
+runTests(getLaptopCost, [
+    `assert.equal(getLaptopCost([1500, 2000, 1800, 1400], 1900), 1800);`,
+    `assert.equal(getLaptopCost([1500, 2000, 2000, 1800, 1400], 1900), 1800);`,
+    `assert.equal(getLaptopCost([2099, 1599, 1899, 1499], 2200), 1899);`,
+    `assert.equal(getLaptopCost([2099, 1599, 1899, 1499], 1000), 0);`,
+    `assert.equal(getLaptopCost([1200, 1500, 1600, 1800, 1400, 2000], 1450), 1400);`,
+]);

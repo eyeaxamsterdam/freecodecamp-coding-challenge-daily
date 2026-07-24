@@ -84,15 +84,10 @@ function report(passCount, failCount) {
     }
 }
 
-// New format: real assert code, one or more statements per test entry,
-// entries separated by a `// ---` marker line so shared local variables
-// within a multi-statement entry aren't split apart.
-function runAssertBlocks(fn, rawTests) {
-    const blocks = rawTests
-        .split(TEST_SEPARATOR)
-        .map(b => b.trim())
-        .filter(Boolean);
-
+// New format: real assert code, one or more statements per test entry.
+// `blocks` is an array — each element is one entry (possibly multiple
+// statements sharing local variables, not just a single assert call).
+function runAssertBlocks(fn, blocks) {
     let passCount = 0;
     let failCount = 0;
 
@@ -145,11 +140,21 @@ function runLegacyLines(fn, rawTests) {
 }
 
 function runTests(fn, rawTests) {
+    // Current format: an array of test entries, one per element — no
+    // separator text needed since the array itself delineates entries.
+    if (Array.isArray(rawTests)) {
+        runAssertBlocks(fn, rawTests.map(b => b.trim()).filter(Boolean));
+        return;
+    }
+
+    // Older generated files embed a `// ---` marker between entries in one
+    // big string; kept working here for backward compatibility.
     const trimmed = rawTests.trim();
     const isNewFormat = /^\s*assert\./m.test(trimmed) || trimmed.includes(TEST_SEPARATOR);
 
     if (isNewFormat) {
-        runAssertBlocks(fn, trimmed);
+        const blocks = trimmed.split(TEST_SEPARATOR).map(b => b.trim()).filter(Boolean);
+        runAssertBlocks(fn, blocks);
     } else {
         runLegacyLines(fn, trimmed);
     }

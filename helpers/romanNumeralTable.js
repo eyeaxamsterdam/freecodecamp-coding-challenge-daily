@@ -1,4 +1,4 @@
-// there are a lot of roman numerals in daiy challenges. Here's a table to use.
+// There are a lot of roman numerals in daiy challenges. I got sick of recreating this table every time. Here's a table to use.
 export const TABLE = [
         [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"],
         [100, "C"],  [90, "XC"],  [50, "L"],  [40, "XL"],

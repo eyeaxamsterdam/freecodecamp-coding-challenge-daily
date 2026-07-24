@@ -2,100 +2,157 @@
 
 const fs = require("fs");
 const path = require("path");
-const readline = require("readline");
+const fetchDailyChallenge = require("./dailyChallenge");
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const LANGUAGE_ALIASES = {
+  js: "javascript",
+  javascript: "javascript",
+  py: "python",
+  python: "python",
+  both: "both",
+  all: "both",
+};
 
-function prompt(question) {
-  return new Promise((resolve) => rl.question(question, resolve));
-}
+const EXTENSIONS = { javascript: "js", python: "py" };
 
-function getDaysInMonth(month, year) {
-  return new Date(year, month, 0).getDate();
-}
+const HELP_TEXT = `
+Usage: node helpers/createDayFiles.js [date] [language]
+
+Pulls freeCodeCamp's daily coding challenge into a ready-to-solve file.
+
+Date (optional):
+  YYYY-MM-DD   a specific date, e.g. 2026-07-25
+  MM-DD        a specific date in the current year, e.g. 07-25
+  (omitted)    defaults to today
+
+Language (optional):
+  js, javascript   JavaScript only (default)
+  py, python       Python only
+  both, all        both languages
+  py js            both languages (two separate args work too, any order)
+
+Examples:
+  node helpers/createDayFiles.js
+  node helpers/createDayFiles.js 07-25
+  node helpers/createDayFiles.js python
+  node helpers/createDayFiles.js 2026-07-25 both
+  node helpers/createDayFiles.js py js 07-25
+`;
 
 function pad(n) {
   return String(n).padStart(2, "0");
 }
 
-async function main() {
-  console.log("\n📅  Monthly File Generator\n");
+function parseDateArg(arg) {
+  const today = new Date();
 
-  const input = await prompt('Enter month and year (e.g. "June 2026"): ');
-  rl.close();
-
-  // Parse input — accepts "June 2026", "jun 2026", "6 2026", "06/2026", etc.
-  const cleaned = input.trim();
-  let month, year;
-
-  // Try "Month YYYY" or "Mon YYYY"
-  const namedMatch = cleaned.match(/^([a-zA-Z]+)\s+(\d{4})$/);
-  // Try "M YYYY" or "MM YYYY" or "MM/YYYY" or "MM-YYYY"
-  const numericMatch = cleaned.match(/^(\d{1,2})[\s\/\-](\d{4})$/);
-
-  if (namedMatch) {
-    const monthNames = [
-      "january", "february", "march", "april", "may", "june",
-      "july", "august", "september", "october", "november", "december",
-    ];
-    const monthStr = namedMatch[1].toLowerCase();
-    // Allow full name or 3-letter abbreviation
-    month = monthNames.findIndex(
-      (m) => m === monthStr || m.startsWith(monthStr.slice(0, 3))
-    ) + 1;
-    year = parseInt(namedMatch[2], 10);
-  } else if (numericMatch) {
-    month = parseInt(numericMatch[1], 10);
-    year = parseInt(numericMatch[2], 10);
+  if (!arg) {
+    return { year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() };
   }
 
-  if (!month || month < 1 || month > 12 || !year || year < 1) {
-    console.error(
-      '\n❌  Could not parse input. Try something like "June 2026" or "6 2026".\n'
-    );
+  const fullMatch = arg.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+  const shortMatch = arg.match(/^(\d{1,2})-(\d{1,2})$/);
+
+  let year, month, day;
+  if (fullMatch) {
+    [, year, month, day] = fullMatch.map(Number);
+  } else if (shortMatch) {
+    year = today.getFullYear();
+    [, month, day] = shortMatch.map(Number);
+  } else {
+    console.error(`\n❌  Could not parse "${arg}". Use "YYYY-MM-DD" or "MM-DD".\n`);
     process.exit(1);
   }
 
-  const monthPadded = pad(month);
-  const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December",
-  ];
-  const monthName = monthNames[month - 1];
-  const totalDays = getDaysInMonth(month, year);
+  const date = new Date(year, month - 1, day);
+  const isValid =
+    date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
 
-  // Create output folder  e.g.  "2026-06"
-  const folderName = `${year}-${monthPadded}`;
-  const folderPath = path.join(process.cwd(), String(year), folderName);
+  if (!isValid) {
+    console.error(`\n❌  "${arg}" is not a valid date.\n`);
+    process.exit(1);
+  }
+
+  return { year, month, day };
+}
+
+const LANGUAGE_ORDER = ["javascript", "python"];
+
+function parseArgs(argv) {
+  let dateArg = null;
+  const requestedLanguages = new Set();
+
+  for (const arg of argv) {
+    const alias = LANGUAGE_ALIASES[arg.toLowerCase()];
+    if (alias === "both") {
+      LANGUAGE_ORDER.forEach((l) => requestedLanguages.add(l));
+    } else if (alias) {
+      requestedLanguages.add(alias);
+    } else {
+      dateArg = arg;
+    }
+  }
+
+  const { year, month, day } = parseDateArg(dateArg);
+  const languages =
+    requestedLanguages.size > 0
+      ? LANGUAGE_ORDER.filter((l) => requestedLanguages.has(l))
+      : ["javascript"];
+
+  return { year, month, day, languages };
+}
+
+async function createFile(year, month, day, language, folderName, folderPath) {
+  const monthPadded = pad(month);
+  const dayPadded = pad(day);
+  const ext = EXTENSIONS[language];
+  const fileName = `${year}-${monthPadded}-${dayPadded}.${ext}`;
+  const filePath = path.join(folderPath, fileName);
+
+  if (fs.existsSync(filePath)) {
+    console.log(`\n⚠️  ${fileName} already exists — leaving it untouched.\n`);
+    return;
+  }
+
+  let content = "";
+  try {
+    const fetched = await fetchDailyChallenge(year, month, day, language);
+    if (fetched) {
+      content = fetched;
+      console.log(`📥  Pulled today's ${language} challenge from freeCodeCamp`);
+    } else {
+      console.log(`⚠️  No freeCodeCamp ${language} challenge for that date — created a blank file`);
+    }
+  } catch (err) {
+    console.log(`⚠️  Couldn't fetch ${language} challenge (${err.message}) — created a blank file`);
+  }
 
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath, { recursive: true });
-    console.log(`\n📁  Created folder: ${folderName}`);
-  } else {
-    console.log(`\n📁  Using existing folder: ${folderName}`);
+    console.log(`📁  Created folder: ${folderName}`);
   }
 
-  // Generate one file per day
-  for (let day = 1; day <= totalDays; day++) {
-    const dayPadded = pad(day);
-    const fileName = `${year}-${monthPadded}-${dayPadded}.js`;
-    const filePath = path.join(folderPath, fileName);
-
-    const date = new Date(year, month - 1, day);
-    const weekday = date.toLocaleDateString("en-US", { weekday: "long" });
-
-    const content = `// ${monthName} ${day}, ${year} — ${weekday}\n\n`;
-
-    fs.writeFileSync(filePath, content, "utf8");
-  }
-
-  console.log(`✅  Generated ${totalDays} files for ${monthName} ${year}\n`);
+  fs.writeFileSync(filePath, content, "utf8");
+  console.log(`✅  Created ${path.join(folderName, fileName)}\n`);
 }
 
-main().catch((err) => {
-  console.error("Error:", err.message);
-  process.exit(1);
-});
+async function main() {
+  const argv = process.argv.slice(2);
+
+  if (argv.includes("-h") || argv.includes("--help")) {
+    console.log(HELP_TEXT);
+    return;
+  }
+
+  const { year, month, day, languages } = parseArgs(argv);
+
+  const monthPadded = pad(month);
+  const folderName = `${year}-${monthPadded}`;
+  const folderPath = path.join(process.cwd(), String(year), folderName);
+
+  for (const language of languages) {
+    await createFile(year, month, day, language, folderName, folderPath);
+  }
+}
+
+main();

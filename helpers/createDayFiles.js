@@ -60,7 +60,6 @@ async function main() {
   }
 
   const monthPadded = pad(month);
-  const yearShort = String(year).slice(-2);
   const monthNames = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
@@ -68,9 +67,9 @@ async function main() {
   const monthName = monthNames[month - 1];
   const totalDays = getDaysInMonth(month, year);
 
-  // Create output folder  e.g.  "2026-06-June"
-  const folderName = `${year}-${monthPadded}-${monthName}`;
-  const folderPath = path.join(process.cwd(), folderName);
+  // Create output folder  e.g.  "2026-06"
+  const folderName = `${year}-${monthPadded}`;
+  const folderPath = path.join(process.cwd(), String(year), folderName);
 
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath, { recursive: true });
@@ -82,7 +81,7 @@ async function main() {
   // Generate one file per day
   for (let day = 1; day <= totalDays; day++) {
     const dayPadded = pad(day);
-    const fileName = `${monthPadded}-${dayPadded}-${yearShort}.js`;
+    const fileName = `${year}-${monthPadded}-${dayPadded}.js`;
     const filePath = path.join(folderPath, fileName);
 
     const date = new Date(year, month - 1, day);

@@ -1,6 +1,6 @@
 # freecodecamp-coding-challenge-daily
 
-Dates are in US format: `MM-DD-YY`
+Dates are in `YYYY-MM-DD` format
 
 ---
 

@@ -8,7 +8,13 @@ Include the loan amount in the returned array. The first element in the array wi
 */
 
 function getLoanSchedule(loanAmount, annualRate, monthlyPayment) {
-
+    let balances = [loanAmount];
+    let balance = loanAmount;
+    while (balance > 0) {
+        balance = balance * (1 + (annualRate / 100) / 12) - monthlyPayment;
+        balances.push(balance <= 0 ? 0 : Math.round(balance));
+    }
+    return balances;
 }
 
 const runTests = require('../../helpers/runTests');

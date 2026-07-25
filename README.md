@@ -6,7 +6,7 @@ Files are organized as `YYYY/YYYY-MM/YYYY-MM-DD.js`.
 
 ## Getting today's challenge
 
-Run this from anywhere:
+Run this from anywhere in your cli:
 
 ```sh
 node ~/path/to/helpers/createDayFiles.js

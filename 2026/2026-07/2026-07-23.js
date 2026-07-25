@@ -15,6 +15,7 @@ function playGame(p1, p2) {
     [s1 + scoreKey[b][p2[i]], s2 + scoreKey[p2[i]][b]], [0, 0]);
 }
 
+
 const runTests = require('../../helpers/runTests');
 runTests(playGame, [
     `assert.deepEqual(playGame("CCCC", "CCCC"), [12, 12]);`,

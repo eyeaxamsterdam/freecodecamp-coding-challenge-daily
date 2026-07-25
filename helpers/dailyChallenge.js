@@ -135,7 +135,22 @@ function findSplitPoint(content, language) {
   }
 
   const callMatch = content.match(callRe);
-  return callMatch ? { fnName, splitIndex: callMatch.index, needsImport: false } : null;
+  if (callMatch) {
+    return { fnName, splitIndex: callMatch.index, needsImport: false };
+  }
+
+  // No test call yet — split at the bare require/import line if present,
+  // or at end-of-file, and let the tail supply a fresh import + call.
+  const bareImportRe =
+    language === "python"
+      ? /import os\nimport sys\n[\s\S]*?from helpers\.run_tests import run_tests\n/
+      : /const runTests = require\([^)]*\);\n?/;
+  const bareImportMatch = content.match(bareImportRe);
+  if (bareImportMatch) {
+    return { fnName, splitIndex: bareImportMatch.index, needsImport: true };
+  }
+
+  return { fnName, splitIndex: content.length, needsImport: true };
 }
 
 // Each assert block becomes one array element — a multi-statement block's

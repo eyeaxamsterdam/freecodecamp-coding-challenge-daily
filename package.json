@@ -4,7 +4,7 @@
   "description": "Dates are US format MM-DD-YY",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node helpers/testToday.js"
   },
   "repository": {
     "type": "git",

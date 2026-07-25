@@ -30,7 +30,8 @@ It won't overwrite a file that already exists, so it's safe to run more than onc
 Open the file, write your solution inside the function, then run:
 
 ```sh
-node 2026/2026-07/2026-07-24.js
+npm test  # runs today's challenge only
+node 2026/2026-07/2026-07-24.js # use on any other day
 ```
 
 You'll see a `PASS` or `FAIL` for each test, plus a summary at the end.
@@ -75,4 +76,9 @@ Waiting:1. functionName(arg1, arg2) should return expectedValue.
 Waiting:2. functionName(arg1, arg2) should return expectedValue.
 `);
 ```
-I highly recommend creating a snippet for runTests that helps you build it quicker if you ever need.
+
+## Final Recommendations
+
+Create a snippet for runTests that helps you build it quicker if you ever need.
+Create an alias for node /path/to/helpers/createDayFiles.js like 'fcc'
+Create an alias for node /path/to/helpers/syncTests.js like 'fccsync'

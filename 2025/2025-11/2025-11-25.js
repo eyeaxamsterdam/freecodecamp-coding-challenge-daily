@@ -17,8 +17,7 @@ function fizzBuzz(n) {
         num = fizz && buzz ? 'FizzBuzz' : fizz ? 'Fizz' : buzz ? 'Buzz' : i; 
         numArr.push(num)
     }
-    console.log(numArr);
-    return n;
+    return numArr;
 }
 
 //Tests

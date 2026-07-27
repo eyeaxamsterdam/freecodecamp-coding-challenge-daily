@@ -7,18 +7,12 @@ The alphabet is treated as a circle, so the distance between a and z is 1.
 */
 
 function letterDistance(str1, str2) {
-    let distance = ((a,b) => {
-        const l1 = a.charCodeAt(0) >= b.charCodeAt(0) ? a.charCodeAt(0) : b.charCodeAt(0);
-        const l2 = b.charCodeAt(0) < a.charCodeAt(0) ? b.charCodeAt(0) : a.charCodeAt(0);
-        let around =  l1 - (l2 + 26);
-        const checkAround = around > 0 ? around : around *= -1;
-        let between = l1 - l2; 
-        const checkBetween = between > 0 ? between : between *= -1;
-        const checkLowest = checkAround < checkBetween ? checkAround : checkBetween;
-        return checkLowest;
-    });
-    return str1.split('').reduce((a,b,i) => {
-        return a + distance(str1[i],str2[i])
+    const distance = (a, b) => {
+        const diff = Math.abs(a.charCodeAt(0) - b.charCodeAt(0));
+        return Math.min(diff, 26 - diff);
+    };
+    return [...str1].reduce((a,b,i) => {
+        return a + distance(b,str2[i])
     },0)
 }
 

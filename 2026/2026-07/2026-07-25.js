@@ -16,7 +16,6 @@ function findSignal(grid) {
         })
     });
     towers.forEach(tower => {
-        console.log(tower);
         let [row, col]= tower[0]
         let distance = tower[1];
         let u = row - distance >= 0 ? [row - distance, col] : null;
@@ -29,7 +28,6 @@ function findSignal(grid) {
         let ul = u && l ? [row - distance, col - distance] : null;
         check.push(...[u, d, l, r, ur, dr, dl, ul].filter(Boolean));
     })    
-    console.log(check);
 
     const frequencyMap = new Map();
     let maxCount = 0;
@@ -42,6 +40,7 @@ function findSignal(grid) {
         // Get current count or default to 0, then add 1
         const currentCount = (frequencyMap.get(stringKey) || 0) + 1;
         frequencyMap.set(stringKey, currentCount);
+        console.log('current array ', currentArray, ' map ', frequencyMap);
         
         // Track the winner
         if (currentCount > maxCount) {

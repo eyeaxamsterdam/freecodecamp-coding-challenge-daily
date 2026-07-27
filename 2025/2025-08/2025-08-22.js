@@ -9,8 +9,27 @@ Non-alphabetical characters should not get decoded.
 */
 
 function decode(message, shift) {
-    let myString = 'abcd'
-    console.log(myString.charCodeAt(0))
+    const regex = /[^0-9A-Za-z]/g
+    const checkCode = (code,lCase) => {
+        let trueShift = code; 
+        let lowTarget = lCase === 'upper' ? 64 : 96;
+        let highTarget = lCase === 'upper' ? 90 : 121;
+        while (trueShift < lowTarget) {
+            trueShift += 26;
+        }
+        while (trueShift > highTarget) {
+            trueShift -= 26;
+        }
+        return trueShift;
+    }
+    return message.split('').map(l => {
+        let lCase = l.toUpperCase() === l ? 'upper' : 'lower';
+        let encodedNum = l.charCodeAt(0);
+        let check = encodedNum - shift;
+        let trueCode = checkCode(check,lCase);
+        if (l.match(regex)) return l;
+        else return String.fromCharCode(trueCode)
+    }).join('');
 }
 
 const runTests = require('../../helpers/runTests');

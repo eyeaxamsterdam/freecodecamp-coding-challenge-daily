@@ -4,7 +4,8 @@
   "description": "Dates are US format MM-DD-YY",
   "main": "index.js",
   "scripts": {
-    "test": "node helpers/testToday.js"
+    "test": "node helpers/testToday.js",
+    "check": "node helpers/checkMissing.js"
   },
   "repository": {
     "type": "git",

@@ -10,7 +10,13 @@ The array must start at 1 and have no missing or extra elements.
 */
 
 function isFizzBuzz(sequence) {
-
+    return sequence.every((item,index) => {
+        const n = index + 1;
+        if (n % 15 === 0) return item === 'FizzBuzz'
+        if (n % 3 === 0) return item === 'Fizz';
+        if (n % 5 === 0) return item === 'Buzz';
+        return item === n;
+    });
 }
 
 const runTests = require('../../helpers/runTests');

@@ -76,6 +76,15 @@ function runLegacyLine(fn, line) {
 
 const TEST_SEPARATOR = '// ---';
 
+// Node's AssertionError prints actual/expected as a side-by-side diff, which
+// is confusing here — show them as plain "Got"/"Expected" lines instead.
+function formatFailure(e) {
+    if (e && Object.prototype.hasOwnProperty.call(e, 'actual') && Object.prototype.hasOwnProperty.call(e, 'expected')) {
+        return `  Got:      ${JSON.stringify(e.actual)}\n  Expected: ${JSON.stringify(e.expected)}`;
+    }
+    return `  ${e.message}`;
+}
+
 function report(passCount, failCount) {
     console.log(`${passCount} passed, ${failCount} failed`);
     console.log();
@@ -100,7 +109,7 @@ function runAssertBlocks(fn, blocks) {
             passCount++;
         } catch (e) {
             console.log(`${RED}FAIL:${RESET} ${label}`);
-            console.log(`  ${e.message}`);
+            console.log(formatFailure(e));
             failCount++;
         }
         console.log();
@@ -130,7 +139,7 @@ function runLegacyLines(fn, rawTests) {
             passCount++;
         } catch (e) {
             console.log(`${RED}FAIL:${RESET} ${line}`);
-            console.log(`  ${e.message}`);
+            console.log(formatFailure(e));
             failCount++;
         }
         console.log();

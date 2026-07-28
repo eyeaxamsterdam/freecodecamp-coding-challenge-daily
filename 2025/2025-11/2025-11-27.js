@@ -8,7 +8,10 @@ Be sure to account for whether the person has already had their birthday in 2025
 */
 
 function calculateAge(birthday) {
-
+    const [year, month, day] = birthday.split('-').map(Number);
+    let age = 2025 - year;
+    if (month > 11 || (month === 11 && day > 27)) age--;
+    return age;
 }
 
 const runTests = require('../../helpers/runTests');

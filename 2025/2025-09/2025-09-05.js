@@ -8,37 +8,29 @@ Only numeric characters are allowed.
 */
 
 function isValidIPv4(ipv4) {
-    let isGood;
-    const checkLength = (arr) => {
-        return arr.length === 4
+    let ipArr = ipv4.split('.').filter(n => n!== '');
+    if (ipArr.length !== 4) {
+        console.log('bad length');
+        return false;
     }
-
-    const checkRange = (num, min, max) => {
-        return num>= min && num <= max;
-    }
-
-    const checkZeros = (num) => {
-        console.log(num)
-    }
-
-    const checkNums = (nums) => {
-        
-        for (let i = 0; i < nums.length; i++) {
-            if (!checkRange(nums[i])) {
-                isGood = false;
-                break;
-            } if (!checkZeros()) {
-                isGood = false;
-                break;
-            }
-            else isGood = true;
-        }     
-    }
-
-    checkNums(ipv4);
-
-
-  return isGood;
+    let isValid = ipArr.every(num => {
+        console.log('num ', num, ' length ', num.length, ' num[0] ', num[0])
+        console.log('num.length over 1? ', num.length > 1, 'num[0] === "0"', num[0] === '0')
+        if (!(num >= 0 && num <= 255)) {
+            console.log('range bad');
+            return false;
+        }
+        if (num.length > 1 && num[0] === '0')  {
+            console.log('leading zero');
+            return false;
+        }
+        if (!Number.isInteger(Number(num))) {
+            console.log('not a number')
+            return false;
+        }
+        return true;
+    })
+    return isValid; 
 }
 
 //Tests

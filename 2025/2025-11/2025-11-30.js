@@ -14,7 +14,18 @@ If the given sentence meets any of the rules above, return "AI", otherwise, retu
 */
 
 function detectAI(text) {
+    const dashCount = (text.match(/-/g) || []).length;
+    if (dashCount >= 2) return "AI";
 
+    const parenCount = (text.match(/\(/g) || []).length;
+    if (parenCount >= 2) return "AI";
+
+    const longWordCount = text.split(' ')
+        .map(word => word.replace(/[^A-Za-z]/g, ''))
+        .filter(word => word.length >= 7).length;
+    if (longWordCount >= 3) return "AI";
+
+    return "Human";
 }
 
 const runTests = require('../../helpers/runTests');

@@ -13,11 +13,9 @@ For example, given the matrix:
 */
 
 function findWord(matrix, word) {
-  matrix.forEach((arr) => )
-  return matrix;
+
 }
 
-//Tests
 
 const runTests = require('../../../helpers/runTests');
 runTests(findWord, [

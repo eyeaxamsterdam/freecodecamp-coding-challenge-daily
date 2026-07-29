@@ -9,7 +9,7 @@ Separate words with an underscore (_).
 */
 
 function toSnake(camel) {
-
+    return [...camel].map(l => l.toUpperCase() === l ? '_' + l.toLowerCase() : l).join('');
 }
 
 const runTests = require('../../../helpers/runTests');

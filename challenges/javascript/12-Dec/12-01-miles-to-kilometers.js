@@ -9,7 +9,7 @@ Remove unnecessary trailing zeros from the rounded result.
 */
 
 function convertToKm(miles) {
-
+    return (miles * 1.60934).toFixed(2);
 }
 
 const runTests = require('../../../helpers/runTests');

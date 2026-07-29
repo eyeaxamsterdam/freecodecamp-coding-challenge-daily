@@ -6,30 +6,8 @@ For example, the divisors of 4 are 1, 2, and 4. The divisors of 6 are 1, 2, 3, a
 */
 
 function gcd(x, y) {
-  let xfactors = [];
-  let yfactors = [];
-  let highestNum = 1;
-  
-  const GCD = (n, v) => {
-    for (let i = 2; i <= n/2; i++) {
-      n % i === 0 && v.push(i);
-    }
-    v.push(n);
-  }
 
-  const findCommon = (arr1, arr2) => {
-    arr1.forEach(num => (arr2.includes(num) && highestNum = num))
-  }
-
-  GCD(x, xfactors);
-  GCD(y, yfactors);
-  findCommon(xfactors,yfactors)
-
-  console.log('highestNum ', highestNum)
-  return highestNum;
 }
-
-//Tests
 
 const runTests = require('../../../helpers/runTests');
 runTests(gcd, [

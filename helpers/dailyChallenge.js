@@ -2,6 +2,23 @@ const START_DATE = Date.UTC(2025, 7, 11); // first daily challenge: Aug 11, 2025
 const TOTAL_CHALLENGES = 365;
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
+// The series repeats every 365 days (day 366 = Challenge 1 again, day 367 =
+// Challenge 2, etc.) rather than ending, so this wraps forever going forward.
+// Dates before the series started have no challenge at all.
+function getChallengeNumber(year, month, day) {
+  const target = Date.UTC(year, month - 1, day);
+  const diffDays = Math.round((target - START_DATE) / MS_PER_DAY);
+  if (diffDays < 0) return null;
+  return (diffDays % TOTAL_CHALLENGES) + 1;
+}
+
+function slugify(title) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 const BLOCK_NAMES = {
   javascript: "daily-coding-challenges-javascript",
   python: "daily-coding-challenges-python",
@@ -108,6 +125,14 @@ function extractFnName(content, language) {
   return arrowDecl ? arrowDecl[1] : null;
 }
 
+function isFnDeclared(content, language, fnName) {
+  const declRe =
+    language === "python"
+      ? new RegExp(`def\\s+${fnName}\\s*\\(`)
+      : new RegExp(`function\\s+${fnName}\\s*\\(|(?:const|let)\\s+${fnName}\\s*=\\s*(?:\\([^)]*\\)|\\w+)\\s*=>`);
+  return declRe.test(content);
+}
+
 // Finds where a user's own code (above) ends and the regeneratable test
 // tail (below) begins. Normally that's the require/import line immediately
 // before the `runTests(fnName, ...)` / `run_tests(...)` call — split there
@@ -116,8 +141,16 @@ function extractFnName(content, language) {
 // bare call site instead and leave the stray earlier import in the head
 // untouched (needsImport: false) — regenerating a second one would
 // redeclare `const runTests`, a SyntaxError.
-function findSplitPoint(content, language) {
-  const fnName = extractFnName(content, language);
+//
+// preferredFnName (freeCodeCamp's canonical solution name, when known) is
+// used over the file-structure guess whenever it's actually declared in the
+// file — a file that defines a helper function before the real solution
+// would otherwise have its helper mistaken for the function under test.
+function findSplitPoint(content, language, preferredFnName) {
+  const fnName =
+    preferredFnName && isFnDeclared(content, language, preferredFnName)
+      ? preferredFnName
+      : extractFnName(content, language);
   if (!fnName) return null;
 
   const callRe =
@@ -182,7 +215,7 @@ function buildJsTestTail(fnName, assertBlocks, { needsImport = true } = {}) {
   const items = assertBlocks
     .map((block) => `    \`${indentContinuationLines(escapeForJsTemplateLiteral(block))}\`,`)
     .join("\n");
-  const importLine = needsImport ? "const runTests = require('../../helpers/runTests');\n" : "";
+  const importLine = needsImport ? "const runTests = require('../../../helpers/runTests');\n" : "";
 
   return `${importLine}runTests(${fnName}, [\n${items}\n]);\n`;
 }
@@ -194,7 +227,7 @@ function buildPythonTestTail(fnName, assertBlocks, { needsImport = true } = {}) 
     .map((block) => `    """${escapeForPythonTripleQuoted(block)}""",`)
     .join("\n");
   const importLines = needsImport
-    ? 'import os\nimport sys\nsys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))\nfrom helpers.run_tests import run_tests\n\n'
+    ? 'import os\nimport sys\nsys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", ".."))\nfrom helpers.run_tests import run_tests\n\n'
     : "";
 
   return `${importLines}run_tests(${fnName}, [\n${items}\n])\n`;
@@ -216,26 +249,34 @@ function buildPythonFileContent({ title, description, seedCode, assertBlocks }) 
   return `"""\n${title}\n${description}\n"""\n\n${emptySeedCode}\n\n${buildPythonTestTail(fnName, assertBlocks)}`;
 }
 
-// Resolves year/month/day to a challenge number and fetches its markdown.
-// Returns null if the date is outside the 365-day series or the fetch fails.
-async function fetchChallengeMarkdown(year, month, day, language) {
-  const target = Date.UTC(year, month - 1, day);
-  const challengeNumber = Math.round((target - START_DATE) / MS_PER_DAY) + 1;
-
-  if (challengeNumber < 1 || challengeNumber > TOTAL_CHALLENGES) {
-    return null;
-  }
+// Resolves year/month/day to a challenge entry ({id, title}) — just the
+// block index, no per-challenge fetch — so callers can determine a target
+// filename (challenge number + slug) before deciding whether to fetch the
+// full markdown. Returns null if the date precedes the series or the fetch
+// fails.
+async function resolveChallenge(year, month, day, language) {
+  const challengeNumber = getChallengeNumber(year, month, day);
+  if (challengeNumber === null) return null;
 
   const block = await fetchBlock(language);
   if (!block) return null;
   const entry = block.challengeOrder[challengeNumber - 1];
   if (!entry) return null;
 
-  const mdRes = await fetch(challengeUrl(language, entry.id));
+  const title = entry.title.replace(/^Challenge \d+:\s*/, "");
+  return { challengeNumber, slug: slugify(title), title, entry };
+}
+
+// Resolves year/month/day to a challenge number and fetches its markdown.
+async function fetchChallengeMarkdown(year, month, day, language) {
+  const resolved = await resolveChallenge(year, month, day, language);
+  if (!resolved) return null;
+
+  const mdRes = await fetch(challengeUrl(language, resolved.entry.id));
   if (!mdRes.ok) return null;
   const md = await mdRes.text();
 
-  return { md, entry };
+  return { md, entry: resolved.entry };
 }
 
 // year/month/day are the same fields createDayFiles.js already parses from
@@ -264,8 +305,11 @@ async function fetchDailyChallenge(year, month, day, language = "javascript") {
   return buildJsFileContent({ title, description, seedCode, assertBlocks });
 }
 
-// Fetches just the current assert blocks for a date/language, for
-// syncTests.js to refresh an existing file's tests without recreating it.
+// Fetches the current assert blocks and freeCodeCamp's own canonical
+// function name for a date/language, for syncTests.js to refresh an
+// existing file's tests without recreating it. The canonical name matters
+// when a file defines a helper function before the real solution — without
+// it, guessing from file structure alone can grab the wrong one.
 async function fetchAssertBlocks(year, month, day, language = "javascript") {
   const result = await fetchChallengeMarkdown(year, month, day, language);
   if (!result) return null;
@@ -274,13 +318,21 @@ async function fetchAssertBlocks(year, month, day, language = "javascript") {
   const hintsRaw = extractSection(md, "# --hints--");
   const assertBlocks =
     language === "python" ? extractPythonAssertBlocks(hintsRaw) : extractJsAssertBlocks(hintsRaw);
+  if (assertBlocks.length === 0) return null;
 
-  return assertBlocks.length > 0 ? assertBlocks : null;
+  const seedCode = extractSeedCode(md);
+  const seedFnMatch =
+    language === "python" ? seedCode.match(/def\s+(\w+)\s*\(/) : seedCode.match(/function\s+(\w+)\s*\(/);
+
+  return { assertBlocks, canonicalFnName: seedFnMatch ? seedFnMatch[1] : null };
 }
 
 module.exports = {
   fetchDailyChallenge,
   fetchAssertBlocks,
+  resolveChallenge,
+  getChallengeNumber,
+  slugify,
   buildJsTestTail,
   buildPythonTestTail,
   findSplitPoint,

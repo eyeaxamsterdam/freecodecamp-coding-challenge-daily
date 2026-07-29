@@ -2,13 +2,17 @@
 
 const fs = require("fs");
 const path = require("path");
-const { fetchDailyChallenge } = require("./dailyChallenge");
-const { parseArgs, pad, EXTENSIONS } = require("./cliArgs");
+const readline = require("readline");
+const { fetchDailyChallenge, resolveChallenge } = require("./dailyChallenge");
+const { parseArgs, pad, monthFolderName, EXTENSIONS } = require("./cliArgs");
 
 const HELP_TEXT = `
 Usage: node helpers/createDayFiles.js [date] [language]
 
-Pulls freeCodeCamp's daily coding challenge into a ready-to-solve file.
+Pulls freeCodeCamp's daily coding challenge into a ready-to-solve file at
+challenges/<language>/<MM-Mon>/<MM-DD>-<slug>.<ext>. The series repeats
+every 365 days, so a date that lands on a challenge you've already solved
+(the same MM-DD next year) will offer to overwrite it and start fresh.
 
 Date (optional):
   YYYY-MM-DD   a specific date, e.g. 2026-07-25
@@ -31,16 +35,55 @@ Examples:
 See also: node helpers/syncTests.js --help
 `;
 
-async function createFile(year, month, day, language, folderName, folderPath) {
+function isToday(year, month, day) {
+  const today = new Date();
+  return (
+    year === today.getFullYear() &&
+    month === today.getMonth() + 1 &&
+    day === today.getDate()
+  );
+}
+
+function askYesNo(question) {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise((resolve) => {
+    rl.question(question, (answer) => {
+      rl.close();
+      resolve(/^y(es)?$/i.test(answer.trim()));
+    });
+  });
+}
+
+async function createFile(year, month, day, language, challengesDir) {
+  let resolved;
+  try {
+    resolved = await resolveChallenge(year, month, day, language);
+  } catch (err) {
+    console.log(`⚠️  Couldn't reach freeCodeCamp to resolve the ${language} challenge (${err.message}).`);
+    return;
+  }
+
+  if (!resolved) {
+    console.log(`⚠️  No freeCodeCamp ${language} challenge for that date — nothing to create.`);
+    return;
+  }
+
+  const { challengeNumber, slug } = resolved;
+  const ext = EXTENSIONS[language];
   const monthPadded = pad(month);
   const dayPadded = pad(day);
-  const ext = EXTENSIONS[language];
-  const fileName = `${year}-${monthPadded}-${dayPadded}.${ext}`;
-  const filePath = path.join(folderPath, fileName);
+  const monthDir = path.join(challengesDir, language, monthFolderName(month));
+  const fileName = `${monthPadded}-${dayPadded}-${slug}.${ext}`;
+  const filePath = path.join(monthDir, fileName);
 
   if (fs.existsSync(filePath)) {
-    console.log(`\n⚠️  ${fileName} already exists — leaving it untouched.\n`);
-    return;
+    const overwrite = await askYesNo(
+      `⚠️  ${fileName} already exists. Overwrite and start from scratch? (y/N): `
+    );
+    if (!overwrite) {
+      console.log(`   Left ${fileName} untouched.\n`);
+      return;
+    }
   }
 
   let content = "";
@@ -48,21 +91,21 @@ async function createFile(year, month, day, language, folderName, folderPath) {
     const fetched = await fetchDailyChallenge(year, month, day, language);
     if (fetched) {
       content = fetched;
-      console.log(`📥  Pulled today's ${language} challenge from freeCodeCamp`);
+      const when = isToday(year, month, day) ? "today's" : `challenge ${challengeNumber}'s`;
+      console.log(`📥  Pulled ${when} ${language} challenge from freeCodeCamp`);
     } else {
-      console.log(`⚠️  No freeCodeCamp ${language} challenge for that date — created a blank file`);
+      console.log(`⚠️  Couldn't fetch full challenge content — created a blank file`);
     }
   } catch (err) {
     console.log(`⚠️  Couldn't fetch ${language} challenge (${err.message}) — created a blank file`);
   }
 
-  if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath, { recursive: true });
-    console.log(`📁  Created folder: ${folderName}`);
+  if (!fs.existsSync(monthDir)) {
+    fs.mkdirSync(monthDir, { recursive: true });
   }
 
   fs.writeFileSync(filePath, content, "utf8");
-  console.log(`✅  Created ${path.join(folderName, fileName)}\n`);
+  console.log(`✅  Created challenges/${language}/${monthFolderName(month)}/${fileName}\n`);
 }
 
 async function main() {
@@ -76,12 +119,10 @@ async function main() {
   const { year, month, day, languages } = parseArgs(argv);
 
   const repoRoot = path.join(__dirname, "..");
-  const monthPadded = pad(month);
-  const folderName = `${year}-${monthPadded}`;
-  const folderPath = path.join(repoRoot, String(year), folderName);
+  const challengesDir = path.join(repoRoot, "challenges");
 
   for (const language of languages) {
-    await createFile(year, month, day, language, folderName, folderPath);
+    await createFile(year, month, day, language, challengesDir);
   }
 }
 

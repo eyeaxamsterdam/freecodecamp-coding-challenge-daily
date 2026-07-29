@@ -4,11 +4,12 @@ const fs = require("fs");
 const path = require("path");
 const {
   fetchAssertBlocks,
+  resolveChallenge,
   buildJsTestTail,
   buildPythonTestTail,
   findSplitPoint,
 } = require("./dailyChallenge");
-const { parseArgs, pad, EXTENSIONS } = require("./cliArgs");
+const { parseArgs, pad, monthFolderName, EXTENSIONS } = require("./cliArgs");
 
 const HELP_TEXT = `
 Usage: node helpers/syncTests.js [date] [language]
@@ -26,20 +27,58 @@ Examples:
   node helpers/syncTests.js both
 `;
 
-async function syncFile(year, month, day, language, folderName, folderPath) {
+// Matched by MM-DD prefix rather than the exact slug, so a file still gets
+// found even if freeCodeCamp has since tweaked the challenge title.
+function findExistingFile(challengesDir, language, month, day, ext) {
   const monthPadded = pad(month);
   const dayPadded = pad(day);
-  const ext = EXTENSIONS[language];
-  const fileName = `${year}-${monthPadded}-${dayPadded}.${ext}`;
-  const filePath = path.join(folderPath, fileName);
+  const monthDir = path.join(challengesDir, language, monthFolderName(month));
+  if (!fs.existsSync(monthDir)) return null;
+  const prefix = `${monthPadded}-${dayPadded}-`;
+  const match = fs.readdirSync(monthDir).find((f) => f.startsWith(prefix) && f.endsWith(`.${ext}`));
+  return match ? path.join(monthDir, match) : null;
+}
 
-  if (!fs.existsSync(filePath)) {
-    console.log(`⚠️  ${fileName} doesn't exist yet — run createDayFiles.js first.`);
+async function syncFile(year, month, day, language, challengesDir) {
+  let resolved;
+  try {
+    resolved = await resolveChallenge(year, month, day, language);
+  } catch (err) {
+    console.log(`⚠️  Couldn't reach freeCodeCamp to resolve the ${language} challenge (${err.message}).`);
     return;
   }
 
+  if (!resolved) {
+    console.log(`⚠️  No freeCodeCamp ${language} challenge for that date — nothing to sync against.`);
+    return;
+  }
+
+  const ext = EXTENSIONS[language];
+  const filePath = findExistingFile(challengesDir, language, month, day, ext);
+
+  if (!filePath) {
+    console.log(`⚠️  No ${language} file for that date yet — run createDayFiles.js first.`);
+    return;
+  }
+  const fileName = path.basename(filePath);
+
   const content = fs.readFileSync(filePath, "utf8");
-  const split = findSplitPoint(content, language);
+
+  let fetched;
+  try {
+    fetched = await fetchAssertBlocks(year, month, day, language);
+  } catch (err) {
+    console.log(`⚠️  Couldn't fetch ${language} challenge for ${fileName} (${err.message}).`);
+    return;
+  }
+
+  if (!fetched) {
+    console.log(`⚠️  No freeCodeCamp ${language} challenge for that date — nothing to sync against.`);
+    return;
+  }
+  const { assertBlocks, canonicalFnName } = fetched;
+
+  const split = findSplitPoint(content, language, canonicalFnName);
 
   if (!split) {
     console.log(`⚠️  Couldn't locate the test call or function definition in ${fileName} — skipping.`);
@@ -47,19 +86,6 @@ async function syncFile(year, month, day, language, folderName, folderPath) {
   }
   const { fnName, splitIndex, needsImport } = split;
   const head = content.slice(0, splitIndex);
-
-  let assertBlocks;
-  try {
-    assertBlocks = await fetchAssertBlocks(year, month, day, language);
-  } catch (err) {
-    console.log(`⚠️  Couldn't fetch ${language} challenge for ${fileName} (${err.message}).`);
-    return;
-  }
-
-  if (!assertBlocks) {
-    console.log(`⚠️  No freeCodeCamp ${language} challenge for that date — nothing to sync against.`);
-    return;
-  }
 
   const newTail =
     language === "python"
@@ -87,12 +113,10 @@ async function main() {
   const { year, month, day, languages } = parseArgs(argv);
 
   const repoRoot = path.join(__dirname, "..");
-  const monthPadded = pad(month);
-  const folderName = `${year}-${monthPadded}`;
-  const folderPath = path.join(repoRoot, String(year), folderName);
+  const challengesDir = path.join(repoRoot, "challenges");
 
   for (const language of languages) {
-    await syncFile(year, month, day, language, folderName, folderPath);
+    await syncFile(year, month, day, language, challengesDir);
   }
 }
 

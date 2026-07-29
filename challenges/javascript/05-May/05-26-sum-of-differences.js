@@ -1,0 +1,22 @@
+/*
+Sum of Differences
+Given an array of numbers, return the sum of the differences between each number and the one that follows it.
+
+For example, given [1, 3, 4], return 3 (2 + 1).
+*/
+
+function sumOfDifferences(arr) {
+    let sum = 0;
+    for (let i = 1; i < arr.length; i++) {
+        sum += arr[i] - arr[i - 1];
+    }
+    return sum;
+}
+
+const runTests = require('../../../helpers/runTests');
+runTests(sumOfDifferences, [
+    `assert.equal(sumOfDifferences([1, 3, 4]), 3);`,
+    `assert.equal(sumOfDifferences([5, -3, 3, 9, 10]), 5);`,
+    `assert.equal(sumOfDifferences([9, 6, 15, -20, 33, 14, 25, 16, -7]), -16);`,
+    `assert.equal(sumOfDifferences([50, 102, -46, 82, -49, 29, 71, 902, -237, 111, -61, 75]), 25);`,
+]);

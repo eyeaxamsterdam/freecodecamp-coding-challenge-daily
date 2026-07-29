@@ -15,6 +15,17 @@ function pad(n) {
   return String(n).padStart(2, "0");
 }
 
+const MONTH_ABBR = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+// e.g. month 7 -> "07-Jul" — zero-padded so folders sort in calendar order,
+// abbreviation so they're still readable at a glance.
+function monthFolderName(month) {
+  return `${pad(month)}-${MONTH_ABBR[month - 1]}`;
+}
+
 function parseDateArg(arg) {
   const today = new Date();
 
@@ -74,4 +85,4 @@ function parseArgs(argv) {
   return { year, month, day, languages };
 }
 
-module.exports = { parseArgs, parseDateArg, pad, EXTENSIONS };
+module.exports = { parseArgs, parseDateArg, pad, monthFolderName, EXTENSIONS };

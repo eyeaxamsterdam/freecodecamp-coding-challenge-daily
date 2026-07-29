@@ -8,7 +8,7 @@ Any additional arguments passed to the function are penalties. Subtract all pena
 */
 
 function computeScore(judgeScores, ...penalties) {
-
+    return judgeScores.sort((a,b) => a-b).reduce((a,b,i) => a + ((i !== 0 && i!== judgeScores.length-1) ? b : 0),0) - penalties.reduce((a,b) => a + b, 0);
 }
 
 const runTests = require('../../../helpers/runTests');

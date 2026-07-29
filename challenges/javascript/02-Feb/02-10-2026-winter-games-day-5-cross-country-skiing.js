@@ -11,7 +11,20 @@ For example, given ["1:25:32", "1:26:10", "1:27:05"], return ["0", "+0:38", "+1:
 */
 
 function getRelativeResults(results) {
+  const toSeconds = (t) => {
+    const [h, m, s] = t.split(':').map(Number);
+    return h * 3600 + m * 60 + s;
+  };
 
+  const winnerSeconds = toSeconds(results[0]);
+
+  return results.map((time, i) => {
+    if (i === 0) return "0";
+    const diff = toSeconds(time) - winnerSeconds;
+    const m = Math.floor(diff / 60);
+    const s = String(diff % 60).padStart(2, '0');
+    return `+${m}:${s}`;
+  });
 }
 
 const runTests = require('../../../helpers/runTests');

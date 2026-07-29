@@ -7,7 +7,7 @@ Each missed target results in a 150 meter penalty loop.
 */
 
 function calculatePenaltyDistance(rounds) {
-
+    return rounds.reduce((a,b) => a + 5-b,0) * 150;
 }
 
 const runTests = require('../../helpers/runTests');

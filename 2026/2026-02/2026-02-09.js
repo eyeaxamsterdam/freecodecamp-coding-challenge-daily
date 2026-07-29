@@ -24,7 +24,11 @@ Otherwise, return "No Medal"
 */
 
 function skiJumpMedal(distancePoints, stylePoints, windComp, kPointBonus) {
-
+    const scores = [165.5,172.0,158.0,180.0,169.5,175.0,162.0,170.0];
+    const score = distancePoints+stylePoints+windComp+kPointBonus;
+    scores.push(score);
+    const place = scores.sort().reverse().findIndex(s => s === score) + 1;
+    return place === 1 ? 'Gold' : place === 2 ? 'Silver' : place === 3 ? 'Bronze' : 'No Medal' 
 }
 
 const runTests = require('../../helpers/runTests');

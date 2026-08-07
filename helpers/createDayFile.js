@@ -7,7 +7,7 @@ const { fetchDailyChallenge, resolveChallenge } = require("./dailyChallenge");
 const { parseArgs, pad, monthFolderName, EXTENSIONS } = require("./cliArgs");
 
 const HELP_TEXT = `
-Usage: node helpers/createDayFiles.js [date] [language]
+Usage: node helpers/createDayFile.js [date] [language]
 
 Pulls freeCodeCamp's daily coding challenge into a ready-to-solve file at
 challenges/<language>/<MM-Mon>/<MM-DD>-<slug>.<ext>. The series repeats
@@ -25,13 +25,13 @@ Language (optional):
   py js            both languages (two separate args work too, any order)
 
 Examples:
-  node helpers/createDayFiles.js
-  node helpers/createDayFiles.js 07-25
-  node helpers/createDayFiles.js python
-  node helpers/createDayFiles.js 07-25 both
-  node helpers/createDayFiles.js py js 07-25
+  node helpers/createDayFile.js
+  node helpers/createDayFile.js 07-25
+  node helpers/createDayFile.js python
+  node helpers/createDayFile.js 07-25 both
+  node helpers/createDayFile.js py js 07-25
 
-See also: node helpers/syncTests.js --help
+See also: node helpers/syncChallenge.js --help
 `;
 
 function isToday(month, day) {

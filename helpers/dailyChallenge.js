@@ -233,12 +233,34 @@ function buildPythonTestTail(fnName, assertBlocks, { needsImport = true } = {}) 
   return `${importLines}run_tests(${fnName}, [\n${items}\n])\n`;
 }
 
+// The header comment/docstring block (title, description, Link line) in
+// its own builders so syncChallenge.js can regenerate just that block too,
+// without duplicating the exact format used at file-creation time.
+function buildJsHeader({ title, description, link }) {
+  return `/*\n${title}\n${description}\n\nLink: ${link}\n*/`;
+}
+
+function buildPythonHeader({ title, description, link }) {
+  return `"""\n${title}\n${description}\n\nLink: ${link}\n"""`;
+}
+
+// Finds where the header comment/docstring ends (right after its closing
+// `*/` or `"""`), assuming it starts at the very beginning of the file, as
+// every generated file does. Returns null if the file doesn't start with
+// one (e.g. hand-edited into something unexpected), so callers can fall
+// back to leaving the header alone.
+function findHeaderEnd(content, language) {
+  const match =
+    language === "python" ? content.match(/^"""[\s\S]*?"""/) : content.match(/^\/\*[\s\S]*?\*\//);
+  return match ? match[0].length : null;
+}
+
 function buildJsFileContent({ title, description, seedCode, assertBlocks, link }) {
   const fnMatch = seedCode.match(/function\s+(\w+)\s*\(/);
   const fnName = fnMatch ? fnMatch[1] : "solution";
   const emptySeedCode = emptyJsFunctionBody(seedCode);
 
-  return `/*\n${title}\n${description}\n\nLink: ${link}\n*/\n\n${emptySeedCode}\n\n${buildJsTestTail(fnName, assertBlocks)}`;
+  return `${buildJsHeader({ title, description, link })}\n\n${emptySeedCode}\n\n${buildJsTestTail(fnName, assertBlocks)}`;
 }
 
 function buildPythonFileContent({ title, description, seedCode, assertBlocks, link }) {
@@ -246,7 +268,7 @@ function buildPythonFileContent({ title, description, seedCode, assertBlocks, li
   const fnName = fnMatch ? fnMatch[1] : "solution";
   const emptySeedCode = emptyPythonFunctionBody(seedCode);
 
-  return `"""\n${title}\n${description}\n\nLink: ${link}\n"""\n\n${emptySeedCode}\n\n${buildPythonTestTail(fnName, assertBlocks)}`;
+  return `${buildPythonHeader({ title, description, link })}\n\n${emptySeedCode}\n\n${buildPythonTestTail(fnName, assertBlocks)}`;
 }
 
 // Resolves year/month/day to a challenge entry ({id, title}) — just the
@@ -279,7 +301,7 @@ async function fetchChallengeMarkdown(year, month, day, language) {
   return { md, entry: resolved.entry };
 }
 
-// year/month/day are the same fields createDayFiles.js already parses from
+// year/month/day are the same fields createDayFile.js already parses from
 // the CLI arg or today's date. language is "javascript" or "python".
 async function fetchDailyChallenge(year, month, day, language = "javascript") {
   const result = await fetchChallengeMarkdown(year, month, day, language);
@@ -308,15 +330,18 @@ async function fetchDailyChallenge(year, month, day, language = "javascript") {
   return buildJsFileContent({ title, description, seedCode, assertBlocks, link });
 }
 
-// Fetches the current assert blocks and freeCodeCamp's own canonical
-// function name for a date/language, for syncTests.js to refresh an
-// existing file's tests without recreating it. The canonical name matters
-// when a file defines a helper function before the real solution — without
-// it, guessing from file structure alone can grab the wrong one.
-async function fetchAssertBlocks(year, month, day, language = "javascript") {
+// Fetches everything syncChallenge.js needs to refresh an existing file without
+// recreating it: the current title, description, and Link (in case
+// freeCodeCamp reworded the challenge), the current assert blocks, and
+// freeCodeCamp's own canonical function name. The canonical name matters
+// when a file defines a helper function before the real solution, without
+// it, guessing from file structure alone can grab the wrong one. The
+// solution code itself is never touched by any of this, callers only
+// splice in the header and the test tail around whatever the user wrote.
+async function fetchSyncData(year, month, day, language = "javascript") {
   const result = await fetchChallengeMarkdown(year, month, day, language);
   if (!result) return null;
-  const { md } = result;
+  const { md, entry } = result;
 
   const hintsRaw = extractSection(md, "# --hints--");
   const assertBlocks =
@@ -327,16 +352,31 @@ async function fetchAssertBlocks(year, month, day, language = "javascript") {
   const seedFnMatch =
     language === "python" ? seedCode.match(/def\s+(\w+)\s*\(/) : seedCode.match(/function\s+(\w+)\s*\(/);
 
-  return { assertBlocks, canonicalFnName: seedFnMatch ? seedFnMatch[1] : null };
+  const fallbackTitle = entry.title.replace(/^Challenge \d+:\s*/, "");
+  const title = extractTitle(md, fallbackTitle);
+  const description = formatDescription(extractSection(md, "# --description--"));
+  const mmdd = `${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  const link = `https://www.freecodecamp.org/learn/daily-coding-challenge/${mmdd}`;
+
+  return {
+    title,
+    description,
+    link,
+    assertBlocks,
+    canonicalFnName: seedFnMatch ? seedFnMatch[1] : null,
+  };
 }
 
 module.exports = {
   fetchDailyChallenge,
-  fetchAssertBlocks,
+  fetchSyncData,
   resolveChallenge,
   getChallengeNumber,
   slugify,
+  buildJsHeader,
+  buildPythonHeader,
   buildJsTestTail,
   buildPythonTestTail,
+  findHeaderEnd,
   findSplitPoint,
 };

@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 const LANGUAGE_ALIASES = {
   js: "javascript",
   javascript: "javascript",
@@ -78,4 +81,19 @@ function parseArgs(argv) {
   return { year, month, day, languages };
 }
 
-module.exports = { parseArgs, parseDateArg, pad, monthFolderName, EXTENSIONS };
+// Finds the file already on disk for a given month/day/language, matched
+// by MM-DD prefix rather than exact slug, so it's still found even if
+// freeCodeCamp has since tweaked the challenge title. Returns null if
+// there's no month directory or no matching file yet. challengesDir is the
+// base `challenges` folder, without the language segment.
+function findChallengeFile(challengesDir, language, month, day) {
+  const monthDir = path.join(challengesDir, language, monthFolderName(month));
+  if (!fs.existsSync(monthDir)) return null;
+
+  const prefix = `${pad(month)}-${pad(day)}-`;
+  const ext = EXTENSIONS[language];
+  const match = fs.readdirSync(monthDir).find((f) => f.startsWith(prefix) && f.endsWith(`.${ext}`));
+  return match ? path.join(monthDir, match) : null;
+}
+
+module.exports = { parseArgs, parseDateArg, pad, monthFolderName, EXTENSIONS, findChallengeFile };

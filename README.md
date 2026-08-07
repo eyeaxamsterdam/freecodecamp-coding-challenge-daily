@@ -4,20 +4,36 @@ Files are organized as `challenges/<language>/<MM-Mon>/<MM-DD>-<slug>.<ext>`, e.
 
 ---
 
+## Prerequisites
+
+- **Node.js 18+**: every helper script (`createDayFile.js`, `syncChallenge.js`, `testDay.js`, `checkMissing.js`) is run with `node`, and `helpers/dailyChallenge.js` relies on the global `fetch()` API, which needs Node 18 or newer.
+- **Python 3**: only needed if you're solving the Python side of the challenges (`python3 challenges/python/...`). None of the helper tooling itself uses Python.
+
+---
+
 ## Getting today's challenge
 
 Assuming you're in the project folder, run:
 
 ```sh
-node helpers/createDayFiles.js
+node helpers/createDayFile.js
 ```
 
 This creates a file like `challenges/javascript/07-Jul/07-29-contrast-rating-2.js` with the challenge description, a starter function, and the real test cases from freeCodeCamp already inside, plus a `Link:` line in the header comment pointing back to `https://www.freecodecamp.org/learn/daily-coding-challenge/MM-DD` for that challenge. No copy-pasting needed. You don't even need to go to freecodecamp.org at all. You can check against tests right inside your IDE.
 
-To get a specific day instead of today:
+By default this grabs the JavaScript version. Add `python` (or `py`) for Python instead, or `both` for both:
 
 ```sh
-node helpers/createDayFiles.js 07-25
+node helpers/createDayFile.js
+node helpers/createDayFile.js python
+node helpers/createDayFile.js both
+```
+
+To get a specific day instead of today, add a date (`MM-DD`). Date and language can be combined, in either order:
+
+```sh
+node helpers/createDayFile.js 07-25
+node helpers/createDayFile.js 07-25 python
 ```
 
 Since the series loops, a date can map to a challenge you've already solved (e.g. one year later, exactly 365 days on, same MM-DD). If that file already exists, you'll be asked whether to overwrite it and start fresh:
@@ -41,20 +57,31 @@ python3 challenges/python/07-Jul/07-29-contrast-rating-2.py
 
 You'll see a `PASS` or `FAIL` for each test, plus a summary at the end.
 
----
-
-## Refreshing tests
-
-If freeCodeCamp updates a challenge's tests after you already have the file, run:
+If you don't want to hunt down the file path yourself, run it by date instead:
 
 ```sh
-node helpers/syncTests.js
+npm run test              # today, JavaScript
+node helpers/testDay.js 07-25
+node helpers/testDay.js 07-25 python
+node helpers/testDay.js both
 ```
 
-This re-fetches the tests and updates the file. Your solution is left untouched. Defaults to today's challenge. Same date args as above:
+Date and language args work exactly like `createDayFile.js` (see `node helpers/testDay.js --help`).
+
+---
+
+## Refreshing a challenge
+
+If freeCodeCamp updates a challenge's tests or description after you already have the file, run:
 
 ```sh
-node helpers/syncTests.js 07-25 python
+node helpers/syncChallenge.js
+```
+
+This re-fetches the tests and the header comment (title, description, Link) and updates the file. Your solution code is left untouched. Defaults to today's challenge. Same date args as above:
+
+```sh
+node helpers/syncChallenge.js 07-25 python
 ```
 
 ---
@@ -73,7 +100,7 @@ It only checks the `javascript` tree, not `python`.
 
 ## How it works
 
-The challenges are stored as markdown files in the public [`freeCodeCamp/freeCodeCamp`](https://github.com/freeCodeCamp/freeCodeCamp) repo, under `curriculum/challenges/english/blocks/daily-coding-challenges-javascript/` and `daily-coding-challenges-python/`. The series started **2025-08-11** and repeats every 365 days (ostesibly, I guess we'll see if they have other plans). Day 366 (2026-08-11) maps back to challenge 1, day 367 to challenge 2, and so on. The helper computes which challenge number a given date maps to, then fetches that challenge's markdown.
+The challenges are stored as markdown files in the public [`freeCodeCamp/freeCodeCamp`](https://github.com/freeCodeCamp/freeCodeCamp) repo, under `curriculum/challenges/english/blocks/daily-coding-challenges-javascript/` and `daily-coding-challenges-python/`. The series started **2025-08-11** and repeats every 365 days (ostensibly, I guess we'll see if they have other plans). Day 366 (2026-08-11) maps back to challenge 1, day 367 to challenge 2, and so on. The helper computes which challenge number a given date maps to, then fetches that challenge's markdown.
 
 Note: You can even work ahead by passing a future date.
 
@@ -95,4 +122,14 @@ Waiting:2. functionName(arg1, arg2) should return expectedValue.
 
 ## Final Recommendations
 
-Create an alias for 'node /path/to/helpers/createDayFiles.js' like 'fcc' (or the equivalent for python).
+Create shell aliases for the scripts you'll run most. Add these to your `~/.bashrc` or `~/.zshrc` (swap in the real path to this repo):
+
+```sh
+alias fcc='node /path/to/helpers/createDayFile.js'
+alias fccTest='node /path/to/helpers/testDay.js'
+alias fccSync='node /path/to/helpers/syncChallenge.js'
+```
+
+On fish, drop the `=`: `alias fcc 'node /path/to/helpers/createDayFile.js'`.
+
+Each alias works with or without a date arg: run it bare for today's challenge, or pass a specific `MM-DD`, e.g. `fccTest 01-11`.

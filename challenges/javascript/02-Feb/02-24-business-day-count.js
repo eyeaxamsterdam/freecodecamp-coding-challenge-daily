@@ -9,7 +9,15 @@ Include both the start and end dates when counting.
 */
 
 function countBusinessDays(start, end) {
-
+    let count = 0;
+    const current = new Date(`${start}T00:00:00Z`);
+    const endDate = new Date(`${end}T00:00:00Z`);
+    while (current <= endDate) {
+        const day = current.getUTCDay();
+        if (day !== 0 && day !== 6) count++;
+        current.setUTCDate(current.getUTCDate() + 1);
+    }
+    return count;
 }
 
 const runTests = require('../../../helpers/runTests');

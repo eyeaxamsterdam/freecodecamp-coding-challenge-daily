@@ -6,7 +6,16 @@ The first element of each array corresponds to lap 1, the second to lap 2, and s
 */
 
 function largestDifference(skater1, skater2) {
-
+    let maxDiff = -1;
+    let lap = 0;
+    skater1.forEach((time, i) => {
+        const diff = Math.abs(time - skater2[i]);
+        if (diff > maxDiff) {
+            maxDiff = diff;
+            lap = i + 1;
+        }
+    });
+    return lap;
 }
 
 const runTests = require('../../../helpers/runTests');

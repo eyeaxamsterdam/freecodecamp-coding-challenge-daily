@@ -8,7 +8,8 @@ To calculate the delay for each athlete, subtract the athlete's jump score from 
 */
 
 function calculateStartDelays(jumpScores) {
-
+    const best = Math.max(...jumpScores);
+    return jumpScores.map(score => Math.ceil((best - score) * 1.5));
 }
 
 const runTests = require('../../../helpers/runTests');

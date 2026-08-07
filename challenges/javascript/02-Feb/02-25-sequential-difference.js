@@ -8,7 +8,7 @@ For example, given [1, 2, 4, 7], return [1, 2, 3, 0].
 */
 
 function findDifferences(arr) {
-
+    return arr.map((value, i) => i === arr.length - 1 ? 0 : arr[i + 1] - value);
 }
 
 const runTests = require('../../../helpers/runTests');

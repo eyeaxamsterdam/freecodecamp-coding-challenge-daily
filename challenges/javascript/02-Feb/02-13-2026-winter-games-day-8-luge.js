@@ -18,7 +18,17 @@ Return "The luger's fastest speed was X m/s on segment Y.". Where X is the faste
 */
 
 function getFastestSpeed(times) {
-
+    const distances = [320, 280, 350, 300, 250];
+    let fastest = -1;
+    let segment = 0;
+    times.forEach((time, i) => {
+        const speed = distances[i] / time;
+        if (speed > fastest) {
+            fastest = speed;
+            segment = i + 1;
+        }
+    });
+    return `The luger's fastest speed was ${fastest.toFixed(2)} m/s on segment ${segment}.`;
 }
 
 const runTests = require('../../../helpers/runTests');

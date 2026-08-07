@@ -18,7 +18,11 @@ Return:
 */
 
 function getHillRating(drop, distance, type) {
-
+    const multipliers = { 'Downhill': 1.2, 'Slalom': 0.9, 'Giant Slalom': 1.0 };
+    const steepness = (drop / distance) * multipliers[type];
+    if (steepness <= 0.1) return 'Green';
+    if (steepness <= 0.25) return 'Blue';
+    return 'Black';
 }
 
 const runTests = require('../../../helpers/runTests');

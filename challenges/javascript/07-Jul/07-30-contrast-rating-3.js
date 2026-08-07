@@ -22,7 +22,23 @@ Return the rating based on the contrast ratio using the following table:
 */
 
 function getContrastRating(rgb1, rgb2, isLargeText) {
-
+    const getLuminance = ([r, g, b]) => {
+        const [R, G, B] = [r, g, b].map(c => {
+            c /= 255
+            return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4
+        })
+        return 0.2126 * R + 0.7152 * G + 0.0722 * B
+    }
+    const l1 = getLuminance(rgb1)
+    const l2 = getLuminance(rgb2)
+    const ratio = (l1 + .05) / (l2 + .05)
+    const category = isLargeText ? 'Large' : 'Normal'
+    const ratings = {
+        AAA: {Normal: 7.0, Large: 4.5},
+        AA: {Normal: 4.5, Large: 3.0},
+    }
+    let find = Object.keys(ratings).find(r => ratio >= ratings[r][category]);
+    return find || 'Fail';
 }
 
 const runTests = require('../../../helpers/runTests');

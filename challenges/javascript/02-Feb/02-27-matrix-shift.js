@@ -32,7 +32,16 @@ with a shift of 1, move all the numbers to the right one:
 */
 
 function shiftMatrix(matrix, shift) {
-
+    const cols = matrix[0].length;
+    const flat = matrix.flat();
+    const n = flat.length;
+    const s = ((shift % n) + n) % n;
+    const shifted = s === 0 ? flat : flat.slice(-s).concat(flat.slice(0, n - s));
+    const result = [];
+    for (let i = 0; i < flat.length; i += cols) {
+        result.push(shifted.slice(i, i + cols));
+    }
+    return result;
 }
 
 const runTests = require('../../../helpers/runTests');

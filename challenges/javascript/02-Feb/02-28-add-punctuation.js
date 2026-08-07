@@ -9,7 +9,7 @@ Return the resulting string.
 */
 
 function addPunctuation(sentences) {
-
+    return sentences.replace(/ (?=[A-Z])/g, '. ') + '.';
 }
 
 const runTests = require('../../../helpers/runTests');

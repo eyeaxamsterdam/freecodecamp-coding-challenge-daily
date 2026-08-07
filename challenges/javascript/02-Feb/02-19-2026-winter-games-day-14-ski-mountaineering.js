@@ -15,7 +15,8 @@ Return "Safe" or "Risky" based on this table:
 */
 
 function avalancheRisk(snowDepth, slope) {
-
+    if (slope === 'Gentle' || snowDepth === 'Shallow') return 'Safe';
+    return 'Risky';
 }
 
 const runTests = require('../../../helpers/runTests');

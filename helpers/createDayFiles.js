@@ -15,7 +15,6 @@ every 365 days, so a date that lands on a challenge you've already solved
 (the same MM-DD next year) will offer to overwrite it and start fresh.
 
 Date (optional):
-  YYYY-MM-DD   a specific date, e.g. 2026-07-25
   MM-DD        a specific date in the current year, e.g. 07-25
   (omitted)    defaults to today
 
@@ -29,19 +28,15 @@ Examples:
   node helpers/createDayFiles.js
   node helpers/createDayFiles.js 07-25
   node helpers/createDayFiles.js python
-  node helpers/createDayFiles.js 2026-07-25 both
+  node helpers/createDayFiles.js 07-25 both
   node helpers/createDayFiles.js py js 07-25
 
 See also: node helpers/syncTests.js --help
 `;
 
-function isToday(year, month, day) {
+function isToday(month, day) {
   const today = new Date();
-  return (
-    year === today.getFullYear() &&
-    month === today.getMonth() + 1 &&
-    day === today.getDate()
-  );
+  return month === today.getMonth() + 1 && day === today.getDate();
 }
 
 function askYesNo(question) {
@@ -91,7 +86,7 @@ async function createFile(year, month, day, language, challengesDir) {
     const fetched = await fetchDailyChallenge(year, month, day, language);
     if (fetched) {
       content = fetched;
-      const when = isToday(year, month, day) ? "today's" : `challenge ${challengeNumber}'s`;
+      const when = isToday(month, day) ? "today's" : `challenge ${challengeNumber}'s`;
       console.log(`📥  Pulled ${when} ${language} challenge from freeCodeCamp`);
     } else {
       console.log(`⚠️  Couldn't fetch full challenge content — created a blank file`);

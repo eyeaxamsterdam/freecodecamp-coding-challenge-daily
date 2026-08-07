@@ -28,28 +28,21 @@ function monthFolderName(month) {
 
 function parseDateArg(arg) {
   const today = new Date();
+  const year = today.getFullYear();
 
   if (!arg) {
-    return { year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() };
+    return { year, month: today.getMonth() + 1, day: today.getDate() };
   }
 
-  const fullMatch = arg.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
   const shortMatch = arg.match(/^(\d{1,2})-(\d{1,2})$/);
-
-  let year, month, day;
-  if (fullMatch) {
-    [, year, month, day] = fullMatch.map(Number);
-  } else if (shortMatch) {
-    year = today.getFullYear();
-    [, month, day] = shortMatch.map(Number);
-  } else {
-    console.error(`\n❌  Could not parse "${arg}". Use "YYYY-MM-DD" or "MM-DD".\n`);
+  if (!shortMatch) {
+    console.error(`\n❌  Could not parse "${arg}". Use "MM-DD".\n`);
     process.exit(1);
   }
 
+  const [, month, day] = shortMatch.map(Number);
   const date = new Date(year, month - 1, day);
-  const isValid =
-    date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+  const isValid = date.getMonth() === month - 1 && date.getDate() === day;
 
   if (!isValid) {
     console.error(`\n❌  "${arg}" is not a valid date.\n`);

@@ -11,7 +11,10 @@ For example, given "abb", return 3 because there's three unique ways to arrange 
 */
 
 function countPermutations(str) {
-
+    let BANK = new Set({str});
+    for (letter of str.split('')) {
+        console.log(letter);
+    }
 }
 
 const runTests = require('../../../helpers/runTests');

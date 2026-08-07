@@ -34,6 +34,8 @@ return:
 `
 
 Each cell updates according to the number of live neighbors. For instance, [0][0] stays dead (2 live neighbors), [0][1] stays alive (2 live neighbors), [0][2] dies (3 live neighbors), and so on.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-13
 */
 
 function gameOfLife(grid) {

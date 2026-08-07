@@ -34,8 +34,6 @@ function golfScore(par, strokes) {
     }
 }
 
-//Tests
-
 const runTests = require('../../../helpers/runTests');
 runTests(golfScore, [
     `assert.equal(golfScore(3, 3), "Par");`,

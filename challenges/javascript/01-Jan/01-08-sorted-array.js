@@ -7,6 +7,8 @@ If the given array is:
 In ascending order (lowest to highest), return "Ascending".
 In descending order (highest to lowest), return "Descending".
 Not sorted in ascending or descending order, return "Not sorted".
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-08
 */
 
 function isSorted(arr) {

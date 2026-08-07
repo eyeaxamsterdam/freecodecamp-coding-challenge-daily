@@ -11,6 +11,8 @@ Each array item will have a team and their record in the format "TEAM: W-OTW-OTL
 For example, "FIN: 2-2-1-0" would have 11 points after adding up their record.
   
 Find the total number of points for each team and return "The semi-final games will be (1st) vs (4th) and (2nd) vs (3rd).". For example, "The semi-final games will be FIN vs SWE and CAN vs USA."
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-16
 */
 
 function getSemifinalMatchups(teams) {

@@ -20,6 +20,8 @@ Given a Morse code string, return the decoded message using the following table:
 
 Letters are separated by a single space
 Words are separated by three spaces
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/07-31
 */
 
 const MORSE = {

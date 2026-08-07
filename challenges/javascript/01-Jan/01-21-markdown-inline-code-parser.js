@@ -9,6 +9,8 @@ Return the given string with all code blocks converted to HTML code tags.
 For example, given the string "Use let to declare the variable.", return "Use <code>let</code> to declare the variable.".
 
 Note: The console may not display HTML tags in strings when logging messages. Check the browser console to see logs with tags included.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-21
 */
 
 function parseInlineCode(markdown) {

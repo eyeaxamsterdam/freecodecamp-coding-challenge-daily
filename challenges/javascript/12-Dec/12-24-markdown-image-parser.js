@@ -14,6 +14,8 @@ For example, given "![Cute cat](cat.png)" return '<img src="cat.png" alt="Cute c
 Make sure the tag, order of attributes, spacing, and quote usage is the same as above.
 
 Note: The console may not display HTML tags in strings when logging messages — check the browser console to see logs with tags included.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-24
 */
 
 function parseImage(markdown) {

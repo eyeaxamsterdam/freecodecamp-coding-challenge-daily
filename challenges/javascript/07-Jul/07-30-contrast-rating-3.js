@@ -19,6 +19,8 @@ Return the rating based on the contrast ratio using the following table:
 | "AAA" | 7.0+ | 4.5+ |
 | "AA" | 4.5+ | 3.0+ |
 | "Fail" | below 4.5 | below 3.0 |
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/07-30
 */
 
 function getContrastRating(rgb1, rgb2, isLargeText) {

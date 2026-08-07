@@ -17,6 +17,8 @@ Use the following exchange rates to convert values:
 
 If you can afford all the items in the list, return "Buy them all!".
 Otherwise, return "Buy the first X items.", where X is the number of items you can afford when purchased in the order given.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-22
 */
 
 function buyItems(funds, items) {

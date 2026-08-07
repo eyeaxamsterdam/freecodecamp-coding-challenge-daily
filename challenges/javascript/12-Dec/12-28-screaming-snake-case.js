@@ -15,6 +15,8 @@ To convert to SCREAMING_SNAKE_CASE:
 
 Make all letters uppercase
 Separate words with an underscore (_)
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-28
 */
 
 function toScreamingSnakeCase(variableName) {

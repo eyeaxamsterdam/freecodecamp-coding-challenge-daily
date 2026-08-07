@@ -6,6 +6,8 @@ Given the speed you are traveling in miles per hour (MPH), and a speed limit in 
 If you are traveling less than or equal to the speed limit, return "Not Speeding".
 If you are traveling 5 KPH or less over the speed limit, return "Warning".
 If you are traveling more than 5 KPH over the speed limit, return "Ticket".
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-15
 */
 
 function speedCheck(speedMph, speedLimitKph) {

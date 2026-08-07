@@ -9,6 +9,8 @@ For simplicity, consider an email forwarded or replied to if the string contains
 "re:"
 
 Return the total number of occurrences of these markers.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-23
 */
 
 function emailChainCount(subject) {

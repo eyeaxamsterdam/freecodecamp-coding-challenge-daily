@@ -22,6 +22,8 @@ Unless the pawn is in the starting row (row 2), then it can move one or two squa
 
 For example, given "D4", return ["D5"], the only square your pawn can move to.
 Given "B2", return ["B3", "B4"], because it's on the starting row and needs to be in ascending order.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-30
 */
 
 function findPawnMoves(position) {

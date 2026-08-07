@@ -14,6 +14,8 @@ For example, given [3, 3], return:
   ["X", "O", "X"]
 ]
 `
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-18
 */
 
 function createBoard(dimensions) {

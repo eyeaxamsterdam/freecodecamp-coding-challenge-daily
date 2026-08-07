@@ -22,6 +22,8 @@ Negative ("-") can donate to both "-" and "+".
 Positive ("+") can donate only to "+".
 
 Both letter and Rh rule must pass for a donor to be able to donate to the recipient.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-23
 */
 
 function canDonate(donor, recipient) {

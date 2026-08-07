@@ -8,6 +8,8 @@ If the string contains repeated characters, repeated arrangements should only be
 The string will contain only letters (A-Z, a-z).
 
 For example, given "abb", return 3 because there's three unique ways to arrange the letters: "abb", "bab", and "bba".
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-04
 */
 
 function factorial(n) {

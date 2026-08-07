@@ -29,6 +29,8 @@ with a shift of 1, move all the numbers to the right one:
   [3, 4, 5]
 ]
 `
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-27
 */
 
 function shiftMatrix(matrix, shift) {

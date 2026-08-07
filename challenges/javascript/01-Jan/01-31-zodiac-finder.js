@@ -18,6 +18,8 @@ Given a date string in the format "YYYY-MM-DD", return the zodiac sign for that 
 | February 19 - March 20 | "Pisces" |
 
 Zodiac signs are based only on the month and day, you can ignore the year.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-31
 */
 
 function getSign(dateStr) {

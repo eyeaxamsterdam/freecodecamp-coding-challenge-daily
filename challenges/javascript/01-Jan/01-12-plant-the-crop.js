@@ -16,6 +16,8 @@ Here's a list of crops that will be given as input and how much space a single p
 |"lettuce"|0.2 square meters|
 
 Return the number of plants that fit in the field, rounded down to the nearest whole plant.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-12
 */
 
 function getNumberOfPlants(fieldSize, unit, crop) {

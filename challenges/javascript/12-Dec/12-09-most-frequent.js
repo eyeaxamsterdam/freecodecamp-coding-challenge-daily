@@ -3,6 +3,8 @@ Most Frequent
 Given an array of elements, return the element that appears most frequently.
 
 There will always be a single most frequent element.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-09
 */
 
 function mostFrequent(arr) {

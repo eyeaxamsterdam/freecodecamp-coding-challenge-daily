@@ -6,6 +6,8 @@ Before each space that comes immediately before an uppercase letter
 And at the end of the string
 
 Return the resulting string.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-28
 */
 
 function addPunctuation(sentences) {

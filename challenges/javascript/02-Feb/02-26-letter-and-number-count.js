@@ -7,6 +7,8 @@ Numbers are 0-9.
 Ignore all other characters.
 
 Return "The string has X letters and Y numbers.", where "X" is the count of letters and "Y" is the count of numbers. If either count is 1, use the singular form for that item. E.g: "1 letter" instead of "1 letters" and "1 number" instead of "1 numbers".
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-26
 */
 
 function countLettersAndNumbers(str) {

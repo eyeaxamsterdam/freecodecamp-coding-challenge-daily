@@ -15,6 +15,8 @@ Return:
 "Green" if the adjusted steepness is less than or equal to 0.1
 "Blue" if the adjusted steepness is greater than 0.1 and less than or equal to 0.25
 "Black" if the adjusted steepness is greater than 0.25
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-15
 */
 
 function getHillRating(drop, distance, type) {

@@ -6,6 +6,8 @@ Only consecutive duplicates are compressed.
 Words are separated by single spaces.
 
 For example, given "yes yes yes please", return "yes(3) please".
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-07
 */
 
 function compressString(sentence) {

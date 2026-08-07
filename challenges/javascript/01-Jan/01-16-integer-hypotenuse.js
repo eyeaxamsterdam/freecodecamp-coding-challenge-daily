@@ -3,6 +3,8 @@ Integer Hypotenuse
 Given two positive integers representing the lengths for the two legs (the two short sides) of a right triangle, determine whether the hypotenuse is an integer.
 
 The length of the hypotenuse is calculated by adding the squares of the two leg lengths together and then taking the square root of that total (a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>).
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-16
 */
 
 function isIntegerHypotenuse(a, b) {

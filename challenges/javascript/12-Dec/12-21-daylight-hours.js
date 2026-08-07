@@ -21,6 +21,8 @@ Given a latitude number from -90 to 90, return a rough approximation of daylight
 |90|0|
 
 If the given latitude does not exactly match a table entry, use the value of the closest latitude.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-21
 */
 
 function daylightHours(latitude) {

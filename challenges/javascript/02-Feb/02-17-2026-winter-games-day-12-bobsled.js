@@ -18,6 +18,8 @@ The total weight of the bobsled (athletes plus sled) must not exceed:
 630 kg for a 4-person team
 
 Return "Eligible" if the team meets all the requirements, or "Not Eligible" if the team fails to meet one or more of the requirements.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-17
 */
 
 function checkEligibility(athleteWeights, sledWeight) {

@@ -5,6 +5,8 @@ Given a string title, return a new string formatted in title case using the foll
 Capitalize the first letter of each word.
 Make all other letters in each word lowercase.
 Words are always separated by a single space.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-14
 */
 
 function titleCase(title) {

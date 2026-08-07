@@ -16,6 +16,8 @@ The difficulty of the track is based on the total score. Return:
 "Easy" if the total is 0 - 100
 "Medium" if the total is 101-200
 "Hard" if the total is over 200
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-14
 */
 
 function getDifficulty(track) {

@@ -12,6 +12,8 @@ The given array will contain items from the list below:
 | "hat"	| 19.95 |
 | "socks" | 15.00 |
 | "jacket" | 109.95 |
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-18
 */
 
 function getsFreeShipping(cart, minimum) {

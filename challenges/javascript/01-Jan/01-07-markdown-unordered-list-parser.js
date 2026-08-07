@@ -15,6 +15,8 @@ Wrap each list item in HTML li tags, and the whole list of items in ul tags.
 For example, given "- Item A\n- Item B", return "<ul><li>Item A</li><li>Item B</li></ul>".
 
 Note: The console may not display HTML tags in strings when logging messages. Check the browser console to see logs with tags included.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-07
 */
 
 function parseUnorderedList(markdown) {

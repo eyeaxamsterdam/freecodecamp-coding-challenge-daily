@@ -9,6 +9,8 @@ Given a number, return the bingo letter associated with it (capitalized). Bingo 
 | "N" | 31-45 |
 | "G" | 46-60 |
 | "O" | 61-75 |
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-24
 */
 
 function getBingoLetter(n) {

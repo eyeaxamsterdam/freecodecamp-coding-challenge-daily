@@ -3,6 +3,8 @@ Array Swap
 Given an array with two values, return an array with the values swapped.
 
 For example, given ["A", "B"] return ["B", "A"].
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-15
 */
 
 function arraySwap(arr) {

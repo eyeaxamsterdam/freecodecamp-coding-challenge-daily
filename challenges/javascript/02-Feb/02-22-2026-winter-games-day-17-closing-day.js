@@ -40,6 +40,8 @@ NOR,1,1,1,3
 CAN,0,1,1,2
 SWE,0,0,1,1
 `
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-22
 */
 
 function countMedals(winners) {

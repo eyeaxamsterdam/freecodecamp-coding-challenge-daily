@@ -15,6 +15,8 @@ The first value in the given array corresponds to the time for segment 1, the se
 To calculate the speed (in meters per second) for a segment, divide the distance by the time.
 
 Return "The luger's fastest speed was X m/s on segment Y.". Where X is the fastest speed, rounded to two decimal places, and Y is the segment number where the fastest speed occurred.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-13
 */
 
 function getFastestSpeed(times) {

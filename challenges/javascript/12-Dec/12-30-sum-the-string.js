@@ -4,6 +4,8 @@ Given a string containing digits and other characters, return the sum of all num
 
 Treat consecutive digits as a single number. For example, "13" counts as 13, not 1 + 3.
 Ignore any non-digit characters.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-30
 */
 
 function stringSum(str) {

@@ -6,6 +6,8 @@ Given dates are in the format "YYYY-MM-DD".
 Weekdays are business days (Monday through Friday).
 Weekends are not business days (Saturday and Sunday).
 Include both the start and end dates when counting.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-24
 */
 
 function countBusinessDays(start, end) {

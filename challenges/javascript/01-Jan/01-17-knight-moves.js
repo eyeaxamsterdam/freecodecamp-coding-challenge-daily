@@ -17,6 +17,8 @@ A standard chessboard is 8x8, with columns labeled A through H (left to right) a
 A knight moves in an "L" shape: two squares in one direction (horizontal or vertical), and one square in the perpendicular direction.
 
 This means a knight can move to up to eight possible positions, but fewer when near the edges of the board. For example, if a knight was at A1, it could only move to B3 or C2.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-17
 */
 
 function knightMoves(position) {

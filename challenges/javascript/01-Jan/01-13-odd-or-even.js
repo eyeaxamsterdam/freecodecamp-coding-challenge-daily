@@ -1,6 +1,8 @@
 /*
 Odd or Even?
 Given a positive integer, return "Odd" if it's an odd number, and "Even" if it's even.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-13
 */
 
 function oddOrEven(n) {

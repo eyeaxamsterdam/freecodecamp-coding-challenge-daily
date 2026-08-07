@@ -21,20 +21,15 @@ Extra keys are allowed
 function isValidSchema(obj) {
     const ROLES = ["user", "creator", "moderator", "staff", "admin"];
 
-    if (!Array.isArray(obj.users)) return false;
-    if (obj.users.length === 0) return true;
-
-    return obj.users.every(user => {
-        if (typeof user !== 'object' || user === null) return false;
-        if (typeof user.username !== 'string') return false;
-        if (typeof user.posts !== 'number') return false;
-        if (typeof user.verified !== 'boolean') return false;
-        if (!ROLES.includes(user.role)) return false;
-        if (!Array.isArray(user.badges)) return false;
-        if (!user.badges.every(b => typeof b === 'string')) return false;
-        if ('supporter' in user && typeof user.supporter !== 'boolean') return false;
-        return true;
-    });
+    if (typeof obj !== 'object' || obj === null) return false;
+    if (typeof obj.username !== 'string') return false;
+    if (typeof obj.posts !== 'number') return false;
+    if (typeof obj.verified !== 'boolean') return false;
+    if (!ROLES.includes(obj.role)) return false;
+    if (!Array.isArray(obj.badges)) return false;
+    if (!obj.badges.every(b => typeof b === 'string')) return false;
+    if ('supporter' in obj && typeof obj.supporter !== 'boolean') return false;
+    return true;
 }
 
 const runTests = require('../../../helpers/runTests');

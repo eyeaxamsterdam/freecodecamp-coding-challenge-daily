@@ -9,6 +9,8 @@ Return an array with the following values for each tire:
 "Low" if the tire pressure is below the minimum allowed.
 "Good" if it's between the minimum and maximum allowed.
 "High" if it's above the maximum allowed.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-05
 */
 
 function tireStatus(pressuresPSI, rangeBar) {

@@ -233,20 +233,20 @@ function buildPythonTestTail(fnName, assertBlocks, { needsImport = true } = {}) 
   return `${importLines}run_tests(${fnName}, [\n${items}\n])\n`;
 }
 
-function buildJsFileContent({ title, description, seedCode, assertBlocks }) {
+function buildJsFileContent({ title, description, seedCode, assertBlocks, link }) {
   const fnMatch = seedCode.match(/function\s+(\w+)\s*\(/);
   const fnName = fnMatch ? fnMatch[1] : "solution";
   const emptySeedCode = emptyJsFunctionBody(seedCode);
 
-  return `/*\n${title}\n${description}\n*/\n\n${emptySeedCode}\n\n${buildJsTestTail(fnName, assertBlocks)}`;
+  return `/*\n${title}\n${description}\n\nLink: ${link}\n*/\n\n${emptySeedCode}\n\n${buildJsTestTail(fnName, assertBlocks)}`;
 }
 
-function buildPythonFileContent({ title, description, seedCode, assertBlocks }) {
+function buildPythonFileContent({ title, description, seedCode, assertBlocks, link }) {
   const fnMatch = seedCode.match(/def\s+(\w+)\s*\(/);
   const fnName = fnMatch ? fnMatch[1] : "solution";
   const emptySeedCode = emptyPythonFunctionBody(seedCode);
 
-  return `"""\n${title}\n${description}\n"""\n\n${emptySeedCode}\n\n${buildPythonTestTail(fnName, assertBlocks)}`;
+  return `"""\n${title}\n${description}\n\nLink: ${link}\n"""\n\n${emptySeedCode}\n\n${buildPythonTestTail(fnName, assertBlocks)}`;
 }
 
 // Resolves year/month/day to a challenge entry ({id, title}) — just the
@@ -294,15 +294,18 @@ async function fetchDailyChallenge(year, month, day, language = "javascript") {
 
   if (!seedCode) return null;
 
+  const mmdd = `${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  const link = `https://www.freecodecamp.org/learn/daily-coding-challenge/${mmdd}`;
+
   if (language === "python") {
     const assertBlocks = extractPythonAssertBlocks(hintsRaw);
     if (assertBlocks.length === 0) return null;
-    return buildPythonFileContent({ title, description, seedCode, assertBlocks });
+    return buildPythonFileContent({ title, description, seedCode, assertBlocks, link });
   }
 
   const assertBlocks = extractJsAssertBlocks(hintsRaw);
   if (assertBlocks.length === 0) return null;
-  return buildJsFileContent({ title, description, seedCode, assertBlocks });
+  return buildJsFileContent({ title, description, seedCode, assertBlocks, link });
 }
 
 // Fetches the current assert blocks and freeCodeCamp's own canonical

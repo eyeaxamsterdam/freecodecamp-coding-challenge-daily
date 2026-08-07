@@ -23,6 +23,8 @@ For example, in the given matrix:
 `
 
 The top-left seat is cannot be sat in because there's a right-handed person to the left. The other two open seats can be sat in because there isn't a right-handed person to the left.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-03
 */
 
 function findLeftHandedSeats(table) {

@@ -9,6 +9,8 @@ Convert all italic occurrences to HTML i tags and return the string.
 For example, given "*This is italic*", return "<i>This is italic</i>".
 
 Note: The console may not display HTML tags in strings when logging messages. Check the browser console to see logs with tags included.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-31
 */
 
 function parseItalics(markdown) {

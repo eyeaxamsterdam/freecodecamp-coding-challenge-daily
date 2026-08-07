@@ -40,6 +40,8 @@ For example, given:
 `
 
 Return "R: 2". The two red stones in ring 1 are tied for the closest and are the only two stones closer than yellows closest.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-21
 */
 
 function scoreCurling(house) {

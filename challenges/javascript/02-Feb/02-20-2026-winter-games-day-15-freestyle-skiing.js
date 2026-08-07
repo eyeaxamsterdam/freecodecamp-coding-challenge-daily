@@ -29,6 +29,8 @@ Valid second words:
 |"Frostbite"|
 |"Blizzard"|
 |"Shadow"|
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-20
 */
 
 function isValidTrick(trickName) {

@@ -19,6 +19,8 @@ Given an array of exam scores (numbers), return the average score in form of a l
 | below 60 | "F" |
 
 Calculate the average by adding all scores in the array and dividing by the total number of scores.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-22
 */
 
 function getAverageGrade(scores) {

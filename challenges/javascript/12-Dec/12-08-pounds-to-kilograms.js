@@ -7,6 +7,8 @@ Replace "(kgs)" with the input converted to kilograms, rounded to two decimals a
 1 pound equals 0.453592 kilograms.
 If the input is 1, use "pound" instead of "pounds".
 If the converted value is 1, use "kilogram" instead of "kilograms".
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-08
 */
 
 function convertToKgs(lbs) {

@@ -8,6 +8,8 @@ For example, given [2, 3, 4, 6, 8] and 10, you will find two valid pairs:
 4 and 6 (4 + 6 = 10), whose indices are 2 and 3
 
 Add all the indices together to get a return value of 9.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-19
 */
 
 function pairwise(arr, target) {

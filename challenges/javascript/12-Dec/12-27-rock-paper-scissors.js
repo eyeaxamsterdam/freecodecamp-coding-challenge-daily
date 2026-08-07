@@ -12,6 +12,8 @@ Return:
 "Player 1 wins" if Player 1 wins.
 "Player 2 wins" if Player 2 wins.
 "Tie" if both players choose the same option.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-27
 */
 
 function rockPaperScissors(player1, player2) {

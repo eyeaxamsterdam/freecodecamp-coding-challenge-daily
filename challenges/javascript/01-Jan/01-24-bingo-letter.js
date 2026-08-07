@@ -12,7 +12,11 @@ Given a number, return the bingo letter associated with it (capitalized). Bingo 
 */
 
 function getBingoLetter(n) {
-
+    if (n <= 15) return "B";
+    if (n <= 30) return "I";
+    if (n <= 45) return "N";
+    if (n <= 60) return "G";
+    return "O";
 }
 
 const runTests = require('../../../helpers/runTests');

@@ -7,7 +7,8 @@ Ignore any non-digit characters.
 */
 
 function stringSum(str) {
-
+    const matches = str.match(/\d+/g);
+    return matches ? matches.reduce((sum, n) => sum + Number(n), 0) : 0;
 }
 
 const runTests = require('../../../helpers/runTests');

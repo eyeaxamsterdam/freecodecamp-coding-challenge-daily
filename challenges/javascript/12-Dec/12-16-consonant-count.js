@@ -7,7 +7,8 @@ Ignore digits, punctuation, spaces, and other non-letter characters when countin
 */
 
 function hasConsonantCount(text, target) {
-
+    const consonants = (text.match(/[bcdfghjklmnpqrstvwxyz]/gi) || []).length;
+    return consonants === target;
 }
 
 const runTests = require('../../../helpers/runTests');

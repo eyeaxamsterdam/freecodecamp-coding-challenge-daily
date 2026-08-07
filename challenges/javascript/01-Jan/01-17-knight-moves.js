@@ -20,7 +20,13 @@ This means a knight can move to up to eight possible positions, but fewer when n
 */
 
 function knightMoves(position) {
-
+    const col = position.charCodeAt(0) - 'A'.charCodeAt(0);
+    const row = parseInt(position.slice(1)) - 1;
+    const deltas = [[1, 2], [1, -2], [-1, 2], [-1, -2], [2, 1], [2, -1], [-2, 1], [-2, -1]];
+    return deltas.filter(([dc, dr]) => {
+        const nc = col + dc, nr = row + dr;
+        return nc >= 0 && nc < 8 && nr >= 0 && nr < 8;
+    }).length;
 }
 
 const runTests = require('../../../helpers/runTests');

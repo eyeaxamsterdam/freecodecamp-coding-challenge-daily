@@ -18,7 +18,13 @@ Separate words with an underscore (_)
 */
 
 function toScreamingSnakeCase(variableName) {
-
+    return variableName
+        .replace(/[-_]/g, ' ')
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        .split(' ')
+        .filter(Boolean)
+        .join('_')
+        .toUpperCase();
 }
 
 const runTests = require('../../../helpers/runTests');

@@ -7,7 +7,11 @@ Non-alphabetical characters should remain unchanged.
 */
 
 function vowelCase(str) {
-
+    return str.split('').map(ch => {
+        if (/[aeiou]/i.test(ch)) return ch.toUpperCase();
+        if (/[a-z]/i.test(ch)) return ch.toLowerCase();
+        return ch;
+    }).join('');
 }
 
 const runTests = require('../../../helpers/runTests');

@@ -25,7 +25,11 @@ Given "B2", return ["B3", "B4"], because it's on the starting row and needs to b
 */
 
 function findPawnMoves(position) {
-
+    const col = position[0];
+    const row = parseInt(position.slice(1));
+    const moves = [`${col}${row + 1}`];
+    if (row === 2) moves.push(`${col}${row + 2}`);
+    return moves;
 }
 
 const runTests = require('../../../helpers/runTests');

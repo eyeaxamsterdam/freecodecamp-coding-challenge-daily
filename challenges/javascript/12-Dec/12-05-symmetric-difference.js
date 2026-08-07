@@ -7,7 +7,7 @@ Return the values in the order they first appear in the input arrays.
 */
 
 function difference(arr1, arr2) {
-
+    return arr1.filter(v => !arr2.includes(v)).concat(arr2.filter(v => !arr1.includes(v)));
 }
 
 const runTests = require('../../../helpers/runTests');

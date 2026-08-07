@@ -13,7 +13,9 @@ Note: The console may not display HTML tags in strings when logging messages. Ch
 */
 
 function parseBold(markdown) {
-
+    return markdown
+        .replace(/\*\*(\S(?:.*?\S)?)\*\*/g, '<b>$1</b>')
+        .replace(/__(\S(?:.*?\S)?)__/g, '<b>$1</b>');
 }
 
 const runTests = require('../../../helpers/runTests');

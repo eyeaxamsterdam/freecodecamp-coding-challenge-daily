@@ -9,7 +9,10 @@ If you are traveling more than 5 KPH over the speed limit, return "Ticket".
 */
 
 function speedCheck(speedMph, speedLimitKph) {
-
+    const over = (speedMph * 1.60934) - speedLimitKph;
+    if (over <= 0) return "Not Speeding";
+    if (over <= 5) return "Warning";
+    return "Ticket";
 }
 
 const runTests = require('../../../helpers/runTests');

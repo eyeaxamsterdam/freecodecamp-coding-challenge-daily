@@ -9,7 +9,11 @@ For example, given 6, return 12 because the divisors of 6 are 1, 2, 3, and 6, an
 */
 
 function sumDivisors(n) {
-
+    let sum = 0;
+    for (let i = 1; i <= n; i++) {
+        if (n % i === 0) sum += i;
+    }
+    return sum;
 }
 
 const runTests = require('../../../helpers/runTests');

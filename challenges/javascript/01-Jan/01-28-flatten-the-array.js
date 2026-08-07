@@ -4,7 +4,7 @@ Given an array that contains nested arrays, return a new array with all values f
 */
 
 function flatten(arr) {
-
+    return arr.flat(Infinity);
 }
 
 const runTests = require('../../../helpers/runTests');

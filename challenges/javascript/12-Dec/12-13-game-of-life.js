@@ -37,7 +37,23 @@ Each cell updates according to the number of live neighbors. For instance, [0][0
 */
 
 function gameOfLife(grid) {
-
+    const rows = grid.length, cols = grid[0].length;
+    const countNeighbors = (r, c) => {
+        let count = 0;
+        for (let dr = -1; dr <= 1; dr++) {
+            for (let dc = -1; dc <= 1; dc++) {
+                if (dr === 0 && dc === 0) continue;
+                const nr = r + dr, nc = c + dc;
+                if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) count += grid[nr][nc];
+            }
+        }
+        return count;
+    };
+    return grid.map((row, r) => row.map((cell, c) => {
+        const neighbors = countNeighbors(r, c);
+        if (cell === 1) return (neighbors === 2 || neighbors === 3) ? 1 : 0;
+        return neighbors === 3 ? 1 : 0;
+    }));
 }
 
 const runTests = require('../../../helpers/runTests');

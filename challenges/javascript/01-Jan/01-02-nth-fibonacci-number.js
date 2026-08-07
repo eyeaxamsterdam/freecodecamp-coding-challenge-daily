@@ -6,7 +6,11 @@ The Fibonacci sequence is a series of numbers where each number is the sum of th
 */
 
 function nthFibonacci(n) {
-
+    let a = 0, b = 1;
+    for (let i = 1; i < n; i++) {
+        [a, b] = [b, a + b];
+    }
+    return a;
 }
 
 const runTests = require('../../../helpers/runTests');

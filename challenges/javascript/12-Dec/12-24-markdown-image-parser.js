@@ -17,7 +17,8 @@ Note: The console may not display HTML tags in strings when logging messages —
 */
 
 function parseImage(markdown) {
-
+    const [, alt, url] = markdown.match(/^!\[(.*?)\]\((.*)\)$/);
+    return `<img src="${url}" alt="${alt}">`;
 }
 
 const runTests = require('../../../helpers/runTests');

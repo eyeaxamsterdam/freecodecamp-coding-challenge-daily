@@ -9,7 +9,7 @@ Hexadecimal characters are numbers 0 through 9 and letters a through f (case-ins
 */
 
 function isValidHex(str) {
-
+    return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(str);
 }
 
 const runTests = require('../../../helpers/runTests');

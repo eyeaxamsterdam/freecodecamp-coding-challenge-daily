@@ -19,7 +19,10 @@ Return the number of plants that fit in the field, rounded down to the nearest w
 */
 
 function getNumberOfPlants(fieldSize, unit, crop) {
-
+    const areaPerUnit = unit === "acres" ? 4046.86 : 10000;
+    const spacePerPlant = { corn: 1, wheat: 0.1, soybeans: 0.5, tomatoes: 0.25, lettuce: 0.2 };
+    const totalArea = fieldSize * areaPerUnit;
+    return Math.floor(totalArea / spacePerPlant[crop]);
 }
 
 const runTests = require('../../../helpers/runTests');

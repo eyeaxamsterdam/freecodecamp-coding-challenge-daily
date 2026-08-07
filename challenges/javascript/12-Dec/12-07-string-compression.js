@@ -9,7 +9,17 @@ For example, given "yes yes yes please", return "yes(3) please".
 */
 
 function compressString(sentence) {
-
+    const words = sentence.split(' ');
+    const result = [];
+    let i = 0;
+    while (i < words.length) {
+        let j = i;
+        while (j < words.length && words[j] === words[i]) j++;
+        const count = j - i;
+        result.push(count > 1 ? `${words[i]}(${count})` : words[i]);
+        i = j;
+    }
+    return result.join(' ');
 }
 
 const runTests = require('../../../helpers/runTests');

@@ -18,7 +18,8 @@ Note: The console may not display HTML tags in strings when logging messages. Ch
 */
 
 function parseUnorderedList(markdown) {
-
+    const items = markdown.split('\n').map(line => line.replace(/^-\s+/, ''));
+    return `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
 }
 
 const runTests = require('../../../helpers/runTests');

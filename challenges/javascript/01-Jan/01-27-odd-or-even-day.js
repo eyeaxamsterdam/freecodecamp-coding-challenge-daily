@@ -11,7 +11,8 @@ Note: The timestamp is in milliseconds and you should use the date in the UTC ti
 */
 
 function oddOrEvenDay(timestamp) {
-
+    const day = new Date(timestamp).getUTCDate();
+    return day % 2 === 0 ? "even" : "odd";
 }
 
 const runTests = require('../../../helpers/runTests');

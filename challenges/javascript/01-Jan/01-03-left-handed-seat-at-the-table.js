@@ -26,7 +26,15 @@ The top-left seat is cannot be sat in because there's a right-handed person to t
 */
 
 function findLeftHandedSeats(table) {
-
+    let count = 0;
+    for (let r = 0; r < table.length; r++) {
+        for (let c = 0; c < table[r].length; c++) {
+            if (table[r][c] !== 'U') continue;
+            const leftCol = r === 0 ? c + 1 : c - 1;
+            if (table[r][leftCol] !== 'R') count++;
+        }
+    }
+    return count;
 }
 
 const runTests = require('../../../helpers/runTests');

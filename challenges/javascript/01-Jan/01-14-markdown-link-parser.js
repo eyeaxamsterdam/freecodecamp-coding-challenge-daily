@@ -10,7 +10,8 @@ Note: The console may not display HTML tags in strings when logging messages —
 */
 
 function parseLink(markdown) {
-
+    const [, text, url] = markdown.match(/^\[(.*?)\]\((.*)\)$/);
+    return `<a href="${url}">${text}</a>`;
 }
 
 const runTests = require('../../../helpers/runTests');

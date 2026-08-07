@@ -4,7 +4,7 @@ Given a positive integer, return "Odd" if it's an odd number, and "Even" if it's
 */
 
 function oddOrEven(n) {
-
+    return n % 2 === 0 ? "Even" : "Odd";
 }
 
 const runTests = require('../../../helpers/runTests');

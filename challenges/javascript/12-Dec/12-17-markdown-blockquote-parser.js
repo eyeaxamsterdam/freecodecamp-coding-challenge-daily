@@ -17,7 +17,8 @@ Note: The console may not display HTML tags in strings when logging messages. Ch
 */
 
 function parseBlockquote(markdown) {
-
+    const [, text] = markdown.match(/^\s*>\s+(.*)$/);
+    return `<blockquote>${text}</blockquote>`;
 }
 
 const runTests = require('../../../helpers/runTests');

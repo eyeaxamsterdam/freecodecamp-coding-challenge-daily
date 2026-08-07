@@ -4,7 +4,14 @@ Given a string containing only letters and numbers, return a new string where a 
 */
 
 function separateLettersAndNumbers(str) {
-
+    let result = '';
+    for (let i = 0; i < str.length; i++) {
+        if (i > 0 && /[a-zA-Z]/.test(str[i - 1]) !== /[a-zA-Z]/.test(str[i])) {
+            result += '-';
+        }
+        result += str[i];
+    }
+    return result;
 }
 
 const runTests = require('../../../helpers/runTests');

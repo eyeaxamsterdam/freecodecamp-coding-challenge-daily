@@ -11,7 +11,18 @@ Add all the indices together to get a return value of 9.
 */
 
 function pairwise(arr, target) {
-
+    const seen = new Map();
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        const complement = target - arr[i];
+        if (seen.has(complement)) {
+            sum += seen.get(complement) + i;
+            seen.delete(complement);
+        } else {
+            seen.set(arr[i], i);
+        }
+    }
+    return sum;
 }
 
 const runTests = require('../../../helpers/runTests');

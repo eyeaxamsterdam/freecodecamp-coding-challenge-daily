@@ -10,7 +10,7 @@ The year is evenly divisible by 400.
 */
 
 function isLeapYear(year) {
-
+    return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
 }
 
 const runTests = require('../../../helpers/runTests');

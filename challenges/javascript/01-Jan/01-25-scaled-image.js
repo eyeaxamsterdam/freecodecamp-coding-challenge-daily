@@ -9,7 +9,8 @@ Return the scaled dimensions in the same "WxH" format.
 */
 
 function scaleImage(size, scale) {
-
+    const [w, h] = size.split('x').map(Number);
+    return `${Math.round(w * scale)}x${Math.round(h * scale)}`;
 }
 
 const runTests = require('../../../helpers/runTests');

@@ -15,7 +15,11 @@ Return:
 */
 
 function compareEnergy(caloriesBurned, wattHoursUsed) {
-
+    const workoutJoules = caloriesBurned * 4184;
+    const deviceJoules = wattHoursUsed * 3600;
+    if (workoutJoules > deviceJoules) return "Workout";
+    if (deviceJoules > workoutJoules) return "Devices";
+    return "Equal";
 }
 
 const runTests = require('../../../helpers/runTests');

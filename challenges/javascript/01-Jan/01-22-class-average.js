@@ -22,7 +22,20 @@ Calculate the average by adding all scores in the array and dividing by the tota
 */
 
 function getAverageGrade(scores) {
-
+    const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+    if (avg >= 97) return "A+";
+    if (avg >= 93) return "A";
+    if (avg >= 90) return "A-";
+    if (avg >= 87) return "B+";
+    if (avg >= 83) return "B";
+    if (avg >= 80) return "B-";
+    if (avg >= 77) return "C+";
+    if (avg >= 73) return "C";
+    if (avg >= 70) return "C-";
+    if (avg >= 67) return "D+";
+    if (avg >= 63) return "D";
+    if (avg >= 60) return "D-";
+    return "F";
 }
 
 const runTests = require('../../../helpers/runTests');

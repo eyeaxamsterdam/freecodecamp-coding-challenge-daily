@@ -10,11 +10,17 @@ The string will contain only letters (A-Z, a-z).
 For example, given "abb", return 3 because there's three unique ways to arrange the letters: "abb", "bab", and "bba".
 */
 
+function factorial(n) {
+    let result = 1;
+    for (let i = 2; i <= n; i++) result *= i;
+    return result;
+}
+
 function countPermutations(str) {
-    let BANK = new Set({str});
-    for (letter of str.split('')) {
-        console.log(letter);
-    }
+    const counts = {};
+    for (const ch of str) counts[ch] = (counts[ch] || 0) + 1;
+    const denominator = Object.values(counts).reduce((product, c) => product * factorial(c), 1);
+    return factorial(str.length) / denominator;
 }
 
 const runTests = require('../../../helpers/runTests');

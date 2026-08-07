@@ -6,7 +6,7 @@ For example, given ["A", "B"] return ["B", "A"].
 */
 
 function arraySwap(arr) {
-
+    return [arr[1], arr[0]];
 }
 
 const runTests = require('../../../helpers/runTests');

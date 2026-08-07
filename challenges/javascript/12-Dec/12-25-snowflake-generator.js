@@ -24,7 +24,7 @@ Take careful note of the whitespaces in the given and returned strings. Be sure 
 */
 
 function generateSnowflake(crystals) {
-
+    return crystals.split('\n').map(line => line + line.split('').reverse().join('')).join('\n');
 }
 
 const runTests = require('../../../helpers/runTests');

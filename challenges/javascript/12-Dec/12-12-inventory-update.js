@@ -11,7 +11,13 @@ For example, given an inventory of [[2, "apples"], [5, "bananas"]] and a shipmen
 */
 
 function updateInventory(inventory, shipment) {
-
+    const result = inventory.map(([qty, item]) => [qty, item]);
+    for (const [qty, item] of shipment) {
+        const existing = result.find(entry => entry[1] === item);
+        if (existing) existing[0] += qty;
+        else result.push([qty, item]);
+    }
+    return result;
 }
 
 const runTests = require('../../../helpers/runTests');

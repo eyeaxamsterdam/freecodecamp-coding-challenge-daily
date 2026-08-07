@@ -12,7 +12,8 @@ Return the total number of occurrences of these markers.
 */
 
 function emailChainCount(subject) {
-
+    const matches = subject.match(/fwd:|fw:|re:/gi);
+    return matches ? matches.length : 0;
 }
 
 const runTests = require('../../../helpers/runTests');

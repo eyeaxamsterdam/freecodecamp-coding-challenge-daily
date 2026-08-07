@@ -6,7 +6,7 @@ The length of the hypotenuse is calculated by adding the squares of the two leg 
 */
 
 function isIntegerHypotenuse(a, b) {
-
+    return Number.isInteger(Math.sqrt(a * a + b * b));
 }
 
 const runTests = require('../../../helpers/runTests');

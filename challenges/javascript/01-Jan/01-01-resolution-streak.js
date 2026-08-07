@@ -16,7 +16,16 @@ If one or more days is not a success, return "Resolution failed on day X: N day 
 */
 
 function resolutionStreak(days) {
-
+    let streak = 0;
+    for (let i = 0; i < days.length; i++) {
+        const [steps, screenTime, pages] = days[i];
+        if (steps >= 10000 && screenTime <= 120 && pages >= 5) {
+            streak++;
+        } else {
+            return `Resolution failed on day ${i + 1}: ${streak} day streak.`;
+        }
+    }
+    return `Resolution on track: ${streak} day streak.`;
 }
 
 const runTests = require('../../../helpers/runTests');

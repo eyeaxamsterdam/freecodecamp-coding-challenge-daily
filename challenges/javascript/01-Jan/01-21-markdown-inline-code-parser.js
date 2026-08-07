@@ -12,7 +12,7 @@ Note: The console may not display HTML tags in strings when logging messages. Ch
 */
 
 function parseInlineCode(markdown) {
-
+    return markdown.replace(/`([^`]+)`/g, '<code>$1</code>');
 }
 
 const runTests = require('../../../helpers/runTests');

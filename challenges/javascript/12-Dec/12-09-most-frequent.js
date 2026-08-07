@@ -6,7 +6,13 @@ There will always be a single most frequent element.
 */
 
 function mostFrequent(arr) {
-
+    const counts = [];
+    for (const item of arr) {
+        const entry = counts.find(([v]) => v === item);
+        if (entry) entry[1]++;
+        else counts.push([item, 1]);
+    }
+    return counts.reduce((best, entry) => entry[1] > best[1] ? entry : best)[0];
 }
 
 const runTests = require('../../../helpers/runTests');

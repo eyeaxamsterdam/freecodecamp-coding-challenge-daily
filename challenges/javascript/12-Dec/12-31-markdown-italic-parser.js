@@ -12,7 +12,9 @@ Note: The console may not display HTML tags in strings when logging messages. Ch
 */
 
 function parseItalics(markdown) {
-
+    return markdown
+        .replace(/\*(\S(?:.*?\S)?)\*/g, '<i>$1</i>')
+        .replace(/_(\S(?:.*?\S)?)_/g, '<i>$1</i>');
 }
 
 const runTests = require('../../../helpers/runTests');

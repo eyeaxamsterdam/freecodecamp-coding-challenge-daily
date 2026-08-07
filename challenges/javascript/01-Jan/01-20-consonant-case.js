@@ -8,7 +8,12 @@ All hyphens (-) should be converted to underscores (_).
 */
 
 function toConsonantCase(str) {
-
+    return str.split('').map(ch => {
+        if (ch === '-') return '_';
+        if (/[aeiou]/i.test(ch)) return ch.toLowerCase();
+        if (/[a-z]/i.test(ch)) return ch.toUpperCase();
+        return ch;
+    }).join('');
 }
 
 const runTests = require('../../../helpers/runTests');

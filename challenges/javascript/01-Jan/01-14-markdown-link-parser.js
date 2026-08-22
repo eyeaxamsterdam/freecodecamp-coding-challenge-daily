@@ -7,10 +7,13 @@ A Markdown image has the following format: "[link_text](link_url)". Return the s
 For example, given "[freeCodeCamp](https://freecodecamp.org/)" return '<a href="https://freecodecamp.org/">freeCodeCamp</a>';
 
 Note: The console may not display HTML tags in strings when logging messages — check the browser console to see logs with tags included.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-14
 */
 
 function parseLink(markdown) {
-
+    const [, text, url] = markdown.match(/^\[(.*?)\]\((.*)\)$/);
+    return `<a href="${url}">${text}</a>`;
 }
 
 const runTests = require('../../../helpers/runTests');

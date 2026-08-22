@@ -5,10 +5,12 @@ Given an array of numbers, return a new array containing the value needed to get
 For the last number, use 0 since there is no next number.
 
 For example, given [1, 2, 4, 7], return [1, 2, 3, 0].
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-25
 */
 
 function findDifferences(arr) {
-
+    return arr.map((value, i) => i === arr.length - 1 ? 0 : arr[i + 1] - value);
 }
 
 const runTests = require('../../../helpers/runTests');

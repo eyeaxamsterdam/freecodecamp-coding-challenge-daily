@@ -7,14 +7,9 @@ Separators can be commas (","), exclamation points ("!"), question marks ("?"), 
 */
 
 function largestNumber(str) {
-    const newstr = str.split(/[^-0-9]/);  
-    const arr = (a,b) => b-a;
-    const response = newstr.sort(arr);
-    console.log(response[0]);
-    return response[0];
+    const numbers = str.split(/[,!?:;]/).map(Number);
+    return Math.max(...numbers);
 }
-
-//Tests:
 
 const runTests = require('../../../helpers/runTests');
 runTests(largestNumber, [

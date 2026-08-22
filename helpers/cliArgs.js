@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 const LANGUAGE_ALIASES = {
   js: "javascript",
   javascript: "javascript",
@@ -28,28 +31,21 @@ function monthFolderName(month) {
 
 function parseDateArg(arg) {
   const today = new Date();
+  const year = today.getFullYear();
 
   if (!arg) {
-    return { year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() };
+    return { year, month: today.getMonth() + 1, day: today.getDate() };
   }
 
-  const fullMatch = arg.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
   const shortMatch = arg.match(/^(\d{1,2})-(\d{1,2})$/);
-
-  let year, month, day;
-  if (fullMatch) {
-    [, year, month, day] = fullMatch.map(Number);
-  } else if (shortMatch) {
-    year = today.getFullYear();
-    [, month, day] = shortMatch.map(Number);
-  } else {
-    console.error(`\n❌  Could not parse "${arg}". Use "YYYY-MM-DD" or "MM-DD".\n`);
+  if (!shortMatch) {
+    console.error(`\n❌  Could not parse "${arg}". Use "MM-DD".\n`);
     process.exit(1);
   }
 
+  const [, month, day] = shortMatch.map(Number);
   const date = new Date(year, month - 1, day);
-  const isValid =
-    date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+  const isValid = date.getMonth() === month - 1 && date.getDate() === day;
 
   if (!isValid) {
     console.error(`\n❌  "${arg}" is not a valid date.\n`);
@@ -85,4 +81,19 @@ function parseArgs(argv) {
   return { year, month, day, languages };
 }
 
-module.exports = { parseArgs, parseDateArg, pad, monthFolderName, EXTENSIONS };
+// Finds the file already on disk for a given month/day/language, matched
+// by MM-DD prefix rather than exact slug, so it's still found even if
+// freeCodeCamp has since tweaked the challenge title. Returns null if
+// there's no month directory or no matching file yet. challengesDir is the
+// base `challenges` folder, without the language segment.
+function findChallengeFile(challengesDir, language, month, day) {
+  const monthDir = path.join(challengesDir, language, monthFolderName(month));
+  if (!fs.existsSync(monthDir)) return null;
+
+  const prefix = `${pad(month)}-${pad(day)}-`;
+  const ext = EXTENSIONS[language];
+  const match = fs.readdirSync(monthDir).find((f) => f.startsWith(prefix) && f.endsWith(`.${ext}`));
+  return match ? path.join(monthDir, match) : null;
+}
+
+module.exports = { parseArgs, parseDateArg, pad, monthFolderName, EXTENSIONS, findChallengeFile };

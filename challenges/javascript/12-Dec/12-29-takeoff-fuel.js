@@ -6,10 +6,14 @@ Given the numbers of gallons of fuel currently in your airplane, and the require
 If the airplane already has enough fuel, return 0.
 You can only add whole gallons.
 Do not include decimals in the return number.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-29
 */
 
 function fuelToAdd(currentGallons, requiredLiters) {
-
+    const shortfallLiters = requiredLiters - (currentGallons * 3.78541);
+    if (shortfallLiters <= 0) return 0;
+    return Math.ceil(shortfallLiters / 3.78541);
 }
 
 const runTests = require('../../../helpers/runTests');

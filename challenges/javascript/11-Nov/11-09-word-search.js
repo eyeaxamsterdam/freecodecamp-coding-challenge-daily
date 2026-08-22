@@ -13,7 +13,29 @@ For example, given the matrix:
 */
 
 function findWord(matrix, word) {
+    const rows = matrix.length;
+    const cols = matrix[0].length;
+    const directions = [[0, 1], [0, -1], [1, 0], [-1, 0]];
 
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            for (const [dr, dc] of directions) {
+                const endR = r + dr * (word.length - 1);
+                const endC = c + dc * (word.length - 1);
+                if (endR < 0 || endR >= rows || endC < 0 || endC >= cols) continue;
+
+                let matches = true;
+                for (let i = 0; i < word.length; i++) {
+                    if (matrix[r + dr * i][c + dc * i] !== word[i]) {
+                        matches = false;
+                        break;
+                    }
+                }
+                if (matches) return [[r, c], [endR, endC]];
+            }
+        }
+    }
+    return null;
 }
 
 

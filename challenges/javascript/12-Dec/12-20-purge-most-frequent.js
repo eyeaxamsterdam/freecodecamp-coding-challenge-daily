@@ -4,10 +4,16 @@ Given an array of values, remove all occurrences of the most frequently occurrin
 
 If multiple values are tied for most frequent, remove all of them.
 Do not change any of the other elements or their order.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-20
 */
 
 function purgeMostFrequent(arr) {
-
+    const counts = new Map();
+    for (const v of arr) counts.set(v, (counts.get(v) || 0) + 1);
+    const maxCount = Math.max(...counts.values());
+    const toRemove = new Set([...counts.entries()].filter(([, c]) => c === maxCount).map(([v]) => v));
+    return arr.filter(v => !toRemove.has(v));
 }
 
 const runTests = require('../../../helpers/runTests');

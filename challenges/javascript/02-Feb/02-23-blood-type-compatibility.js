@@ -22,10 +22,18 @@ Negative ("-") can donate to both "-" and "+".
 Positive ("+") can donate only to "+".
 
 Both letter and Rh rule must pass for a donor to be able to donate to the recipient.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-23
 */
 
 function canDonate(donor, recipient) {
-
+    const letterMap = { O: ['A', 'B', 'AB', 'O'], A: ['A', 'AB'], B: ['B', 'AB'], AB: ['AB'] };
+    const [, donorLetter, donorRh] = donor.match(/^(AB|A|B|O)([+-])$/);
+    const [, recipientLetter] = recipient.match(/^(AB|A|B|O)([+-])$/);
+    const recipientRh = recipient.slice(-1);
+    const letterOk = letterMap[donorLetter].includes(recipientLetter);
+    const rhOk = donorRh === '-' || recipientRh === '+';
+    return letterOk && rhOk;
 }
 
 const runTests = require('../../../helpers/runTests');

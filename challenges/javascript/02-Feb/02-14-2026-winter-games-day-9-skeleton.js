@@ -16,10 +16,21 @@ The difficulty of the track is based on the total score. Return:
 "Easy" if the total is 0 - 100
 "Medium" if the total is 101-200
 "Hard" if the total is over 200
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-14
 */
 
 function getDifficulty(track) {
-
+    let score = 0;
+    for (let i = 0; i < track.length; i++) {
+        const curve = track[i];
+        if (curve === 'S') continue;
+        const prev = track[i - 1];
+        score += prev !== curve && (prev === 'L' || prev === 'R') ? 15 : 5;
+    }
+    if (score <= 100) return 'Easy';
+    if (score <= 200) return 'Medium';
+    return 'Hard';
 }
 
 const runTests = require('../../../helpers/runTests');

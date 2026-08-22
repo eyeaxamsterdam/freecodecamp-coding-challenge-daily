@@ -1,10 +1,19 @@
 /*
 Letters-Numbers
 Given a string containing only letters and numbers, return a new string where a hyphen (-) is inserted every time the string switches from a letter to a number, or a number to a letter.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-29
 */
 
 function separateLettersAndNumbers(str) {
-
+    let result = '';
+    for (let i = 0; i < str.length; i++) {
+        if (i > 0 && /[a-zA-Z]/.test(str[i - 1]) !== /[a-zA-Z]/.test(str[i])) {
+            result += '-';
+        }
+        result += str[i];
+    }
+    return result;
 }
 
 const runTests = require('../../../helpers/runTests');

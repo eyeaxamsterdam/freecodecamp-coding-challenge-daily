@@ -6,10 +6,12 @@ Start with a #, and
 be followed by either 3 or 6 hexadecimal characters.
 
 Hexadecimal characters are numbers 0 through 9 and letters a through f (case-insensitive).
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-23
 */
 
 function isValidHex(str) {
-
+    return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(str);
 }
 
 const runTests = require('../../../helpers/runTests');

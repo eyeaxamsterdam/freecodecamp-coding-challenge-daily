@@ -14,10 +14,13 @@ Return the blockquote text surrounded by opening and closing HTML blockquote tag
 For example, given "> This is a quote", return <blockquote>This is a quote</blockquote>.
 
 Note: The console may not display HTML tags in strings when logging messages. Check the browser console to see logs with tags included.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-17
 */
 
 function parseBlockquote(markdown) {
-
+    const [, text] = markdown.match(/^\s*>\s+(.*)$/);
+    return `<blockquote>${text}</blockquote>`;
 }
 
 const runTests = require('../../../helpers/runTests');

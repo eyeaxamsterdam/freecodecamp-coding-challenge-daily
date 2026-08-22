@@ -6,7 +6,7 @@ For example, the divisors of 4 are 1, 2, and 4. The divisors of 6 are 1, 2, 3, a
 */
 
 function gcd(x, y) {
-
+    return y === 0 ? x : gcd(y, x % y);
 }
 
 const runTests = require('../../../helpers/runTests');

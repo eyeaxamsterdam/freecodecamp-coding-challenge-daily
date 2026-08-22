@@ -1,10 +1,12 @@
 /*
 Flatten the Array
 Given an array that contains nested arrays, return a new array with all values flattened into a single, one-dimensional array. Retain the original order of the items in the arrays.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-28
 */
 
 function flatten(arr) {
-
+    return arr.flat(Infinity);
 }
 
 const runTests = require('../../../helpers/runTests');

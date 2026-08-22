@@ -4,10 +4,12 @@ Given two arrays, return a new array containing the symmetric difference of them
 
 The symmetric difference between two sets is the set of values that appear in either set, but not both.
 Return the values in the order they first appear in the input arrays.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-05
 */
 
 function difference(arr1, arr2) {
-
+    return arr1.filter(v => !arr2.includes(v)).concat(arr2.filter(v => !arr1.includes(v)));
 }
 
 const runTests = require('../../../helpers/runTests');

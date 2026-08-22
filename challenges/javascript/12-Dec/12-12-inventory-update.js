@@ -8,10 +8,18 @@ If a received item does not exist in the current inventory, add it as a new entr
 Return inventory in the order it was given with new items at the end in the order they appear in the shipment.
 
 For example, given an inventory of [[2, "apples"], [5, "bananas"]] and a shipment of [[1, "apples"], [3, "bananas"]], return [[3, "apples"], [8, "bananas"]].
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-12
 */
 
 function updateInventory(inventory, shipment) {
-
+    const result = inventory.map(([qty, item]) => [qty, item]);
+    for (const [qty, item] of shipment) {
+        const existing = result.find(entry => entry[1] === item);
+        if (existing) existing[0] += qty;
+        else result.push([qty, item]);
+    }
+    return result;
 }
 
 const runTests = require('../../../helpers/runTests');

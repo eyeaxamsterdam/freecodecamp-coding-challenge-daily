@@ -5,10 +5,17 @@ Given a string representing a variable name, convert it to consonant case using 
 All consonants should be converted to uppercase.
 All vowels (a, e, i, o, u in any case) should be converted to lowercase.
 All hyphens (-) should be converted to underscores (_).
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-20
 */
 
 function toConsonantCase(str) {
-
+    return str.split('').map(ch => {
+        if (ch === '-') return '_';
+        if (/[aeiou]/i.test(ch)) return ch.toLowerCase();
+        if (/[a-z]/i.test(ch)) return ch.toUpperCase();
+        return ch;
+    }).join('');
 }
 
 const runTests = require('../../../helpers/runTests');

@@ -10,10 +10,14 @@ Convert all bold occurrences to HTML b tags and return the string.
 For example, given "**This is bold**", return "<b>This is bold</b>".
 
 Note: The console may not display HTML tags in strings when logging messages. Check the browser console to see logs with tags included.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-10
 */
 
 function parseBold(markdown) {
-
+    return markdown
+        .replace(/\*\*(\S(?:.*?\S)?)\*\*/g, '<b>$1</b>')
+        .replace(/__(\S(?:.*?\S)?)__/g, '<b>$1</b>');
 }
 
 const runTests = require('../../../helpers/runTests');

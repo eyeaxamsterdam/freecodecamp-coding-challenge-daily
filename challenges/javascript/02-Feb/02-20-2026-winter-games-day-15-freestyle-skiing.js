@@ -29,10 +29,15 @@ Valid second words:
 |"Frostbite"|
 |"Blizzard"|
 |"Shadow"|
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-20
 */
 
 function isValidTrick(trickName) {
-
+    const firstWords = ['Misty', 'Ghost', 'Thunder', 'Solar', 'Sky', 'Phantom', 'Frozen', 'Polar'];
+    const secondWords = ['Twister', 'Icequake', 'Avalanche', 'Vortex', 'Snowstorm', 'Frostbite', 'Blizzard', 'Shadow'];
+    const [first, second] = trickName.split(' ');
+    return firstWords.includes(first) && secondWords.includes(second);
 }
 
 const runTests = require('../../../helpers/runTests');

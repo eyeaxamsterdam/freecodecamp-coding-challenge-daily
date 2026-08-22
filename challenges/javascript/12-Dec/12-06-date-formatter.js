@@ -6,10 +6,16 @@ The given month will be the full English month name. For example: "January", "Fe
 In the return value, pad the month and day with leading zeros if necessary to ensure two digits.
 
 For example, given "December 6, 2025", return "2025-12-06".
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-06
 */
 
 function formatDate(dateString) {
-
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const [, monthName, day, year] = dateString.match(/^(\w+) (\d+), (\d+)$/);
+    const month = months.indexOf(monthName) + 1;
+    const pad = n => String(n).padStart(2, '0');
+    return `${year}-${pad(month)}-${pad(day)}`;
 }
 
 const runTests = require('../../../helpers/runTests');

@@ -40,10 +40,24 @@ NOR,1,1,1,3
 CAN,0,1,1,2
 SWE,0,0,1,1
 `
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-22
 */
 
 function countMedals(winners) {
-
+    const counts = {};
+    const getCountry = name => counts[name] || (counts[name] = { Gold: 0, Silver: 0, Bronze: 0 });
+    winners.forEach(([gold, silver, bronze]) => {
+        getCountry(gold).Gold++;
+        getCountry(silver).Silver++;
+        getCountry(bronze).Bronze++;
+    });
+    const rows = Object.entries(counts).map(([country, c]) => ({
+        country, ...c, Total: c.Gold + c.Silver + c.Bronze,
+    }));
+    rows.sort((a, b) => b.Gold - a.Gold || a.country.localeCompare(b.country));
+    const lines = rows.map(r => `${r.country},${r.Gold},${r.Silver},${r.Bronze},${r.Total}`);
+    return ['Country,Gold,Silver,Bronze,Total', ...lines].join('\n');
 }
 
 const runTests = require('../../../helpers/runTests');

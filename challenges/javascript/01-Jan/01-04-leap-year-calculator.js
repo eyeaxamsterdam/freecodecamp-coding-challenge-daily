@@ -7,10 +7,12 @@ A year is a leap year if it satisfies the following rules:
 The year is evenly divisible by 4, and
 The year is not evenly divisible by 100, unless
 The year is evenly divisible by 400.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-04
 */
 
 function isLeapYear(year) {
-
+    return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
 }
 
 const runTests = require('../../../helpers/runTests');

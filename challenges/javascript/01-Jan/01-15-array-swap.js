@@ -3,10 +3,12 @@ Array Swap
 Given an array with two values, return an array with the values swapped.
 
 For example, given ["A", "B"] return ["B", "A"].
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-15
 */
 
 function arraySwap(arr) {
-
+    return [arr[1], arr[0]];
 }
 
 const runTests = require('../../../helpers/runTests');

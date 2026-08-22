@@ -3,41 +3,32 @@
 const fs = require("fs");
 const path = require("path");
 const {
-  fetchAssertBlocks,
+  fetchSyncData,
   resolveChallenge,
+  buildJsHeader,
+  buildPythonHeader,
   buildJsTestTail,
   buildPythonTestTail,
+  findHeaderEnd,
   findSplitPoint,
 } = require("./dailyChallenge");
-const { parseArgs, pad, monthFolderName, EXTENSIONS } = require("./cliArgs");
+const { parseArgs, findChallengeFile } = require("./cliArgs");
 
 const HELP_TEXT = `
-Usage: node helpers/syncTests.js [date] [language]
+Usage: node helpers/syncChallenge.js [date] [language]
 
-Re-fetches a challenge's tests from freeCodeCamp and refreshes a file you
-already have, in case freeCodeCamp has updated the test cases since you
-generated it. Your function implementation and the description comment are
-left untouched — only the test block is replaced.
+Re-fetches a challenge's tests and header comment (title, description,
+Link) from freeCodeCamp and refreshes a file you already have, in case
+freeCodeCamp has updated either since you generated it. Your solution code
+is never touched, only the header comment and the test block are replaced.
 
-Date and language args work exactly like createDayFiles.js (see its --help).
+Date and language args work exactly like createDayFile.js (see its --help).
 
 Examples:
-  node helpers/syncTests.js               # today, JavaScript
-  node helpers/syncTests.js 07-25 python
-  node helpers/syncTests.js both
+  node helpers/syncChallenge.js               # today, JavaScript
+  node helpers/syncChallenge.js 07-25 python
+  node helpers/syncChallenge.js both
 `;
-
-// Matched by MM-DD prefix rather than the exact slug, so a file still gets
-// found even if freeCodeCamp has since tweaked the challenge title.
-function findExistingFile(challengesDir, language, month, day, ext) {
-  const monthPadded = pad(month);
-  const dayPadded = pad(day);
-  const monthDir = path.join(challengesDir, language, monthFolderName(month));
-  if (!fs.existsSync(monthDir)) return null;
-  const prefix = `${monthPadded}-${dayPadded}-`;
-  const match = fs.readdirSync(monthDir).find((f) => f.startsWith(prefix) && f.endsWith(`.${ext}`));
-  return match ? path.join(monthDir, match) : null;
-}
 
 async function syncFile(year, month, day, language, challengesDir) {
   let resolved;
@@ -53,11 +44,10 @@ async function syncFile(year, month, day, language, challengesDir) {
     return;
   }
 
-  const ext = EXTENSIONS[language];
-  const filePath = findExistingFile(challengesDir, language, month, day, ext);
+  const filePath = findChallengeFile(challengesDir, language, month, day);
 
   if (!filePath) {
-    console.log(`⚠️  No ${language} file for that date yet — run createDayFiles.js first.`);
+    console.log(`⚠️  No ${language} file for that date yet — run createDayFile.js first.`);
     return;
   }
   const fileName = path.basename(filePath);
@@ -66,7 +56,7 @@ async function syncFile(year, month, day, language, challengesDir) {
 
   let fetched;
   try {
-    fetched = await fetchAssertBlocks(year, month, day, language);
+    fetched = await fetchSyncData(year, month, day, language);
   } catch (err) {
     console.log(`⚠️  Couldn't fetch ${language} challenge for ${fileName} (${err.message}).`);
     return;
@@ -76,7 +66,7 @@ async function syncFile(year, month, day, language, challengesDir) {
     console.log(`⚠️  No freeCodeCamp ${language} challenge for that date — nothing to sync against.`);
     return;
   }
-  const { assertBlocks, canonicalFnName } = fetched;
+  const { title, description, link, assertBlocks, canonicalFnName } = fetched;
 
   const split = findSplitPoint(content, language, canonicalFnName);
 
@@ -85,21 +75,41 @@ async function syncFile(year, month, day, language, challengesDir) {
     return;
   }
   const { fnName, splitIndex, needsImport } = split;
-  const head = content.slice(0, splitIndex);
+
+  // The header (title/description/Link) and the test tail are both
+  // regenerated; everything in between, the user's actual solution, is
+  // sliced out of the original content untouched and spliced back in as-is.
+  const headerEnd = findHeaderEnd(content, language);
+  const oldHeader = headerEnd === null ? "" : content.slice(0, headerEnd);
+  const middle = content.slice(headerEnd === null ? 0 : headerEnd, splitIndex);
+
+  const newHeader =
+    headerEnd === null
+      ? oldHeader
+      : language === "python"
+        ? buildPythonHeader({ title, description, link })
+        : buildJsHeader({ title, description, link });
 
   const newTail =
     language === "python"
       ? buildPythonTestTail(fnName, assertBlocks, { needsImport })
       : buildJsTestTail(fnName, assertBlocks, { needsImport });
-  const newContent = head + newTail;
+  const newContent = newHeader + middle + newTail;
 
   if (newContent === content) {
     console.log(`✅  ${fileName} is already up to date (${assertBlocks.length} tests).`);
     return;
   }
 
+  const changed = [];
+  if (headerEnd !== null && newHeader !== oldHeader) changed.push("description");
+  if (newTail !== content.slice(splitIndex)) changed.push(`${assertBlocks.length} tests`);
+  if (headerEnd === null) {
+    console.log(`⚠️  Couldn't locate the header comment in ${fileName}, left it untouched.`);
+  }
+
   fs.writeFileSync(filePath, newContent, "utf8");
-  console.log(`🔄  ${fileName} synced — ${assertBlocks.length} tests refreshed from freeCodeCamp.`);
+  console.log(`🔄  ${fileName} synced, ${changed.join(" and ")} refreshed from freeCodeCamp.`);
 }
 
 async function main() {

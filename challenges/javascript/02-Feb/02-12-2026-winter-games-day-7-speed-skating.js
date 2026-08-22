@@ -3,10 +3,21 @@
 Given two arrays representing the lap times (in seconds) for two speed skaters, return the lap number where the difference in lap times is the largest.
 
 The first element of each array corresponds to lap 1, the second to lap 2, and so on.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-12
 */
 
 function largestDifference(skater1, skater2) {
-
+    let maxDiff = -1;
+    let lap = 0;
+    skater1.forEach((time, i) => {
+        const diff = Math.abs(time - skater2[i]);
+        if (diff > maxDiff) {
+            maxDiff = diff;
+            lap = i + 1;
+        }
+    });
+    return lap;
 }
 
 const runTests = require('../../../helpers/runTests');

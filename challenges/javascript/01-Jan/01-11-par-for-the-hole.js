@@ -10,6 +10,8 @@ Return:
 "Par" if it took the same number of strokes as par.
 "Bogey" if it took one stroke more than par.
 "Double bogey" if took two strokes more than par.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-11
 */
 
 function golfScore(par, strokes) {
@@ -33,8 +35,6 @@ function golfScore(par, strokes) {
         return 'Double bogey'
     }
 }
-
-//Tests
 
 const runTests = require('../../../helpers/runTests');
 runTests(golfScore, [

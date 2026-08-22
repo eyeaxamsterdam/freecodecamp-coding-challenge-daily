@@ -12,10 +12,13 @@ Return "Safe" or "Risky" based on this table:
 |"Gentle"|"Safe"|"Safe"|"Safe"|
 |"Steep"|"Safe"|"Risky"|"Risky"|
 |"Very Steep"|"Safe"| "Risky"|"Risky"|
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-19
 */
 
 function avalancheRisk(snowDepth, slope) {
-
+    if (slope === 'Gentle' || snowDepth === 'Shallow') return 'Safe';
+    return 'Risky';
 }
 
 const runTests = require('../../../helpers/runTests');

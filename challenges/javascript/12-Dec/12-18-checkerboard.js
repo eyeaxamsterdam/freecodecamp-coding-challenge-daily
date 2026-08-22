@@ -14,10 +14,21 @@ For example, given [3, 3], return:
   ["X", "O", "X"]
 ]
 `
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-18
 */
 
 function createBoard(dimensions) {
-
+    const [rows, cols] = dimensions;
+    const board = [];
+    for (let r = 0; r < rows; r++) {
+        const row = [];
+        for (let c = 0; c < cols; c++) {
+            row.push((r + c) % 2 === 0 ? "X" : "O");
+        }
+        board.push(row);
+    }
+    return board;
 }
 
 const runTests = require('../../../helpers/runTests');

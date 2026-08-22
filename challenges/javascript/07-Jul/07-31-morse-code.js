@@ -20,10 +20,23 @@ Given a Morse code string, return the decoded message using the following table:
 
 Letters are separated by a single space
 Words are separated by three spaces
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/07-31
 */
 
-function decodeMorse(code) {
+const MORSE = {
+    '.-': 'A', '-...': 'B', '-.-.': 'C', '-..': 'D', '.': 'E', '..-.': 'F',
+    '--.': 'G', '....': 'H', '..': 'I', '.---': 'J', '-.-': 'K', '.-..': 'L',
+    '--': 'M', '-.': 'N', '---': 'O', '.--.': 'P', '--.-': 'Q', '.-.': 'R',
+    '...': 'S', '-': 'T', '..-': 'U', '...-': 'V', '.--': 'W', '-..-': 'X',
+    '-.--': 'Y', '--..': 'Z',
+}
 
+function decodeMorse(code) {
+    return code
+        .split('   ')
+        .map(word => word.split(' ').map(letter => MORSE[letter]).join(''))
+        .join(' ');
 }
 
 const runTests = require('../../../helpers/runTests');

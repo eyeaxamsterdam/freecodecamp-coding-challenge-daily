@@ -21,10 +21,12 @@ Return "*  *\n ** \n*  *", which logs to the console as:
 `
 
 Take careful note of the whitespaces in the given and returned strings. Be sure not to trim any of them.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-25
 */
 
 function generateSnowflake(crystals) {
-
+    return crystals.split('\n').map(line => line + line.split('').reverse().join('')).join('\n');
 }
 
 const runTests = require('../../../helpers/runTests');

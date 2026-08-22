@@ -4,10 +4,16 @@ Given a string, return a new string where all vowels are converted to uppercase 
 
 Vowels are "a", "e", "i", "o", and "u" in any case.
 Non-alphabetical characters should remain unchanged.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-06
 */
 
 function vowelCase(str) {
-
+    return str.split('').map(ch => {
+        if (/[aeiou]/i.test(ch)) return ch.toUpperCase();
+        if (/[a-z]/i.test(ch)) return ch.toLowerCase();
+        return ch;
+    }).join('');
 }
 
 const runTests = require('../../../helpers/runTests');

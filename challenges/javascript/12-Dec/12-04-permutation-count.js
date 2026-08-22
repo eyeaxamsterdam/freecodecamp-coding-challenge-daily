@@ -8,10 +8,21 @@ If the string contains repeated characters, repeated arrangements should only be
 The string will contain only letters (A-Z, a-z).
 
 For example, given "abb", return 3 because there's three unique ways to arrange the letters: "abb", "bab", and "bba".
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-04
 */
 
-function countPermutations(str) {
+function factorial(n) {
+    let result = 1;
+    for (let i = 2; i <= n; i++) result *= i;
+    return result;
+}
 
+function countPermutations(str) {
+    const counts = {};
+    for (const ch of str) counts[ch] = (counts[ch] || 0) + 1;
+    const denominator = Object.values(counts).reduce((product, c) => product * factorial(c), 1);
+    return factorial(str.length) / denominator;
 }
 
 const runTests = require('../../../helpers/runTests');

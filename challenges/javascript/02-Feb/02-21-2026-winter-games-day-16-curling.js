@@ -40,10 +40,28 @@ For example, given:
 `
 
 Return "R: 2". The two red stones in ring 1 are tied for the closest and are the only two stones closer than yellows closest.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-21
 */
 
 function scoreCurling(house) {
-
+    const stones = { R: [], Y: [] };
+    for (let r = 0; r < 5; r++) {
+        for (let c = 0; c < 5; c++) {
+            const value = house[r][c];
+            if (value === 'R' || value === 'Y') {
+                const dist = Math.max(Math.abs(r - 2), Math.abs(c - 2));
+                stones[value].push(dist);
+            }
+        }
+    }
+    const minR = stones.R.length ? Math.min(...stones.R) : Infinity;
+    const minY = stones.Y.length ? Math.min(...stones.Y) : Infinity;
+    if (minR === minY) return 'No points awarded';
+    const winner = minR < minY ? 'R' : 'Y';
+    const loserMin = Math.max(minR, minY);
+    const points = stones[winner].filter(d => d < loserMin).length;
+    return points > 0 ? `${winner}: ${points}` : 'No points awarded';
 }
 
 const runTests = require('../../../helpers/runTests');

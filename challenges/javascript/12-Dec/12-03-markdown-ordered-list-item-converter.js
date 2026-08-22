@@ -17,7 +17,8 @@ Note: The console may not display HTML tags in strings when logging messages. Ch
 */
 
 function convertListItem(markdown) {
-
+    let mdTrim = markdown.trim();
+    return (isNaN(mdTrim[0]) || mdTrim[1] !== '.') ? 'Invalid format' : `<li>${mdTrim.slice(2).trim()}</li>`
 }
 
 const runTests = require('../../../helpers/runTests');

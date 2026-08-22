@@ -20,7 +20,7 @@ function generateHex(color) {
 
     //reusable function since the range is different. highest num must be over 2, then other nums must be lower than highest num/first number generated.
     const generateColor = (lowNum, highNum) => {
-        let randomNum = Math.floor(Math.random() * (highNum - lowNum + 1)) + 1;
+        let randomNum = Math.floor(Math.random() * (highNum - lowNum + 1)) + lowNum;
         return randomNum
     }
 

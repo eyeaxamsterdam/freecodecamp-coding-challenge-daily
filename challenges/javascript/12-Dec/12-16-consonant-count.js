@@ -4,10 +4,13 @@ Given a string and a target number, determine whether the string contains exactl
 
 Consonants are all alphabetic characters except "a", "e", "i", "o", and "u" in any case.
 Ignore digits, punctuation, spaces, and other non-letter characters when counting.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-16
 */
 
 function hasConsonantCount(text, target) {
-
+    const consonants = (text.match(/[bcdfghjklmnpqrstvwxyz]/gi) || []).length;
+    return consonants === target;
 }
 
 const runTests = require('../../../helpers/runTests');

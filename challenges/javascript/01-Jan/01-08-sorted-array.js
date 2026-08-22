@@ -7,10 +7,16 @@ If the given array is:
 In ascending order (lowest to highest), return "Ascending".
 In descending order (highest to lowest), return "Descending".
 Not sorted in ascending or descending order, return "Not sorted".
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-08
 */
 
 function isSorted(arr) {
-
+    const isAsc = arr.every((v, i) => i === 0 || arr[i - 1] <= v);
+    const isDesc = arr.every((v, i) => i === 0 || arr[i - 1] >= v);
+    if (isAsc) return "Ascending";
+    if (isDesc) return "Descending";
+    return "Not sorted";
 }
 
 const runTests = require('../../../helpers/runTests');

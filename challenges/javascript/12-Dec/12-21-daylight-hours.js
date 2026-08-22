@@ -21,10 +21,15 @@ Given a latitude number from -90 to 90, return a rough approximation of daylight
 |90|0|
 
 If the given latitude does not exactly match a table entry, use the value of the closest latitude.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-21
 */
 
 function daylightHours(latitude) {
-
+    const table = [[-90, 24], [-75, 23], [-60, 21], [-45, 15], [-30, 13], [-15, 12], [0, 12], [15, 11], [30, 10], [45, 9], [60, 6], [75, 2], [90, 0]];
+    return table.reduce((closest, entry) =>
+        Math.abs(entry[0] - latitude) < Math.abs(closest[0] - latitude) ? entry : closest
+    )[1];
 }
 
 const runTests = require('../../../helpers/runTests');

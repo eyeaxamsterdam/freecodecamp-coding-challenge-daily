@@ -6,10 +6,20 @@ Given dates are in the format "YYYY-MM-DD".
 Weekdays are business days (Monday through Friday).
 Weekends are not business days (Saturday and Sunday).
 Include both the start and end dates when counting.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-24
 */
 
 function countBusinessDays(start, end) {
-
+    let count = 0;
+    const current = new Date(`${start}T00:00:00Z`);
+    const endDate = new Date(`${end}T00:00:00Z`);
+    while (current <= endDate) {
+        const day = current.getUTCDay();
+        if (day !== 0 && day !== 6) count++;
+        current.setUTCDate(current.getUTCDate() + 1);
+    }
+    return count;
 }
 
 const runTests = require('../../../helpers/runTests');

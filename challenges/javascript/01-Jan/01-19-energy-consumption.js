@@ -12,10 +12,16 @@ Return:
 "Workout" if the workout used more energy.
 "Devices" if the device used more energy.
 "Equal" if both used the same amount of energy.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-19
 */
 
 function compareEnergy(caloriesBurned, wattHoursUsed) {
-
+    const workoutJoules = caloriesBurned * 4184;
+    const deviceJoules = wattHoursUsed * 3600;
+    if (workoutJoules > deviceJoules) return "Workout";
+    if (deviceJoules > workoutJoules) return "Devices";
+    return "Equal";
 }
 
 const runTests = require('../../../helpers/runTests');

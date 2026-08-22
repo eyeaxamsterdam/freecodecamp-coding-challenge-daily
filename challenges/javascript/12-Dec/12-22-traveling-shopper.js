@@ -17,10 +17,21 @@ Use the following exchange rates to convert values:
 
 If you can afford all the items in the list, return "Buy them all!".
 Otherwise, return "Buy the first X items.", where X is the number of items you can afford when purchased in the order given.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/12-22
 */
 
 function buyItems(funds, items) {
-
+    const rates = { USD: 1.00, EUR: 1.10, GBP: 1.25, JPY: 0.0070, CAD: 0.75 };
+    let budget = Number(funds[0]) * rates[funds[1]];
+    let count = 0;
+    for (const [amount, currency] of items) {
+        const cost = Number(amount) * rates[currency];
+        if (cost > budget) break;
+        budget -= cost;
+        count++;
+    }
+    return count === items.length ? "Buy them all!" : `Buy the first ${count} items.`;
 }
 
 const runTests = require('../../../helpers/runTests');

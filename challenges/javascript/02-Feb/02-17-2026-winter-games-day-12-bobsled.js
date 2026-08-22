@@ -18,10 +18,19 @@ The total weight of the bobsled (athletes plus sled) must not exceed:
 630 kg for a 4-person team
 
 Return "Eligible" if the team meets all the requirements, or "Not Eligible" if the team fails to meet one or more of the requirements.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/02-17
 */
 
 function checkEligibility(athleteWeights, sledWeight) {
-
+    const limits = {
+        1: { minSled: 162, maxTotal: 247 },
+        2: { minSled: 170, maxTotal: 390 },
+        4: { minSled: 210, maxTotal: 630 },
+    };
+    const { minSled, maxTotal } = limits[athleteWeights.length];
+    const total = athleteWeights.reduce((sum, w) => sum + w, 0) + sledWeight;
+    return sledWeight >= minSled && total <= maxTotal ? 'Eligible' : 'Not Eligible';
 }
 
 const runTests = require('../../../helpers/runTests');

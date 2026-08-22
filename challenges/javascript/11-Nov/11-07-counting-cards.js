@@ -7,27 +7,14 @@ For example, given 52, return 1. There's only one combination of 52 cards to pic
 */
 
 function combinations(cards) {
-
-    const factor = (num) => {
-        if (num < 0) {
-            return "Factorial is not defined for negative numbers.";
-        } else if (num === 0 || num === 1) {
-            return 1;
-        } else {
-            return Array.from({ length: num }, (_, i) => i + 1)
-            .reduce((acc, current) => acc * current, 1);
-        }
-    };
-
-    const maths = (n,r) => {
-        let answer = factor(n)/(factor(r)*(factor(n-r)));
-        console.log(answer);
+    const n = 52;
+    const k = Math.min(cards, n - cards);
+    let result = 1;
+    for (let i = 1; i <= k; i++) {
+        result = result * (n - k + i) / i;
     }
-
-  return maths(52,cards);
+    return Math.round(result);
 }
-
-//Tests
 
 const runTests = require('../../../helpers/runTests');
 runTests(combinations, [

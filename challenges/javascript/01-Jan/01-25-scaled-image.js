@@ -6,10 +6,13 @@ The input string is in the format "WxH". For example, "800x600".
 The scale is a number to multiply the width and height by.
 
 Return the scaled dimensions in the same "WxH" format.
+
+Link: https://www.freecodecamp.org/learn/daily-coding-challenge/01-25
 */
 
 function scaleImage(size, scale) {
-
+    const [w, h] = size.split('x').map(Number);
+    return `${Math.round(w * scale)}x${Math.round(h * scale)}`;
 }
 
 const runTests = require('../../../helpers/runTests');
